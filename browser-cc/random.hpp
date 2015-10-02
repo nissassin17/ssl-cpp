@@ -1,0 +1,25 @@
+//
+//  random.hpp
+//  browser-cc
+//
+//  Created by Nissassin Seventeen on 10/2/15.
+//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//
+
+#ifndef random_hpp
+#define random_hpp
+
+#include <stdio.h>
+#include "exportable.hpp"
+
+class Random{
+public:
+    Random();
+    vector<uint8_t> toData();
+private:
+    static const int RANDOM_BYTES_NUM = 28;
+    uint32_t gmtUnixTime;
+    uint8_t randomBytes[RANDOM_BYTES_NUM];
+};
+
+#endif /* random_hpp */

@@ -7,3 +7,13 @@
 //
 
 #include "protocol-version.hpp"
+
+ProtocolVersion::ProtocolVersion() :
+major(SSL_VERSION_MAJOR),
+minor(SSL_VERSION_MINOR){
+}
+
+vector<uint8_t> ProtocolVersion::toData(){
+    return vector<uint8_t>({this->major, this->minor});
+
+}

@@ -9,10 +9,28 @@
 #ifndef record_hpp
 #define record_hpp
 
+#include "protocol-version.hpp"
+
 #include <stdio.h>
 
-class Record{
-    
+class Record : public Exportable{
+public:
+    enum ContentType {
+        CHANGE_CIPHER_SPEC = 20,
+        ALERT = 21,
+        HANDSHAKE = 22,
+        APPLICATION_DATA = 23,
+        NONE = 24
+    };
+    Record(ContentType type);
+    vector<uint8_t> toData();
+    ~Record();
+
+private:
+    ContentType type;
+    ProtocolVersion version;
+    Handshake *handshake;
+    bool isCompress;
 };
 
 #endif /* record_hpp */
