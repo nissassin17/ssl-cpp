@@ -1,0 +1,322 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B34B73911BBD73430059443A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73901BBD73430059443A /* main.cpp */; };
+		B34B73991BBDE08C0059443A /* browser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73971BBDE08C0059443A /* browser.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B739D1BBDE2B70059443A /* strutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B739B1BBDE2B70059443A /* strutil.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73A41BBDE6350059443A /* err.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73A21BBDE6350059443A /* err.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73A71BBDEF850059443A /* url.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73A51BBDEF850059443A /* url.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73AB1BBDF5F20059443A /* connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73A91BBDF5F20059443A /* connection.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73AC1BBDF8270059443A /* SubConnection.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73B11BBE719A0059443A /* SslWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73AF1BBE719A0059443A /* SslWrapper.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73B51BBE7F580059443A /* record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73B31BBE7F580059443A /* record.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73B81BBE7F8B0059443A /* protocol-version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73B61BBE7F8B0059443A /* protocol-version.cpp */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B34B738B1BBD73430059443A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B34B738D1BBD73430059443A /* browser-cc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "browser-cc"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B34B73901BBD73430059443A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B34B73971BBDE08C0059443A /* browser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = browser.cpp; sourceTree = "<group>"; };
+		B34B73981BBDE08C0059443A /* browser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = browser.hpp; sourceTree = "<group>"; };
+		B34B739B1BBDE2B70059443A /* strutil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strutil.cpp; sourceTree = "<group>"; };
+		B34B739C1BBDE2B70059443A /* strutil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strutil.hpp; sourceTree = "<group>"; };
+		B34B739E1BBDE54F0059443A /* setting.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = setting.hpp; sourceTree = "<group>"; };
+		B34B73A21BBDE6350059443A /* err.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = err.cpp; sourceTree = "<group>"; };
+		B34B73A31BBDE6350059443A /* err.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = err.hpp; sourceTree = "<group>"; };
+		B34B73A51BBDEF850059443A /* url.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = url.cpp; sourceTree = "<group>"; };
+		B34B73A61BBDEF850059443A /* url.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = url.hpp; sourceTree = "<group>"; };
+		B34B73A91BBDF5F20059443A /* connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connection.cpp; sourceTree = "<group>"; };
+		B34B73AA1BBDF5F20059443A /* connection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = connection.hpp; sourceTree = "<group>"; };
+		B34B73AC1BBDF8270059443A /* SubConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SubConnection.cpp; sourceTree = "<group>"; };
+		B34B73AD1BBDF8270059443A /* SubConnection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SubConnection.hpp; sourceTree = "<group>"; };
+		B34B73AF1BBE719A0059443A /* SslWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SslWrapper.cpp; sourceTree = "<group>"; };
+		B34B73B01BBE719A0059443A /* SslWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SslWrapper.hpp; sourceTree = "<group>"; };
+		B34B73B31BBE7F580059443A /* record.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = record.cpp; sourceTree = "<group>"; };
+		B34B73B41BBE7F580059443A /* record.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = record.hpp; sourceTree = "<group>"; };
+		B34B73B61BBE7F8B0059443A /* protocol-version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "protocol-version.cpp"; sourceTree = "<group>"; };
+		B34B73B71BBE7F8B0059443A /* protocol-version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "protocol-version.hpp"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B34B738A1BBD73430059443A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B34B73841BBD73430059443A = {
+			isa = PBXGroup;
+			children = (
+				B34B738F1BBD73430059443A /* browser-cc */,
+				B34B738E1BBD73430059443A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B34B738E1BBD73430059443A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B34B738D1BBD73430059443A /* browser-cc */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B34B738F1BBD73430059443A /* browser-cc */ = {
+			isa = PBXGroup;
+			children = (
+				B34B73A81BBDEF900059443A /* object */,
+				B34B739A1BBDE2A40059443A /* util */,
+				B34B73901BBD73430059443A /* main.cpp */,
+				B34B73971BBDE08C0059443A /* browser.cpp */,
+				B34B73981BBDE08C0059443A /* browser.hpp */,
+			);
+			path = "browser-cc";
+			sourceTree = "<group>";
+		};
+		B34B739A1BBDE2A40059443A /* util */ = {
+			isa = PBXGroup;
+			children = (
+				B34B73A21BBDE6350059443A /* err.cpp */,
+				B34B73A31BBDE6350059443A /* err.hpp */,
+				B34B739B1BBDE2B70059443A /* strutil.cpp */,
+				B34B739C1BBDE2B70059443A /* strutil.hpp */,
+				B34B739E1BBDE54F0059443A /* setting.hpp */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		B34B73A81BBDEF900059443A /* object */ = {
+			isa = PBXGroup;
+			children = (
+				B34B73B21BBE7DD50059443A /* ssl */,
+				B34B73AC1BBDF8270059443A /* SubConnection.cpp */,
+				B34B73AD1BBDF8270059443A /* SubConnection.hpp */,
+				B34B73A91BBDF5F20059443A /* connection.cpp */,
+				B34B73AA1BBDF5F20059443A /* connection.hpp */,
+				B34B73A51BBDEF850059443A /* url.cpp */,
+				B34B73A61BBDEF850059443A /* url.hpp */,
+			);
+			name = object;
+			sourceTree = "<group>";
+		};
+		B34B73B21BBE7DD50059443A /* ssl */ = {
+			isa = PBXGroup;
+			children = (
+				B34B73AF1BBE719A0059443A /* SslWrapper.cpp */,
+				B34B73B01BBE719A0059443A /* SslWrapper.hpp */,
+				B34B73B31BBE7F580059443A /* record.cpp */,
+				B34B73B41BBE7F580059443A /* record.hpp */,
+				B34B73B61BBE7F8B0059443A /* protocol-version.cpp */,
+				B34B73B71BBE7F8B0059443A /* protocol-version.hpp */,
+			);
+			name = ssl;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B34B738C1BBD73430059443A /* browser-cc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B34B73941BBD73430059443A /* Build configuration list for PBXNativeTarget "browser-cc" */;
+			buildPhases = (
+				B34B73891BBD73430059443A /* Sources */,
+				B34B738A1BBD73430059443A /* Frameworks */,
+				B34B738B1BBD73430059443A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "browser-cc";
+			productName = "browser-cc";
+			productReference = B34B738D1BBD73430059443A /* browser-cc */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B34B73851BBD73430059443A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Nissassin Seventeen";
+				TargetAttributes = {
+					B34B738C1BBD73430059443A = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = B34B73881BBD73430059443A /* Build configuration list for PBXProject "browser-cc" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B34B73841BBD73430059443A;
+			productRefGroup = B34B738E1BBD73430059443A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B34B738C1BBD73430059443A /* browser-cc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B34B73891BBD73430059443A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B34B739D1BBDE2B70059443A /* strutil.cpp in Sources */,
+				B34B73B51BBE7F580059443A /* record.cpp in Sources */,
+				B34B73A71BBDEF850059443A /* url.cpp in Sources */,
+				B34B73B11BBE719A0059443A /* SslWrapper.cpp in Sources */,
+				B34B73B81BBE7F8B0059443A /* protocol-version.cpp in Sources */,
+				B34B73991BBDE08C0059443A /* browser.cpp in Sources */,
+				B34B73911BBD73430059443A /* main.cpp in Sources */,
+				B34B73A41BBDE6350059443A /* err.cpp in Sources */,
+				B34B73AB1BBDF5F20059443A /* connection.cpp in Sources */,
+				B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B34B73921BBD73430059443A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B34B73931BBD73430059443A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B34B73951BBD73430059443A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B34B73961BBD73430059443A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B34B73881BBD73430059443A /* Build configuration list for PBXProject "browser-cc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B34B73921BBD73430059443A /* Debug */,
+				B34B73931BBD73430059443A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B34B73941BBD73430059443A /* Build configuration list for PBXNativeTarget "browser-cc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B34B73951BBD73430059443A /* Debug */,
+				B34B73961BBD73430059443A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B34B73851BBD73430059443A /* Project object */;
+}
