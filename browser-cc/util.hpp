@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include <string>
 using namespace std;
 
 class Util{
@@ -19,6 +20,7 @@ public:
     static void addData(vector<uint8_t> &data, uint32_t value);
     static void addData(vector<uint8_t> &data, uint64_t value);
     static void addData24(vector<uint8_t> &data, uint32_t value);
+    static string readableForm(vector<uint8_t> data);
 };
 
 #endif /* util_hpp */

@@ -39,15 +39,18 @@ Url::Url(string link){
     //get hostname
     size_t hostStart = this->isSsl ? HTTPS.length() : HTTP.length();
     size_t found = link.find('/', hostStart);
-    this->hostname = link.substr(hostStart, found);
+    if (found == string::npos){
+        this->request = "/";
+        this->hostname = link.substr(hostStart);
+    }else{
+        this->hostname = link.substr(hostStart, found - hostStart);
+        this->request = link.substr(found);
+    }
+
     
     if (this->hostname == "")
         throw Err(Err::NoHostnameProvided);
     
-    if (found == string::npos)//there is no / after schema
-        this->request = "/";
-    else
-        this->request = link.substr(hostStart + this->hostname.length());
 }
 
 string Url::getHostname(){

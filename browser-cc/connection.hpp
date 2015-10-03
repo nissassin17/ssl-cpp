@@ -21,7 +21,7 @@ private:
     /* did this connection send first request. Because there are many sub connection (with 1 ip) insde. First request will check for avaibility and first successful sub connection will be assign to activatingConnection */
     bool isConnecting;
 public:
-    Connection(string hostname);
+    Connection(string hostname, bool isSsl);
     void send(vector<uint8_t> request);
     vector<uint8_t> receive();
 };

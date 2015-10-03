@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>https:/login.yahoo.com.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>nothing.xcscheme</key>
 		<dict>
 			<key>orderHint</key>

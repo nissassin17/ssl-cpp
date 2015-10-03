@@ -10,6 +10,7 @@
 #define record_hpp
 
 #include "protocol-version.hpp"
+#include "handshake.hpp"
 
 #include <stdio.h>
 
@@ -22,13 +23,13 @@ public:
         APPLICATION_DATA = 23,
         NONE = 24
     };
-    Record(ContentType type);
+    Record();
     vector<uint8_t> toData();
     ~Record();
 
 private:
     ContentType type;
-    ProtocolVersion version;
+    ProtocolVersion protocolVersion;
     Handshake *handshake;
     bool isCompress;
 };

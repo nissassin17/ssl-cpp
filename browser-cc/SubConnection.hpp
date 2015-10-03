@@ -25,7 +25,7 @@ private:
     string ip;
     struct sockaddr_in server;
 public:
-    SubConnection(string ip);
+    SubConnection(string ip, int port);
     void doConnect();
     void doSend(vector<uint8_t> request);
     vector<uint8_t> doReceive();

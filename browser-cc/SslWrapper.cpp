@@ -7,14 +7,25 @@
 //
 
 #include "SslWrapper.hpp"
+#include "record.hpp"
+#include "util.hpp"
 
 SslWrapper::SslWrapper(Url url){
     this->url = new Url(url);
-    this->connection = new Connection(url.getHostname());
+    this->connection = new Connection(url.getHostname(), url.getIsSsl());
 }
 
 vector<uint8_t> SslWrapper::get(){
     if (this->url->getIsSsl()){
+        Record record;
+        
+        vector<uint8_t> tosend(record.toData());
+        this->connection->send(tosend);
+        cout << "Request:" << endl << Util::readableForm(tosend) << endl;
+        
+        vector<uint8_t> data = this->connection->receive();
+        cout << "Response:" << endl << Util::readableForm(data) << endl;
+
         return vector<uint8_t>();
     }
     this->connection->send(this->url->httpGetRequest());

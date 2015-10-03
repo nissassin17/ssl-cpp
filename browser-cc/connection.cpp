@@ -11,14 +11,17 @@
 
 using namespace std;
 
-Connection::Connection(string hostname){
+Connection::Connection(string hostname, bool isSsl){
+    const int SSL_PORT = 443;
+    const int HTTP_PORT = 80;
+    
     this->isConnecting = false;
     this->activatingConnection = NULL;
     
     //get ip list
     vector<string> ipList = Connection::ipListFromHostname(hostname);
     for(int i = 0; i < ipList.size(); i++)
-        this->subConnections.push_back(SubConnection(ipList[i]));
+        this->subConnections.push_back(SubConnection(ipList[i], isSsl ? SSL_PORT : HTTP_PORT));
 }
 
 vector<string> Connection::ipListFromHostname(string hostname){

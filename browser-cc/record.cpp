@@ -8,23 +8,27 @@
 
 #include "record.hpp"
 
-Record::Record(ContentType type){
-    this->type = type;
+Record::Record(){//default: create client hello handhshake
+    this->type = HANDSHAKE;
+    this->handshake = new Handshake();
 }
 
 vector<uint8_t> Record::toData(){
     vector<uint8_t> result;
+    vector<uint8_t> bodyData;
     
     result.push_back(this->type);
+    bodyData = this->protocolVersion.toData();
+    result.insert(result.end(), bodyData.begin(), bodyData.end());
     
-    vector<uint8_t> bodyData;
+
     switch(this->type){
         case CHANGE_CIPHER_SPEC:
             break;
         case ALERT:
             break;
         case HANDSHAKE:
-            bodyData = this->handshake->getData();
+            bodyData = this->handshake->toData();
             break;
         case APPLICATION_DATA:
             break;

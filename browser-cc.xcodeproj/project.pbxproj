@@ -22,6 +22,9 @@
 		B34B73C11BBE87050059443A /* client-hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73BF1BBE87050059443A /* client-hello.cpp */; settings = {ASSET_TAGS = (); }; };
 		B34B73C51BBE87C00059443A /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73C31BBE87C00059443A /* random.cpp */; settings = {ASSET_TAGS = (); }; };
 		B34B73C81BBE89280059443A /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73C61BBE89280059443A /* util.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73D11BBE8B510059443A /* session-id.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73CF1BBE8B510059443A /* session-id.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73D41BBE8C4A0059443A /* cipher-suite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */; settings = {ASSET_TAGS = (); }; };
+		B34B73D71BBE8E2A0059443A /* extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73D51BBE8E2A0059443A /* extension.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +71,12 @@
 		B34B73C41BBE87C00059443A /* random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random.hpp; sourceTree = "<group>"; };
 		B34B73C61BBE89280059443A /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		B34B73C71BBE89280059443A /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
+		B34B73CF1BBE8B510059443A /* session-id.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "session-id.cpp"; sourceTree = "<group>"; };
+		B34B73D01BBE8B510059443A /* session-id.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "session-id.hpp"; sourceTree = "<group>"; };
+		B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "cipher-suite.cpp"; sourceTree = "<group>"; };
+		B34B73D31BBE8C4A0059443A /* cipher-suite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "cipher-suite.hpp"; sourceTree = "<group>"; };
+		B34B73D51BBE8E2A0059443A /* extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extension.cpp; sourceTree = "<group>"; };
+		B34B73D61BBE8E2A0059443A /* extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = extension.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,10 +165,16 @@
 		B34B73C21BBE87110059443A /* handshake */ = {
 			isa = PBXGroup;
 			children = (
+				B34B73CF1BBE8B510059443A /* session-id.cpp */,
+				B34B73D01BBE8B510059443A /* session-id.hpp */,
 				B34B73BC1BBE853D0059443A /* handshake.cpp */,
 				B34B73BD1BBE853D0059443A /* handshake.hpp */,
 				B34B73BF1BBE87050059443A /* client-hello.cpp */,
 				B34B73C01BBE87050059443A /* client-hello.hpp */,
+				B34B73D51BBE8E2A0059443A /* extension.cpp */,
+				B34B73D61BBE8E2A0059443A /* extension.hpp */,
+				B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */,
+				B34B73D31BBE8C4A0059443A /* cipher-suite.hpp */,
 				B34B73C31BBE87C00059443A /* random.cpp */,
 				B34B73C41BBE87C00059443A /* random.hpp */,
 			);
@@ -229,12 +244,15 @@
 				B34B73A71BBDEF850059443A /* url.cpp in Sources */,
 				B34B73B11BBE719A0059443A /* SslWrapper.cpp in Sources */,
 				B34B73C11BBE87050059443A /* client-hello.cpp in Sources */,
+				B34B73D71BBE8E2A0059443A /* extension.cpp in Sources */,
 				B34B73BE1BBE853D0059443A /* handshake.cpp in Sources */,
 				B34B73C81BBE89280059443A /* util.cpp in Sources */,
 				B34B73B81BBE7F8B0059443A /* protocol-version.cpp in Sources */,
 				B34B73991BBDE08C0059443A /* browser.cpp in Sources */,
 				B34B73911BBD73430059443A /* main.cpp in Sources */,
 				B34B73A41BBDE6350059443A /* err.cpp in Sources */,
+				B34B73D11BBE8B510059443A /* session-id.cpp in Sources */,
+				B34B73D41BBE8C4A0059443A /* cipher-suite.cpp in Sources */,
 				B34B73AB1BBDF5F20059443A /* connection.cpp in Sources */,
 				B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */,
 			);

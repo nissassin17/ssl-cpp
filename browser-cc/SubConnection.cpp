@@ -14,7 +14,7 @@
 
 extern int errno;
 
-SubConnection::SubConnection(string ip){
+SubConnection::SubConnection(string ip, int port){
     this->sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock == -1)
         throw Err(Err::CannotCreateSock, ip.c_str());
@@ -24,7 +24,7 @@ SubConnection::SubConnection(string ip){
             .s_addr = inet_addr(ip.c_str())
         },
         .sin_family = AF_INET,
-        .sin_port = htons(80)
+        .sin_port = htons(port)
     };
     
 }

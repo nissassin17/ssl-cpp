@@ -7,13 +7,17 @@
 //
 
 #include "handshake.hpp"
+#include <iostream>
+#include "util.hpp"
+using namespace std;
 
 Handshake::~Handshake(){
     delete this->clientHello;
 }
 
-Handshake::Handshake(HandshakeType type){
-    this->type = type;
+Handshake::Handshake(){//default create client hello request
+    this->type = CLIENT_HELLO;
+    this->clientHello = new ClientHello();
 }
 
 vector<uint8_t> Handshake::toData(){
@@ -52,6 +56,7 @@ vector<uint8_t> Handshake::toData(){
     data.push_back((length >> 8) & ((1 << 8) - 1));
     data.push_back(length & ((1 << 8) - 1));
     data.insert(data.end(), body.begin(), body.end());
+//    cout << "#begin" << endl << Util::readableForm(data) << endl;
     
     return data;
 }

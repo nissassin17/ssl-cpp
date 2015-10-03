@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "exportable.hpp"
+#include "client-hello.hpp"
 
 class Handshake : public Exportable {
 public:
@@ -30,7 +31,7 @@ public:
 
     vector<uint8_t> toData();
     ~Handshake();
-    Handshake(HandshakeType type);
+    Handshake();
     
 private:
     HandshakeType type;
