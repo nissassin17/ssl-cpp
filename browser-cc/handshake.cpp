@@ -52,11 +52,75 @@ vector<uint8_t> Handshake::toData(){
     }
     
     uint32_t length = (uint32_t)body.size();//uint24_t
-    data.push_back(length >> 16);
-    data.push_back((length >> 8) & ((1 << 8) - 1));
-    data.push_back(length & ((1 << 8) - 1));
-    data.insert(data.end(), body.begin(), body.end());
+    Util::addData24(data, length);
+    Util::addData(data, body);
 //    cout << "#begin" << endl << Util::readableForm(data) << endl;
     
     return data;
+}
+
+size_t Handshake::size(){
+    size_t result(0);
+    result += 1 + 3;
+    switch (this->type){
+        case HELLO_REQUEST:
+            break;
+        case CLIENT_HELLO:
+            result += this->clientHello->size();
+            break;
+        case SERVER_HELLO:
+            break;
+        case CERTIFICATE:
+            break;
+        case SERVER_KEY_EXCHANGE:
+            break;
+        case CERTIFICATE_REQUEST:
+            break;
+        case SERVER_HELO_DONE:
+            break;
+        case CERTIFICATE_VERIFY:
+            break;
+        case CLIENT_KEY_EXCHANGE:
+            break;
+        case FINISHED:
+            break;
+        default:
+            break;
+    }
+    return result;
+}
+
+Handshake::Handshake(vector<uint8_t> data, size_t offset){
+    this->type = (HandshakeType)data[offset];
+    offset ++;
+    
+//    uint32_t length = Util::takeData32(data, offset);
+    offset += 4;
+    
+    switch (this->type){
+        case HELLO_REQUEST:
+            break;
+        case CLIENT_HELLO:
+        	break;
+        case SERVER_HELLO:
+            this->serverHello = new ServerHello(data, offset);
+            offset += this->serverHello->size();
+        	break;
+        case CERTIFICATE:
+            break;
+        case SERVER_KEY_EXCHANGE:
+            break;
+        case CERTIFICATE_REQUEST:
+            break;
+        case SERVER_HELO_DONE:
+            break;
+        case CERTIFICATE_VERIFY:
+            break;
+        case CLIENT_KEY_EXCHANGE:
+            break;
+        case FINISHED:
+            break;
+        case NONE://default
+            break;
+    }
 }

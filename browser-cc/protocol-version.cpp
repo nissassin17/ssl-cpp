@@ -8,9 +8,18 @@
 
 #include "protocol-version.hpp"
 
-ProtocolVersion::ProtocolVersion() :
-major(SSL_VERSION_MAJOR),
-minor(SSL_VERSION_MINOR){
+ProtocolVersion::ProtocolVersion(uint8_t major, uint8_t minor) :
+major(major),
+minor(minor){
+}
+
+size_t ProtocolVersion::size(){
+    return 2;
+}
+
+ProtocolVersion::ProtocolVersion(vector<uint8_t> data, size_t offset){
+    this->major = data[offset];
+    this->minor = data[offset + 1];
 }
 
 vector<uint8_t> ProtocolVersion::toData(){

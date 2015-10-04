@@ -25,6 +25,18 @@ Random::Random(){
     }
 }
 
+size_t Random::size(){
+    return 4 + RANDOM_BYTES_NUM * 1;
+}
+
+Random::Random(vector<uint8_t> data, size_t offset){
+    this->gmtUnixTime = Util::takeData32(data, offset);
+    offset += 4;
+    
+    for(int i = 0; i < RANDOM_BYTES_NUM; i++)
+        this->randomBytes[i] = data[offset + i];
+}
+
 vector<uint8_t> Random::toData(){
     vector<uint8_t> data;
     Util::addData(data, (uint32_t)this->gmtUnixTime);

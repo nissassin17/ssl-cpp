@@ -17,14 +17,17 @@ SslWrapper::SslWrapper(Url url){
 
 vector<uint8_t> SslWrapper::get(){
     if (this->url->getIsSsl()){
-        Record record;
+        //prepare client hello
+        Record clientHello;
         
-        vector<uint8_t> tosend(record.toData());
+        vector<uint8_t> tosend(clientHello.toData());
         this->connection->send(tosend);
         cout << "Request:" << endl << Util::readableForm(tosend) << endl;
         
         vector<uint8_t> data = this->connection->receive();
-        cout << "Response:" << endl << Util::readableForm(data) << endl;
+        cout << "Response:" << endl << Util::readableForm(data) << endl;//this is server hello message
+        
+        Record serverHello(data);
 
         return vector<uint8_t>();
     }

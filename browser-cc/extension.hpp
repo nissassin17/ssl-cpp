@@ -12,14 +12,17 @@
 #include <stdio.h>
 #include "exportable.hpp"
 
-class Extension : Exportable{
+class Extension : public Exportable{
 public:
     enum ExtensionType{
         SIGNATURE_ALGORITHMS = 13,
         NONE = 65535
     };
     vector<uint8_t> toData();
-    uint16_t dataLength();
+    size_t size();
+    Extension(vector<uint8_t> data, size_t offset = 0);
+    Extension(ExtensionType type = NONE);
+    
     
 private:
     ExtensionType type;

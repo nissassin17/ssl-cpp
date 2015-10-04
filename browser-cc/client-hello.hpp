@@ -15,14 +15,12 @@
 #include "random.hpp"
 #include "session-id.hpp"
 #include "cipher-suite.hpp"
+#include "compression-method.hpp"
 #include "extension.hpp"
 
-class ClientHello : Exportable{
+class ClientHello : public Exportable{
 public:
-    enum CompressionMethod{
-        Null = 0,
-        NONE = 255
-    };
+
 private:
     ProtocolVersion protocolVersion;
     Random random;
@@ -31,6 +29,7 @@ private:
     vector<CompressionMethod> compressionMethods;
     vector<Extension> extensions;
     bool haveExtension;
+    size_t size();
 public:
     vector<uint8_t> toData();
     ClientHello();

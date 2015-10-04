@@ -13,9 +13,20 @@ vector<uint8_t> Extension::toData(){
     vector<uint8_t> data;
     Util::addData(data, (uint16_t)this->type);
     Util::addData(data, (uint16_t)this->data.size());
-    data.insert(data.end(), this->data.begin(), this->data.end());
+    Util::addData(data, this->data);
     return data;
 }
-uint16_t Extension::dataLength(){
+size_t Extension::size(){
     return 2 + 2 + this->data.size();
+}
+
+Extension::Extension(ExtensionType type): type(type){
+    
+}
+
+Extension::Extension(vector<uint8_t> data, size_t offset){
+    this->type = (ExtensionType)Util::takeData16(data, offset);
+    //preserve 2 bytes for length
+    uint16_t length = Util::takeData16(data, offset + 2);
+    this->data = Util::takeData(data, length, offset + 4);
 }

@@ -7,10 +7,12 @@
 //
 
 #include "record.hpp"
+#include "util.hpp"
 
-Record::Record(){//default: create client hello handhshake
+Record::Record(){//default: create client hello handshake
     this->type = HANDSHAKE;
     this->handshake = new Handshake();
+    this->isCompress = false;
 }
 
 vector<uint8_t> Record::toData(){
@@ -18,8 +20,7 @@ vector<uint8_t> Record::toData(){
     vector<uint8_t> bodyData;
     
     result.push_back(this->type);
-    bodyData = this->protocolVersion.toData();
-    result.insert(result.end(), bodyData.begin(), bodyData.end());
+    Util::addData(result, this->protocolVersion.toData());
     
 
     switch(this->type){
@@ -38,9 +39,43 @@ vector<uint8_t> Record::toData(){
     uint16_t length = bodyData.size();
     result.push_back(length >> 8);
     result.push_back(length & ((1 << 8) - 1));
-    result.insert(result.end(), bodyData.begin(), bodyData.end());
+    Util::addData(result, bodyData);
 
     return result;
+}
+
+Record::Record(vector<uint8_t> data, size_t offset){
+    this->type = (ContentType)data[offset];
+    offset += CONTENT_TYPE_LENGTH;
+    
+    this->protocolVersion = ProtocolVersion(data, offset);
+    offset += this->protocolVersion.size();
+    
+    offset += BODY_LENGTH_LENGTH;
+
+    switch (this->type) {
+        case HANDSHAKE:
+            this->handshake = new Handshake(data, offset);
+            offset += this->handshake->size();
+            break;
+            
+        default:
+            break;
+    }
+}
+
+size_t Record::size(){
+    size_t ret(CONTENT_TYPE_LENGTH + this->protocolVersion.size() + BODY_LENGTH_LENGTH);
+    
+    switch (this->type){
+        case HANDSHAKE:
+            ret += this->handshake->size();
+            break;
+        default:
+            break;
+    }
+    
+    return ret;
 }
 
 Record::~Record(){

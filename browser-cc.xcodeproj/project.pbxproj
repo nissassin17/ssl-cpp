@@ -25,6 +25,8 @@
 		B34B73D11BBE8B510059443A /* session-id.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73CF1BBE8B510059443A /* session-id.cpp */; settings = {ASSET_TAGS = (); }; };
 		B34B73D41BBE8C4A0059443A /* cipher-suite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */; settings = {ASSET_TAGS = (); }; };
 		B34B73D71BBE8E2A0059443A /* extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73D51BBE8E2A0059443A /* extension.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3770DEB1BC14CA50051D2AB /* server-hello.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3770DF01BC14D910051D2AB /* compression-method.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3770DEE1BC14D910051D2AB /* compression-method.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +79,10 @@
 		B34B73D31BBE8C4A0059443A /* cipher-suite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "cipher-suite.hpp"; sourceTree = "<group>"; };
 		B34B73D51BBE8E2A0059443A /* extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extension.cpp; sourceTree = "<group>"; };
 		B34B73D61BBE8E2A0059443A /* extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = extension.hpp; sourceTree = "<group>"; };
+		B3770DEB1BC14CA50051D2AB /* server-hello.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-hello.cpp"; sourceTree = "<group>"; };
+		B3770DEC1BC14CA50051D2AB /* server-hello.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-hello.hpp"; sourceTree = "<group>"; };
+		B3770DEE1BC14D910051D2AB /* compression-method.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "compression-method.cpp"; sourceTree = "<group>"; };
+		B3770DEF1BC14D910051D2AB /* compression-method.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "compression-method.hpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,12 +171,16 @@
 		B34B73C21BBE87110059443A /* handshake */ = {
 			isa = PBXGroup;
 			children = (
+				B3770DEB1BC14CA50051D2AB /* server-hello.cpp */,
+				B3770DEC1BC14CA50051D2AB /* server-hello.hpp */,
 				B34B73CF1BBE8B510059443A /* session-id.cpp */,
 				B34B73D01BBE8B510059443A /* session-id.hpp */,
 				B34B73BC1BBE853D0059443A /* handshake.cpp */,
 				B34B73BD1BBE853D0059443A /* handshake.hpp */,
 				B34B73BF1BBE87050059443A /* client-hello.cpp */,
 				B34B73C01BBE87050059443A /* client-hello.hpp */,
+				B3770DEE1BC14D910051D2AB /* compression-method.cpp */,
+				B3770DEF1BC14D910051D2AB /* compression-method.hpp */,
 				B34B73D51BBE8E2A0059443A /* extension.cpp */,
 				B34B73D61BBE8E2A0059443A /* extension.hpp */,
 				B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */,
@@ -252,9 +262,11 @@
 				B34B73911BBD73430059443A /* main.cpp in Sources */,
 				B34B73A41BBDE6350059443A /* err.cpp in Sources */,
 				B34B73D11BBE8B510059443A /* session-id.cpp in Sources */,
+				B3770DF01BC14D910051D2AB /* compression-method.cpp in Sources */,
 				B34B73D41BBE8C4A0059443A /* cipher-suite.cpp in Sources */,
 				B34B73AB1BBDF5F20059443A /* connection.cpp in Sources */,
 				B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */,
+				B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +383,7 @@
 				B34B73961BBD73430059443A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

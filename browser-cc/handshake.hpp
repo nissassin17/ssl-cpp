@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "exportable.hpp"
 #include "client-hello.hpp"
+#include "server-hello.hpp"
 
 class Handshake : public Exportable {
 public:
@@ -32,10 +33,13 @@ public:
     vector<uint8_t> toData();
     ~Handshake();
     Handshake();
+    Handshake(vector<uint8_t> data, size_t offset = 0);
+    size_t size();
     
 private:
     HandshakeType type;
     ClientHello *clientHello;
+    ServerHello *serverHello;
 };
 
 #endif /* handshake_hpp */
