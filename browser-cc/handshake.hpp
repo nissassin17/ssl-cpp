@@ -33,7 +33,7 @@ public:
     vector<uint8_t> toData();
     ~Handshake();
     Handshake();
-    Handshake(vector<uint8_t> data, size_t offset = 0);
+    Handshake(vector<uint8_t> &data, size_t offset = 0);
     size_t size();
     
 private:

@@ -13,7 +13,7 @@
 #include "exportable.hpp"
 class CipherSuite : public Exportable{
 public:
-    CipherSuite(vector<uint8_t> data, size_t offset = 0);
+    CipherSuite(vector<uint8_t> &data, size_t offset = 0);
     size_t size();
     vector<uint8_t> toData();
     

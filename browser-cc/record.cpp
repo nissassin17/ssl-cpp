@@ -44,7 +44,7 @@ vector<uint8_t> Record::toData(){
     return result;
 }
 
-Record::Record(vector<uint8_t> data, size_t offset){
+Record::Record(vector<uint8_t> &data, size_t offset){
     this->type = (ContentType)data[offset];
     offset += CONTENT_TYPE_LENGTH;
     

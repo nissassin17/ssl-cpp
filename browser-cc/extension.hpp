@@ -20,7 +20,7 @@ public:
     };
     vector<uint8_t> toData();
     size_t size();
-    Extension(vector<uint8_t> data, size_t offset = 0);
+    Extension(vector<uint8_t> &data, size_t offset = 0);
     Extension(ExtensionType type = NONE);
     
     

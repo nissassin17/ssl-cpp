@@ -23,7 +23,7 @@ using namespace std;
 class ProtocolVersion : public Exportable{
 public:
     ProtocolVersion(uint8_t major = SSL_VERSION_MAJOR, uint8_t minor = SSL_VERSION_MINOR);
-    ProtocolVersion(vector<uint8_t> data, size_t offset = 0);
+    ProtocolVersion(vector<uint8_t> &data, size_t offset = 0);
     vector<uint8_t> toData();
     size_t size();
 private:

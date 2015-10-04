@@ -90,7 +90,7 @@ size_t Handshake::size(){
     return result;
 }
 
-Handshake::Handshake(vector<uint8_t> data, size_t offset){
+Handshake::Handshake(vector<uint8_t> &data, size_t offset){
     this->type = (HandshakeType)data[offset];
     offset ++;
     

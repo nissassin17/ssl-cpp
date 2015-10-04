@@ -8,7 +8,7 @@
 
 #include "server-hello.hpp"
 
-ServerHello::ServerHello(vector<uint8_t> data, size_t offset){
+ServerHello::ServerHello(vector<uint8_t> &data, size_t offset){
     this->protocolVersion = ProtocolVersion(data, offset);
     offset += this->protocolVersion.size();
     

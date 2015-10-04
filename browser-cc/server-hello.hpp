@@ -21,7 +21,7 @@
 
 class ServerHello{
 public:
-    ServerHello(vector<uint8_t> data, size_t offset = 0);
+    ServerHello(vector<uint8_t> &data, size_t offset = 0);
     size_t size();
 private:
     ProtocolVersion protocolVersion;

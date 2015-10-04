@@ -20,6 +20,6 @@ size_t CompressionMethod::size(){
     return 1;
 }
 
-CompressionMethod::CompressionMethod(vector<uint8_t> data, size_t offset){
+CompressionMethod::CompressionMethod(vector<uint8_t> &data, size_t offset){
     this->type = (Method)data[offset];
 }

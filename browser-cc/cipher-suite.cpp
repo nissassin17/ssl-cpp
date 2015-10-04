@@ -23,6 +23,6 @@ size_t CipherSuite::size(){
     return 2;
 }
 
-CipherSuite::CipherSuite(vector<uint8_t> data, size_t offset){
+CipherSuite::CipherSuite(vector<uint8_t> &data, size_t offset){
     this->suite = (CipherSuiteType)Util::takeData16(data, offset);
 }

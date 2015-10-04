@@ -24,7 +24,7 @@ Extension::Extension(ExtensionType type): type(type){
     
 }
 
-Extension::Extension(vector<uint8_t> data, size_t offset){
+Extension::Extension(vector<uint8_t> &data, size_t offset){
     this->type = (ExtensionType)Util::takeData16(data, offset);
     //preserve 2 bytes for length
     uint16_t length = Util::takeData16(data, offset + 2);

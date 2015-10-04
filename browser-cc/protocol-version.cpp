@@ -17,7 +17,7 @@ size_t ProtocolVersion::size(){
     return 2;
 }
 
-ProtocolVersion::ProtocolVersion(vector<uint8_t> data, size_t offset){
+ProtocolVersion::ProtocolVersion(vector<uint8_t> &data, size_t offset){
     this->major = data[offset];
     this->minor = data[offset + 1];
 }

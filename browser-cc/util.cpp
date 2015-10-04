@@ -36,7 +36,7 @@ void Util::addData(vector<uint8_t> &data, uint32_t value){
     data.push_back((value >> 8) & PATTERN);
     data.push_back(value & PATTERN);
 }
-static void addData(vector<uint8_t> &data, vector<uint8_t>toAdd){
+void Util::addData(vector<uint8_t> &data, vector<uint8_t>toAdd){
     data.insert(data.end(), toAdd.begin(), toAdd.end());
 }
 

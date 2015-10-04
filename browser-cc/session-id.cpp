@@ -24,7 +24,7 @@ size_t SessionID::size(){
     return 1 + this->id.size();
 }
 
-SessionID::SessionID(vector<uint8_t> data, size_t offset){
+SessionID::SessionID(vector<uint8_t> &data, size_t offset){
     uint8_t length = data[offset];
     this->id = Util::takeData(data, length, offset + 1);
 }

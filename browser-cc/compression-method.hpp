@@ -21,7 +21,7 @@ public:
     vector<uint8_t> toData();
     CompressionMethod(Method type = Null);
     size_t size();
-    CompressionMethod(vector<uint8_t> data, size_t offset = 0);
+    CompressionMethod(vector<uint8_t> &data, size_t offset = 0);
 private:
     Method type;
 };

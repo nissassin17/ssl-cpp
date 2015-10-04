@@ -29,10 +29,11 @@ private:
     vector<CompressionMethod> compressionMethods;
     vector<Extension> extensions;
     bool haveExtension;
-    size_t size();
+
 public:
     vector<uint8_t> toData();
     ClientHello();
+    size_t size();
     
 };
 

@@ -17,7 +17,7 @@ public:
     vector<uint8_t> toData();
     SessionID();
     size_t size();
-    SessionID(vector<uint8_t> data, size_t offset = 0);
+    SessionID(vector<uint8_t> &data, size_t offset = 0);
 private:
     vector<uint8_t> id;
 };

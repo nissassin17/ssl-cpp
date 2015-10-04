@@ -29,7 +29,7 @@ size_t Random::size(){
     return 4 + RANDOM_BYTES_NUM * 1;
 }
 
-Random::Random(vector<uint8_t> data, size_t offset){
+Random::Random(vector<uint8_t> &data, size_t offset){
     this->gmtUnixTime = Util::takeData32(data, offset);
     offset += 4;
     
