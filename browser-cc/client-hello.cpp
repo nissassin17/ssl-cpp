@@ -10,8 +10,45 @@
 #include "util.hpp"
 
 ClientHello::ClientHello(): random(), sessionID(), haveExtension(false){
-    this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_NULL_WITH_NULL_NULL));
-    this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_MD5));
+	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_NULL_WITH_NULL_NULL               ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_MD5                 ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_SHA                 ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_SHA256              ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_RC4_128_MD5              ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_RC4_128_SHA              ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_3DES_EDE_CBC_SHA         ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_128_CBC_SHA          ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_256_CBC_SHA          ));
+	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_128_CBC_SHA256       ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_256_CBC_SHA256       ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA      ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA      ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA     ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA     ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_DSS_WITH_AES_128_CBC_SHA       ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_RSA_WITH_AES_128_CBC_SHA       ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_DSS_WITH_AES_128_CBC_SHA      ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_RSA_WITH_AES_128_CBC_SHA      ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_DSS_WITH_AES_256_CBC_SHA       ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_RSA_WITH_AES_256_CBC_SHA       ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_DSS_WITH_AES_256_CBC_SHA      ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_RSA_WITH_AES_256_CBC_SHA      ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_DSS_WITH_AES_128_CBC_SHA256    ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_RSA_WITH_AES_128_CBC_SHA256    ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_DSS_WITH_AES_128_CBC_SHA256   ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_RSA_WITH_AES_128_CBC_SHA256   ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_DSS_WITH_AES_256_CBC_SHA256    ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_RSA_WITH_AES_256_CBC_SHA256    ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_DSS_WITH_AES_256_CBC_SHA256   ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DHE_RSA_WITH_AES_256_CBC_SHA256   ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_anon_WITH_RC4_128_MD5          ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_anon_WITH_3DES_EDE_CBC_SHA     ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_anon_WITH_AES_128_CBC_SHA      ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_anon_WITH_AES_256_CBC_SHA      ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_anon_WITH_AES_128_CBC_SHA256   ));
+//	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_anon_WITH_AES_256_CBC_SHA256   ));
+
+
     this->compressionMethods.push_back(CompressionMethod(CompressionMethod::Null));
 }
 
@@ -34,7 +71,7 @@ size_t ClientHello::size(){
         for(int i = 0; i < this->extensions.size(); i++)
             result += this->extensions[i].size();
     }else{
-        result ++;
+        result += 2;
     }
     return result;
 }
@@ -46,11 +83,20 @@ vector<uint8_t> ClientHello::toData(){
     
     Util::addData(data, this->random.toData());
     
-    Util::addData(data, (uint16_t)this->cipherSuites.size());
+    Util::addData(data, this->sessionID.toData());
+    
+    size_t length(0);
+    for(int i = 0; i < this->cipherSuites.size(); i++){
+        length += this->cipherSuites[i].size();
+    }
+    Util::addData(data, (uint16_t)length);
     for(int i = 0; i < this->cipherSuites.size(); i++)
         Util::addData(data, this->cipherSuites[i].toData());
     
-    data.push_back((uint8_t)this->compressionMethods.size());
+    length = 0;
+    for(int i = 0; i < this->compressionMethods.size(); i++)
+        length += this->compressionMethods[i].size();
+    data.push_back((uint8_t)length);
     for(int i = 0; i < this->compressionMethods.size(); i++)
         Util::addData(data, this->compressionMethods[i].toData());
     
@@ -66,7 +112,7 @@ vector<uint8_t> ClientHello::toData(){
         for(int i = 0; i < this->extensions.size(); i++)
             Util::addData(data, this->extensions[i].toData());
     }else{
-        data.push_back((uint8_t)0);
+        Util::addData(data, (uint16_t)0);
     }
     
     return data;

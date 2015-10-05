@@ -13,6 +13,9 @@
 #include "exportable.hpp"
 #include "client-hello.hpp"
 #include "server-hello.hpp"
+#include "certificate.hpp"
+#include "server-key-exchange.hpp"
+#include "server-hello-done.hpp"
 
 class Handshake : public Exportable {
 public:
@@ -31,15 +34,18 @@ public:
     };
 
     vector<uint8_t> toData();
-    ~Handshake();
     Handshake();
-    Handshake(vector<uint8_t> &data, size_t offset = 0);
+    Handshake(vector<uint8_t> data, size_t offset = 0);
     size_t size();
     
 private:
     HandshakeType type;
-    ClientHello *clientHello;
-    ServerHello *serverHello;
+//    ClientHello *clientHello = NULL;
+//    ServerHello *serverHello = NULL;
+//    Certificate *certificate = NULL;
+//    ServerKeyExchange *serverKeyExchange = NULL;
+//    ServerHelloDone *serverHelloDone = NULL;
+    Exportable body;
 };
 
 #endif /* handshake_hpp */

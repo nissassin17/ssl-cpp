@@ -27,6 +27,11 @@
 		B34B73D71BBE8E2A0059443A /* extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73D51BBE8E2A0059443A /* extension.cpp */; settings = {ASSET_TAGS = (); }; };
 		B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3770DEB1BC14CA50051D2AB /* server-hello.cpp */; settings = {ASSET_TAGS = (); }; };
 		B3770DF01BC14D910051D2AB /* compression-method.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3770DEE1BC14D910051D2AB /* compression-method.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3770DF41BC164700051D2AB /* alert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3770DF21BC164700051D2AB /* alert.cpp */; settings = {ASSET_TAGS = (); }; };
+		B37EB64C1BC22BA3005E04B0 /* certificate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB64A1BC22BA3005E04B0 /* certificate.cpp */; settings = {ASSET_TAGS = (); }; };
+		B37EB6501BC22C51005E04B0 /* asn-1cert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB64E1BC22C51005E04B0 /* asn-1cert.cpp */; settings = {ASSET_TAGS = (); }; };
+		B37EB6531BC22E70005E04B0 /* server-key-exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */; settings = {ASSET_TAGS = (); }; };
+		B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +88,16 @@
 		B3770DEC1BC14CA50051D2AB /* server-hello.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-hello.hpp"; sourceTree = "<group>"; };
 		B3770DEE1BC14D910051D2AB /* compression-method.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "compression-method.cpp"; sourceTree = "<group>"; };
 		B3770DEF1BC14D910051D2AB /* compression-method.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "compression-method.hpp"; sourceTree = "<group>"; };
+		B3770DF21BC164700051D2AB /* alert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alert.cpp; sourceTree = "<group>"; };
+		B3770DF31BC164700051D2AB /* alert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alert.hpp; sourceTree = "<group>"; };
+		B37EB64A1BC22BA3005E04B0 /* certificate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = certificate.cpp; sourceTree = "<group>"; };
+		B37EB64B1BC22BA3005E04B0 /* certificate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = certificate.hpp; sourceTree = "<group>"; };
+		B37EB64E1BC22C51005E04B0 /* asn-1cert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "asn-1cert.cpp"; sourceTree = "<group>"; };
+		B37EB64F1BC22C51005E04B0 /* asn-1cert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "asn-1cert.hpp"; sourceTree = "<group>"; };
+		B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-key-exchange.cpp"; sourceTree = "<group>"; };
+		B37EB6521BC22E70005E04B0 /* server-key-exchange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-key-exchange.hpp"; sourceTree = "<group>"; };
+		B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-hello-done.cpp"; sourceTree = "<group>"; };
+		B37EB6551BC22E9E005E04B0 /* server-hello-done.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-hello-done.hpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +170,7 @@
 		B34B73B21BBE7DD50059443A /* ssl */ = {
 			isa = PBXGroup;
 			children = (
+				B3770DF11BC164580051D2AB /* alert */,
 				B34B73C21BBE87110059443A /* handshake */,
 				B34B73AF1BBE719A0059443A /* SslWrapper.cpp */,
 				B34B73B01BBE719A0059443A /* SslWrapper.hpp */,
@@ -171,14 +187,36 @@
 		B34B73C21BBE87110059443A /* handshake */ = {
 			isa = PBXGroup;
 			children = (
+				B37EB64D1BC22C35005E04B0 /* cetificate */,
 				B3770DEB1BC14CA50051D2AB /* server-hello.cpp */,
 				B3770DEC1BC14CA50051D2AB /* server-hello.hpp */,
-				B34B73CF1BBE8B510059443A /* session-id.cpp */,
-				B34B73D01BBE8B510059443A /* session-id.hpp */,
+				B37EB6491BC22B8D005E04B0 /* mini */,
 				B34B73BC1BBE853D0059443A /* handshake.cpp */,
 				B34B73BD1BBE853D0059443A /* handshake.hpp */,
 				B34B73BF1BBE87050059443A /* client-hello.cpp */,
 				B34B73C01BBE87050059443A /* client-hello.hpp */,
+				B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */,
+				B37EB6521BC22E70005E04B0 /* server-key-exchange.hpp */,
+				B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */,
+				B37EB6551BC22E9E005E04B0 /* server-hello-done.hpp */,
+			);
+			name = handshake;
+			sourceTree = "<group>";
+		};
+		B3770DF11BC164580051D2AB /* alert */ = {
+			isa = PBXGroup;
+			children = (
+				B3770DF21BC164700051D2AB /* alert.cpp */,
+				B3770DF31BC164700051D2AB /* alert.hpp */,
+			);
+			name = alert;
+			sourceTree = "<group>";
+		};
+		B37EB6491BC22B8D005E04B0 /* mini */ = {
+			isa = PBXGroup;
+			children = (
+				B34B73CF1BBE8B510059443A /* session-id.cpp */,
+				B34B73D01BBE8B510059443A /* session-id.hpp */,
 				B3770DEE1BC14D910051D2AB /* compression-method.cpp */,
 				B3770DEF1BC14D910051D2AB /* compression-method.hpp */,
 				B34B73D51BBE8E2A0059443A /* extension.cpp */,
@@ -188,7 +226,18 @@
 				B34B73C31BBE87C00059443A /* random.cpp */,
 				B34B73C41BBE87C00059443A /* random.hpp */,
 			);
-			name = handshake;
+			name = mini;
+			sourceTree = "<group>";
+		};
+		B37EB64D1BC22C35005E04B0 /* cetificate */ = {
+			isa = PBXGroup;
+			children = (
+				B37EB64A1BC22BA3005E04B0 /* certificate.cpp */,
+				B37EB64B1BC22BA3005E04B0 /* certificate.hpp */,
+				B37EB64E1BC22C51005E04B0 /* asn-1cert.cpp */,
+				B37EB64F1BC22C51005E04B0 /* asn-1cert.hpp */,
+			);
+			name = cetificate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,12 +301,16 @@
 				B34B73C51BBE87C00059443A /* random.cpp in Sources */,
 				B34B73B51BBE7F580059443A /* record.cpp in Sources */,
 				B34B73A71BBDEF850059443A /* url.cpp in Sources */,
+				B37EB6531BC22E70005E04B0 /* server-key-exchange.cpp in Sources */,
 				B34B73B11BBE719A0059443A /* SslWrapper.cpp in Sources */,
 				B34B73C11BBE87050059443A /* client-hello.cpp in Sources */,
+				B37EB64C1BC22BA3005E04B0 /* certificate.cpp in Sources */,
 				B34B73D71BBE8E2A0059443A /* extension.cpp in Sources */,
 				B34B73BE1BBE853D0059443A /* handshake.cpp in Sources */,
+				B37EB6501BC22C51005E04B0 /* asn-1cert.cpp in Sources */,
 				B34B73C81BBE89280059443A /* util.cpp in Sources */,
 				B34B73B81BBE7F8B0059443A /* protocol-version.cpp in Sources */,
+				B3770DF41BC164700051D2AB /* alert.cpp in Sources */,
 				B34B73991BBDE08C0059443A /* browser.cpp in Sources */,
 				B34B73911BBD73430059443A /* main.cpp in Sources */,
 				B34B73A41BBDE6350059443A /* err.cpp in Sources */,
@@ -267,6 +320,7 @@
 				B34B73AB1BBDF5F20059443A /* connection.cpp in Sources */,
 				B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */,
 				B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */,
+				B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

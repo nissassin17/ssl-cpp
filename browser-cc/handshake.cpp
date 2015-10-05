@@ -71,6 +71,7 @@ size_t Handshake::size(){
         case SERVER_HELLO:
             break;
         case CERTIFICATE:
+            result += this->certificate->size();
             break;
         case SERVER_KEY_EXCHANGE:
             break;
@@ -90,12 +91,13 @@ size_t Handshake::size(){
     return result;
 }
 
-Handshake::Handshake(vector<uint8_t> &data, size_t offset){
+Handshake::Handshake(vector<uint8_t> data, size_t offset){
     this->type = (HandshakeType)data[offset];
     offset ++;
     
-//    uint32_t length = Util::takeData32(data, offset);
-    offset += 4;
+    uint32_t length = Util::takeData32(data, offset);
+    data.resize(offset + length);
+    offset += 3;
     
     switch (this->type){
         case HELLO_REQUEST:
@@ -107,6 +109,8 @@ Handshake::Handshake(vector<uint8_t> &data, size_t offset){
             offset += this->serverHello->size();
         	break;
         case CERTIFICATE:
+            this->certificate = new Certificate(data, offset);
+            offset += this->certificate->size();
             break;
         case SERVER_KEY_EXCHANGE:
             break;

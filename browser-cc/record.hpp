@@ -11,6 +11,7 @@
 
 #include "protocol-version.hpp"
 #include "handshake.hpp"
+#include "alert.hpp"
 
 #include <stdio.h>
 
@@ -24,16 +25,17 @@ public:
         NONE = 24
     };
     Record();
-    Record(vector<uint8_t> &data, size_t offset = 0);
+    Record(vector<uint8_t> data, size_t offset = 0);
     vector<uint8_t> toData();
     size_t size();
-    ~Record();
 
 private:
     ContentType type;
     ProtocolVersion protocolVersion;
-    Handshake *handshake;
-    bool isCompress;
+//    Handshake *handshake = NULL;
+    Exportable fragment;
+//    Alert *alert = NULL;
+    bool isCompressed;
     
     static const int CONTENT_TYPE_LENGTH = 1;
     static const int BODY_LENGTH_LENGTH = 2;

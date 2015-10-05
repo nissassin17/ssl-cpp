@@ -27,7 +27,24 @@ vector<uint8_t> SslWrapper::get(){
         vector<uint8_t> data = this->connection->receive();
         cout << "Response:" << endl << Util::readableForm(data) << endl;//this is server hello message
         
-        Record serverHello(data);
+        //this must be a server hello handshake record
+        size_t offset(0);
+        Record serverHello(data, offset);
+        offset += serverHello.size();
+        
+        //certificate
+        Record certificate(data, offset);
+        offset += certificate.size();
+        
+        //server key exchange
+        Record serverKeyExchange(data, offset);
+        offset += serverKeyExchange.size();
+        
+        //server hello done
+        Record serverHelloDone(data, offset);
+        
+        //prepare finished message
+//        Record finished(data.)
 
         return vector<uint8_t>();
     }

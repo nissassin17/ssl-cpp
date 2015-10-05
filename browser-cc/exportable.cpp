@@ -7,3 +7,12 @@
 //
 
 #include "exportable.hpp"
+
+size_t Exportable::size(){
+    return 0;
+}
+
+vector<uint8_t> Exportable::toData(){
+    return vector<uint8_t>();
+}
+
