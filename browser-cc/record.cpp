@@ -10,7 +10,7 @@
 #include "util.hpp"
 
 Record::Record() : isCompressed(false), type(HANDSHAKE),
-protocolVersion(new ProtocolVersion()){//default: create client hello handshake
+protocolVersion(new ProtocolVersion()), handshake(new Handshake()){//default: create client hello handshake
 }
 
 Handshake *Record::getHandshake(){

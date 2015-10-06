@@ -11,7 +11,7 @@
 #include "util.hpp"
 using namespace std;
 
-Handshake::Handshake() : type(CLIENT_HELLO){//default create client hello request
+Handshake::Handshake() : type(CLIENT_HELLO), clientHello(new ClientHello()){//default create client hello request
 }
 
 vector<uint8_t> Handshake::toData(){
