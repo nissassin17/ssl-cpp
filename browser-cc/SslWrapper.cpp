@@ -32,22 +32,27 @@ vector<uint8_t> SslWrapper::get(){
         Record *serverHello = new Record(data, offset);
         offset += serverHello->size();
         
-        //certificate
-        Record *certificate = new Record(data, offset);
-        offset += certificate->size();
+        if (serverHello->getType() == Record::ALERT){
+            cerr << "Receive alert from server" << endl;
+        }else
+            if (serverHello->getType() == Record::HANDSHAKE){
+                vector<Record*> records;
+                while (true){
+                    records.push_back(new Record(data, offset, serverHello->getHandshake()));
+                    Record *record = records[records.size() - 1];
+                    offset += record->size();
+                    if (record->getHandshake()->getType() == Handshake::SERVER_HELLO_DONE)
+                        break;
+                }
+                for(int i = 0; i < records.size(); i++)
+                    delete records[i];
+                
+            }else
+                cerr << "Unexpected response from server" << endl;
         
-        //server key exchange
-        Record *serverKeyExchange = new Record(data, offset, serverHello->getHandshake());
-        offset += serverKeyExchange->size();
-        
-        //server hello done
-        Record *serverHelloDone = new Record(data, offset);
         
         delete clientHello;
         delete serverHello;
-        delete certificate;
-        delete serverKeyExchange;
-        delete serverHelloDone;
         
         //prepare finished message
 //        Record finished(data.)

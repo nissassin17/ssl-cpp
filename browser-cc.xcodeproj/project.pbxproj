@@ -34,6 +34,7 @@
 		B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */; settings = {ASSET_TAGS = (); }; };
 		B37EB65A1BC236B8005E04B0 /* digitally-signed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6581BC236B8005E04B0 /* digitally-signed.cpp */; settings = {ASSET_TAGS = (); }; };
 		B37EB65D1BC237B1005E04B0 /* server-dh-params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3D8FBF61BC3CAC400356772 /* certificate-request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -104,6 +105,8 @@
 		B37EB6591BC236B8005E04B0 /* digitally-signed.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "digitally-signed.hpp"; sourceTree = "<group>"; };
 		B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-dh-params.cpp"; sourceTree = "<group>"; };
 		B37EB65C1BC237B1005E04B0 /* server-dh-params.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-dh-params.hpp"; sourceTree = "<group>"; };
+		B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "certificate-request.cpp"; sourceTree = "<group>"; };
+		B3D8FBF51BC3CAC400356772 /* certificate-request.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "certificate-request.hpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +196,8 @@
 		B34B73C21BBE87110059443A /* handshake */ = {
 			isa = PBXGroup;
 			children = (
+				B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */,
+				B3D8FBF51BC3CAC400356772 /* certificate-request.hpp */,
 				B37EB64D1BC22C35005E04B0 /* cetificate */,
 				B3770DEB1BC14CA50051D2AB /* server-hello.cpp */,
 				B3770DEC1BC14CA50051D2AB /* server-hello.hpp */,
@@ -339,6 +344,7 @@
 				B34B73AB1BBDF5F20059443A /* connection.cpp in Sources */,
 				B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */,
 				B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */,
+				B3D8FBF61BC3CAC400356772 /* certificate-request.cpp in Sources */,
 				B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */,
 				B37EB65D1BC237B1005E04B0 /* server-dh-params.cpp in Sources */,
 			);

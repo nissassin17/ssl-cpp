@@ -1,4 +1,4 @@
-//
+ //
 //  record.cpp
 //  browser-cc
 //
@@ -11,6 +11,14 @@
 
 Record::Record() : isCompressed(false), type(HANDSHAKE),
 protocolVersion(new ProtocolVersion()), handshake(new Handshake()){//default: create client hello handshake
+}
+
+Alert *Record::getAlert(){
+    return alert;
+}
+
+Record::ContentType Record::getType(){
+    return type;
 }
 
 Handshake *Record::getHandshake(){

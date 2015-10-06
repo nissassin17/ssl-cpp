@@ -30,6 +30,8 @@ public:
     size_t size();
     ~Record();
     Handshake *getHandshake();
+    Alert *getAlert();
+    ContentType getType();
     
 private:
 

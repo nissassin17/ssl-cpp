@@ -35,6 +35,7 @@ vector<uint8_t> Handshake::toData(){
             body = serverKeyExchange->toData();
             break;
         case CERTIFICATE_REQUEST:
+            body = certificateRequest->toData();
             break;
         case SERVER_HELLO_DONE:
             body = serverHelloDone->toData();
@@ -58,6 +59,10 @@ vector<uint8_t> Handshake::toData(){
     return data;
 }
 
+Handshake::HandshakeType Handshake::getType(){
+    return type;
+}
+
 size_t Handshake::size(){
     size_t size = 0;
     
@@ -77,7 +82,7 @@ size_t Handshake::size(){
             size = serverKeyExchange->size();
             break;
         case CERTIFICATE_REQUEST:
-
+            size = certificateRequest->size();
             break;
         case SERVER_HELLO_DONE:
             size = serverHelloDone->size();
@@ -97,6 +102,7 @@ size_t Handshake::size(){
 
 Handshake::~Handshake(){
     delete clientHello;
+    delete certificateRequest;
     delete serverHello;
     delete certificate;
     delete serverKeyExchange;
@@ -111,9 +117,10 @@ Handshake::Handshake(vector<uint8_t> data, size_t offset, void *arg){
     this->type = (HandshakeType)data[offset];
     offset ++;
     
-    uint32_t length = Util::takeData32(data, offset);
-    data.resize(offset + length);
+    uint32_t length = Util::takeData24(data, offset);
     offset += 3;
+    data.resize(offset + length);
+
 
     switch (this->type){
         case HELLO_REQUEST:
@@ -130,6 +137,7 @@ Handshake::Handshake(vector<uint8_t> data, size_t offset, void *arg){
             this->serverKeyExchange = new ServerKeyExchange(((ServerHello*)arg)->getCipherSuite()->encryptType(), data, offset);
             break;
         case CERTIFICATE_REQUEST:
+            certificateRequest = new CertificateRequest(data, offset);
             break;
         case SERVER_HELLO_DONE:
             this->serverHelloDone = new ServerHelloDone(data, offset);

@@ -16,6 +16,7 @@
 #include "certificate.hpp"
 #include "server-key-exchange.hpp"
 #include "server-hello-done.hpp"
+#include "certificate-request.hpp"
 
 class Handshake : public Exportable {
 public:
@@ -39,6 +40,7 @@ public:
     size_t size();
     ~Handshake();
     ServerHello *getServerHello();
+    HandshakeType getType();
     
 private:
 
@@ -49,6 +51,7 @@ private:
     Certificate *certificate = NULL;
     ServerKeyExchange *serverKeyExchange = NULL;
     ServerHelloDone *serverHelloDone = NULL;
+    CertificateRequest *certificateRequest = NULL;
 };
 
 #endif /* handshake_hpp */

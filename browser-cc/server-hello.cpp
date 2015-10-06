@@ -54,5 +54,11 @@ ServerHello::~ServerHello(){
 
 size_t ServerHello::size(){
     size_t result(0);
+    result = protocolVersion->size() + random->size() + sessionID->size() + cipherSuite->size() + compressionMethod->size();
+    if (haveExtension){
+        result += 2;
+        for(int i = 0; i < extensions.size(); i++)
+            result += extensions[i]->size();
+    }
     return result;
 }
