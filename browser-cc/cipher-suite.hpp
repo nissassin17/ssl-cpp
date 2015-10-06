@@ -11,20 +11,22 @@
 
 #include <stdio.h>
 #include "exportable.hpp"
+#include "cipher.hpp"
+#include "mac.hpp"
 class CipherSuite : public Exportable{
 public:
     CipherSuite(vector<uint8_t> &data, size_t offset = 0);
     size_t size();
     vector<uint8_t> toData();
     
-    enum EncryptType{
-        ENCRYPT_NULL,
+    enum KeyExchangeType{
+        KEY_EXCHANGE_NULL,
         RSA,
         DH_DSS,
         DH_RSA,
         DHE_DSS,
         DHE_RSA,
-        DH_ANON
+        DH_anon
     };
     enum HashType{
         NULL_NULL,
@@ -84,9 +86,15 @@ public:
     };
     
     CipherSuite(CipherSuiteType suite = TLS_NULL_WITH_NULL_NULL);
-    EncryptType encryptType();
+    KeyExchangeType getKeyExchange();
     HashType hashType();
+    ~CipherSuite();
+    MAC *getMac();
+    Cipher *getCipher();
 private:
+    KeyExchangeType keyExchange;
+    Cipher *cipher = NULL;
+    MAC *mac = NULL;
     CipherSuiteType suite;
 };
 

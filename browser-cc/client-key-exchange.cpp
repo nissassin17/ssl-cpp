@@ -10,7 +10,7 @@
 
 ClientKeyExchange::ClientKeyExchange(CipherSuite *cipherSuite) : cipherSuite(cipherSuite) {
 
-    switch (cipherSuite->encryptType()) {
+    switch (cipherSuite->getKeyExchange()) {
         case CipherSuite::RSA:
             encryptedPreMasterSecret = new EncryptedPreMasterSecret(cipherSuite);
             break;
@@ -18,7 +18,7 @@ ClientKeyExchange::ClientKeyExchange(CipherSuite *cipherSuite) : cipherSuite(cip
         case CipherSuite::DHE_RSA:
         case CipherSuite::DH_DSS:
         case CipherSuite::DH_RSA:
-        case CipherSuite::DH_ANON:
+        case CipherSuite::DH_anon:
             clientDiffieHellmanPublic = new ClientDiffieHellmanPublic(cipherSuite);
             break;
             
@@ -34,7 +34,7 @@ ClientKeyExchange::~ClientKeyExchange(){
 }
 
 size_t ClientKeyExchange::size(){
-    switch (cipherSuite->encryptType()) {
+    switch (cipherSuite->getKeyExchange()) {
         case CipherSuite::RSA:
             return encryptedPreMasterSecret->size();
             break;
@@ -42,7 +42,7 @@ size_t ClientKeyExchange::size(){
         case CipherSuite::DHE_RSA:
         case CipherSuite::DH_DSS:
         case CipherSuite::DH_RSA:
-        case CipherSuite::DH_ANON:
+        case CipherSuite::DH_anon:
             return clientDiffieHellmanPublic->size();
             break;
             
@@ -53,7 +53,7 @@ size_t ClientKeyExchange::size(){
 }
 
 vector<uint8_t> ClientKeyExchange::toData(){
-    switch (cipherSuite->encryptType()){
+    switch (cipherSuite->getKeyExchange()){
         case CipherSuite::RSA:
             return encryptedPreMasterSecret->toData();
             break;
@@ -61,7 +61,7 @@ vector<uint8_t> ClientKeyExchange::toData(){
         case CipherSuite::DHE_RSA:
         case CipherSuite::DH_DSS:
         case CipherSuite::DH_RSA:
-        case CipherSuite::DH_ANON:
+        case CipherSuite::DH_anon:
             return clientDiffieHellmanPublic->toData();
             break;
             

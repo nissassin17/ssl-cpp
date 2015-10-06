@@ -154,7 +154,7 @@ Handshake::Handshake(vector<uint8_t> data, size_t offset, void *arg){
             this->certificate = new Certificate(data, offset);
             break;
         case SERVER_KEY_EXCHANGE:
-            this->serverKeyExchange = new ServerKeyExchange(((ServerHello*)arg)->getCipherSuite()->encryptType(), data, offset);
+            this->serverKeyExchange = new ServerKeyExchange(((ServerHello*)arg)->getCipherSuite(), data, offset);
             break;
         case CERTIFICATE_REQUEST:
             certificateRequest = new CertificateRequest(data, offset);

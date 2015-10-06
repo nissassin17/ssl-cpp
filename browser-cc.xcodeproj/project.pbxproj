@@ -41,6 +41,8 @@
 		B3D8FC031BC3D8B000356772 /* pre-master-secret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC011BC3D8B000356772 /* pre-master-secret.cpp */; settings = {ASSET_TAGS = (); }; };
 		B3D8FC061BC3DF0C00356772 /* change-cipher-spec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC041BC3DF0C00356772 /* change-cipher-spec.cpp */; settings = {ASSET_TAGS = (); }; };
 		B3D8FC091BC3E01A00356772 /* finished.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC071BC3E01A00356772 /* finished.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3D8FC0D1BC3E99500356772 /* cipher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC0B1BC3E99500356772 /* cipher.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3D8FC101BC3EB7500356772 /* mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC0E1BC3EB7500356772 /* mac.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -125,6 +127,10 @@
 		B3D8FC051BC3DF0C00356772 /* change-cipher-spec.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "change-cipher-spec.hpp"; sourceTree = "<group>"; };
 		B3D8FC071BC3E01A00356772 /* finished.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = finished.cpp; sourceTree = "<group>"; };
 		B3D8FC081BC3E01A00356772 /* finished.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = finished.hpp; sourceTree = "<group>"; };
+		B3D8FC0B1BC3E99500356772 /* cipher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cipher.cpp; sourceTree = "<group>"; };
+		B3D8FC0C1BC3E99500356772 /* cipher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cipher.hpp; sourceTree = "<group>"; };
+		B3D8FC0E1BC3EB7500356772 /* mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mac.cpp; sourceTree = "<group>"; };
+		B3D8FC0F1BC3EB7500356772 /* mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mac.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +222,7 @@
 		B34B73C21BBE87110059443A /* handshake */ = {
 			isa = PBXGroup;
 			children = (
+				B3D8FC0A1BC3E89800356772 /* cipher */,
 				B3D8FBFD1BC3D7CE00356772 /* ClientKeyExchange */,
 				B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */,
 				B3D8FBF51BC3CAC400356772 /* certificate-request.hpp */,
@@ -254,8 +261,6 @@
 				B3770DEF1BC14D910051D2AB /* compression-method.hpp */,
 				B34B73D51BBE8E2A0059443A /* extension.cpp */,
 				B34B73D61BBE8E2A0059443A /* extension.hpp */,
-				B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */,
-				B34B73D31BBE8C4A0059443A /* cipher-suite.hpp */,
 				B34B73C31BBE87C00059443A /* random.cpp */,
 				B34B73C41BBE87C00059443A /* random.hpp */,
 			);
@@ -299,6 +304,19 @@
 				B3D8FBFF1BC3D80C00356772 /* client-diffie-hellman-public.hpp */,
 			);
 			name = ClientKeyExchange;
+			sourceTree = "<group>";
+		};
+		B3D8FC0A1BC3E89800356772 /* cipher */ = {
+			isa = PBXGroup;
+			children = (
+				B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */,
+				B34B73D31BBE8C4A0059443A /* cipher-suite.hpp */,
+				B3D8FC0B1BC3E99500356772 /* cipher.cpp */,
+				B3D8FC0C1BC3E99500356772 /* cipher.hpp */,
+				B3D8FC0E1BC3EB7500356772 /* mac.cpp */,
+				B3D8FC0F1BC3EB7500356772 /* mac.hpp */,
+			);
+			name = cipher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +387,7 @@
 				B34B73C11BBE87050059443A /* client-hello.cpp in Sources */,
 				B37EB64C1BC22BA3005E04B0 /* certificate.cpp in Sources */,
 				B34B73D71BBE8E2A0059443A /* extension.cpp in Sources */,
+				B3D8FC0D1BC3E99500356772 /* cipher.cpp in Sources */,
 				B34B73BE1BBE853D0059443A /* handshake.cpp in Sources */,
 				B37EB6501BC22C51005E04B0 /* asn-1cert.cpp in Sources */,
 				B34B73C81BBE89280059443A /* util.cpp in Sources */,
@@ -389,6 +408,7 @@
 				B3D8FC091BC3E01A00356772 /* finished.cpp in Sources */,
 				B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */,
 				B3D8FBF61BC3CAC400356772 /* certificate-request.cpp in Sources */,
+				B3D8FC101BC3EB7500356772 /* mac.cpp in Sources */,
 				B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */,
 				B37EB65D1BC237B1005E04B0 /* server-dh-params.cpp in Sources */,
 			);

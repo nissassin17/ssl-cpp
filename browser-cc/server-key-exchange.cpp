@@ -8,10 +8,10 @@
 
 #include "server-key-exchange.hpp"
 
-ServerKeyExchange::ServerKeyExchange(CipherSuite::EncryptType algorithm, vector<uint8_t> data, size_t offset)
-: encryptType(algorithm){
-    switch (algorithm){
-        case CipherSuite::DH_ANON:
+ServerKeyExchange::ServerKeyExchange(CipherSuite *cipherSuite, vector<uint8_t> data, size_t offset)
+: cipherSuite(cipherSuite){
+    switch (cipherSuite->getKeyExchange()){
+        case CipherSuite::DH_anon:
             this->params = new ServerDHParams(data, offset);
             offset += this->params->size();
             break;
@@ -33,8 +33,8 @@ ServerKeyExchange::ServerKeyExchange(CipherSuite::EncryptType algorithm, vector<
 }
 
 ServerKeyExchange::~ServerKeyExchange(){
-    switch (encryptType){
-        case CipherSuite::DH_ANON:
+    switch (cipherSuite->getKeyExchange()){
+        case CipherSuite::DH_anon:
             delete this->params;
             break;
             
