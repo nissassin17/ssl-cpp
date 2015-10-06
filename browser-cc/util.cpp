@@ -25,6 +25,14 @@ string Util::readableForm(vector<uint8_t> data){
     return result;
 }
 
+void Util::addData(vector<uint8_t> &data, uint8_t value){
+    data.push_back(value);
+}
+
+uint8_t Util::takeData8(vector<uint8_t> &data, size_t offset){
+    return data[offset];
+}
+
 void Util::addData(vector<uint8_t> &data, uint16_t value){
     data.push_back(value >> 8);
     data.push_back(value & ((1 << 8) - 1));

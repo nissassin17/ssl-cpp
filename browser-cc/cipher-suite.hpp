@@ -17,8 +17,32 @@ public:
     size_t size();
     vector<uint8_t> toData();
     
+    enum EncryptType{
+        ENCRYPT_NULL,
+        RSA,
+        DH_DSS,
+        DH_RSA,
+        DHE_DSS,
+        DHE_RSA,
+        DH_ANON
+    };
+    enum HashType{
+        NULL_NULL,
+        NULL_MD5,
+        NULL_SHA,
+        NULL_SHA256,
+        RC4_128_MD5,
+        RC4_128_SHA,
+        _3DES_EDE_CBC_SHA,
+        AES_128_CBC_SHA,
+        AES_256_CBC_SHA,
+        AES_128_CBC_SHA256,
+        AES_256_CBC_SHA256
+    };
+    
     enum CipherSuiteType {
         TLS_NULL_WITH_NULL_NULL               = 0x0000,
+        
         TLS_RSA_WITH_NULL_MD5                 = 0x0001,
         TLS_RSA_WITH_NULL_SHA                 = 0x0002,
         TLS_RSA_WITH_NULL_SHA256              = 0x003B,
@@ -29,6 +53,7 @@ public:
         TLS_RSA_WITH_AES_256_CBC_SHA          = 0x0035,
         TLS_RSA_WITH_AES_128_CBC_SHA256       = 0x003C,
         TLS_RSA_WITH_AES_256_CBC_SHA256       = 0x003D,
+        
         TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA      = 0x000D,
         TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA      = 0x0010,
         TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA     = 0x0013,
@@ -49,6 +74,7 @@ public:
         TLS_DH_RSA_WITH_AES_256_CBC_SHA256    = 0x0069,
         TLS_DHE_DSS_WITH_AES_256_CBC_SHA256   = 0x006A,
         TLS_DHE_RSA_WITH_AES_256_CBC_SHA256   = 0x006B,
+        
         TLS_DH_anon_WITH_RC4_128_MD5          = 0x0018,
         TLS_DH_anon_WITH_3DES_EDE_CBC_SHA     = 0x001B,
         TLS_DH_anon_WITH_AES_128_CBC_SHA      = 0x0034,
@@ -58,6 +84,8 @@ public:
     };
     
     CipherSuite(CipherSuiteType suite = TLS_NULL_WITH_NULL_NULL);
+    EncryptType encryptType();
+    HashType hashType();
 private:
     CipherSuiteType suite;
 };

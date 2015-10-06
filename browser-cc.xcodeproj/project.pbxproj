@@ -32,6 +32,8 @@
 		B37EB6501BC22C51005E04B0 /* asn-1cert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB64E1BC22C51005E04B0 /* asn-1cert.cpp */; settings = {ASSET_TAGS = (); }; };
 		B37EB6531BC22E70005E04B0 /* server-key-exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */; settings = {ASSET_TAGS = (); }; };
 		B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */; settings = {ASSET_TAGS = (); }; };
+		B37EB65A1BC236B8005E04B0 /* digitally-signed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6581BC236B8005E04B0 /* digitally-signed.cpp */; settings = {ASSET_TAGS = (); }; };
+		B37EB65D1BC237B1005E04B0 /* server-dh-params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -98,6 +100,10 @@
 		B37EB6521BC22E70005E04B0 /* server-key-exchange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-key-exchange.hpp"; sourceTree = "<group>"; };
 		B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-hello-done.cpp"; sourceTree = "<group>"; };
 		B37EB6551BC22E9E005E04B0 /* server-hello-done.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-hello-done.hpp"; sourceTree = "<group>"; };
+		B37EB6581BC236B8005E04B0 /* digitally-signed.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "digitally-signed.cpp"; sourceTree = "<group>"; };
+		B37EB6591BC236B8005E04B0 /* digitally-signed.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "digitally-signed.hpp"; sourceTree = "<group>"; };
+		B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-dh-params.cpp"; sourceTree = "<group>"; };
+		B37EB65C1BC237B1005E04B0 /* server-dh-params.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-dh-params.hpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,8 +201,7 @@
 				B34B73BD1BBE853D0059443A /* handshake.hpp */,
 				B34B73BF1BBE87050059443A /* client-hello.cpp */,
 				B34B73C01BBE87050059443A /* client-hello.hpp */,
-				B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */,
-				B37EB6521BC22E70005E04B0 /* server-key-exchange.hpp */,
+				B37EB6571BC2360E005E04B0 /* ServerKeyExchange */,
 				B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */,
 				B37EB6551BC22E9E005E04B0 /* server-hello-done.hpp */,
 			);
@@ -238,6 +243,19 @@
 				B37EB64F1BC22C51005E04B0 /* asn-1cert.hpp */,
 			);
 			name = cetificate;
+			sourceTree = "<group>";
+		};
+		B37EB6571BC2360E005E04B0 /* ServerKeyExchange */ = {
+			isa = PBXGroup;
+			children = (
+				B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */,
+				B37EB6521BC22E70005E04B0 /* server-key-exchange.hpp */,
+				B37EB6581BC236B8005E04B0 /* digitally-signed.cpp */,
+				B37EB6591BC236B8005E04B0 /* digitally-signed.hpp */,
+				B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */,
+				B37EB65C1BC237B1005E04B0 /* server-dh-params.hpp */,
+			);
+			name = ServerKeyExchange;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +319,7 @@
 				B34B73C51BBE87C00059443A /* random.cpp in Sources */,
 				B34B73B51BBE7F580059443A /* record.cpp in Sources */,
 				B34B73A71BBDEF850059443A /* url.cpp in Sources */,
+				B37EB65A1BC236B8005E04B0 /* digitally-signed.cpp in Sources */,
 				B37EB6531BC22E70005E04B0 /* server-key-exchange.cpp in Sources */,
 				B34B73B11BBE719A0059443A /* SslWrapper.cpp in Sources */,
 				B34B73C11BBE87050059443A /* client-hello.cpp in Sources */,
@@ -321,6 +340,7 @@
 				B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */,
 				B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */,
 				B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */,
+				B37EB65D1BC237B1005E04B0 /* server-dh-params.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

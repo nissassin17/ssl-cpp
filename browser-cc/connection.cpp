@@ -11,17 +11,22 @@
 
 using namespace std;
 
-Connection::Connection(string hostname, bool isSsl){
+Connection::Connection(string hostname, bool isSsl):
+isConnecting(false),
+activatingConnection(NULL){
     const int SSL_PORT = 443;
     const int HTTP_PORT = 80;
     
-    this->isConnecting = false;
-    this->activatingConnection = NULL;
-    
+
     //get ip list
     vector<string> ipList = Connection::ipListFromHostname(hostname);
     for(int i = 0; i < ipList.size(); i++)
-        this->subConnections.push_back(SubConnection(ipList[i], isSsl ? SSL_PORT : HTTP_PORT));
+        this->subConnections.push_back(new SubConnection(ipList[i], isSsl ? SSL_PORT : HTTP_PORT));
+}
+
+Connection::~Connection(){
+    for(int i = 0; i < subConnections.size(); i++)
+        delete subConnections[i];
 }
 
 vector<string> Connection::ipListFromHostname(string hostname){
@@ -58,10 +63,10 @@ void Connection::send(vector<uint8_t> request){
         this->isConnecting = true;
         for(int i = 0; i < this->subConnections.size(); i++){
             try{
-                this->subConnections[i].doConnect();
-                this->subConnections[i].doSend(request);
+                this->subConnections[i]->doConnect();
+                this->subConnections[i]->doSend(request);
                 //wait for error until here
-                this->activatingConnection = &this->subConnections[i];
+                this->activatingConnection = this->subConnections[i];
                 break;
             }catch (Err err){
             }

@@ -22,18 +22,20 @@ class ClientHello : public Exportable{
 public:
 
 private:
-    ProtocolVersion protocolVersion;
-    Random random;
-    SessionID sessionID;
-    vector<CipherSuite> cipherSuites;
-    vector<CompressionMethod> compressionMethods;
-    vector<Extension> extensions;
+    ProtocolVersion *protocolVersion;
+    Random *random;
+    SessionID *sessionID;
+    vector<CipherSuite*> cipherSuites;
+    vector<CompressionMethod*> compressionMethods;
+    vector<Extension*> extensions;
     bool haveExtension;
+
 
 public:
     vector<uint8_t> toData();
     ClientHello();
     size_t size();
+    ~ClientHello();
     
 };
 

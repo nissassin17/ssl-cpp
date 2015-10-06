@@ -9,10 +9,10 @@
 #include "exportable.hpp"
 
 size_t Exportable::size(){
-    return 0;
+    throw std::logic_error("Cannot call Exportable::size()");
 }
 
 vector<uint8_t> Exportable::toData(){
-    return vector<uint8_t>();
+    throw std::logic_error("Cannot call Exportable::toData()");
 }
 

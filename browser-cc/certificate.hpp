@@ -12,8 +12,9 @@
 #include <stdio.h>
 #include "util.hpp"
 #include "asn-1cert.hpp"
+#include "exportable.hpp"
 
-class Certificate {
+class Certificate  : public Exportable{
 public:
     Certificate(vector<uint8_t> data, size_t offset = 0);
     size_t size();//uint24_t

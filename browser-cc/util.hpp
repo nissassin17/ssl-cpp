@@ -16,12 +16,14 @@ using namespace std;
 
 class Util{
 public:
+    static void addData(vector<uint8_t> &data, uint8_t value);
     static void addData(vector<uint8_t> &data, uint16_t value);
     static void addData(vector<uint8_t> &data, uint32_t value);
     static void addData(vector<uint8_t> &data, uint64_t value);
     static void addData24(vector<uint8_t> &data, uint32_t value);
     static void addData(vector<uint8_t> &data, vector<uint8_t>toAdd);
     
+    static uint8_t takeData8(vector<uint8_t> &data, size_t offset = 0);
     static uint16_t takeData16(vector<uint8_t> &data, size_t offset = 0);
     static uint32_t takeData32(vector<uint8_t> &data, size_t offset = 0);
     static uint32_t takeData24(vector<uint8_t> &data, size_t offset = 0);

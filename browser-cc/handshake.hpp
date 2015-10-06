@@ -26,7 +26,7 @@ public:
         CERTIFICATE = 11,
         SERVER_KEY_EXCHANGE = 12,
         CERTIFICATE_REQUEST = 13,
-        SERVER_HELO_DONE = 14,
+        SERVER_HELLO_DONE = 14,
         CERTIFICATE_VERIFY = 15,
         CLIENT_KEY_EXCHANGE = 16,
         FINISHED = 20,
@@ -35,17 +35,26 @@ public:
 
     vector<uint8_t> toData();
     Handshake();
-    Handshake(vector<uint8_t> data, size_t offset = 0);
+    Handshake(vector<uint8_t> data, size_t offset = 0, void *arg = NULL);
     size_t size();
+    void *getBody();
+//    static Handshake *certificate(vector<uint8_t> data, size_t offset = 0);
+//    static Handshake *serverKeyExchange(ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
+//    static Handshake *serverHelloDone(ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
+//    static Handshake *certificateRequest(ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
+    ~Handshake();
     
 private:
+
+//    Handshake(HandshakeType type, ServerHello *serverHello, vector<uint8_t> data, size_t offset);
+//    Handshake(HandshakeType type, vector<uint8_t> data, size_t offset);
     HandshakeType type;
 //    ClientHello *clientHello = NULL;
 //    ServerHello *serverHello = NULL;
 //    Certificate *certificate = NULL;
 //    ServerKeyExchange *serverKeyExchange = NULL;
 //    ServerHelloDone *serverHelloDone = NULL;
-    Exportable body;
+    Exportable *body = NULL;
 };
 
 #endif /* handshake_hpp */

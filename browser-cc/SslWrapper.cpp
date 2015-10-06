@@ -18,9 +18,9 @@ SslWrapper::SslWrapper(Url url){
 vector<uint8_t> SslWrapper::get(){
     if (this->url->getIsSsl()){
         //prepare client hello
-        Record clientHello;
+        Record *clientHello = new Record();
         
-        vector<uint8_t> tosend(clientHello.toData());
+        vector<uint8_t> tosend(clientHello->toData());
         this->connection->send(tosend);
         cout << "Request:" << endl << Util::readableForm(tosend) << endl;
         
@@ -29,19 +29,25 @@ vector<uint8_t> SslWrapper::get(){
         
         //this must be a server hello handshake record
         size_t offset(0);
-        Record serverHello(data, offset);
-        offset += serverHello.size();
+        Record *serverHello = new Record(data, offset);
+        offset += serverHello->size();
         
         //certificate
-        Record certificate(data, offset);
-        offset += certificate.size();
+        Record *certificate = new Record(data, offset);
+        offset += certificate->size();
         
         //server key exchange
-        Record serverKeyExchange(data, offset);
-        offset += serverKeyExchange.size();
+        Record *serverKeyExchange = new Record(data, offset, serverHello->getFragment());
+        offset += serverKeyExchange->size();
         
         //server hello done
-        Record serverHelloDone(data, offset);
+        Record *serverHelloDone = new Record(data, offset);
+        
+        delete clientHello;
+        delete serverHello;
+        delete certificate;
+        delete serverKeyExchange;
+        delete serverHelloDone;
         
         //prepare finished message
 //        Record finished(data.)

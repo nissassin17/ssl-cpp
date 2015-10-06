@@ -13,8 +13,9 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     try{
-    Browser browser;
-        browser.run(argc, argv);
+    Browser *browser = new Browser();
+        browser->run(argc, argv);
+        delete browser;
         return EXIT_SUCCESS;
     }catch (Err err){
         cerr << err.getDescription();
