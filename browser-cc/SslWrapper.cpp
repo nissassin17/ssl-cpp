@@ -37,7 +37,7 @@ vector<uint8_t> SslWrapper::get(){
         offset += certificate->size();
         
         //server key exchange
-        Record *serverKeyExchange = new Record(data, offset, serverHello->getFragment());
+        Record *serverKeyExchange = new Record(data, offset, serverHello->getHandshake());
         offset += serverKeyExchange->size();
         
         //server hello done

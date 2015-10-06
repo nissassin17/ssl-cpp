@@ -11,7 +11,7 @@
 #include "util.hpp"
 using namespace std;
 
-Handshake::Handshake() : type(CLIENT_HELLO), body(new ClientHello()){//default create client hello request
+Handshake::Handshake() : type(CLIENT_HELLO){//default create client hello request
 }
 
 vector<uint8_t> Handshake::toData(){
@@ -23,21 +23,21 @@ vector<uint8_t> Handshake::toData(){
         case HELLO_REQUEST:
             break;
         case CLIENT_HELLO:
-            body = dynamic_cast<ClientHello*>(this->body)->toData();
+            body = clientHello->toData();
             break;
         case SERVER_HELLO:
-            body = dynamic_cast<ServerHello*>(this->body)->toData();
+            body = serverHello->toData();
             break;
         case CERTIFICATE:
-            body = dynamic_cast<Certificate*>(this->body)->toData();
+            body = certificate->toData();
             break;
         case SERVER_KEY_EXCHANGE:
-            body = dynamic_cast<ServerKeyExchange*>(this->body)->toData();
+            body = serverKeyExchange->toData();
             break;
         case CERTIFICATE_REQUEST:
             break;
         case SERVER_HELLO_DONE:
-            body = dynamic_cast<ServerHelloDone*>(this->body)->toData();
+            body = serverHelloDone->toData();
             break;
         case CERTIFICATE_VERIFY:
             break;
@@ -65,21 +65,22 @@ size_t Handshake::size(){
         case HELLO_REQUEST:
             break;
         case CLIENT_HELLO:
-            size = dynamic_cast<ClientHello*>(this->body)->size();
+            size = clientHello->size();
             break;
         case SERVER_HELLO:
-            size = dynamic_cast<ServerHello*>(this->body)->size();
+            size = serverHello->size();
             break;
         case CERTIFICATE:
-            size = dynamic_cast<Certificate*>(this->body)->size();
+            size = certificate->size();
             break;
         case SERVER_KEY_EXCHANGE:
-            size = dynamic_cast<ServerKeyExchange*>(this->body)->size();
+            size = serverKeyExchange->size();
             break;
         case CERTIFICATE_REQUEST:
+
             break;
         case SERVER_HELLO_DONE:
-            size = dynamic_cast<ServerHelloDone*>(this->body)->size();
+            size = serverHelloDone->size();
             break;
         case CERTIFICATE_VERIFY:
             break;
@@ -95,48 +96,16 @@ size_t Handshake::size(){
 }
 
 Handshake::~Handshake(){
-    delete this->body;
+    delete clientHello;
+    delete serverHello;
+    delete certificate;
+    delete serverKeyExchange;
+    delete serverHelloDone;
 }
 
-void *Handshake::getBody(){
-    return this->body;
+ServerHello *Handshake::getServerHello(){
+    return serverHello;
 }
-
-//Handshake *Handshake::certificate(vector<uint8_t> data, size_t offset){
-//    return new Handshake(CERTIFICATE, data, offset);
-//}
-//Handshake *Handshake::serverKeyExchange(ServerHello *serverHello, vector<uint8_t> data, size_t offset){
-//    return new Handshake(SERVER_KEY_EXCHANGE, serverHello, data, offset);
-//}
-//Handshake *Handshake::serverHelloDone(ServerHello *serverHello, vector<uint8_t> data, size_t offset){
-//    return new Handshake(SERVER_HELLO_DONE, serverHello, data, offset);
-//}
-//Handshake *Handshake::certificateRequest(ServerHello *serverHello, vector<uint8_t> data, size_t offset){
-//    return new Handshake(CERTIFICATE_REQUEST, serverHello, data, offset);
-//}
-//
-//Handshake::Handshake(HandshakeType type, vector<uint8_t> data, size_t offset) : type(type){
-//    switch (type){
-//        case CERTIFICATE:
-//            this->body = new Certificate(data, offset);
-//
-//            break;
-//        default:
-//            break;
-//    }
-//    offset += this->body->size();
-//}
-
-//Handshake::Handshake(HandshakeType type, ServerHello *serverHello, vector<uint8_t> data, size_t offset) : type(type){
-//    switch (type){
-//        case SERVER_KEY_EXCHANGE:
-//            this->body = new ServerKeyExchange(serverHello->getCipherSuite()->encryptType(), data, offset);
-//            break;
-//        default:
-//            break;
-//    }
-//    offset += this->body->size();
-//}
 
 Handshake::Handshake(vector<uint8_t> data, size_t offset, void *arg){
     this->type = (HandshakeType)data[offset];
@@ -152,18 +121,18 @@ Handshake::Handshake(vector<uint8_t> data, size_t offset, void *arg){
         case CLIENT_HELLO:
             break;
         case SERVER_HELLO:
-            this->body = new ServerHello(data, offset);
+            this->serverHello = new ServerHello(data, offset);
             break;
         case CERTIFICATE:
-            this->body = new Certificate(data, offset);
+            this->certificate = new Certificate(data, offset);
             break;
         case SERVER_KEY_EXCHANGE:
-            this->body = new ServerKeyExchange(((ServerHello*)((Handshake*)arg)->getBody())->getCipherSuite()->encryptType(), data, offset);
+            this->serverKeyExchange = new ServerKeyExchange(((ServerHello*)arg)->getCipherSuite()->encryptType(), data, offset);
             break;
         case CERTIFICATE_REQUEST:
             break;
         case SERVER_HELLO_DONE:
-            this->body = new ServerHelloDone(data, offset);
+            this->serverHelloDone = new ServerHelloDone(data, offset);
             break;
         case CERTIFICATE_VERIFY:
             break;

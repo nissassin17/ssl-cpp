@@ -37,24 +37,18 @@ public:
     Handshake();
     Handshake(vector<uint8_t> data, size_t offset = 0, void *arg = NULL);
     size_t size();
-    void *getBody();
-//    static Handshake *certificate(vector<uint8_t> data, size_t offset = 0);
-//    static Handshake *serverKeyExchange(ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
-//    static Handshake *serverHelloDone(ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
-//    static Handshake *certificateRequest(ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
     ~Handshake();
+    ServerHello *getServerHello();
     
 private:
 
-//    Handshake(HandshakeType type, ServerHello *serverHello, vector<uint8_t> data, size_t offset);
-//    Handshake(HandshakeType type, vector<uint8_t> data, size_t offset);
+
     HandshakeType type;
-//    ClientHello *clientHello = NULL;
-//    ServerHello *serverHello = NULL;
-//    Certificate *certificate = NULL;
-//    ServerKeyExchange *serverKeyExchange = NULL;
-//    ServerHelloDone *serverHelloDone = NULL;
-    Exportable *body = NULL;
+    ClientHello *clientHello = NULL;
+    ServerHello *serverHello = NULL;
+    Certificate *certificate = NULL;
+    ServerKeyExchange *serverKeyExchange = NULL;
+    ServerHelloDone *serverHelloDone = NULL;
 };
 
 #endif /* handshake_hpp */

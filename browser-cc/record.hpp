@@ -28,22 +28,16 @@ public:
     Record(vector<uint8_t> data, size_t offset = 0, void *arg = NULL);
     vector<uint8_t> toData();
     size_t size();
-//    static Record *certificate(vector<uint8_t> data, size_t offset = 0);
-//    static Record *serverKeyExchange(ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
-//    static Record *certificateRequest(ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
-//    static Record *serverHelloDone(ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
-  void *getFragment();
     ~Record();
+    Handshake *getHandshake();
     
 private:
 
-//    Record(Handshake::HandshakeType shortcut, ServerHello *serverHello, vector<uint8_t> data, size_t offset = 0);
-//    Record(Handshake::HandshakeType shortcut, vector<uint8_t> data, size_t offset = 0);
+
     ContentType type;
     ProtocolVersion *protocolVersion;
-//    Handshake *handshake = NULL;
-    Exportable *fragment;
-//    Alert *alert = NULL;
+    Handshake *handshake = NULL;
+    Alert *alert = NULL;
     bool isCompressed;
     
     static const int CONTENT_TYPE_LENGTH = 1;
