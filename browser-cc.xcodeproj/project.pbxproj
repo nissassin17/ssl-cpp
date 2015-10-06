@@ -35,6 +35,12 @@
 		B37EB65A1BC236B8005E04B0 /* digitally-signed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6581BC236B8005E04B0 /* digitally-signed.cpp */; settings = {ASSET_TAGS = (); }; };
 		B37EB65D1BC237B1005E04B0 /* server-dh-params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */; settings = {ASSET_TAGS = (); }; };
 		B3D8FBF61BC3CAC400356772 /* certificate-request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3D8FBF91BC3D67C00356772 /* client-key-exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FBF71BC3D67C00356772 /* client-key-exchange.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3D8FBFC1BC3D7C600356772 /* encrypted-pre-master-secret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FBFA1BC3D7C600356772 /* encrypted-pre-master-secret.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3D8FC001BC3D80C00356772 /* client-diffie-hellman-public.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FBFE1BC3D80C00356772 /* client-diffie-hellman-public.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3D8FC031BC3D8B000356772 /* pre-master-secret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC011BC3D8B000356772 /* pre-master-secret.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3D8FC061BC3DF0C00356772 /* change-cipher-spec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC041BC3DF0C00356772 /* change-cipher-spec.cpp */; settings = {ASSET_TAGS = (); }; };
+		B3D8FC091BC3E01A00356772 /* finished.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC071BC3E01A00356772 /* finished.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,6 +113,18 @@
 		B37EB65C1BC237B1005E04B0 /* server-dh-params.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-dh-params.hpp"; sourceTree = "<group>"; };
 		B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "certificate-request.cpp"; sourceTree = "<group>"; };
 		B3D8FBF51BC3CAC400356772 /* certificate-request.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "certificate-request.hpp"; sourceTree = "<group>"; };
+		B3D8FBF71BC3D67C00356772 /* client-key-exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "client-key-exchange.cpp"; sourceTree = "<group>"; };
+		B3D8FBF81BC3D67C00356772 /* client-key-exchange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "client-key-exchange.hpp"; sourceTree = "<group>"; };
+		B3D8FBFA1BC3D7C600356772 /* encrypted-pre-master-secret.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "encrypted-pre-master-secret.cpp"; sourceTree = "<group>"; };
+		B3D8FBFB1BC3D7C600356772 /* encrypted-pre-master-secret.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "encrypted-pre-master-secret.hpp"; sourceTree = "<group>"; };
+		B3D8FBFE1BC3D80C00356772 /* client-diffie-hellman-public.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "client-diffie-hellman-public.cpp"; sourceTree = "<group>"; };
+		B3D8FBFF1BC3D80C00356772 /* client-diffie-hellman-public.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "client-diffie-hellman-public.hpp"; sourceTree = "<group>"; };
+		B3D8FC011BC3D8B000356772 /* pre-master-secret.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "pre-master-secret.cpp"; sourceTree = "<group>"; };
+		B3D8FC021BC3D8B000356772 /* pre-master-secret.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "pre-master-secret.hpp"; sourceTree = "<group>"; };
+		B3D8FC041BC3DF0C00356772 /* change-cipher-spec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "change-cipher-spec.cpp"; sourceTree = "<group>"; };
+		B3D8FC051BC3DF0C00356772 /* change-cipher-spec.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "change-cipher-spec.hpp"; sourceTree = "<group>"; };
+		B3D8FC071BC3E01A00356772 /* finished.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = finished.cpp; sourceTree = "<group>"; };
+		B3D8FC081BC3E01A00356772 /* finished.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = finished.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +200,8 @@
 				B3770DF11BC164580051D2AB /* alert */,
 				B34B73C21BBE87110059443A /* handshake */,
 				B34B73AF1BBE719A0059443A /* SslWrapper.cpp */,
+				B3D8FC041BC3DF0C00356772 /* change-cipher-spec.cpp */,
+				B3D8FC051BC3DF0C00356772 /* change-cipher-spec.hpp */,
 				B34B73B01BBE719A0059443A /* SslWrapper.hpp */,
 				B34B73B31BBE7F580059443A /* record.cpp */,
 				B34B73B41BBE7F580059443A /* record.hpp */,
@@ -196,6 +216,7 @@
 		B34B73C21BBE87110059443A /* handshake */ = {
 			isa = PBXGroup;
 			children = (
+				B3D8FBFD1BC3D7CE00356772 /* ClientKeyExchange */,
 				B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */,
 				B3D8FBF51BC3CAC400356772 /* certificate-request.hpp */,
 				B37EB64D1BC22C35005E04B0 /* cetificate */,
@@ -209,6 +230,8 @@
 				B37EB6571BC2360E005E04B0 /* ServerKeyExchange */,
 				B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */,
 				B37EB6551BC22E9E005E04B0 /* server-hello-done.hpp */,
+				B3D8FC071BC3E01A00356772 /* finished.cpp */,
+				B3D8FC081BC3E01A00356772 /* finished.hpp */,
 			);
 			name = handshake;
 			sourceTree = "<group>";
@@ -261,6 +284,21 @@
 				B37EB65C1BC237B1005E04B0 /* server-dh-params.hpp */,
 			);
 			name = ServerKeyExchange;
+			sourceTree = "<group>";
+		};
+		B3D8FBFD1BC3D7CE00356772 /* ClientKeyExchange */ = {
+			isa = PBXGroup;
+			children = (
+				B3D8FBF71BC3D67C00356772 /* client-key-exchange.cpp */,
+				B3D8FBF81BC3D67C00356772 /* client-key-exchange.hpp */,
+				B3D8FBFA1BC3D7C600356772 /* encrypted-pre-master-secret.cpp */,
+				B3D8FBFB1BC3D7C600356772 /* encrypted-pre-master-secret.hpp */,
+				B3D8FC011BC3D8B000356772 /* pre-master-secret.cpp */,
+				B3D8FC021BC3D8B000356772 /* pre-master-secret.hpp */,
+				B3D8FBFE1BC3D80C00356772 /* client-diffie-hellman-public.cpp */,
+				B3D8FBFF1BC3D80C00356772 /* client-diffie-hellman-public.hpp */,
+			);
+			name = ClientKeyExchange;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D8FBFC1BC3D7C600356772 /* encrypted-pre-master-secret.cpp in Sources */,
 				B34B739D1BBDE2B70059443A /* strutil.cpp in Sources */,
 				B34B73BB1BBE804A0059443A /* exportable.cpp in Sources */,
 				B34B73C51BBE87C00059443A /* random.cpp in Sources */,
@@ -343,6 +382,11 @@
 				B34B73D41BBE8C4A0059443A /* cipher-suite.cpp in Sources */,
 				B34B73AB1BBDF5F20059443A /* connection.cpp in Sources */,
 				B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */,
+				B3D8FC031BC3D8B000356772 /* pre-master-secret.cpp in Sources */,
+				B3D8FC001BC3D80C00356772 /* client-diffie-hellman-public.cpp in Sources */,
+				B3D8FC061BC3DF0C00356772 /* change-cipher-spec.cpp in Sources */,
+				B3D8FBF91BC3D67C00356772 /* client-key-exchange.cpp in Sources */,
+				B3D8FC091BC3E01A00356772 /* finished.cpp in Sources */,
 				B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */,
 				B3D8FBF61BC3CAC400356772 /* certificate-request.cpp in Sources */,
 				B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */,

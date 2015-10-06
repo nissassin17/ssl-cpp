@@ -12,6 +12,7 @@
 #include "protocol-version.hpp"
 #include "handshake.hpp"
 #include "alert.hpp"
+#include "change-cipher-spec.hpp"
 
 #include <stdio.h>
 
@@ -24,7 +25,8 @@ public:
         APPLICATION_DATA = 23,
         NONE = 24
     };
-    Record();
+    Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, void *arg = NULL);
+    Record(ContentType type);
     Record(vector<uint8_t> data, size_t offset = 0, void *arg = NULL);
     vector<uint8_t> toData();
     size_t size();
@@ -37,9 +39,11 @@ private:
 
 
     ContentType type;
-    ProtocolVersion *protocolVersion;
+    ProtocolVersion *protocolVersion = NULL;
     Handshake *handshake = NULL;
     Alert *alert = NULL;
+    ChangeCipherSpec *changeCipherSpec = NULL;
+    
     bool isCompressed;
     
     static const int CONTENT_TYPE_LENGTH = 1;

@@ -11,7 +11,20 @@
 #include "util.hpp"
 using namespace std;
 
-Handshake::Handshake() : type(CLIENT_HELLO), clientHello(new ClientHello()){//default create client hello request
+Handshake::Handshake(HandshakeType type, void *arg) : type(type){//default create client hello request
+    switch(type){
+        case CLIENT_HELLO:
+            clientHello = new ClientHello();
+            break;
+            
+        case CLIENT_KEY_EXCHANGE:
+            clientKeyExchange = new ClientKeyExchange(((ServerHello*)arg)->getCipherSuite());
+            break;
+            
+        default:
+            break;
+    }
+
 }
 
 vector<uint8_t> Handshake::toData(){
@@ -43,8 +56,10 @@ vector<uint8_t> Handshake::toData(){
         case CERTIFICATE_VERIFY:
             break;
         case CLIENT_KEY_EXCHANGE:
+            body = clientKeyExchange->toData();
             break;
         case FINISHED:
+            body = finished->toData();
             break;
         default://none
             break;
@@ -90,8 +105,11 @@ size_t Handshake::size(){
         case CERTIFICATE_VERIFY:
             break;
         case CLIENT_KEY_EXCHANGE:
+            size = clientKeyExchange->size();
             break;
         case FINISHED:
+            size = finished->size();
+
             break;
         default://none
             break;
@@ -107,6 +125,8 @@ Handshake::~Handshake(){
     delete certificate;
     delete serverKeyExchange;
     delete serverHelloDone;
+    delete clientKeyExchange;
+    delete finished;
 }
 
 ServerHello *Handshake::getServerHello(){
@@ -147,6 +167,7 @@ Handshake::Handshake(vector<uint8_t> data, size_t offset, void *arg){
         case CLIENT_KEY_EXCHANGE:
             break;
         case FINISHED:
+            finished = new Finished(Finished::CLIENT);
             break;
         default: //NONE://default
             break;

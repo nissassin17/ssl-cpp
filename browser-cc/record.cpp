@@ -9,8 +9,32 @@
 #include "record.hpp"
 #include "util.hpp"
 
-Record::Record() : isCompressed(false), type(HANDSHAKE),
-protocolVersion(new ProtocolVersion()), handshake(new Handshake()){//default: create client hello handshake
+Record::Record(ContentType type): type(type){
+    switch (type){
+        case CHANGE_CIPHER_SPEC:
+            changeCipherSpec = new ChangeCipherSpec();
+            break;
+        default:
+            break;
+    }
+}
+
+Record::Record(Handshake::HandshakeType handshakeType, void *arg) : isCompressed(false),
+protocolVersion(new ProtocolVersion()){//default: create client hello handshake
+    type = HANDSHAKE;
+    switch (handshakeType){
+        case Handshake::CLIENT_KEY_EXCHANGE:
+            handshake = new Handshake(handshakeType, arg);
+            break;
+        case Handshake::CLIENT_HELLO:
+            handshake = new Handshake(Handshake::CLIENT_HELLO);
+            break;
+        case Handshake::FINISHED:
+            handshake = new Handshake(Handshake::FINISHED);
+            break;
+        default:
+            break;
+    }
 }
 
 Alert *Record::getAlert(){
@@ -28,6 +52,7 @@ Handshake *Record::getHandshake(){
 Record::~Record(){
     delete this->protocolVersion;
     delete this->handshake;
+    delete changeCipherSpec;
     delete alert;
 }
 
@@ -40,7 +65,7 @@ vector<uint8_t> Record::toData(){
     
     switch (this->type){
 		case CHANGE_CIPHER_SPEC :
-//			bodyData = dynamic_cast<ChangeCipherSpec*>(this->fragment)->toData();
+            bodyData = changeCipherSpec->toData();
 			break;
 		case ALERT :
             bodyData = alert->toData();
@@ -93,6 +118,7 @@ size_t Record::size(){
     size_t ret(CONTENT_TYPE_LENGTH + this->protocolVersion->size() + BODY_LENGTH_LENGTH);
     switch (this->type){
         case  CHANGE_CIPHER_SPEC:
+            ret += changeCipherSpec->size();
             break;
         case ALERT:
             ret += alert->size();

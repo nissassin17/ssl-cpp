@@ -18,7 +18,7 @@ SslWrapper::SslWrapper(Url url){
 vector<uint8_t> SslWrapper::get(){
     if (this->url->getIsSsl()){
         //prepare client hello
-        Record *clientHello = new Record();
+        Record *clientHello = new Record(Handshake::CLIENT_HELLO);
         
         vector<uint8_t> tosend(clientHello->toData());
         this->connection->send(tosend);
@@ -42,7 +42,16 @@ vector<uint8_t> SslWrapper::get(){
                     Record *record = records[records.size() - 1];
                     offset += record->size();
                     if (record->getHandshake()->getType() == Handshake::SERVER_HELLO_DONE)
-                        break;
+                        break;//TLS_RSA_WITH_AES_128_CBC_SHA256
+                }
+                if (records.size() == 2){
+                    //one certificate and one hellodone
+                    
+                    vector<Record*> toSend;
+                    toSend.push_back( new Record(Handshake::CLIENT_KEY_EXCHANGE, serverHello->getHandshake()));
+                    toSend.push_back(new Record(Record::CHANGE_CIPHER_SPEC));
+                    toSend.push_back(new Record(Handshake::FINISHED));
+                    
                 }
                 for(int i = 0; i < records.size(); i++)
                     delete records[i];
