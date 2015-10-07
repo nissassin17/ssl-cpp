@@ -8,7 +8,7 @@
 
 #include "server-key-exchange.hpp"
 
-ServerKeyExchange::ServerKeyExchange(CipherSuite *cipherSuite, vector<uint8_t> data, size_t offset)
+ServerKeyExchange::ServerKeyExchange(CipherSuite *cipherSuite, vector<uint8_t> &data, size_t offset)
 : cipherSuite(cipherSuite){
     switch (cipherSuite->getKeyExchange()){
         case CipherSuite::DH_anon:

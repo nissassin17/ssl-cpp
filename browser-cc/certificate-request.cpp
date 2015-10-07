@@ -8,7 +8,7 @@
 
 #include "certificate-request.hpp"
 
-CertificateRequest::CertificateRequest(vector<uint8_t> data, size_t offset){
+CertificateRequest::CertificateRequest(vector<uint8_t> &data, size_t offset){
     
 }
 

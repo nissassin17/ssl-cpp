@@ -37,12 +37,13 @@ public:
     };
 
     vector<uint8_t> toData();
-    Handshake(HandshakeType type, void *arg = NULL);
-    Handshake(vector<uint8_t> data, size_t offset = 0, void *arg = NULL);
+    Handshake(HandshakeType type, void *arg = NULL, void *arg2 = NULL);
+    Handshake(vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
     size_t size();
     ~Handshake();
     ServerHello *getServerHello();
     HandshakeType getType();
+    Certificate *getCertificate();
     
 private:
 

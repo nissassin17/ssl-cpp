@@ -33,6 +33,7 @@ public:
     Cipher(CipherType type);
     
 private:
+    void setType(CipherType type);
     CipherType type;
     Format format;
     int keyMaterial;

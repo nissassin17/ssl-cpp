@@ -15,7 +15,7 @@
 
 class ServerDHParams : public Exportable{
 public:
-    ServerDHParams(vector<uint8_t> data, size_t offset = 0);
+    ServerDHParams(vector<uint8_t> &data, size_t offset = 0);
     size_t size();
     
 private:

@@ -13,7 +13,7 @@ bool Err::isSuccess(){
     return this->errType == Success;
 }
 
-string Err::getDescription(){
+string Err::what(){
     return this->description;
 }
 

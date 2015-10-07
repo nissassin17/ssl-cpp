@@ -8,11 +8,11 @@
 
 #include "client-key-exchange.hpp"
 
-ClientKeyExchange::ClientKeyExchange(CipherSuite *cipherSuite) : cipherSuite(cipherSuite) {
+ClientKeyExchange::ClientKeyExchange(CipherSuite *cipherSuite, ASN1Cert *asn1Cert) : cipherSuite(cipherSuite) {
 
     switch (cipherSuite->getKeyExchange()) {
         case CipherSuite::RSA:
-            encryptedPreMasterSecret = new EncryptedPreMasterSecret(cipherSuite);
+            encryptedPreMasterSecret = new EncryptedPreMasterSecret(cipherSuite, asn1Cert);
             break;
         case CipherSuite::DHE_DSS:
         case CipherSuite::DHE_RSA:

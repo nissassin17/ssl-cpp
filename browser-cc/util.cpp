@@ -7,8 +7,11 @@
 //
 
 #include "util.hpp"
+#include <iostream>
+#include <fstream>
+using namespace std;
 
-string Util::readableForm(vector<uint8_t> data){
+string Util::readableForm(vector<uint8_t> &data){
     string result;
     for(int i = 0; i < data.size(); i++){
         if (i && i % 16 == 0)
@@ -23,6 +26,13 @@ string Util::readableForm(vector<uint8_t> data){
         
     }
     return result;
+}
+
+void Util::writeToFile(string filename, vector<uint8_t> &data){
+    ofstream file(filename, ios::out | ios::binary);
+    for(int i = 0; i < data.size(); i++)
+        file << data[i];
+    file.close();
 }
 
 void Util::addData(vector<uint8_t> &data, uint8_t value){

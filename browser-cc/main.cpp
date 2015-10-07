@@ -17,8 +17,8 @@ int main(int argc, const char * argv[]) {
         browser->run(argc, argv);
         delete browser;
         return EXIT_SUCCESS;
-    }catch (Err err){
-        cerr << err.getDescription();
+    }catch (Err &err){
+        cerr << err.what();
         if (err.isSuccess())
             return EXIT_SUCCESS;
         return EXIT_FAILURE;

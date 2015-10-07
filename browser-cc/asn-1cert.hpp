@@ -14,8 +14,9 @@
 
 class ASN1Cert{
 public:
-    ASN1Cert(vector<uint8_t> vector, size_t offset = 0);
+    ASN1Cert(vector<uint8_t> &vector, size_t offset = 0);
     size_t size();
+    vector<uint8_t> toData();
     
 private:
     vector<uint8_t> data;

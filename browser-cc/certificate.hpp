@@ -16,9 +16,11 @@
 
 class Certificate  : public Exportable{
 public:
-    Certificate(vector<uint8_t> data, size_t offset = 0);
+    Certificate(vector<uint8_t> &data, size_t offset = 0);
     size_t size();//uint24_t
+    vector<ASN1Cert*> getCertificateList();
+    ~Certificate();
 private:
-    vector<ASN1Cert> certificateList;
+    vector<ASN1Cert*> certificateList;
 };
 #endif /* certificate_hpp */

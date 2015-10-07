@@ -7,8 +7,15 @@
 //
 
 #include "encrypted-pre-master-secret.hpp"
+#include <iostream>
 
-EncryptedPreMasterSecret::EncryptedPreMasterSecret(CipherSuite *cipherSuite) : cipherSuite(cipherSuite){
+EncryptedPreMasterSecret::EncryptedPreMasterSecret(CipherSuite *cipherSuite, ASN1Cert *asn1Cert) : cipherSuite(cipherSuite), asn1Cert(asn1Cert){
+    
+
+//    std::cout << "======ASN1Cert BEGIN=====" << endl;
+//    std::cout << Util::readableForm(asn1Cert->toData()) << endl;
+//    std::cout << "======ASN1Cert END=======" << endl;
+    
     preMasterSecret = new PreMasterSecret();
 }
 

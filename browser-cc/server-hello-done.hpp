@@ -15,7 +15,7 @@
 
 class ServerHelloDone : public Exportable{
 public:
-    ServerHelloDone(vector<uint8_t> data, size_t offset = 0);
+    ServerHelloDone(vector<uint8_t> &data, size_t offset = 0);
     size_t size();
 };
 

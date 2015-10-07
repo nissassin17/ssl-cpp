@@ -16,7 +16,7 @@
 
 class DigitallySigned{
 public:
-    DigitallySigned(vector<uint8_t> data, size_t offset = 0);
+    DigitallySigned(vector<uint8_t> &data, size_t offset = 0);
     size_t size();
     ~DigitallySigned();
 private:

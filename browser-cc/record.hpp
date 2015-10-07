@@ -25,9 +25,9 @@ public:
         APPLICATION_DATA = 23,
         NONE = 24
     };
-    Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, void *arg = NULL);
+    Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, void *arg = NULL, void *arg2 = NULL);
     Record(ContentType type);
-    Record(vector<uint8_t> data, size_t offset = 0, void *arg = NULL);
+    Record(vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
     vector<uint8_t> toData();
     size_t size();
     ~Record();

@@ -9,16 +9,22 @@
 #include "handshake.hpp"
 #include <iostream>
 #include "util.hpp"
+#include "err.hpp"
 using namespace std;
 
-Handshake::Handshake(HandshakeType type, void *arg) : type(type){//default create client hello request
+Handshake::Handshake(HandshakeType type, void *arg, void *arg2) : type(type){//default create client hello request
+    ServerHello *sHello;
+    Certificate *cert;
     switch(type){
         case CLIENT_HELLO:
             clientHello = new ClientHello();
             break;
             
         case CLIENT_KEY_EXCHANGE:
-            clientKeyExchange = new ClientKeyExchange(((ServerHello*)arg)->getCipherSuite());
+            sHello  = ((Handshake*)arg)->getServerHello();
+            cert   = ((Handshake*)arg2)->getCertificate();
+            //NOTE: skip checking certificate existing here. get the first one
+            clientKeyExchange = new ClientKeyExchange(sHello->getCipherSuite(), cert->getCertificateList()[0]);
             break;
             
         default:
@@ -133,7 +139,11 @@ ServerHello *Handshake::getServerHello(){
     return serverHello;
 }
 
-Handshake::Handshake(vector<uint8_t> data, size_t offset, void *arg){
+Certificate *Handshake::getCertificate(){
+    return certificate;
+}
+
+Handshake::Handshake(vector<uint8_t> &data, size_t offset, void *arg){
     this->type = (HandshakeType)data[offset];
     offset ++;
     
@@ -141,26 +151,32 @@ Handshake::Handshake(vector<uint8_t> data, size_t offset, void *arg){
     offset += 3;
     data.resize(offset + length);
 
-
+    //check if data is long enough for body
+    if (offset + length > data.size())
+        throw Err(Err::DECODING);
+    //copy to body
+    vector<uint8_t> body(data.begin() + offset, data.begin() + offset + length);
+    //reset offset
+    offset = 0;
     switch (this->type){
         case HELLO_REQUEST:
             break;
         case CLIENT_HELLO:
             break;
         case SERVER_HELLO:
-            this->serverHello = new ServerHello(data, offset);
+            this->serverHello = new ServerHello(body, offset);
             break;
         case CERTIFICATE:
-            this->certificate = new Certificate(data, offset);
+            this->certificate = new Certificate(body, offset);
             break;
         case SERVER_KEY_EXCHANGE:
-            this->serverKeyExchange = new ServerKeyExchange(((ServerHello*)arg)->getCipherSuite(), data, offset);
+            this->serverKeyExchange = new ServerKeyExchange(((ServerHello*)arg)->getCipherSuite(), body, offset);
             break;
         case CERTIFICATE_REQUEST:
-            certificateRequest = new CertificateRequest(data, offset);
+            certificateRequest = new CertificateRequest(body, offset);
             break;
         case SERVER_HELLO_DONE:
-            this->serverHelloDone = new ServerHelloDone(data, offset);
+            this->serverHelloDone = new ServerHelloDone(body, offset);
             break;
         case CERTIFICATE_VERIFY:
             break;

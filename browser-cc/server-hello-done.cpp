@@ -8,7 +8,7 @@
 
 #include "server-hello-done.hpp"
 
-ServerHelloDone::ServerHelloDone(vector<uint8_t> data, size_t offset){
+ServerHelloDone::ServerHelloDone(vector<uint8_t> &data, size_t offset){
     
 }
 

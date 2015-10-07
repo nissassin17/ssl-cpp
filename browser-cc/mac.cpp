@@ -19,7 +19,13 @@ MAC::Algorithm MAC::getAlgorithm(){
     return algorithm;
 }
 
-MAC::MAC(MACType type): type(type){
+MAC::MAC(MACType type){
+    setType(type);
+    
+}
+
+void MAC::setType(MACType type){
+    this->type = type;
     switch (type) {
         case MAC_NULL:
             algorithm = ALGORITHM_NONE;
@@ -45,5 +51,4 @@ MAC::MAC(MACType type): type(type){
         default:
             break;
     }
-    
 }

@@ -15,7 +15,7 @@
 
 class CertificateRequest : public Exportable{
 public:
-    CertificateRequest(vector<uint8_t> data, size_t offset = 0);
+    CertificateRequest(vector<uint8_t> &data, size_t offset = 0);
     size_t size();
     ~CertificateRequest();
 private:

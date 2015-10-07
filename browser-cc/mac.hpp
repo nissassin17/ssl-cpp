@@ -31,6 +31,7 @@ public:
     int getMacKeyLength();
     Algorithm getAlgorithm();
 private:
+    void setType(MACType type);
     MACType type;
     int macLength;
     int macKeyLength;

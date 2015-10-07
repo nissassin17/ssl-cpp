@@ -14,7 +14,7 @@
 
 using namespace std;
 
-class Err : runtime_error {
+class Err : public runtime_error {
     
 public:
     enum ErrType {
@@ -28,14 +28,15 @@ public:
         CannotReceive,
         CannotResolveHostname,
         NoConnection,
-        DontSendButReceive
+        DontSendButReceive,
+        DECODING
     };
 
     Err(ErrType errType, ...);
     
     bool isSuccess();
     
-    string getDescription();
+    string what();
     
 private:
     ErrType errType;

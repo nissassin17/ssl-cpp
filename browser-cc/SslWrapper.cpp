@@ -48,7 +48,7 @@ vector<uint8_t> SslWrapper::get(){
                     //one certificate and one hellodone
                     
                     vector<Record*> toSend;
-                    toSend.push_back( new Record(Handshake::CLIENT_KEY_EXCHANGE, serverHello->getHandshake()));
+                    toSend.push_back( new Record(Handshake::CLIENT_KEY_EXCHANGE, serverHello->getHandshake(), records[0]->getHandshake()));
                     toSend.push_back(new Record(Record::CHANGE_CIPHER_SPEC));
                     toSend.push_back(new Record(Handshake::FINISHED));
                     

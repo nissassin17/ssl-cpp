@@ -18,7 +18,7 @@
 
 class ClientKeyExchange : public Exportable{
 public:
-    ClientKeyExchange(CipherSuite *cipherSuite);
+    ClientKeyExchange(CipherSuite *cipherSuite, ASN1Cert *asn1Cert);
     vector<uint8_t> toData();
     size_t size();
     ~ClientKeyExchange();

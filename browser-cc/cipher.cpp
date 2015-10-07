@@ -21,7 +21,12 @@ size_t Cipher::getBlockSize(){
 }
 
 
-Cipher::Cipher(CipherType type): type(type){
+Cipher::Cipher(CipherType type){
+    setType(type);
+};
+
+void Cipher::setType(CipherType type){
+    this->type = type;
     switch (type) {
         case CIPHER_NULL:
             format = STREAM;
@@ -29,31 +34,31 @@ Cipher::Cipher(CipherType type): type(type){
             ivSize = 0;
             blockSize = -1;
             break;
-		case RC4_128       :
-			format = STREAM     ;
-			keyMaterial = 16       ;
-			ivSize = 0    ;
-			blockSize = -1;
-
-		case _3DES_EDE_CBC  :
-			format = BLOCK      ;
-			keyMaterial = 24       ;
-			ivSize = 8      ;
-			blockSize = 8;
-
-		case AES_128_CBC   :
-			format = BLOCK      ;
-			keyMaterial = 16      ;
-			ivSize = 16     ;
-			blockSize = 16;
-
-		case AES_256_CBC   :
-			format = BLOCK      ;
-			keyMaterial = 32      ;
-			ivSize = 16     ;
-			blockSize = 16;
+        case RC4_128       :
+            format = STREAM     ;
+            keyMaterial = 16       ;
+            ivSize = 0    ;
+            blockSize = -1;
+            
+        case _3DES_EDE_CBC  :
+            format = BLOCK      ;
+            keyMaterial = 24       ;
+            ivSize = 8      ;
+            blockSize = 8;
+            
+        case AES_128_CBC   :
+            format = BLOCK      ;
+            keyMaterial = 16      ;
+            ivSize = 16     ;
+            blockSize = 16;
+            
+        case AES_256_CBC   :
+            format = BLOCK      ;
+            keyMaterial = 32      ;
+            ivSize = 16     ;
+            blockSize = 16;
             
         default:
             break;
     }
-};
+}

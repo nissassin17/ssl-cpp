@@ -190,12 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				B34B73B21BBE7DD50059443A /* ssl */,
-				B34B73AC1BBDF8270059443A /* SubConnection.cpp */,
-				B34B73AD1BBDF8270059443A /* SubConnection.hpp */,
-				B34B73A91BBDF5F20059443A /* connection.cpp */,
-				B34B73AA1BBDF5F20059443A /* connection.hpp */,
-				B34B73A51BBDEF850059443A /* url.cpp */,
-				B34B73A61BBDEF850059443A /* url.hpp */,
+				B3779DB91BC5C34600758997 /* connection */,
 			);
 			name = object;
 			sourceTree = "<group>";
@@ -223,18 +218,18 @@
 			isa = PBXGroup;
 			children = (
 				B3D8FC0A1BC3E89800356772 /* cipher */,
-				B3D8FBFD1BC3D7CE00356772 /* ClientKeyExchange */,
+				B3D8FBFD1BC3D7CE00356772 /* Client Key Exchange */,
 				B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */,
 				B3D8FBF51BC3CAC400356772 /* certificate-request.hpp */,
 				B37EB64D1BC22C35005E04B0 /* cetificate */,
 				B3770DEB1BC14CA50051D2AB /* server-hello.cpp */,
 				B3770DEC1BC14CA50051D2AB /* server-hello.hpp */,
-				B37EB6491BC22B8D005E04B0 /* mini */,
+				B37EB6491BC22B8D005E04B0 /* mini objects */,
 				B34B73BC1BBE853D0059443A /* handshake.cpp */,
 				B34B73BD1BBE853D0059443A /* handshake.hpp */,
 				B34B73BF1BBE87050059443A /* client-hello.cpp */,
 				B34B73C01BBE87050059443A /* client-hello.hpp */,
-				B37EB6571BC2360E005E04B0 /* ServerKeyExchange */,
+				B37EB6571BC2360E005E04B0 /* Server Key Exchange */,
 				B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */,
 				B37EB6551BC22E9E005E04B0 /* server-hello-done.hpp */,
 				B3D8FC071BC3E01A00356772 /* finished.cpp */,
@@ -252,7 +247,20 @@
 			name = alert;
 			sourceTree = "<group>";
 		};
-		B37EB6491BC22B8D005E04B0 /* mini */ = {
+		B3779DB91BC5C34600758997 /* connection */ = {
+			isa = PBXGroup;
+			children = (
+				B34B73AC1BBDF8270059443A /* SubConnection.cpp */,
+				B34B73AD1BBDF8270059443A /* SubConnection.hpp */,
+				B34B73A91BBDF5F20059443A /* connection.cpp */,
+				B34B73AA1BBDF5F20059443A /* connection.hpp */,
+				B34B73A51BBDEF850059443A /* url.cpp */,
+				B34B73A61BBDEF850059443A /* url.hpp */,
+			);
+			name = connection;
+			sourceTree = "<group>";
+		};
+		B37EB6491BC22B8D005E04B0 /* mini objects */ = {
 			isa = PBXGroup;
 			children = (
 				B34B73CF1BBE8B510059443A /* session-id.cpp */,
@@ -264,7 +272,7 @@
 				B34B73C31BBE87C00059443A /* random.cpp */,
 				B34B73C41BBE87C00059443A /* random.hpp */,
 			);
-			name = mini;
+			name = "mini objects";
 			sourceTree = "<group>";
 		};
 		B37EB64D1BC22C35005E04B0 /* cetificate */ = {
@@ -278,7 +286,7 @@
 			name = cetificate;
 			sourceTree = "<group>";
 		};
-		B37EB6571BC2360E005E04B0 /* ServerKeyExchange */ = {
+		B37EB6571BC2360E005E04B0 /* Server Key Exchange */ = {
 			isa = PBXGroup;
 			children = (
 				B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */,
@@ -288,10 +296,10 @@
 				B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */,
 				B37EB65C1BC237B1005E04B0 /* server-dh-params.hpp */,
 			);
-			name = ServerKeyExchange;
+			name = "Server Key Exchange";
 			sourceTree = "<group>";
 		};
-		B3D8FBFD1BC3D7CE00356772 /* ClientKeyExchange */ = {
+		B3D8FBFD1BC3D7CE00356772 /* Client Key Exchange */ = {
 			isa = PBXGroup;
 			children = (
 				B3D8FBF71BC3D67C00356772 /* client-key-exchange.cpp */,
@@ -303,7 +311,7 @@
 				B3D8FBFE1BC3D80C00356772 /* client-diffie-hellman-public.cpp */,
 				B3D8FBFF1BC3D80C00356772 /* client-diffie-hellman-public.hpp */,
 			);
-			name = ClientKeyExchange;
+			name = "Client Key Exchange";
 			sourceTree = "<group>";
 		};
 		B3D8FC0A1BC3E89800356772 /* cipher */ = {

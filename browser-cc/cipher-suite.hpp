@@ -87,11 +87,11 @@ public:
     
     CipherSuite(CipherSuiteType suite = TLS_NULL_WITH_NULL_NULL);
     KeyExchangeType getKeyExchange();
-    HashType hashType();
     ~CipherSuite();
     MAC *getMac();
     Cipher *getCipher();
 private:
+    void setType(CipherSuiteType type);
     KeyExchangeType keyExchange;
     Cipher *cipher = NULL;
     MAC *mac = NULL;

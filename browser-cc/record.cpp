@@ -8,6 +8,7 @@
 
 #include "record.hpp"
 #include "util.hpp"
+#include "err.hpp"
 
 Record::Record(ContentType type): type(type){
     switch (type){
@@ -19,12 +20,12 @@ Record::Record(ContentType type): type(type){
     }
 }
 
-Record::Record(Handshake::HandshakeType handshakeType, void *arg) : isCompressed(false),
+Record::Record(Handshake::HandshakeType handshakeType, void *arg, void *arg2) : isCompressed(false),
 protocolVersion(new ProtocolVersion()){//default: create client hello handshake
     type = HANDSHAKE;
     switch (handshakeType){
         case Handshake::CLIENT_KEY_EXCHANGE:
-            handshake = new Handshake(handshakeType, arg);
+            handshake = new Handshake(handshakeType, arg, arg2);
             break;
         case Handshake::CLIENT_HELLO:
             handshake = new Handshake(Handshake::CLIENT_HELLO);
@@ -86,7 +87,7 @@ vector<uint8_t> Record::toData(){
     return data;
 }
 
-Record::Record(vector<uint8_t> data, size_t offset, void *arg){
+Record::Record(vector<uint8_t> &data, size_t offset, void *arg){
     this->type = (ContentType)data[offset];
     offset += CONTENT_TYPE_LENGTH;
     
@@ -95,17 +96,25 @@ Record::Record(vector<uint8_t> data, size_t offset, void *arg){
     
     uint16_t bodyLength = Util::takeData16(data, offset);
     offset += BODY_LENGTH_LENGTH;
-    data.resize(offset + bodyLength);
+    
+    //through error if not enough data
+    if (offset + bodyLength > data.size())
+        throw Err(Err::DECODING);
+    //copy the fragment part
+    vector<uint8_t> fragment(data.begin() + offset, data.begin() + offset + bodyLength);
+    //reset offset
+    offset = 0;
+//    data.resize(offset + bodyLength);
 
 
     switch (this->type) {
         case HANDSHAKE:
-            handshake = new Handshake(data, offset, arg);
+            handshake = new Handshake(fragment, offset, arg);
             offset += handshake->size();
             break;
             
         case ALERT:
-            alert = new Alert(data, offset);
+            alert = new Alert(fragment, offset);
             offset += alert->size();
             break;
             
