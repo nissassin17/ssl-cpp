@@ -14,13 +14,13 @@
 #include "asn-1cert.hpp"
 #include "exportable.hpp"
 
-class Certificate  : public Exportable{
+class Certificate: public Exportable {
 public:
-    Certificate(vector<uint8_t> &data, size_t offset = 0);
-    size_t size();//uint24_t
-    vector<ASN1Cert*> getCertificateList();
-    ~Certificate();
+	Certificate(vector<uint8_t> &data, size_t offset = 0);
+	size_t size(); //uint24_t
+	vector<ASN1Cert*> getCertificateList();
+	~Certificate();
 private:
-    vector<ASN1Cert*> certificateList;
+	vector<ASN1Cert*> certificateList;
 };
 #endif /* certificate_hpp */

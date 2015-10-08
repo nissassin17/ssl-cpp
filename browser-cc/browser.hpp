@@ -19,9 +19,9 @@
 
 using namespace std;
 
-class Browser{
+class Browser {
 public:
-    void run(int argc, const char * argv []);
+	void run(int argc, const char * argv[]);
 };
 
 #endif /* browser_hpp */

@@ -12,17 +12,16 @@
 #include <stdio.h>
 #include "exportable.hpp"
 
-class CompressionMethod : public Exportable{
+class CompressionMethod: public Exportable {
 public:
-    enum Method{
-        Null = 0,
-        NONE = 255
-    };
-    vector<uint8_t> toData();
-    CompressionMethod(Method type = Null);
-    size_t size();
-    CompressionMethod(vector<uint8_t> &data, size_t offset = 0);
+	enum Method {
+		Null = 0, NONE = 255
+	};
+	vector<uint8_t> toData();
+	CompressionMethod(Method type = Null);
+	size_t size();
+	CompressionMethod(vector<uint8_t> &data, size_t offset = 0);
 private:
-    Method type;
+	Method type;
 };
 #endif /* compression_method_hpp */

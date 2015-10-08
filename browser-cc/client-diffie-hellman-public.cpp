@@ -8,18 +8,19 @@
 
 #include "client-diffie-hellman-public.hpp"
 
-ClientDiffieHellmanPublic::ClientDiffieHellmanPublic(CipherSuite *cipherSuite) : cipherSuite(cipherSuite){
+ClientDiffieHellmanPublic::ClientDiffieHellmanPublic(CipherSuite *cipherSuite) :
+		cipherSuite(cipherSuite) {
 }
 
-ClientDiffieHellmanPublic::~ClientDiffieHellmanPublic(){
-    
+ClientDiffieHellmanPublic::~ClientDiffieHellmanPublic() {
+
 }
 
-size_t ClientDiffieHellmanPublic::size(){
-    return 0;
+size_t ClientDiffieHellmanPublic::size() {
+	return 0;
 }
 
-vector<uint8_t> ClientDiffieHellmanPublic::toData(){
-    vector<uint8_t> data;
-    return data;
+vector<uint8_t> ClientDiffieHellmanPublic::toData() {
+	vector<uint8_t> data;
+	return data;
 }

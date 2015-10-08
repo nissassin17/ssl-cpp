@@ -16,16 +16,16 @@
 #include "encrypted-pre-master-secret.hpp"
 #include "client-diffie-hellman-public.hpp"
 
-class ClientKeyExchange : public Exportable{
+class ClientKeyExchange: public Exportable {
 public:
-    ClientKeyExchange(CipherSuite *cipherSuite, ASN1Cert *asn1Cert);
-    vector<uint8_t> toData();
-    size_t size();
-    ~ClientKeyExchange();
+	ClientKeyExchange(CipherSuite *cipherSuite, ASN1Cert *asn1Cert);
+	vector<uint8_t> toData();
+	size_t size();
+	~ClientKeyExchange();
 private:
-    CipherSuite *cipherSuite = NULL;
-    EncryptedPreMasterSecret *encryptedPreMasterSecret = NULL;
-    ClientDiffieHellmanPublic *clientDiffieHellmanPublic = NULL;
+	CipherSuite *cipherSuite = NULL;
+	EncryptedPreMasterSecret *encryptedPreMasterSecret = NULL;
+	ClientDiffieHellmanPublic *clientDiffieHellmanPublic = NULL;
 };
 
 #endif /* client_key_exchange_hpp */

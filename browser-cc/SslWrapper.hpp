@@ -16,14 +16,14 @@
 
 using namespace std;
 
-class SslWrapper{
+class SslWrapper {
 private:
-    Url *url;
-    Connection *connection;
+	Url *url;
+	Connection *connection;
 public:
-    SslWrapper(Url url);
-    vector<uint8_t> get();
-    ~SslWrapper();
+	SslWrapper(Url url);
+	vector<uint8_t> get();
+	~SslWrapper();
 //    vector<uint8_t> post();
 };
 

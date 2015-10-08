@@ -13,10 +13,10 @@
 #include "exportable.hpp"
 #include "util.hpp"
 
-class ServerHelloDone : public Exportable{
+class ServerHelloDone: public Exportable {
 public:
-    ServerHelloDone(vector<uint8_t> &data, size_t offset = 0);
-    size_t size();
+	ServerHelloDone(vector<uint8_t> &data, size_t offset = 0);
+	size_t size();
 };
 
 #endif /* server_helllo_done_hpp */

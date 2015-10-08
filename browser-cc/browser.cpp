@@ -14,19 +14,19 @@
 #include <iostream>
 using namespace std;
 
-void Browser::run(int argc, const char * argv []){
-    
-    /* Read link from command */
-    string link = StrUtil::getLink(argc, argv);
-    
-    /* Extract hostname and request */
-    Url url = Url(link);
-    
-    SslWrapper ssl = SslWrapper(url);
+void Browser::run(int argc, const char * argv[]) {
 
-    vector<uint8_t> getData = ssl.get();
-    string result;
-    for(int i = 0; i < getData.size(); i++)
-        result += (char)getData[i];
-    cout << result;
+	/* Read link from command */
+	string link = StrUtil::getLink(argc, argv);
+
+	/* Extract hostname and request */
+	Url url = Url(link);
+
+	SslWrapper ssl = SslWrapper(url);
+
+	vector<uint8_t> getData = ssl.get();
+	string result;
+	for (int i = 0; i < getData.size(); i++)
+		result += (char) getData[i];
+	cout << result;
 }

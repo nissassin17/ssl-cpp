@@ -8,13 +8,13 @@
 
 #include "alert.hpp"
 
-size_t Alert::size(){
-    return 2;
+size_t Alert::size() {
+	return 2;
 }
 
-Alert::Alert(vector<uint8_t> &data, size_t offset){
-    this->level = (AlertLevel)data[offset];
-    offset ++;
-    this->description = (AlertDescription)data[offset];
-    offset++;
+Alert::Alert(vector<uint8_t> &data, size_t offset) {
+	this->level = (AlertLevel) data[offset];
+	offset++;
+	this->description = (AlertDescription) data[offset];
+	offset++;
 }

@@ -14,15 +14,15 @@
 #include "exportable.hpp"
 #include "server-dh-params.hpp"
 
-class DigitallySigned{
+class DigitallySigned {
 public:
-    DigitallySigned(vector<uint8_t> &data, size_t offset = 0);
-    size_t size();
-    ~DigitallySigned();
+	DigitallySigned(vector<uint8_t> &data, size_t offset = 0);
+	size_t size();
+	~DigitallySigned();
 private:
-    uint8_t clientRandom[32];
-    uint8_t serverRandom[32];
-    ServerDHParams *params;
+	uint8_t clientRandom[32];
+	uint8_t serverRandom[32];
+	ServerDHParams *params;
 };
 
 #endif /* digitally_signed_hpp */

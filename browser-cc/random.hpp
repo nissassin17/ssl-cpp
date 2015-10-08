@@ -12,16 +12,16 @@
 #include <stdio.h>
 #include "exportable.hpp"
 
-class Random{
+class Random {
 public:
-    Random();
-    vector<uint8_t> toData();
-    size_t size();
-    Random(vector<uint8_t> &data, size_t offset = 0);
+	Random();
+	vector<uint8_t> toData();
+	size_t size();
+	Random(vector<uint8_t> &data, size_t offset = 0);
 private:
-    static const int RANDOM_BYTES_NUM = 28;
-    uint32_t gmtUnixTime;
-    uint8_t randomBytes[RANDOM_BYTES_NUM];
+	static const int RANDOM_BYTES_NUM = 28;
+	uint32_t gmtUnixTime;
+	uint8_t randomBytes[RANDOM_BYTES_NUM];
 };
 
 #endif /* random_hpp */

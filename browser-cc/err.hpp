@@ -14,33 +14,33 @@
 
 using namespace std;
 
-class Err : public runtime_error {
-    
-public:
-    enum ErrType {
-        Success = 0,
-        NoLinkProvided,
-        UnsupportedSchema,
-        NoHostnameProvided,
-        CannotCreateSock,
-        CannotConnect,
-        CannotSend,
-        CannotReceive,
-        CannotResolveHostname,
-        NoConnection,
-        DontSendButReceive,
-        DECODING
-    };
+class Err: public runtime_error {
 
-    Err(ErrType errType, ...);
-    
-    bool isSuccess();
-    
-    string what();
-    
+public:
+	enum ErrType {
+		Success = 0,
+		NoLinkProvided,
+		UnsupportedSchema,
+		NoHostnameProvided,
+		CannotCreateSock,
+		CannotConnect,
+		CannotSend,
+		CannotReceive,
+		CannotResolveHostname,
+		NoConnection,
+		DontSendButReceive,
+		DECODING
+	};
+
+	Err(ErrType errType, ...);
+
+	bool isSuccess();
+
+	string what();
+
 private:
-    ErrType errType;
-    string description;
+	ErrType errType;
+	string description;
 
 };
 

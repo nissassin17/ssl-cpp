@@ -13,9 +13,9 @@
 #include <string>
 using namespace std;
 
-class StrUtil{
+class StrUtil {
 public:
-    static string getLink(int argc, const char * argv[]);
+	static string getLink(int argc, const char * argv[]);
 };
 
 #endif /* strutil_hpp */

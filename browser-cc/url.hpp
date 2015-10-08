@@ -14,16 +14,16 @@
 #include <vector>
 using namespace std;
 
-class Url{
+class Url {
 public:
-    Url(string link);
-    string getHostname();
-    string getRequest();
-    bool getIsSsl();
-    vector<uint8_t> httpGetRequest();
+	Url(string link);
+	string getHostname();
+	string getRequest();
+	bool getIsSsl();
+	vector<uint8_t> httpGetRequest();
 private:
-    string hostname, request;
-    bool isSsl;
+	string hostname, request;
+	bool isSsl;
 };
 
 #endif /* url_hpp */

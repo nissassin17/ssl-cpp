@@ -8,65 +8,68 @@
 
 #include "client-key-exchange.hpp"
 
-ClientKeyExchange::ClientKeyExchange(CipherSuite *cipherSuite, ASN1Cert *asn1Cert) : cipherSuite(cipherSuite) {
+ClientKeyExchange::ClientKeyExchange(CipherSuite *cipherSuite,
+		ASN1Cert *asn1Cert) :
+		cipherSuite(cipherSuite) {
 
-    switch (cipherSuite->getKeyExchange()) {
-        case CipherSuite::RSA:
-            encryptedPreMasterSecret = new EncryptedPreMasterSecret(cipherSuite, asn1Cert);
-            break;
-        case CipherSuite::DHE_DSS:
-        case CipherSuite::DHE_RSA:
-        case CipherSuite::DH_DSS:
-        case CipherSuite::DH_RSA:
-        case CipherSuite::DH_anon:
-            clientDiffieHellmanPublic = new ClientDiffieHellmanPublic(cipherSuite);
-            break;
-            
-        default://none
-            break;
-    }
+	switch (cipherSuite->getKeyExchange()) {
+	case CipherSuite::RSA:
+		encryptedPreMasterSecret = new EncryptedPreMasterSecret(cipherSuite,
+				asn1Cert);
+		break;
+	case CipherSuite::DHE_DSS:
+	case CipherSuite::DHE_RSA:
+	case CipherSuite::DH_DSS:
+	case CipherSuite::DH_RSA:
+	case CipherSuite::DH_anon:
+		clientDiffieHellmanPublic = new ClientDiffieHellmanPublic(cipherSuite);
+		break;
+
+	default: //none
+		break;
+	}
 
 }
 
-ClientKeyExchange::~ClientKeyExchange(){
-    delete clientDiffieHellmanPublic;
-    delete encryptedPreMasterSecret;
+ClientKeyExchange::~ClientKeyExchange() {
+	delete clientDiffieHellmanPublic;
+	delete encryptedPreMasterSecret;
 }
 
-size_t ClientKeyExchange::size(){
-    switch (cipherSuite->getKeyExchange()) {
-        case CipherSuite::RSA:
-            return encryptedPreMasterSecret->size();
-            break;
-        case CipherSuite::DHE_DSS:
-        case CipherSuite::DHE_RSA:
-        case CipherSuite::DH_DSS:
-        case CipherSuite::DH_RSA:
-        case CipherSuite::DH_anon:
-            return clientDiffieHellmanPublic->size();
-            break;
-            
-        default://none
-            break;
-    }
-    return 0;
+size_t ClientKeyExchange::size() {
+	switch (cipherSuite->getKeyExchange()) {
+	case CipherSuite::RSA:
+		return encryptedPreMasterSecret->size();
+		break;
+	case CipherSuite::DHE_DSS:
+	case CipherSuite::DHE_RSA:
+	case CipherSuite::DH_DSS:
+	case CipherSuite::DH_RSA:
+	case CipherSuite::DH_anon:
+		return clientDiffieHellmanPublic->size();
+		break;
+
+	default: //none
+		break;
+	}
+	return 0;
 }
 
-vector<uint8_t> ClientKeyExchange::toData(){
-    switch (cipherSuite->getKeyExchange()){
-        case CipherSuite::RSA:
-            return encryptedPreMasterSecret->toData();
-            break;
-        case CipherSuite::DHE_DSS:
-        case CipherSuite::DHE_RSA:
-        case CipherSuite::DH_DSS:
-        case CipherSuite::DH_RSA:
-        case CipherSuite::DH_anon:
-            return clientDiffieHellmanPublic->toData();
-            break;
-            
-        default://none
-            break;
-    }
-    return vector<uint8_t>();
+vector<uint8_t> ClientKeyExchange::toData() {
+	switch (cipherSuite->getKeyExchange()) {
+	case CipherSuite::RSA:
+		return encryptedPreMasterSecret->toData();
+		break;
+	case CipherSuite::DHE_DSS:
+	case CipherSuite::DHE_RSA:
+	case CipherSuite::DH_DSS:
+	case CipherSuite::DH_RSA:
+	case CipherSuite::DH_anon:
+		return clientDiffieHellmanPublic->toData();
+		break;
+
+	default: //none
+		break;
+	}
+	return vector<uint8_t>();
 }

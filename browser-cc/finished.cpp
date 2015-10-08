@@ -11,15 +11,16 @@
 const string Finished::CLIENT_STRING = "client finished";
 const string Finished::SERVER_STRING = "server finished";
 
-size_t Finished::size(){
-    return 0;
+size_t Finished::size() {
+	return 0;
 }
 
-vector<uint8_t> Finished::toData(){
-    vector<uint8_t> data;
-    return data;
+vector<uint8_t> Finished::toData() {
+	vector<uint8_t> data;
+	return data;
 }
 
-Finished::Finished(SenderType type) : type(type){
-    
+Finished::Finished(SenderType type) :
+		type(type) {
+
 }

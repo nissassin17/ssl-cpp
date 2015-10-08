@@ -13,18 +13,17 @@
 #include "util.hpp"
 #include "exportable.hpp"
 
-class ChangeCipherSpec : public Exportable {
+class ChangeCipherSpec: public Exportable {
 public:
-    ChangeCipherSpec();
-    ~ChangeCipherSpec();
-    size_t size();
-    vector<uint8_t> toData();
+	ChangeCipherSpec();
+	~ChangeCipherSpec();
+	size_t size();
+	vector<uint8_t> toData();
 private:
-    enum ChangeCipherSpecType{
-        CHANGE_CIPHER_SPEC = 1,
-        NONE = 255
-    };
-    ChangeCipherSpecType type;
+	enum ChangeCipherSpecType {
+		CHANGE_CIPHER_SPEC = 1, NONE = 255
+	};
+	ChangeCipherSpecType type;
 };
 
 #endif /* change_cipher_spec_hpp */

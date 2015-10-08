@@ -13,15 +13,15 @@
 #include "util.hpp"
 #include "exportable.hpp"
 #include "protocol-version.hpp"
-class PreMasterSecret : public Exportable{
+class PreMasterSecret: public Exportable {
 public:
-    PreMasterSecret();
-    ~PreMasterSecret();
-    vector<uint8_t> toData();
-    size_t size();
+	PreMasterSecret();
+	~PreMasterSecret();
+	vector<uint8_t> toData();
+	size_t size();
 private:
-    static const int RANDOM_LENGTH = 46;
-    ProtocolVersion *clientVersion = NULL;
-    uint8_t random[RANDOM_LENGTH];
+	static const int RANDOM_LENGTH = 46;
+	ProtocolVersion *clientVersion = NULL;
+	uint8_t random[RANDOM_LENGTH];
 };
 #endif /* pre_master_secret_hpp */

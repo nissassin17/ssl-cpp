@@ -13,11 +13,11 @@
 #include "util.hpp"
 #include "exportable.hpp"
 
-class CertificateRequest : public Exportable{
+class CertificateRequest: public Exportable {
 public:
-    CertificateRequest(vector<uint8_t> &data, size_t offset = 0);
-    size_t size();
-    ~CertificateRequest();
+	CertificateRequest(vector<uint8_t> &data, size_t offset = 0);
+	size_t size();
+	~CertificateRequest();
 private:
 //    vector<uint8_t>
 //    

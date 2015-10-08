@@ -8,52 +8,53 @@
 
 #include "server-key-exchange.hpp"
 
-ServerKeyExchange::ServerKeyExchange(CipherSuite *cipherSuite, vector<uint8_t> &data, size_t offset)
-: cipherSuite(cipherSuite){
-    switch (cipherSuite->getKeyExchange()){
-        case CipherSuite::DH_anon:
-            this->params = new ServerDHParams(data, offset);
-            offset += this->params->size();
-            break;
-            
-        case CipherSuite::DHE_RSA:
-        case CipherSuite::DHE_DSS:
-            this->params = new ServerDHParams(data, offset);
-            this->signedParams = new DigitallySigned(data, offset);
-            offset += this->params->size();
-            break;
-            
-        case CipherSuite::RSA:
-        case CipherSuite::DH_RSA:
-        case CipherSuite::DH_DSS:
-            break;
-        default: //case NONE:
-            break;
-    }
+ServerKeyExchange::ServerKeyExchange(CipherSuite *cipherSuite,
+		vector<uint8_t> &data, size_t offset) :
+		cipherSuite(cipherSuite) {
+	switch (cipherSuite->getKeyExchange()) {
+	case CipherSuite::DH_anon:
+		this->params = new ServerDHParams(data, offset);
+		offset += this->params->size();
+		break;
+
+	case CipherSuite::DHE_RSA:
+	case CipherSuite::DHE_DSS:
+		this->params = new ServerDHParams(data, offset);
+		this->signedParams = new DigitallySigned(data, offset);
+		offset += this->params->size();
+		break;
+
+	case CipherSuite::RSA:
+	case CipherSuite::DH_RSA:
+	case CipherSuite::DH_DSS:
+		break;
+	default: //case NONE:
+		break;
+	}
 }
 
-ServerKeyExchange::~ServerKeyExchange(){
-    switch (cipherSuite->getKeyExchange()){
-        case CipherSuite::DH_anon:
-            delete this->params;
-            break;
-            
-        case CipherSuite::DHE_RSA:
-        case CipherSuite::DHE_DSS:
-            delete this->params;
-            delete this->signedParams;
-            break;
-            
-        case CipherSuite::RSA:
-        case CipherSuite::DH_RSA:
-        case CipherSuite::DH_DSS:
-            break;
-        default: //case NONE:
-            break;
-    }
+ServerKeyExchange::~ServerKeyExchange() {
+	switch (cipherSuite->getKeyExchange()) {
+	case CipherSuite::DH_anon:
+		delete this->params;
+		break;
+
+	case CipherSuite::DHE_RSA:
+	case CipherSuite::DHE_DSS:
+		delete this->params;
+		delete this->signedParams;
+		break;
+
+	case CipherSuite::RSA:
+	case CipherSuite::DH_RSA:
+	case CipherSuite::DH_DSS:
+		break;
+	default: //case NONE:
+		break;
+	}
 }
 
-size_t ServerKeyExchange::size(){
-    size_t result(0);
-    return result;
+size_t ServerKeyExchange::size() {
+	size_t result(0);
+	return result;
 }

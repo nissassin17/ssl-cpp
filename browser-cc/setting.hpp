@@ -9,5 +9,4 @@
 #ifndef setting_h
 #define setting_h
 
-
 #endif /* setting_h */

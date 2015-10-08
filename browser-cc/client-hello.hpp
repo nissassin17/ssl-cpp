@@ -18,25 +18,24 @@
 #include "compression-method.hpp"
 #include "extension.hpp"
 
-class ClientHello : public Exportable{
+class ClientHello: public Exportable {
 public:
 
 private:
-    ProtocolVersion *protocolVersion;
-    Random *random;
-    SessionID *sessionID;
-    vector<CipherSuite*> cipherSuites;
-    vector<CompressionMethod*> compressionMethods;
-    vector<Extension*> extensions;
-    bool haveExtension;
-
+	ProtocolVersion *protocolVersion;
+	Random *random;
+	SessionID *sessionID;
+	vector<CipherSuite*> cipherSuites;
+	vector<CompressionMethod*> compressionMethods;
+	vector<Extension*> extensions;
+	bool haveExtension;
 
 public:
-    vector<uint8_t> toData();
-    ClientHello();
-    size_t size();
-    ~ClientHello();
-    
+	vector<uint8_t> toData();
+	ClientHello();
+	size_t size();
+	~ClientHello();
+
 };
 
 #endif /* client_hello_hpp */

@@ -14,15 +14,15 @@
 #include "exportable.hpp"
 #include "cipher-suite.hpp"
 
-class ClientDiffieHellmanPublic : public Exportable{
-    
+class ClientDiffieHellmanPublic: public Exportable {
+
 public:
-    ClientDiffieHellmanPublic(CipherSuite *cipherSuite);
-    ~ClientDiffieHellmanPublic();
-    vector<uint8_t> toData();
-    size_t size();
+	ClientDiffieHellmanPublic(CipherSuite *cipherSuite);
+	~ClientDiffieHellmanPublic();
+	vector<uint8_t> toData();
+	size_t size();
 private:
-    CipherSuite *cipherSuite = NULL;
+	CipherSuite *cipherSuite = NULL;
 };
 
 #endif /* client_diffie_hellman_public_hpp */

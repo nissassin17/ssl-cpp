@@ -16,40 +16,38 @@
 
 #include <stdio.h>
 
-class Record : public Exportable{
+class Record: public Exportable {
 public:
-    enum ContentType {
-        CHANGE_CIPHER_SPEC = 20,
-        ALERT = 21,
-        HANDSHAKE = 22,
-        APPLICATION_DATA = 23,
-        NONE = 24
-    };
-    Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, void *arg = NULL, void *arg2 = NULL);
-    Record(ContentType type);
-    Record(vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
-    vector<uint8_t> toData();
-    size_t size();
-    ~Record();
-    Handshake *getHandshake();
-    Alert *getAlert();
-    ContentType getType();
-    
+	enum ContentType {
+		CHANGE_CIPHER_SPEC = 20,
+		ALERT = 21,
+		HANDSHAKE = 22,
+		APPLICATION_DATA = 23,
+		NONE = 24
+	};
+	Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, void *arg =
+			NULL, void *arg2 = NULL);
+	Record(ContentType type);
+	Record(vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
+	vector<uint8_t> toData();
+	size_t size();
+	~Record();
+	Handshake *getHandshake();
+	Alert *getAlert();
+	ContentType getType();
+
 private:
 
+	ContentType type;
+	ProtocolVersion *protocolVersion = NULL;
+	Handshake *handshake = NULL;
+	Alert *alert = NULL;
+	ChangeCipherSpec *changeCipherSpec = NULL;
 
-    ContentType type;
-    ProtocolVersion *protocolVersion = NULL;
-    Handshake *handshake = NULL;
-    Alert *alert = NULL;
-    ChangeCipherSpec *changeCipherSpec = NULL;
-    
-    bool isCompressed;
-    
-    static const int CONTENT_TYPE_LENGTH = 1;
-    static const int BODY_LENGTH_LENGTH = 2;
-    
-  
+	bool isCompressed;
+
+	static const int CONTENT_TYPE_LENGTH = 1;
+	static const int BODY_LENGTH_LENGTH = 2;
 
 };
 

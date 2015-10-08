@@ -11,31 +11,25 @@
 
 #include <stdio.h>
 
-class MAC{
+class MAC {
 public:
-    enum MACType{
-        MAC_NULL,
-        MD5,
-        SHA,
-        SHA256
-    };
-    enum Algorithm{
-        ALGORITHM_NONE,
-        HMAC_MD5,
-        HMAC_SHA1,
-        HMAC_SHA256
-    };
-    MAC(MACType type);
-    
-    int getMacLength();
-    int getMacKeyLength();
-    Algorithm getAlgorithm();
+	enum MACType {
+		MAC_NULL, MD5, SHA, SHA256
+	};
+	enum Algorithm {
+		ALGORITHM_NONE, HMAC_MD5, HMAC_SHA1, HMAC_SHA256
+	};
+	MAC(MACType type);
+
+	int getMacLength();
+	int getMacKeyLength();
+	Algorithm getAlgorithm();
 private:
-    void setType(MACType type);
-    MACType type;
-    int macLength;
-    int macKeyLength;
-    Algorithm algorithm;
+	void setType(MACType type);
+	MACType type;
+	int macLength;
+	int macKeyLength;
+	Algorithm algorithm;
 };
 
 #endif /* mac_hpp */

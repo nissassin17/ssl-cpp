@@ -19,16 +19,16 @@
 
 using namespace std;
 
-class SubConnection{
+class SubConnection {
 private:
-    int sock;
-    string ip;
-    struct sockaddr_in server;
+	int sock;
+	string ip;
+	struct sockaddr_in server;
 public:
-    SubConnection(string ip, int port);
-    void doConnect();
-    void doSend(vector<uint8_t> request);
-    vector<uint8_t> doReceive();
+	SubConnection(string ip, int port);
+	void doConnect();
+	void doSend(vector<uint8_t> request);
+	vector<uint8_t> doReceive();
 };
 
 #endif /* SubConnection_hpp */

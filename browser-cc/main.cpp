@@ -12,15 +12,15 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    try{
-    Browser *browser = new Browser();
-        browser->run(argc, argv);
-        delete browser;
-        return EXIT_SUCCESS;
-    }catch (Err &err){
-        cerr << err.what();
-        if (err.isSuccess())
-            return EXIT_SUCCESS;
-        return EXIT_FAILURE;
-    }
+	try {
+		Browser *browser = new Browser();
+		browser->run(argc, argv);
+		delete browser;
+		return EXIT_SUCCESS;
+	} catch (Err &err) {
+		cerr << err.what();
+		if (err.isSuccess())
+			return EXIT_SUCCESS;
+		return EXIT_FAILURE;
+	}
 }

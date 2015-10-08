@@ -14,10 +14,10 @@
 #include <iostream>
 using namespace std;
 
-string StrUtil::getLink(int argc, const char * argv[]){
-    
-    if (argc == 1)
-        throw Err(Err::NoLinkProvided);
-    
-    return string(argv[1]);
+string StrUtil::getLink(int argc, const char * argv[]) {
+
+	if (argc == 1)
+		throw Err(Err::NoLinkProvided);
+
+	return string(argv[1]);
 }
