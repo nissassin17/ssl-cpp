@@ -260,6 +260,13 @@
 			name = connection;
 			sourceTree = "<group>";
 		};
+		B3779DBA1BC71B5A00758997 /* asn1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = asn1;
+			sourceTree = "<group>";
+		};
 		B37EB6491BC22B8D005E04B0 /* mini objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +324,7 @@
 		B3D8FC0A1BC3E89800356772 /* cipher */ = {
 			isa = PBXGroup;
 			children = (
+				B3779DBA1BC71B5A00758997 /* asn1 */,
 				B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */,
 				B34B73D31BBE8C4A0059443A /* cipher-suite.hpp */,
 				B3D8FC0B1BC3E99500356772 /* cipher.cpp */,
