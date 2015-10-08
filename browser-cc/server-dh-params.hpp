@@ -13,7 +13,7 @@
 #include "util.hpp"
 #include "exportable.hpp"
 
-class ServerDHParams: public Exportable {
+class ServerDHParams {
 public:
 	ServerDHParams(vector<uint8_t> &data, size_t offset = 0);
 	size_t size();

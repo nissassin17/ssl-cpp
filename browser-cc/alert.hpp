@@ -13,7 +13,7 @@
 #include "util.hpp"
 #include "exportable.hpp"
 
-class Alert: public Exportable {
+class Alert  : public Exportable{
 public:
 
 	enum AlertLevel {

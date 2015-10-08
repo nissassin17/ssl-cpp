@@ -18,7 +18,7 @@ string Err::what() {
 }
 
 Err::Err(ErrType errType, ...) :
-		runtime_error("Browser error") {
+		runtime_error("Browser error"), errType(errType) {
 	va_list args;
 	va_start(args, errType);
 

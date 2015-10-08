@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "exportable.hpp"
 
-class Extension: public Exportable {
+class Extension {
 public:
 	enum ExtensionType {
 		SIGNATURE_ALGORITHMS = 13, NONE = 65535

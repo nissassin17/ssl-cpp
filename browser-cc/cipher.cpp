@@ -39,25 +39,28 @@ void Cipher::setType(CipherType type) {
 		format = STREAM;
 		keyMaterial = 16;
 		ivSize = 0;
-		blockSize = -1;
+		break;
 
 	case _3DES_EDE_CBC:
 		format = BLOCK;
 		keyMaterial = 24;
 		ivSize = 8;
 		blockSize = 8;
+		break;
 
 	case AES_128_CBC:
 		format = BLOCK;
 		keyMaterial = 16;
 		ivSize = 16;
 		blockSize = 16;
+		break;
 
 	case AES_256_CBC:
 		format = BLOCK;
 		keyMaterial = 32;
 		ivSize = 16;
 		blockSize = 16;
+		break;
 
 	default:
 		break;

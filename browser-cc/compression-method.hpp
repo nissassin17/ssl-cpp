@@ -9,10 +9,12 @@
 #ifndef compression_method_hpp
 #define compression_method_hpp
 
-#include <stdio.h>
-#include "exportable.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+using namespace std;
 
-class CompressionMethod: public Exportable {
+class CompressionMethod {
 public:
 	enum Method {
 		Null = 0, NONE = 255

@@ -67,7 +67,7 @@ void Connection::send(vector<uint8_t> request) {
 				//wait for error until here
 				this->activatingConnection = this->subConnections[i];
 				break;
-			} catch (Err err) {
+			} catch (Err& err) {
 			}
 		}
 	}

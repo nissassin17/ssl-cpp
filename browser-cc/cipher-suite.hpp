@@ -13,7 +13,7 @@
 #include "exportable.hpp"
 #include "cipher.hpp"
 #include "mac.hpp"
-class CipherSuite: public Exportable {
+class CipherSuite {
 public:
 	CipherSuite(vector<uint8_t> &data, size_t offset = 0);
 	size_t size();

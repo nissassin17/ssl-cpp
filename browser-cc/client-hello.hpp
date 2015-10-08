@@ -18,7 +18,7 @@
 #include "compression-method.hpp"
 #include "extension.hpp"
 
-class ClientHello: public Exportable {
+class ClientHello {
 public:
 
 private:

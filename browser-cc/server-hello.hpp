@@ -19,12 +19,12 @@
 #include "extension.hpp"
 #include "exportable.hpp"
 
-class ServerHello: public Exportable {
+class ServerHello : public Exportable {
 public:
 	ServerHello(vector<uint8_t> &data, size_t offset = 0);
 	size_t size();
 	CipherSuite *getCipherSuite();
-	~ServerHello();
+	virtual ~ServerHello();
 private:
 	ProtocolVersion *protocolVersion;
 	Random *random;

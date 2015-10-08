@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "exportable.hpp"
 
-class SessionID: public Exportable {
+class SessionID {
 public:
 	vector<uint8_t> toData();
 	SessionID();

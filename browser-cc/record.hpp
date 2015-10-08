@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 
-class Record: public Exportable {
+class Record {
 public:
 	enum ContentType {
 		CHANGE_CIPHER_SPEC = 20,
@@ -26,7 +26,7 @@ public:
 		NONE = 24
 	};
 	Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, void *arg =
-			NULL, void *arg2 = NULL);
+	NULL, void *arg2 = NULL);
 	Record(ContentType type);
 	Record(vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
 	vector<uint8_t> toData();

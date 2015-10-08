@@ -18,6 +18,7 @@ class Exportable {
 public:
 	virtual vector<uint8_t> toData();
 	virtual size_t size();
+	virtual ~Exportable();
 };
 
 #endif /* exportable_hpp */

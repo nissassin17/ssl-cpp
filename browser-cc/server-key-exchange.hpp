@@ -16,12 +16,12 @@
 #include "digitally-signed.hpp"
 #include "cipher-suite.hpp"
 
-class ServerKeyExchange: public Exportable {
+class ServerKeyExchange : public Exportable {
 public:
 	ServerKeyExchange(CipherSuite *cipherSuite, vector<uint8_t> &data,
 			size_t offset = 0);
 	size_t size();
-	~ServerKeyExchange();
+	virtual ~ServerKeyExchange();
 
 private:
 	CipherSuite *cipherSuite = NULL;

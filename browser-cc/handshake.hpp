@@ -20,7 +20,7 @@
 #include "finished.hpp"
 #include "client-key-exchange.hpp"
 
-class Handshake: public Exportable {
+class Handshake {
 public:
 	enum HandshakeType {
 		HELLO_REQUEST = 0,
