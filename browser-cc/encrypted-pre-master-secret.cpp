@@ -7,7 +7,9 @@
 //
 
 #include "encrypted-pre-master-secret.hpp"
-#include <iostream>
+
+#include "pre-master-secret.hpp"
+#include "util.hpp"
 
 EncryptedPreMasterSecret::EncryptedPreMasterSecret(CipherSuite *cipherSuite,
 		ASN1Cert *asn1Cert) :

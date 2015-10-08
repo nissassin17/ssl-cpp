@@ -7,9 +7,10 @@
 //
 
 #include "cipher-suite.hpp"
-#include "util.hpp"
-#include "mac.hpp"
+
 #include "cipher.hpp"
+#include "mac.hpp"
+#include "util.hpp"
 
 CipherSuite::CipherSuite(CipherSuiteType type) {
 	setType(type);

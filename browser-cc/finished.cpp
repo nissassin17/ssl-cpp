@@ -7,6 +7,7 @@
 //
 
 #include "finished.hpp"
+using namespace std;
 
 const string Finished::CLIENT_STRING = "client finished";
 const string Finished::SERVER_STRING = "server finished";

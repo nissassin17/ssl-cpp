@@ -7,6 +7,7 @@
 //
 
 #include "extension.hpp"
+
 #include "util.hpp"
 
 vector<uint8_t> Extension::toData() {

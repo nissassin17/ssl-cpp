@@ -7,6 +7,10 @@
 //
 
 #include "client-hello.hpp"
+
+#include "protocol-version.hpp"
+#include "random.hpp"
+#include "session-id.hpp"
 #include "util.hpp"
 
 ClientHello::~ClientHello() {

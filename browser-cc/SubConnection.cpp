@@ -7,9 +7,14 @@
 //
 
 #include "SubConnection.hpp"
-#include "err.hpp"
 
-#include <errno.h>
+#include <sys/_endian.h>
+#include <sys/_types/_ssize_t.h>
+#include <sys/errno.h>
+#include <sys/socket.h>
+#include <string>
+
+#include "err.hpp"
 
 extern int errno;
 

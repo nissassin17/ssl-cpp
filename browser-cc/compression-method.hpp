@@ -12,6 +12,7 @@
 #include <sys/_types/_size_t.h>
 #include <cstdint>
 #include <vector>
+
 using namespace std;
 
 class CompressionMethod {

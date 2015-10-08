@@ -9,13 +9,11 @@
 #ifndef SubConnection_hpp
 #define SubConnection_hpp
 
-#include <stdio.h>
-#include <string>
-#include <arpa/inet.h>
-#include <sys/socket.h>
-#include <netdb.h>
-#include <unistd.h>
+#include <cstdint>
+#include <iostream>
 #include <vector>
+
+struct sockaddr_in;
 
 using namespace std;
 

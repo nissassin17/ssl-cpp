@@ -9,11 +9,13 @@
 #ifndef server_helllo_done_hpp
 #define server_helllo_done_hpp
 
-#include <stdio.h>
-#include "exportable.hpp"
-#include "util.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
 
-class ServerHelloDone  : public Exportable {
+#include "exportable.hpp"
+
+class ServerHelloDone: public Exportable {
 public:
 	ServerHelloDone(vector<uint8_t> &data, size_t offset = 0);
 	size_t size();

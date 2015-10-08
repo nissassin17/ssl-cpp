@@ -10,15 +10,18 @@
 #define handshake_hpp
 
 #include <stdio.h>
-#include "exportable.hpp"
-#include "client-hello.hpp"
-#include "server-hello.hpp"
-#include "certificate.hpp"
-#include "server-key-exchange.hpp"
-#include "server-hello-done.hpp"
-#include "certificate-request.hpp"
-#include "finished.hpp"
-#include "client-key-exchange.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+
+class Certificate;
+class CertificateRequest;
+class ClientHello;
+class ClientKeyExchange;
+class Finished;
+class ServerHello;
+class ServerHelloDone;
+class ServerKeyExchange;
+using namespace std;
 
 class Handshake {
 public:

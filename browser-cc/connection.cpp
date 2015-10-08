@@ -7,6 +7,14 @@
 //
 
 #include "connection.hpp"
+
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <cstring>
+#include <string>
+
 #include "err.hpp"
 
 using namespace std;

@@ -9,14 +9,17 @@
 #ifndef client_hello_hpp
 #define client_hello_hpp
 
-#include <stdio.h>
-#include "exportable.hpp"
-#include "protocol-version.hpp"
-#include "random.hpp"
-#include "session-id.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+
 #include "cipher-suite.hpp"
 #include "compression-method.hpp"
 #include "extension.hpp"
+
+class ProtocolVersion;
+class Random;
+class SessionID;
 
 class ClientHello {
 public:

@@ -7,6 +7,7 @@
 //
 
 #include "session-id.hpp"
+
 #include "util.hpp"
 
 SessionID::SessionID() {

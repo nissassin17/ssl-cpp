@@ -9,12 +9,18 @@
 #ifndef record_hpp
 #define record_hpp
 
-#include "protocol-version.hpp"
-#include "handshake.hpp"
-#include "alert.hpp"
-#include "change-cipher-spec.hpp"
-
 #include <stdio.h>
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+
+using namespace std;
+
+#include "handshake.hpp"
+
+class Alert;
+class ChangeCipherSpec;
+class ProtocolVersion;
 
 class Record {
 public:

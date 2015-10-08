@@ -6,9 +6,12 @@
 //  Copyright © 2015 Nissassin Seventeen. All rights reserved.
 //
 
+#include <cstdlib>
 #include <iostream>
+
 #include "browser.hpp"
 #include "err.hpp"
+
 using namespace std;
 
 int main(int argc, const char * argv[]) {

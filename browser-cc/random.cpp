@@ -7,9 +7,13 @@
 //
 
 #include "random.hpp"
-#include "util.hpp"
-#include <ctime>
+
+#include <sys/_types/_time_t.h>
 #include <cstdlib>
+#include <ctime>
+#include <initializer_list>
+
+#include "util.hpp"
 
 Random::Random() {
 	time_t t;

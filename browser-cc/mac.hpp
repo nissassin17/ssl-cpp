@@ -9,8 +9,6 @@
 #ifndef mac_hpp
 #define mac_hpp
 
-#include <stdio.h>
-
 class MAC {
 public:
 	enum MACType {

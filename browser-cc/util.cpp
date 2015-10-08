@@ -7,8 +7,12 @@
 //
 
 #include "util.hpp"
-#include <iostream>
-#include <fstream>
+
+#include <cstdio>
+#include <initializer_list>
+#include <iterator>
+#include <string>
+
 using namespace std;
 
 string Util::readableForm(vector<uint8_t> &data) {

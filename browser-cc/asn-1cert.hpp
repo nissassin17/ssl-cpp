@@ -9,9 +9,11 @@
 #ifndef asn_1cert_hpp
 #define asn_1cert_hpp
 
-#include <stdio.h>
-#include "util.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
 
+using namespace std;
 class ASN1Cert {
 public:
 	ASN1Cert(vector<uint8_t> &vector, size_t offset = 0);

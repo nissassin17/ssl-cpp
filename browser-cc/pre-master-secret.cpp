@@ -7,8 +7,13 @@
 //
 
 #include "pre-master-secret.hpp"
-#include <ctime>
+
+#include <sys/_types/_time_t.h>
 #include <cstdlib>
+#include <ctime>
+
+#include "protocol-version.hpp"
+#include "util.hpp"
 
 PreMasterSecret::PreMasterSecret() :
 		clientVersion(new ProtocolVersion()) {

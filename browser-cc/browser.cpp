@@ -7,11 +7,16 @@
 //
 
 #include "browser.hpp"
-#include "strutil.hpp"
-#include "url.hpp"
-#include "sslwrapper.hpp"
-#include <string>
+
+#include <cstdint>
 #include <iostream>
+#include <string>
+#include <vector>
+
+#include "strutil.hpp"
+#include "SslWrapper.hpp"
+#include "url.hpp"
+
 using namespace std;
 
 void Browser::run(int argc, const char * argv[]) {

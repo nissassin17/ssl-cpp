@@ -9,10 +9,11 @@
 #ifndef digitally_signed_hpp
 #define digitally_signed_hpp
 
-#include <stdio.h>
-#include "util.hpp"
-#include "exportable.hpp"
-#include "server-dh-params.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+using namespace std;
+class ServerDHParams;
 
 class DigitallySigned {
 public:

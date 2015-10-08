@@ -8,6 +8,8 @@
 
 #include "certificate.hpp"
 
+#include "util.hpp"
+
 Certificate::Certificate(vector<uint8_t> &data, size_t offset) {
 	uint32_t length = Util::takeData24(data, offset);
 	offset += 3;

@@ -9,7 +9,7 @@
 #ifndef cipher_hpp
 #define cipher_hpp
 
-#include <stdio.h>
+#include <sys/_types/_size_t.h>
 
 class Cipher {
 public:

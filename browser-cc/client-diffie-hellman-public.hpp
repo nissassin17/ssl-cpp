@@ -10,9 +10,13 @@
 #define client_diffie_hellman_public_hpp
 
 #include <stdio.h>
-#include "util.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+
 #include "exportable.hpp"
-#include "cipher-suite.hpp"
+
+class CipherSuite;
 
 class ClientDiffieHellmanPublic: public Exportable {
 

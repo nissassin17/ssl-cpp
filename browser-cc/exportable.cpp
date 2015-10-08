@@ -8,6 +8,8 @@
 
 #include "exportable.hpp"
 
+#include <stdexcept>
+
 size_t Exportable::size() {
 	throw std::logic_error("Cannot call Exportable::size()");
 }

@@ -9,9 +9,10 @@
 #ifndef exportable_hpp
 #define exportable_hpp
 
-#include <stdio.h>
+#include <sys/_types/_size_t.h>
 #include <cstdint>
 #include <vector>
+
 using namespace std;
 
 class Exportable {

@@ -7,7 +7,13 @@
 //
 
 #include "url.hpp"
+
+#include <sys/_types/_size_t.h>
 #include <algorithm>
+#include <cctype>
+#include <iterator>
+#include <string>
+
 #include "err.hpp"
 
 vector<uint8_t> Url::httpGetRequest() {

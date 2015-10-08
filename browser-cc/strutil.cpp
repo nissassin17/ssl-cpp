@@ -7,11 +7,11 @@
 //
 
 #include "strutil.hpp"
-#include "setting.hpp"
+
+#include <string>
+
 #include "err.hpp"
 
-#include <cstdlib>
-#include <iostream>
 using namespace std;
 
 string StrUtil::getLink(int argc, const char * argv[]) {

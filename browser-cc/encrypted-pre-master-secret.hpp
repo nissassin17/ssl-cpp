@@ -10,11 +10,15 @@
 #define encrypted_pre_master_secret_hpp
 
 #include <stdio.h>
-#include "util.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+
 #include "exportable.hpp"
-#include "pre-master-secret.hpp"
-#include "cipher-suite.hpp"
-#include "asn-1cert.hpp"
+
+class ASN1Cert;
+class CipherSuite;
+class PreMasterSecret;
 
 class EncryptedPreMasterSecret: public Exportable {
 

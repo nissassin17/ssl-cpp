@@ -9,11 +9,13 @@
 #ifndef alert_hpp
 #define alert_hpp
 
-#include <stdio.h>
-#include "util.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+
 #include "exportable.hpp"
 
-class Alert  : public Exportable{
+class Alert: public Exportable {
 public:
 
 	enum AlertLevel {

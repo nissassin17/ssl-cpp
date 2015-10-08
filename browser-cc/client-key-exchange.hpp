@@ -10,11 +10,16 @@
 #define client_key_exchange_hpp
 
 #include <stdio.h>
-#include "util.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+
 #include "exportable.hpp"
-#include "cipher-suite.hpp"
-#include "encrypted-pre-master-secret.hpp"
-#include "client-diffie-hellman-public.hpp"
+
+class ASN1Cert;
+class CipherSuite;
+class ClientDiffieHellmanPublic;
+class EncryptedPreMasterSecret;
 
 class ClientKeyExchange: public Exportable {
 public:

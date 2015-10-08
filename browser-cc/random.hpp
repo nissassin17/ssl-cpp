@@ -9,8 +9,11 @@
 #ifndef random_hpp
 #define random_hpp
 
-#include <stdio.h>
-#include "exportable.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+
+using namespace std;
 
 class Random {
 public:

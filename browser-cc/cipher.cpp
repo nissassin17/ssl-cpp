@@ -7,6 +7,7 @@
 //
 
 #include "cipher.hpp"
+
 Cipher::Format Cipher::getFormat() {
 	return format;
 }

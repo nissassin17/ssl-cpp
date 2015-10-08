@@ -8,6 +8,8 @@
 
 #include "server-dh-params.hpp"
 
+#include "util.hpp"
+
 ServerDHParams::ServerDHParams(vector<uint8_t> &data, size_t offset) {
 	uint16_t length = Util::takeData16(data, offset);
 	offset += 2;

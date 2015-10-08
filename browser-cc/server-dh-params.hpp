@@ -9,9 +9,10 @@
 #ifndef server_dh_params_hpp
 #define server_dh_params_hpp
 
-#include <stdio.h>
-#include "util.hpp"
-#include "exportable.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+using namespace std;
 
 class ServerDHParams {
 public:

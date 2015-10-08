@@ -8,6 +8,8 @@
 
 #include "asn-1cert.hpp"
 
+#include "util.hpp"
+
 ASN1Cert::ASN1Cert(vector<uint8_t> &data, size_t offset) {
 	uint32_t length = Util::takeData24(data, offset);
 	offset += 3;

@@ -9,7 +9,7 @@
 #include "compression-method.hpp"
 
 vector<uint8_t> CompressionMethod::toData() {
-	return vector < uint8_t > ( {(uint8_t) this->type});
+	return vector<uint8_t>( { (uint8_t) this->type });
 }
 
 CompressionMethod::CompressionMethod(Method type) :

@@ -9,9 +9,10 @@
 #ifndef url_hpp
 #define url_hpp
 
-#include <stdio.h>
+#include <cstdint>
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 class Url {

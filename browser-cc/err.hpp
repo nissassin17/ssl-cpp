@@ -9,8 +9,8 @@
 #ifndef err_hpp
 #define err_hpp
 
-#include <stdio.h>
-#include <string>
+#include <iostream>
+#include <stdexcept>
 
 using namespace std;
 

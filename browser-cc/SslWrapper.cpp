@@ -7,6 +7,12 @@
 //
 
 #include "SslWrapper.hpp"
+
+#include <sys/_types/_size_t.h>
+#include <iostream>
+
+#include "connection.hpp"
+#include "handshake.hpp"
 #include "record.hpp"
 #include "util.hpp"
 

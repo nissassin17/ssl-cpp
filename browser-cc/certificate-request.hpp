@@ -9,8 +9,10 @@
 #ifndef certificate_request_hpp
 #define certificate_request_hpp
 
-#include <stdio.h>
-#include "util.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+
 #include "exportable.hpp"
 
 class CertificateRequest: public Exportable {

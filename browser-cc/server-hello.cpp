@@ -8,6 +8,13 @@
 
 #include "server-hello.hpp"
 
+#include "cipher-suite.hpp"
+#include "compression-method.hpp"
+#include "protocol-version.hpp"
+#include "random.hpp"
+#include "session-id.hpp"
+#include "util.hpp"
+
 CipherSuite *ServerHello::getCipherSuite() {
 	return this->cipherSuite;
 }

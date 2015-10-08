@@ -9,10 +9,12 @@
 #ifndef SslWrapper_hpp
 #define SslWrapper_hpp
 
-#include <stdio.h>
+#include <cstdint>
 #include <vector>
+
 #include "url.hpp"
-#include "connection.hpp"
+
+class Connection;
 
 using namespace std;
 

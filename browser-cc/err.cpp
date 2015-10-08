@@ -7,7 +7,9 @@
 //
 
 #include "err.hpp"
+
 #include <cstdarg>
+#include <string>
 
 bool Err::isSuccess() {
 	return this->errType == Success;

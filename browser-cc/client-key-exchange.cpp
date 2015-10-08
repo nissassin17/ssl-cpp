@@ -8,6 +8,10 @@
 
 #include "client-key-exchange.hpp"
 
+#include "cipher-suite.hpp"
+#include "client-diffie-hellman-public.hpp"
+#include "encrypted-pre-master-secret.hpp"
+
 ClientKeyExchange::ClientKeyExchange(CipherSuite *cipherSuite,
 		ASN1Cert *asn1Cert) :
 		cipherSuite(cipherSuite) {

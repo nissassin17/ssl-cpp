@@ -10,9 +10,13 @@
 #define cipher_suite_hpp
 
 #include <stdio.h>
-#include "exportable.hpp"
-#include "cipher.hpp"
-#include "mac.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+using namespace std;
+class Cipher;
+class MAC;
+
 class CipherSuite {
 public:
 	CipherSuite(vector<uint8_t> &data, size_t offset = 0);

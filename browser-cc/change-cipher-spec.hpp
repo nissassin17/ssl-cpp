@@ -9,8 +9,10 @@
 #ifndef change_cipher_spec_hpp
 #define change_cipher_spec_hpp
 
-#include <stdio.h>
-#include "util.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+
 #include "exportable.hpp"
 
 class ChangeCipherSpec: public Exportable {

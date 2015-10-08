@@ -9,8 +9,12 @@
 #ifndef connection_hpp
 #define connection_hpp
 
-#include "SubConnection.hpp"
+#include <cstdint>
+#include <iostream>
 #include <vector>
+
+#include "SubConnection.hpp"
+
 using namespace std;
 
 class Connection {

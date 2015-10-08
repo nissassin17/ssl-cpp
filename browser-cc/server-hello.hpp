@@ -9,17 +9,20 @@
 #ifndef ServerHello_hpp
 #define ServerHello_hpp
 
-#include <stdio.h>
-#include "util.hpp"
-#include "random.hpp"
-#include "protocol-version.hpp"
-#include "session-id.hpp"
-#include "cipher-suite.hpp"
-#include "compression-method.hpp"
-#include "extension.hpp"
-#include "exportable.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
 
-class ServerHello : public Exportable {
+#include "exportable.hpp"
+#include "extension.hpp"
+
+class CipherSuite;
+class CompressionMethod;
+class ProtocolVersion;
+class Random;
+class SessionID;
+
+class ServerHello: public Exportable {
 public:
 	ServerHello(vector<uint8_t> &data, size_t offset = 0);
 	size_t size();

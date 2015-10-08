@@ -7,6 +7,10 @@
 //
 
 #include "digitally-signed.hpp"
+
+#include "server-dh-params.hpp"
+#include "util.hpp"
+
 DigitallySigned::DigitallySigned(vector<uint8_t> &data, size_t offset) {
 
 	vector<uint8_t> tmp;

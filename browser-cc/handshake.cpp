@@ -7,9 +7,21 @@
 //
 
 #include "handshake.hpp"
-#include <iostream>
-#include "util.hpp"
+
+#include <iterator>
+#include <vector>
+
+#include "certificate.hpp"
+#include "certificate-request.hpp"
+#include "client-hello.hpp"
+#include "client-key-exchange.hpp"
 #include "err.hpp"
+#include "finished.hpp"
+#include "server-hello.hpp"
+#include "server-hello-done.hpp"
+#include "server-key-exchange.hpp"
+#include "util.hpp"
+
 using namespace std;
 
 Handshake::Handshake(HandshakeType type, void *arg, void *arg2) :

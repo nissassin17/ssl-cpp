@@ -10,13 +10,17 @@
 #define server_key_exchange_hpp
 
 #include <stdio.h>
-#include "exportable.hpp"
-#include "util.hpp"
-#include "server-dh-params.hpp"
-#include "digitally-signed.hpp"
-#include "cipher-suite.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
 
-class ServerKeyExchange : public Exportable {
+#include "exportable.hpp"
+
+class CipherSuite;
+class DigitallySigned;
+class ServerDHParams;
+
+class ServerKeyExchange: public Exportable {
 public:
 	ServerKeyExchange(CipherSuite *cipherSuite, vector<uint8_t> &data,
 			size_t offset = 0);

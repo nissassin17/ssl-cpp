@@ -7,8 +7,14 @@
 //
 
 #include "record.hpp"
-#include "util.hpp"
+
+#include <iterator>
+
+#include "alert.hpp"
+#include "change-cipher-spec.hpp"
 #include "err.hpp"
+#include "protocol-version.hpp"
+#include "util.hpp"
 
 Record::Record(ContentType type) :
 		type(type), isCompressed(false) {

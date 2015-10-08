@@ -9,8 +9,10 @@
 #ifndef extension_hpp
 #define extension_hpp
 
-#include <stdio.h>
-#include "exportable.hpp"
+#include <sys/_types/_size_t.h>
+#include <cstdint>
+#include <vector>
+using namespace std;
 
 class Extension {
 public:

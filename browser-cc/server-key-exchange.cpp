@@ -8,6 +8,10 @@
 
 #include "server-key-exchange.hpp"
 
+#include "cipher-suite.hpp"
+#include "digitally-signed.hpp"
+#include "server-dh-params.hpp"
+
 ServerKeyExchange::ServerKeyExchange(CipherSuite *cipherSuite,
 		vector<uint8_t> &data, size_t offset) :
 		cipherSuite(cipherSuite) {
