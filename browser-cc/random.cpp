@@ -29,11 +29,11 @@ Random::Random() {
 	}
 }
 
-size_t Random::size() {
+size_t Random::size() const{
 	return 4 + RANDOM_BYTES_NUM * 1;
 }
 
-Random::Random(vector<uint8_t> &data, size_t offset) {
+Random::Random(const vector<uint8_t> &data, size_t offset){
 	this->gmtUnixTime = Util::takeData32(data, offset);
 	offset += 4;
 
@@ -41,7 +41,7 @@ Random::Random(vector<uint8_t> &data, size_t offset) {
 		this->randomBytes[i] = data[offset + i];
 }
 
-vector<uint8_t> Random::toData() {
+vector<uint8_t> Random::toData() const{
 	vector<uint8_t> data;
 	Util::addData(data, (uint32_t) this->gmtUnixTime);
 	data.insert(data.end(), this->randomBytes,

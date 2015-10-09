@@ -17,14 +17,16 @@ using namespace std;
 
 class Url {
 public:
-	Url(string link);
-	string getHostname();
-	string getRequest();
-	bool getIsSsl();
+	Url(const string& link);
+	const string &getHostname() const;
+	const string &getRequest() const;
+
 	vector<uint8_t> httpGetRequest();
+	bool isUseSsl() const;
+
 private:
 	string hostname, request;
-	bool isSsl;
+	bool useSsl;
 };
 
 #endif /* url_hpp */

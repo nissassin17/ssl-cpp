@@ -12,18 +12,19 @@
 #include <sys/_types/_size_t.h>
 #include <cstdint>
 #include <vector>
+#include "exportable.hpp"
 
 using namespace std;
 
-class CompressionMethod {
+class CompressionMethod : public Exportable{
 public:
 	enum Method {
 		Null = 0, NONE = 255
 	};
-	vector<uint8_t> toData();
+	virtual vector<uint8_t> toData() const;
 	CompressionMethod(Method type = Null);
-	size_t size();
-	CompressionMethod(vector<uint8_t> &data, size_t offset = 0);
+	virtual size_t size() const;
+	CompressionMethod(const vector<uint8_t> &data, size_t offset = 0);
 private:
 	Method type;
 };

@@ -12,9 +12,11 @@
 #include "client-diffie-hellman-public.hpp"
 #include "encrypted-pre-master-secret.hpp"
 
-ClientKeyExchange::ClientKeyExchange(CipherSuite *cipherSuite,
-		ASN1Cert *asn1Cert) :
-		cipherSuite(cipherSuite) {
+ClientKeyExchange::ClientKeyExchange(const CipherSuite *cipherSuite,
+		const ASN1Cert *asn1Cert) :
+		cipherSuite(cipherSuite),
+		encryptedPreMasterSecret(NULL),
+		clientDiffieHellmanPublic(NULL){
 
 	switch (cipherSuite->getKeyExchange()) {
 	case CipherSuite::RSA:
@@ -40,7 +42,7 @@ ClientKeyExchange::~ClientKeyExchange() {
 	delete encryptedPreMasterSecret;
 }
 
-size_t ClientKeyExchange::size() {
+size_t ClientKeyExchange::size() const{
 	switch (cipherSuite->getKeyExchange()) {
 	case CipherSuite::RSA:
 		return encryptedPreMasterSecret->size();
@@ -59,7 +61,7 @@ size_t ClientKeyExchange::size() {
 	return 0;
 }
 
-vector<uint8_t> ClientKeyExchange::toData() {
+vector<uint8_t> ClientKeyExchange::toData() const{
 	switch (cipherSuite->getKeyExchange()) {
 	case CipherSuite::RSA:
 		return encryptedPreMasterSecret->toData();

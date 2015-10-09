@@ -17,8 +17,8 @@ using namespace std;
 
 class Exportable {
 public:
-	virtual vector<uint8_t> toData();
-	virtual size_t size();
+	virtual vector<uint8_t> toData() const;
+	virtual size_t size() const;
 	virtual ~Exportable();
 };
 

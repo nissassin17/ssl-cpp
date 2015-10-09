@@ -12,15 +12,16 @@
 #include <sys/_types/_size_t.h>
 #include <cstdint>
 #include <vector>
+#include "exportable.hpp"
 
 using namespace std;
 
-class Random {
+class Random : public Exportable{
 public:
 	Random();
-	vector<uint8_t> toData();
-	size_t size();
-	Random(vector<uint8_t> &data, size_t offset = 0);
+	vector<uint8_t> toData() const ;
+	size_t size() const;
+	Random(const vector<uint8_t> &data, size_t offset = 0);
 private:
 	static const int RANDOM_BYTES_NUM = 28;
 	uint32_t gmtUnixTime;

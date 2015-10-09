@@ -51,8 +51,8 @@ public:
 		DESCRIPTION_NONE = 255
 	};
 
-	size_t size();
-	Alert(vector<uint8_t> &data, size_t offset = 0);
+	virtual size_t size() const;
+	Alert(const vector<uint8_t> &data, size_t offset = 0);
 
 private:
 	AlertLevel level;

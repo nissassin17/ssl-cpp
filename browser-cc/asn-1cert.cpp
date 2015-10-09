@@ -10,7 +10,7 @@
 
 #include "util.hpp"
 
-ASN1Cert::ASN1Cert(vector<uint8_t> &data, size_t offset) {
+ASN1Cert::ASN1Cert(const vector<uint8_t> &data, size_t offset) {
 	uint32_t length = Util::takeData24(data, offset);
 	offset += 3;
 
@@ -20,13 +20,13 @@ ASN1Cert::ASN1Cert(vector<uint8_t> &data, size_t offset) {
 	//Util::writeToFile("/Users/nissassin17/Desktop/tmp.cert", this->data);
 }
 
-vector<uint8_t> ASN1Cert::toData() {
+vector<uint8_t> ASN1Cert::toData()  const{
 	vector<uint8_t> data;
 	Util::addData24(data, (uint32_t) this->data.size());
 	Util::addData(data, this->data);
 	return data;
 }
 
-size_t ASN1Cert::size() {
+size_t ASN1Cert::size() const{
 	return 3 + this->data.size();
 }

@@ -12,19 +12,20 @@
 #include <sys/_types/_size_t.h>
 #include <cstdint>
 #include <vector>
+#include "exportable.hpp"
 
 #define SSL_VERSION_MAJOR 3
 #define SSL_VERSION_MINOR 3
 
 using namespace std;
 
-class ProtocolVersion {
+class ProtocolVersion : Exportable {
 public:
 	ProtocolVersion(uint8_t major = SSL_VERSION_MAJOR, uint8_t minor =
 	SSL_VERSION_MINOR);
-	ProtocolVersion(vector<uint8_t> &data, size_t offset = 0);
-	vector<uint8_t> toData();
-	size_t size();
+	ProtocolVersion(const vector<uint8_t> &data, size_t offset = 0);
+	virtual vector<uint8_t> toData() const;
+	virtual size_t size() const;
 private:
 	uint8_t major, minor;
 };

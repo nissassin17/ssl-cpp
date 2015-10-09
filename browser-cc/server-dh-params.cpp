@@ -10,7 +10,7 @@
 
 #include "util.hpp"
 
-ServerDHParams::ServerDHParams(vector<uint8_t> &data, size_t offset) {
+ServerDHParams::ServerDHParams(const vector<uint8_t> &data, size_t offset) {
 	uint16_t length = Util::takeData16(data, offset);
 	offset += 2;
 
@@ -29,7 +29,7 @@ ServerDHParams::ServerDHParams(vector<uint8_t> &data, size_t offset) {
 
 }
 
-size_t ServerDHParams::size() {
+size_t ServerDHParams::size() const {
 	size_t result(0);
 	result += 2 + this->dhG.size();
 	result += 2 + this->dhP.size();

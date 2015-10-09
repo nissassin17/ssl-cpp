@@ -12,16 +12,17 @@
 #include <sys/_types/_size_t.h>
 #include <cstdint>
 #include <vector>
+#include "exportable.hpp"
 using namespace std;
 
-class Extension {
+class Extension : Exportable{
 public:
 	enum ExtensionType {
 		SIGNATURE_ALGORITHMS = 13, NONE = 65535
 	};
-	vector<uint8_t> toData();
-	size_t size();
-	Extension(vector<uint8_t> &data, size_t offset = 0);
+	virtual vector<uint8_t> toData() const;
+	virtual size_t size() const;
+	Extension(const vector<uint8_t> &data, size_t offset = 0);
 	Extension(ExtensionType type = NONE);
 
 private:

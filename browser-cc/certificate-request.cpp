@@ -8,7 +8,7 @@
 
 #include "certificate-request.hpp"
 
-CertificateRequest::CertificateRequest(vector<uint8_t> &data, size_t offset) {
+CertificateRequest::CertificateRequest(const vector<uint8_t> &data, size_t offset) {
 
 }
 
@@ -16,7 +16,7 @@ CertificateRequest::~CertificateRequest() {
 
 }
 
-size_t CertificateRequest::size() {
+size_t CertificateRequest::size()  const{
 	return 0;
 }
 

@@ -23,14 +23,14 @@ class PreMasterSecret;
 class EncryptedPreMasterSecret: public Exportable {
 
 public:
-	EncryptedPreMasterSecret(CipherSuite *cipherSuite, ASN1Cert *asn1Cert);
-	size_t size();
-	vector<uint8_t> toData();
+	EncryptedPreMasterSecret(const CipherSuite *cipherSuite, const ASN1Cert *asn1Cert);
+	virtual size_t size() const;
+	virtual vector<uint8_t> toData()const;
 	~EncryptedPreMasterSecret();
 private:
-	CipherSuite *cipherSuite = NULL;
-	PreMasterSecret *preMasterSecret = NULL;
-	ASN1Cert *asn1Cert = NULL;
+	CipherSuite *cipherSuite;
+	PreMasterSecret *preMasterSecret;
+	ASN1Cert *asn1Cert;
 };
 
 #endif /* encrypted_pre_master_secret_hpp */

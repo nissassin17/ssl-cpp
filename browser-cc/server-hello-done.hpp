@@ -17,8 +17,8 @@
 
 class ServerHelloDone: public Exportable {
 public:
-	ServerHelloDone(vector<uint8_t> &data, size_t offset = 0);
-	size_t size();
+	ServerHelloDone(const vector<uint8_t> &data, size_t offset = 0);
+	virtual size_t size() const;
 	virtual ~ServerHelloDone();
 };
 

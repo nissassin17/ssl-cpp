@@ -8,18 +8,18 @@
 
 #include "change-cipher-spec.hpp"
 
-ChangeCipherSpec::ChangeCipherSpec() {
-	type = NONE;
-}
+ChangeCipherSpec::ChangeCipherSpec() :
+type(NONE){
+	}
 
 ChangeCipherSpec::~ChangeCipherSpec() {
 
 }
 
-size_t ChangeCipherSpec::size() {
+size_t ChangeCipherSpec::size()  const{
 	return 1;
 }
 
-vector<uint8_t> ChangeCipherSpec::toData() {
+vector<uint8_t> ChangeCipherSpec::toData() const{
 	return vector<uint8_t>( { (uint8_t) type });
 }

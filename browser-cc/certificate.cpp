@@ -10,7 +10,7 @@
 
 #include "util.hpp"
 
-Certificate::Certificate(vector<uint8_t> &data, size_t offset) {
+Certificate::Certificate(const vector<uint8_t> &data, size_t offset) {
 	uint32_t length = Util::takeData24(data, offset);
 	offset += 3;
 
@@ -23,11 +23,11 @@ Certificate::Certificate(vector<uint8_t> &data, size_t offset) {
 	}
 }
 
-vector<ASN1Cert*> Certificate::getCertificateList() {
+vector<const ASN1Cert*> Certificate::getCertificateList() const{
 	return certificateList;
 }
 
-size_t Certificate::size() {
+size_t Certificate::size() const {
 	size_t result(3);
 	for (int i = 0; i < this->certificateList.size(); i++)
 		result += this->certificateList[i]->size();

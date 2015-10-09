@@ -8,7 +8,7 @@
 
 #include "compression-method.hpp"
 
-vector<uint8_t> CompressionMethod::toData() {
+vector<uint8_t> CompressionMethod::toData() const{
 	return vector<uint8_t>( { (uint8_t) this->type });
 }
 
@@ -17,10 +17,10 @@ CompressionMethod::CompressionMethod(Method type) :
 
 }
 
-size_t CompressionMethod::size() {
+size_t CompressionMethod::size() const{
 	return 1;
 }
 
-CompressionMethod::CompressionMethod(vector<uint8_t> &data, size_t offset) {
+CompressionMethod::CompressionMethod(const vector<uint8_t> &data, size_t offset) {
 	this->type = (Method) data[offset];
 }

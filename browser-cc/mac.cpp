@@ -8,14 +8,14 @@
 
 #include "mac.hpp"
 
-int MAC::getMacLength() {
+int MAC::getMacLength() const{
 	return macLength;
 }
-int MAC::getMacKeyLength() {
+int MAC::getMacKeyLength() const{
 	return macKeyLength;
 }
 ;
-MAC::Algorithm MAC::getAlgorithm() {
+MAC::Algorithm MAC::getAlgorithm() const{
 	return algorithm;
 }
 

@@ -11,7 +11,7 @@
 #include "server-dh-params.hpp"
 #include "util.hpp"
 
-DigitallySigned::DigitallySigned(vector<uint8_t> &data, size_t offset) {
+DigitallySigned::DigitallySigned(const vector<uint8_t> &data, size_t offset) {
 
 	vector<uint8_t> tmp;
 	tmp = Util::takeData(data, 32, offset);
@@ -32,6 +32,6 @@ DigitallySigned::~DigitallySigned() {
 	delete this->params;
 }
 
-size_t DigitallySigned::size() {
+size_t DigitallySigned::size() const {
 	return 32 + 32 + this->params->size();
 }

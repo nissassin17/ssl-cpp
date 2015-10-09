@@ -19,8 +19,8 @@ class ChangeCipherSpec: public Exportable {
 public:
 	ChangeCipherSpec();
 	~ChangeCipherSpec();
-	size_t size();
-	vector<uint8_t> toData();
+	virtual size_t size() const;
+	virtual vector<uint8_t> toData() const;
 private:
 	enum ChangeCipherSpecType {
 		CHANGE_CIPHER_SPEC = 1, NONE = 255

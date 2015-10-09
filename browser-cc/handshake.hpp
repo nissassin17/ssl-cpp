@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <sys/_types/_size_t.h>
 #include <cstdint>
+#include "exportable.hpp"
+#include "certificate.hpp"
 
 class Certificate;
 class CertificateRequest;
@@ -23,7 +25,7 @@ class ServerHelloDone;
 class ServerKeyExchange;
 using namespace std;
 
-class Handshake {
+class Handshake : public Exportable {
 public:
 	enum HandshakeType {
 		HELLO_REQUEST = 0,
@@ -39,26 +41,26 @@ public:
 		NONE = 255
 	};
 
-	vector<uint8_t> toData();
+	virtual vector<uint8_t> toData() const;
 	Handshake(HandshakeType type, void *arg = NULL, void *arg2 = NULL);
-	Handshake(vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
-	size_t size();
+	Handshake(const vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
+	size_t size() const;
 	~Handshake();
-	ServerHello *getServerHello();
-	HandshakeType getType();
-	Certificate *getCertificate();
+	const ServerHello* getServerHello()const;
+	const HandshakeType getType() const;
+	const Certificate* getCertificate() const;
+	const CertificateRequest* getCertificateRequest() const;
+	const ClientHello* getClientHello() const;
+	const ClientKeyExchange* getClientKeyExchange() const;
+	const Finished* getFinished() const;
+	const ServerHelloDone* getServerHelloDone() const;
+	const ServerKeyExchange* getServerKeyExchange() const;
 
 private:
 
-	ClientKeyExchange *clientKeyExchange = NULL;
+
 	HandshakeType type;
-	Finished *finished = NULL;
-	ClientHello *clientHello = NULL;
-	ServerHello *serverHello = NULL;
-	Certificate *certificate = NULL;
-	ServerKeyExchange *serverKeyExchange = NULL;
-	ServerHelloDone *serverHelloDone = NULL;
-	CertificateRequest *certificateRequest = NULL;
+	Exportable *body;
 };
 
 #endif /* handshake_hpp */

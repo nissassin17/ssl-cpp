@@ -11,11 +11,11 @@
 #include <cstdarg>
 #include <string>
 
-bool Err::isSuccess() {
+bool Err::isSuccess() const{
 	return this->errType == Success;
 }
 
-string Err::what() {
+const string &Err::what() const{
 	return this->description;
 }
 

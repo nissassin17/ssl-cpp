@@ -15,11 +15,11 @@
 #include "session-id.hpp"
 #include "util.hpp"
 
-CipherSuite *ServerHello::getCipherSuite() {
+const CipherSuite *ServerHello::getCipherSuite() const{
 	return this->cipherSuite;
 }
 
-ServerHello::ServerHello(vector<uint8_t> &data, size_t offset) {
+ServerHello::ServerHello(const vector<uint8_t> &data, size_t offset) {
 	this->protocolVersion = new ProtocolVersion(data, offset);
 	offset += this->protocolVersion->size();
 
@@ -59,7 +59,7 @@ ServerHello::~ServerHello() {
 		delete extensions[i];
 }
 
-size_t ServerHello::size() {
+size_t ServerHello::size() const {
 	size_t result(0);
 	result = protocolVersion->size() + random->size() + sessionID->size()
 			+ cipherSuite->size() + compressionMethod->size();

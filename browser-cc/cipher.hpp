@@ -21,10 +21,10 @@ public:
 		STREAM, BLOCK
 	};
 
-	Format getFormat();
-	int getKeyMaterial();
-	size_t getIVSize();
-	size_t getBlockSize();
+	Format getFormat() const;
+	int getKeyMaterial() const;
+	size_t getIVSize() const;
+	size_t getBlockSize() const;
 	Cipher(CipherType type);
 
 private:

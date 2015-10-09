@@ -23,14 +23,14 @@ class EncryptedPreMasterSecret;
 
 class ClientKeyExchange: public Exportable {
 public:
-	ClientKeyExchange(CipherSuite *cipherSuite, ASN1Cert *asn1Cert);
-	vector<uint8_t> toData();
-	size_t size();
+	ClientKeyExchange(const CipherSuite *cipherSuite, const ASN1Cert *asn1Cert);
+	virtual vector<uint8_t> toData()const;
+	virtual size_t size()const;
 	~ClientKeyExchange();
 private:
-	CipherSuite *cipherSuite = NULL;
-	EncryptedPreMasterSecret *encryptedPreMasterSecret = NULL;
-	ClientDiffieHellmanPublic *clientDiffieHellmanPublic = NULL;
+	const CipherSuite *cipherSuite;
+	EncryptedPreMasterSecret *encryptedPreMasterSecret;
+	ClientDiffieHellmanPublic *clientDiffieHellmanPublic;
 };
 
 #endif /* client_key_exchange_hpp */

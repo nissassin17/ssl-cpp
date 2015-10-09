@@ -22,13 +22,13 @@ class ServerDHParams;
 
 class ServerKeyExchange: public Exportable {
 public:
-	ServerKeyExchange(CipherSuite *cipherSuite, vector<uint8_t> &data,
+	ServerKeyExchange(const CipherSuite *cipherSuite,const vector<uint8_t> &data,
 			size_t offset = 0);
-	size_t size();
+	virtual size_t size() const;
 	virtual ~ServerKeyExchange();
 
 private:
-	CipherSuite *cipherSuite = NULL;
+	CipherSuite *cipherSuite;
 	ServerDHParams *params;
 	DigitallySigned *signedParams;
 };

@@ -33,19 +33,19 @@ this->server = {
 
 }
 
-void SubConnection::doConnect() {
+void SubConnection::doConnect() const{
 //try connect
 connect(this->sock, (struct sockaddr*) &server, sizeof(server));
 if (errno < 0)
 	throw Err(Err::CannotConnect, this->ip.c_str());
 }
 
-void SubConnection::doSend(vector<uint8_t> request) {
+void SubConnection::doSend(vector<uint8_t> request) const{
 if (send(this->sock, &request[0], request.size(), 0) < 0)
 	throw Err(Err::CannotSend, this->ip.c_str());
 }
 
-vector<uint8_t> SubConnection::doReceive() {
+vector<uint8_t> SubConnection::doReceive() const{
 vector<uint8_t> result;
 
 do {

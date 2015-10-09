@@ -22,8 +22,8 @@ class PreMasterSecret: public Exportable {
 public:
 	PreMasterSecret();
 	~PreMasterSecret();
-	vector<uint8_t> toData();
-	size_t size();
+	virtual vector<uint8_t> toData()const;
+	virtual size_t size() const;
 private:
 	static const int RANDOM_LENGTH = 46;
 	ProtocolVersion *clientVersion = NULL;

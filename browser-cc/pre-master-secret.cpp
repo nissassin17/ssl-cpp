@@ -26,11 +26,11 @@ PreMasterSecret::~PreMasterSecret() {
 	delete clientVersion;
 }
 
-size_t PreMasterSecret::size() {
+size_t PreMasterSecret::size() const{
 	return clientVersion->size() + RANDOM_LENGTH;
 }
 
-vector<uint8_t> PreMasterSecret::toData() {
+vector<uint8_t> PreMasterSecret::toData() const{
 	vector<uint8_t> data;
 	Util::addData(data, clientVersion->toData());
 	for (int i = 0; i < RANDOM_LENGTH; i++)

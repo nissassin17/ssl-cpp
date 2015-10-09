@@ -30,14 +30,14 @@ Handshake::Handshake(HandshakeType type, void *arg, void *arg2) :
 	Certificate *cert;
 	switch (type) {
 	case CLIENT_HELLO:
-		clientHello = new ClientHello();
+		body = new ClientHello();
 		break;
 
 	case CLIENT_KEY_EXCHANGE:
 		sHello = ((Handshake*) arg)->getServerHello();
 		cert = ((Handshake*) arg2)->getCertificate();
 		//NOTE: skip checking certificate existing here. get the first one
-		clientKeyExchange = new ClientKeyExchange(sHello->getCipherSuite(),
+		body = new ClientKeyExchange(sHello->getCipherSuite(),
 				cert->getCertificateList()[0]);
 		break;
 
@@ -47,128 +47,52 @@ Handshake::Handshake(HandshakeType type, void *arg, void *arg2) :
 
 }
 
-vector<uint8_t> Handshake::toData() {
+vector<uint8_t> Handshake::toData() const {
 	vector<uint8_t> data;
 	data.push_back(this->type);
 
-	vector<uint8_t> body;
-	switch (this->type) {
-	case HELLO_REQUEST:
-		break;
-	case CLIENT_HELLO:
-		body = clientHello->toData();
-		break;
-	case SERVER_HELLO:
-		body = serverHello->toData();
-		break;
-	case CERTIFICATE:
-		body = certificate->toData();
-		break;
-	case SERVER_KEY_EXCHANGE:
-		body = serverKeyExchange->toData();
-		break;
-	case CERTIFICATE_REQUEST:
-		body = certificateRequest->toData();
-		break;
-	case SERVER_HELLO_DONE:
-		body = serverHelloDone->toData();
-		break;
-	case CERTIFICATE_VERIFY:
-		break;
-	case CLIENT_KEY_EXCHANGE:
-		body = clientKeyExchange->toData();
-		break;
-	case FINISHED:
-		body = finished->toData();
-		break;
-	default: //none
-		break;
-	}
+	vector<uint8_t> bodyData(body->toData());
 
-	uint32_t length = (uint32_t) body.size(); //uint24_t
+	uint32_t length = (uint32_t) bodyData.size(); //uint24_t
 	Util::addData24(data, length);
-	Util::addData(data, body);
+	Util::addData(data, bodyData);
 	//    cout << "#begin" << endl << Util::readableForm(data) << endl;
 
 	return data;
 }
 
-Handshake::HandshakeType Handshake::getType() {
+const Handshake::HandshakeType Handshake::getType() const{
 	return type;
 }
 
-size_t Handshake::size() {
-	size_t size = 0;
-
-	switch (this->type) {
-	case HELLO_REQUEST:
-		break;
-	case CLIENT_HELLO:
-		size = clientHello->size();
-		break;
-	case SERVER_HELLO:
-		size = serverHello->size();
-		break;
-	case CERTIFICATE:
-		size = certificate->size();
-		break;
-	case SERVER_KEY_EXCHANGE:
-		size = serverKeyExchange->size();
-		break;
-	case CERTIFICATE_REQUEST:
-		size = certificateRequest->size();
-		break;
-	case SERVER_HELLO_DONE:
-		size = serverHelloDone->size();
-		break;
-	case CERTIFICATE_VERIFY:
-		break;
-	case CLIENT_KEY_EXCHANGE:
-		size = clientKeyExchange->size();
-		break;
-	case FINISHED:
-		size = finished->size();
-
-		break;
-	default: //none
-		break;
-	}
-
-	return 1 + 3 + size;
+size_t Handshake::size()const {
+	return 1 + 3 + body->size();
 }
 
 Handshake::~Handshake() {
-	delete clientHello;
-	delete certificateRequest;
-	delete serverHello;
-	delete certificate;
-	delete serverKeyExchange;
-	delete serverHelloDone;
-	delete clientKeyExchange;
-	delete finished;
+	delete body;
 }
 
-ServerHello *Handshake::getServerHello() {
-	return serverHello;
+const ServerHello* Handshake::getServerHello() const {
+	return dynamic_cast<ServerHello*>(body);
 }
 
-Certificate *Handshake::getCertificate() {
-	return certificate;
+const Certificate* Handshake::getCertificate() const{
+	return dynamic_cast<Certificate*>(body);
 }
 
-Handshake::Handshake(vector<uint8_t> &data, size_t offset, void *arg) {
+Handshake::Handshake(const vector<uint8_t> &data, size_t offset, void *arg) {
 	this->type = (HandshakeType) data[offset];
 	offset++;
 
 	uint32_t length = Util::takeData24(data, offset);
 	offset += 3;
-	data.resize(offset + length);
 
 	//check if data is long enough for body
 	if (offset + length > data.size())
 		throw Err(Err::DECODING);
 	//copy to body
-	vector<uint8_t> body(data.begin() + offset, data.begin() + offset + length);
+	vector<uint8_t> bodyData(data.begin() + offset, data.begin() + offset + length);
 	//reset offset
 	offset = 0;
 	switch (this->type) {
@@ -177,29 +101,53 @@ Handshake::Handshake(vector<uint8_t> &data, size_t offset, void *arg) {
 	case CLIENT_HELLO:
 		break;
 	case SERVER_HELLO:
-		this->serverHello = new ServerHello(body, offset);
+		body = new ServerHello(bodyData, offset);
 		break;
 	case CERTIFICATE:
-		this->certificate = new Certificate(body, offset);
+		body = new Certificate(bodyData, offset);
 		break;
 	case SERVER_KEY_EXCHANGE:
-		this->serverKeyExchange = new ServerKeyExchange(
-				((ServerHello*) arg)->getCipherSuite(), body, offset);
+		body = new ServerKeyExchange(
+				((ServerHello*) arg)->getCipherSuite(), bodyData, offset);
 		break;
 	case CERTIFICATE_REQUEST:
-		certificateRequest = new CertificateRequest(body, offset);
+		body = new CertificateRequest(bodyData, offset);
 		break;
 	case SERVER_HELLO_DONE:
-		this->serverHelloDone = new ServerHelloDone(body, offset);
+		body = new ServerHelloDone(bodyData, offset);
 		break;
 	case CERTIFICATE_VERIFY:
 		break;
 	case CLIENT_KEY_EXCHANGE:
 		break;
 	case FINISHED:
-		finished = new Finished(Finished::CLIENT);
+		body = new Finished(Finished::CLIENT);
 		break;
 	default: //NONE://default
 		break;
 	}
+}
+
+const CertificateRequest* Handshake::getCertificateRequest() const {
+	return dynamic_cast<CertificateRequest*> (body);
+}
+
+const ClientHello* Handshake::getClientHello() const {
+	return dynamic_cast<ClientHello*>(body);
+}
+
+const ClientKeyExchange* Handshake::getClientKeyExchange() const {
+	return dynamic_cast<ClientKeyExchange*>(body);
+}
+
+const Finished* Handshake::getFinished() const {
+	return dynamic_cast<Finished*>(body);
+}
+
+const ServerHelloDone* Handshake::getServerHelloDone() const {
+	return dynamic_cast<ServerHelloDone*>(body);
+}
+
+const ServerKeyExchange* Handshake::getServerKeyExchange() const {
+	return dynamic_cast<ServerKeyExchange*>(body);
 }

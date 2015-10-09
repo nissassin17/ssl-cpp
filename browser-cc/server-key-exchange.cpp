@@ -12,8 +12,8 @@
 #include "digitally-signed.hpp"
 #include "server-dh-params.hpp"
 
-ServerKeyExchange::ServerKeyExchange(CipherSuite *cipherSuite,
-		vector<uint8_t> &data, size_t offset) :
+ServerKeyExchange::ServerKeyExchange(const CipherSuite *cipherSuite,
+		const vector<uint8_t> &data, size_t offset) :
 		cipherSuite(cipherSuite) {
 	switch (cipherSuite->getKeyExchange()) {
 	case CipherSuite::DH_anon:
@@ -58,7 +58,7 @@ ServerKeyExchange::~ServerKeyExchange() {
 	}
 }
 
-size_t ServerKeyExchange::size() {
+size_t ServerKeyExchange::size() const{
 	size_t result(0);
 	return result;
 }

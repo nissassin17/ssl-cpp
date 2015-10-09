@@ -13,6 +13,7 @@
 #include <sys/_types/_size_t.h>
 #include <cstdint>
 #include <vector>
+#include "exportable.hpp"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ class Alert;
 class ChangeCipherSpec;
 class ProtocolVersion;
 
-class Record {
+class Record: public Exportable {
 public:
 	enum ContentType {
 		CHANGE_CIPHER_SPEC = 20,
@@ -34,23 +35,23 @@ public:
 	Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, void *arg =
 	NULL, void *arg2 = NULL);
 	Record(ContentType type);
-	Record(vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
-	vector<uint8_t> toData();
-	size_t size();
-	~Record();
-	Handshake *getHandshake();
-	Alert *getAlert();
-	ContentType getType();
+	Record(const vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
+	virtual vector<uint8_t> toData() const;
+	virtual size_t size() const;
+	virtual ~Record();
+	const Alert* getAlert() const;
+	const ChangeCipherSpec* getChangeCipherSpec() const;
+	bool isCompressed() const;
+	const Handshake* getHandshake() const;
+	const ProtocolVersion* getProtocolVersion() const;
+	ContentType getType() const;
 
 private:
 
 	ContentType type;
+	Exportable *fragment;
 	ProtocolVersion *protocolVersion = NULL;
-	Handshake *handshake = NULL;
-	Alert *alert = NULL;
-	ChangeCipherSpec *changeCipherSpec = NULL;
-
-	bool isCompressed;
+	bool compressed;
 
 	static const int CONTENT_TYPE_LENGTH = 1;
 	static const int BODY_LENGTH_LENGTH = 2;

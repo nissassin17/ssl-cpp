@@ -17,10 +17,10 @@
 #include "util.hpp"
 
 Record::Record(ContentType type) :
-		type(type), isCompressed(false) {
+		type(type), compressed(false) {
 	switch (type) {
 	case CHANGE_CIPHER_SPEC:
-		changeCipherSpec = new ChangeCipherSpec();
+		fragment = new ChangeCipherSpec();
 		break;
 	default:
 		break;
@@ -28,65 +28,36 @@ Record::Record(ContentType type) :
 }
 
 Record::Record(Handshake::HandshakeType handshakeType, void *arg, void *arg2) :
-		isCompressed(false), protocolVersion(new ProtocolVersion()) { //default: create client hello handshake
+		compressed(false), protocolVersion(new ProtocolVersion()) { //default: create client hello handshake
 	type = HANDSHAKE;
 	switch (handshakeType) {
 	case Handshake::CLIENT_KEY_EXCHANGE:
-		handshake = new Handshake(handshakeType, arg, arg2);
+		fragment = new Handshake(handshakeType, arg, arg2);
 		break;
 	case Handshake::CLIENT_HELLO:
-		handshake = new Handshake(Handshake::CLIENT_HELLO);
+		fragment = new Handshake(Handshake::CLIENT_HELLO);
 		break;
 	case Handshake::FINISHED:
-		handshake = new Handshake(Handshake::FINISHED);
+		fragment = new Handshake(Handshake::FINISHED);
 		break;
 	default:
 		break;
 	}
 }
 
-Alert *Record::getAlert() {
-	return alert;
-}
-
-Record::ContentType Record::getType() {
-	return type;
-}
-
-Handshake *Record::getHandshake() {
-	return handshake;
-}
 
 Record::~Record() {
 	delete this->protocolVersion;
-	delete this->handshake;
-	delete changeCipherSpec;
-	delete alert;
+	delete fragment;
 }
 
-vector<uint8_t> Record::toData() {
-	vector<uint8_t> bodyData;
+vector<uint8_t> Record::toData() const{
+	vector<uint8_t> bodyData(fragment->toData());
 	vector<uint8_t> data;
 
 	Util::addData(data, (uint8_t) this->type);
 	Util::addData(data, this->protocolVersion->toData());
 
-	switch (this->type) {
-	case CHANGE_CIPHER_SPEC:
-		bodyData = changeCipherSpec->toData();
-		break;
-	case ALERT:
-		bodyData = alert->toData();
-		break;
-	case HANDSHAKE:
-		bodyData = handshake->toData();
-		break;
-	case APPLICATION_DATA:
-//			bodyData = static_cast<ApplicationData *>(this->fragment)->toData();
-		break;
-	default: //case NONE :
-		break;
-	}
 	uint16_t length = bodyData.size();
 	Util::addData(data, length);
 	Util::addData(data, bodyData);
@@ -94,8 +65,9 @@ vector<uint8_t> Record::toData() {
 	return data;
 }
 
-Record::Record(vector<uint8_t> &data, size_t offset, void *arg) :
-		isCompressed(false) {
+Record::Record(const vector<uint8_t> &data, size_t offset, void *arg) :
+		compressed(false),
+		fragment(NULL){
 	this->type = (ContentType) data[offset];
 	offset += CONTENT_TYPE_LENGTH;
 
@@ -109,7 +81,7 @@ Record::Record(vector<uint8_t> &data, size_t offset, void *arg) :
 	if (offset + bodyLength > data.size())
 		throw Err(Err::DECODING);
 	//copy the fragment part
-	vector<uint8_t> fragment(data.begin() + offset,
+	vector<uint8_t> fragmentData(data.begin() + offset,
 			data.begin() + offset + bodyLength);
 	//reset offset
 	offset = 0;
@@ -117,39 +89,43 @@ Record::Record(vector<uint8_t> &data, size_t offset, void *arg) :
 
 	switch (this->type) {
 	case HANDSHAKE:
-		handshake = new Handshake(fragment, offset, arg);
-		offset += handshake->size();
+		fragment = new Handshake(fragmentData, offset, arg);
 		break;
 
 	case ALERT:
-		alert = new Alert(fragment, offset);
-		offset += alert->size();
+		fragment = new Alert(fragmentData, offset);
 		break;
 
 	default:
 		break;
 	}
+	offset += fragment->size();
 }
 
-size_t Record::size() {
-	size_t ret(
-			CONTENT_TYPE_LENGTH + this->protocolVersion->size()
-					+ BODY_LENGTH_LENGTH);
-	switch (this->type) {
-	case CHANGE_CIPHER_SPEC:
-		ret += changeCipherSpec->size();
-		break;
-	case ALERT:
-		ret += alert->size();
-		break;
-	case HANDSHAKE:
-		ret += handshake->size();
-		break;
-	case APPLICATION_DATA:
-		break;
-	default: // NONE = 24
-		break;
-	}
+size_t Record::size() const {
+	return CONTENT_TYPE_LENGTH + this->protocolVersion->size() + BODY_LENGTH_LENGTH + fragment->size();
+}
 
-	return ret;
+const Alert *Record::getAlert() const{
+	return dynamic_cast<Alert*>(fragment);
+}
+
+const ChangeCipherSpec* Record::getChangeCipherSpec() const {
+	return dynamic_cast<ChangeCipherSpec*>(fragment);
+}
+
+bool Record::isCompressed() const{
+	return compressed;
+}
+
+const Handshake* Record::getHandshake() const {
+	return dynamic_cast<Handshake*>(fragment);
+}
+
+const ProtocolVersion* Record::getProtocolVersion() const {
+	return protocolVersion;
+}
+
+Record::ContentType Record::getType() const {
+	return type;
 }

@@ -12,13 +12,14 @@
 #include <sys/_types/_size_t.h>
 #include <cstdint>
 #include <vector>
+#include "exportable.hpp"
 
 using namespace std;
-class ASN1Cert {
+class ASN1Cert : Exportable {
 public:
-	ASN1Cert(vector<uint8_t> &vector, size_t offset = 0);
-	size_t size();
-	vector<uint8_t> toData();
+	ASN1Cert(const vector<uint8_t> &vector, size_t offset = 0);
+	virtual size_t size() const;
+	virtual vector<uint8_t> toData() const;
 
 private:
 	vector<uint8_t> data;

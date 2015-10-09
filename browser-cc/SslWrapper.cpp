@@ -16,13 +16,13 @@
 #include "record.hpp"
 #include "util.hpp"
 
-SslWrapper::SslWrapper(Url url) {
-	this->url = new Url(url);
-	this->connection = new Connection(url.getHostname(), url.getIsSsl());
+SslWrapper::SslWrapper(const Url& url) :
+url(url){
+	this->connection = new Connection(url.getHostname(), url.isUseSsl());
 }
 
-vector<uint8_t> SslWrapper::get() {
-	if (this->url->getIsSsl()) {
+vector<uint8_t> SslWrapper::get() const {
+	if (this->url->isUseSsl()) {
 		//prepare client hello
 		Record *clientHello = new Record(Handshake::CLIENT_HELLO);
 

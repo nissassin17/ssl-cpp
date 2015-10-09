@@ -26,7 +26,7 @@ vector<uint8_t> Url::httpGetRequest() {
 	return result;
 }
 
-Url::Url(string link) {
+Url::Url(const string& link) {
 	const string HTTP("HTTP://");
 	const string HTTPS("HTTPS://");
 
@@ -35,9 +35,9 @@ Url::Url(string link) {
 	//toupper
 	transform(schema.begin(), schema.end(), schema.begin(), ::toupper);
 	if (schema == HTTPS)
-		this->isSsl = true;
+		this->useSsl = true;
 	else {
-		this->isSsl = false;
+		this->useSsl = false;
 		schema = link.substr(0, HTTP.length());
 		transform(schema.begin(), schema.end(), schema.begin(), ::toupper);
 		if (schema != HTTP)
@@ -45,7 +45,7 @@ Url::Url(string link) {
 	}
 
 	//get hostname
-	size_t hostStart = this->isSsl ? HTTPS.length() : HTTP.length();
+	size_t hostStart = this->useSsl ? HTTPS.length() : HTTP.length();
 	size_t found = link.find('/', hostStart);
 	if (found == string::npos) {
 		this->request = "/";
@@ -60,14 +60,14 @@ Url::Url(string link) {
 
 }
 
-string Url::getHostname() {
+const string &Url::getHostname() const {
 	return this->hostname;
 }
 
-string Url::getRequest() {
+const string &Url::getRequest() const{
 	return this->request;
 }
 
-bool Url::getIsSsl() {
-	return this->isSsl;
+bool Url::isUseSsl() const {
+	return useSsl;
 }

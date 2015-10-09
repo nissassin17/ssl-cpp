@@ -24,9 +24,9 @@ class SessionID;
 
 class ServerHello: public Exportable {
 public:
-	ServerHello(vector<uint8_t> &data, size_t offset = 0);
-	size_t size();
-	CipherSuite *getCipherSuite();
+	ServerHello(const vector<uint8_t> &data, size_t offset = 0);
+	virtual size_t size() const;
+	const CipherSuite *getCipherSuite() const;
 	virtual ~ServerHello();
 private:
 	ProtocolVersion *protocolVersion;

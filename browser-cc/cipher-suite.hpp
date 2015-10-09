@@ -19,9 +19,9 @@ class MAC;
 
 class CipherSuite {
 public:
-	CipherSuite(vector<uint8_t> &data, size_t offset = 0);
-	size_t size();
-	vector<uint8_t> toData();
+	CipherSuite(const vector<uint8_t> &data, size_t offset = 0);
+	virtual size_t size() const;
+	virtual vector<uint8_t> toData() const;
 
 	enum KeyExchangeType {
 		KEY_EXCHANGE_NULL, RSA, DH_DSS, DH_RSA, DHE_DSS, DHE_RSA, DH_anon
@@ -84,15 +84,15 @@ public:
 	};
 
 	CipherSuite(CipherSuiteType suite = TLS_NULL_WITH_NULL_NULL);
-	KeyExchangeType getKeyExchange();
-	~CipherSuite();
-	MAC *getMac();
-	Cipher *getCipher();
+	KeyExchangeType getKeyExchange() const;
+	virtual ~CipherSuite();
+	const MAC *getMac() const;
+	const Cipher *getCipher() const;
 private:
 	void setType(CipherSuiteType type);
 	KeyExchangeType keyExchange;
-	Cipher *cipher = NULL;
-	MAC *mac = NULL;
+	Cipher *cipher;
+	MAC *mac;
 	CipherSuiteType suite;
 };
 

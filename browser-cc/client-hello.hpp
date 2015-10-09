@@ -16,12 +16,13 @@
 #include "cipher-suite.hpp"
 #include "compression-method.hpp"
 #include "extension.hpp"
+#include "exportable.hpp"
 
 class ProtocolVersion;
 class Random;
 class SessionID;
 
-class ClientHello {
+class ClientHello : public Exportable {
 public:
 
 private:
@@ -34,9 +35,9 @@ private:
 	bool haveExtension;
 
 public:
-	vector<uint8_t> toData();
+	virtual vector<uint8_t> toData() const;
 	ClientHello();
-	size_t size();
+	virtual size_t size()const;
 	~ClientHello();
 
 };

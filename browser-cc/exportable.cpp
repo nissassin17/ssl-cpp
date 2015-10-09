@@ -10,11 +10,11 @@
 
 #include <stdexcept>
 
-size_t Exportable::size() {
+size_t Exportable::size() const {
 	throw std::logic_error("Cannot call Exportable::size()");
 }
 
-vector<uint8_t> Exportable::toData() {
+vector<uint8_t> Exportable::toData() const{
 	throw std::logic_error("Cannot call Exportable::toData()");
 }
 

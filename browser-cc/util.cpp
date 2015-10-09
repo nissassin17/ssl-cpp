@@ -15,7 +15,7 @@
 
 using namespace std;
 
-string Util::readableForm(vector<uint8_t> &data) {
+string Util::readableForm(const vector<uint8_t> &data) {
 	string result;
 	for (int i = 0; i < data.size(); i++) {
 		if (i && i % 16 == 0)
@@ -31,7 +31,7 @@ string Util::readableForm(vector<uint8_t> &data) {
 	return result;
 }
 
-void Util::writeToFile(string filename, vector<uint8_t> &data) {
+void Util::writeToFile(const string &filename, const vector<uint8_t> &data) {
 	ofstream file(filename, ios::out | ios::binary);
 	for (int i = 0; i < data.size(); i++)
 		file << data[i];
@@ -42,7 +42,7 @@ void Util::addData(vector<uint8_t> &data, uint8_t value) {
 	data.push_back(value);
 }
 
-uint8_t Util::takeData8(vector<uint8_t> &data, size_t offset) {
+uint8_t Util::takeData8(const vector<uint8_t> &data, size_t offset) {
 	return data[offset];
 }
 
@@ -57,7 +57,7 @@ void Util::addData(vector<uint8_t> &data, uint32_t value) {
 	data.push_back((value >> 8) & PATTERN);
 	data.push_back(value & PATTERN);
 }
-void Util::addData(vector<uint8_t> &data, vector<uint8_t> toAdd) {
+void Util::addData(vector<uint8_t> &data, const vector<uint8_t> &toAdd) {
 	data.insert(data.end(), toAdd.begin(), toAdd.end());
 }
 
@@ -73,11 +73,11 @@ void Util::addData24(vector<uint8_t> &data, uint32_t value) {
 	data.push_back(value & PATTERN);
 }
 
-uint16_t Util::takeData16(vector<uint8_t> &data, size_t offset) {
+uint16_t Util::takeData16(const vector<uint8_t> &data, size_t offset) {
 	return (data[offset] << 8) + data[offset + 1];
 }
 
-uint32_t Util::takeData24(vector<uint8_t> &data, size_t offset) {
+uint32_t Util::takeData24(const vector<uint8_t> &data, size_t offset) {
 	const int SIZE = 3;
 	uint32_t result(0);
 	for (int i = 0; i < SIZE; i++)
@@ -85,7 +85,7 @@ uint32_t Util::takeData24(vector<uint8_t> &data, size_t offset) {
 	return result;
 }
 
-uint64_t Util::takeData64(vector<uint8_t> &data, size_t offset) {
+uint64_t Util::takeData64(const vector<uint8_t> &data, size_t offset) {
 	const int SIZE = 8;
 	uint64_t result(0);
 	for (int i = 0; i < SIZE; i++)
@@ -93,7 +93,7 @@ uint64_t Util::takeData64(vector<uint8_t> &data, size_t offset) {
 	return result;
 }
 
-uint32_t Util::takeData32(vector<uint8_t> &data, size_t offset) {
+uint32_t Util::takeData32(const vector<uint8_t> &data, size_t offset) {
 	const int SIZE = 4;
 	uint32_t result(0);
 	for (int i = 0; i < SIZE; i++)
@@ -101,7 +101,7 @@ uint32_t Util::takeData32(vector<uint8_t> &data, size_t offset) {
 	return result;
 }
 
-vector<uint8_t> Util::takeData(vector<uint8_t> &data, size_t length,
+vector<uint8_t> Util::takeData(const vector<uint8_t> &data, size_t length,
 		size_t offset) {
 	return vector<uint8_t>(data.begin() + offset,
 			data.begin() + offset + length);

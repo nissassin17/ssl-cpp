@@ -19,9 +19,9 @@ public:
 	};
 	MAC(MACType type);
 
-	int getMacLength();
-	int getMacKeyLength();
-	Algorithm getAlgorithm();
+	int getMacLength() const;
+	int getMacKeyLength() const;
+	Algorithm getAlgorithm() const;
 private:
 	void setType(MACType type);
 	MACType type;

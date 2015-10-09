@@ -12,14 +12,15 @@
 #include <sys/_types/_size_t.h>
 #include <cstdint>
 #include <vector>
+#include "exportable.hpp"
 using namespace std;
 class ServerDHParams;
 
-class DigitallySigned {
+class DigitallySigned  : Exportable{
 public:
-	DigitallySigned(vector<uint8_t> &data, size_t offset = 0);
-	size_t size();
-	~DigitallySigned();
+	DigitallySigned(const vector<uint8_t> &data, size_t offset = 0);
+	virtual size_t size() const;
+	virtual ~DigitallySigned();
 private:
 	uint8_t clientRandom[32];
 	uint8_t serverRandom[32];

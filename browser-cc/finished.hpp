@@ -13,17 +13,19 @@
 #include <cstdint>
 #include <iostream>
 #include <vector>
+#include "exportable.hpp"
 using namespace std;
 
-class Finished {
+class Finished : public Exportable {
 public:
 	enum SenderType {
 		CLIENT, SERVER
 	};
 
 	Finished(SenderType type);
-	size_t size();
-	vector<uint8_t> toData();
+	virtual size_t size() const;
+	virtual vector<uint8_t> toData() const;
+	virtual ~Finished();
 
 private:
 	SenderType type;

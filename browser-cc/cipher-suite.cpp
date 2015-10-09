@@ -12,7 +12,12 @@
 #include "mac.hpp"
 #include "util.hpp"
 
-CipherSuite::CipherSuite(CipherSuiteType type) {
+CipherSuite::CipherSuite(CipherSuiteType type) :
+suite(TLS_NULL_WITH_NULL_NULL),
+cipher(NULL),
+keyExchange(NULL),
+mac(NULL)
+{
 	setType(type);
 }
 
@@ -211,27 +216,27 @@ void CipherSuite::setType(CipherSuiteType type) {
 
 }
 
-vector<uint8_t> CipherSuite::toData() {
+vector<uint8_t> CipherSuite::toData()  const{
 	uint8_t high(this->suite >> 8);
 	uint8_t low(this->suite & ((1 << 8) - 1));
 	return vector<uint8_t>( { high, low });
 }
 
-size_t CipherSuite::size() {
+size_t CipherSuite::size() const{
 	return 2;
 }
 
-CipherSuite::KeyExchangeType CipherSuite::getKeyExchange() {
+CipherSuite::KeyExchangeType CipherSuite::getKeyExchange() const{
 	return keyExchange;
 }
-Cipher *CipherSuite::getCipher() {
+const Cipher *CipherSuite::getCipher() const{
 	return cipher;
 }
-MAC *CipherSuite::getMac() {
+const MAC *CipherSuite::getMac() const{
 	return mac;
 }
 
-CipherSuite::CipherSuite(vector<uint8_t> &data, size_t offset) {
+CipherSuite::CipherSuite(const vector<uint8_t> &data, size_t offset) {
 	setType((CipherSuiteType) Util::takeData16(data, offset));
 }
 

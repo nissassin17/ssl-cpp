@@ -19,7 +19,7 @@
 
 using namespace std;
 
-Connection::Connection(string hostname, bool isSsl) :
+Connection::Connection(const string &hostname, bool isSsl) :
 		isConnecting(false), activatingConnection(NULL) {
 	const int SSL_PORT = 443;
 	const int HTTP_PORT = 80;
@@ -36,7 +36,7 @@ Connection::~Connection() {
 		delete subConnections[i];
 }
 
-vector<string> Connection::ipListFromHostname(string hostname) {
+vector<string> Connection::ipListFromHostname(const string& hostname) {
 	vector<string> ipList;
 
 	struct addrinfo hints, *server_info;
@@ -61,7 +61,7 @@ vector<string> Connection::ipListFromHostname(string hostname) {
 	return ipList;
 }
 
-void Connection::send(vector<uint8_t> request) {
+void Connection::send(const vector<uint8_t> &request) const{
 	if (this->isConnecting) {
 		if (this->activatingConnection == NULL)
 			throw Err(Err::NoConnection);
@@ -81,7 +81,7 @@ void Connection::send(vector<uint8_t> request) {
 	}
 }
 
-vector<uint8_t> Connection::receive() {
+vector<uint8_t> Connection::receive() const{
 	if (!this->isConnecting)
 		throw Err(Err::DontSendButReceive);
 	if (this->activatingConnection == NULL)

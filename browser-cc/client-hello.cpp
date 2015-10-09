@@ -71,7 +71,7 @@ ClientHello::ClientHello() :
 			new CompressionMethod(CompressionMethod::Null));
 }
 
-size_t ClientHello::size() {
+size_t ClientHello::size() const{
 	size_t result(0);
 
 	result += this->protocolVersion->size() + this->random->size() + 2;
@@ -93,7 +93,7 @@ size_t ClientHello::size() {
 	return result;
 }
 
-vector<uint8_t> ClientHello::toData() {
+vector<uint8_t> ClientHello::toData() const{
 	vector<uint8_t> data;
 
 	Util::addData(data, this->protocolVersion->toData());

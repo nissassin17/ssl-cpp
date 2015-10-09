@@ -15,7 +15,7 @@ using namespace std;
 
 class StrUtil {
 public:
-	static string getLink(int argc, const char * argv[]);
+	static string getLink(int argc, const char * argv[]) const;
 };
 
 #endif /* strutil_hpp */

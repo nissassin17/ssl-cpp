@@ -23,10 +23,10 @@ class ClientDiffieHellmanPublic: public Exportable {
 public:
 	ClientDiffieHellmanPublic(CipherSuite *cipherSuite);
 	~ClientDiffieHellmanPublic();
-	vector<uint8_t> toData();
-	size_t size();
+	virtual vector<uint8_t> toData()const;
+	virtual size_t size()const;
 private:
-	CipherSuite *cipherSuite = NULL;
+	CipherSuite *cipherSuite;
 };
 
 #endif /* client_diffie_hellman_public_hpp */

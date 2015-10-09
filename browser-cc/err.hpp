@@ -34,9 +34,9 @@ public:
 
 	Err(ErrType errType, ...);
 
-	bool isSuccess();
+	bool isSuccess() const;
 
-	string what();
+	const string& what() const;
 
 private:
 	ErrType errType;

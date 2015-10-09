@@ -8,11 +8,11 @@
 
 #include "server-hello-done.hpp"
 
-ServerHelloDone::ServerHelloDone(vector<uint8_t> &data, size_t offset) {
+ServerHelloDone::ServerHelloDone(const vector<uint8_t> &data, size_t offset) {
 
 }
 
-size_t ServerHelloDone::size() {
+size_t ServerHelloDone::size() const {
 	size_t result(0);
 	return result;
 }
