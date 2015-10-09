@@ -9,7 +9,7 @@
 #ifndef finished_hpp
 #define finished_hpp
 
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <iostream>
 #include <vector>

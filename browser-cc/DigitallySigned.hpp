@@ -9,7 +9,7 @@
 #ifndef digitally_signed_hpp
 #define digitally_signed_hpp
 
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <vector>
 

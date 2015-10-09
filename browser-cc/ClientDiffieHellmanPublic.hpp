@@ -10,7 +10,7 @@
 #define client_diffie_hellman_public_hpp
 
 #include <stdio.h>
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <vector>
 
@@ -21,12 +21,12 @@ class CipherSuite;
 class ClientDiffieHellmanPublic: public Exportable {
 
 public:
-	ClientDiffieHellmanPublic(CipherSuite *cipherSuite);
+	ClientDiffieHellmanPublic(const CipherSuite *cipherSuite);
 	~ClientDiffieHellmanPublic();
 	virtual vector<uint8_t> toData()const;
 	virtual size_t size()const;
 private:
-	CipherSuite *cipherSuite;
+	const CipherSuite *cipherSuite;
 };
 
 #endif /* client_diffie_hellman_public_hpp */

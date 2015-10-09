@@ -26,7 +26,7 @@ void Browser::run(int argc, const char * argv[]) {
 	/* Extract hostname and request */
 	Url url = Url(link);
 
-	SslWrapper ssl = SslWrapper(url);
+	SslWrapper ssl = SslWrapper(&url);
 
 	vector<uint8_t> getData = ssl.get();
 	string result;

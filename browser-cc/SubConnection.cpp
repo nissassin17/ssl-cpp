@@ -8,10 +8,12 @@
 
 #include "SubConnection.hpp"
 
-#include <sys/_endian.h>
-#include <sys/_types/_ssize_t.h>
+
+#include <stddef.h>
 #include <sys/errno.h>
 #include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <string>
 
 #include "Err.hpp"

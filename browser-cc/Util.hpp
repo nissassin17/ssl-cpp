@@ -9,7 +9,7 @@
 #ifndef util_hpp
 #define util_hpp
 
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <iostream>
 #include <vector>

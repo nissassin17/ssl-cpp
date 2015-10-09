@@ -15,7 +15,7 @@
 CipherSuite::CipherSuite(CipherSuiteType type) :
 suite(TLS_NULL_WITH_NULL_NULL),
 cipher(NULL),
-keyExchange(NULL),
+keyExchange(KEY_EXCHANGE_NULL),
 mac(NULL)
 {
 	setType(type);

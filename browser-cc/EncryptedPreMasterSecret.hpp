@@ -10,7 +10,7 @@
 #define encrypted_pre_master_secret_hpp
 
 #include <stdio.h>
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <vector>
 
@@ -28,9 +28,9 @@ public:
 	virtual vector<uint8_t> toData()const;
 	~EncryptedPreMasterSecret();
 private:
-	CipherSuite *cipherSuite;
+	const CipherSuite *cipherSuite;
 	PreMasterSecret *preMasterSecret;
-	ASN1Cert *asn1Cert;
+	const ASN1Cert *asn1Cert;
 };
 
 #endif /* encrypted_pre_master_secret_hpp */

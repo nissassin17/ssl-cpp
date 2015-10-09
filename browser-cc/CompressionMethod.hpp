@@ -9,7 +9,7 @@
 #ifndef compression_method_hpp
 #define compression_method_hpp
 
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <vector>
 

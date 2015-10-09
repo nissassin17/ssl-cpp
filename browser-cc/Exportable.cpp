@@ -17,3 +17,5 @@ vector<uint8_t> Exportable::toData() const{
 	throw std::logic_error("Cannot call Exportable::toData()");
 }
 
+Exportable::~Exportable() {
+}

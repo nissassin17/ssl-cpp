@@ -24,18 +24,18 @@
 
 using namespace std;
 
-Handshake::Handshake(HandshakeType type, void *arg, void *arg2) :
+Handshake::Handshake(HandshakeType type, const void *arg, const void *arg2) :
 		type(type) { //default create client hello request
-	ServerHello *sHello;
-	Certificate *cert;
+	const ServerHello *sHello;
+	const Certificate *cert;
 	switch (type) {
 	case CLIENT_HELLO:
 		body = new ClientHello();
 		break;
 
 	case CLIENT_KEY_EXCHANGE:
-		sHello = ((Handshake*) arg)->getServerHello();
-		cert = ((Handshake*) arg2)->getCertificate();
+		sHello = static_cast<const Handshake*>( arg)->getServerHello();
+		cert = static_cast<const Handshake*>( arg2)->getCertificate();
 		//NOTE: skip checking certificate existing here. get the first one
 		body = new ClientKeyExchange(sHello->getCipherSuite(),
 				cert->getCertificateList()[0]);
@@ -81,7 +81,7 @@ const Certificate* Handshake::getCertificate() const{
 	return dynamic_cast<Certificate*>(body);
 }
 
-Handshake::Handshake(const vector<uint8_t> &data, size_t offset, void *arg) {
+Handshake::Handshake(const vector<uint8_t> &data, size_t offset, const void *arg) {
 	this->type = (HandshakeType) data[offset];
 	offset++;
 

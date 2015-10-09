@@ -9,7 +9,7 @@
 #ifndef session_id_hpp
 #define session_id_hpp
 
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <vector>
 
@@ -20,9 +20,9 @@ using namespace std;
 class SessionID : public Exportable{
 public:
 	virtual vector<uint8_t> toData() const;
-	SessionID();
 	virtual size_t size() const;
 	SessionID(const vector<uint8_t> &data, size_t offset = 0);
+	SessionID();
 	virtual ~SessionID();
 private:
 	vector<uint8_t> id;

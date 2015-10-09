@@ -27,7 +27,7 @@ Record::Record(ContentType type) :
 	}
 }
 
-Record::Record(Handshake::HandshakeType handshakeType, void *arg, void *arg2) :
+Record::Record(Handshake::HandshakeType handshakeType, const void *arg, const void *arg2) :
 		compressed(false), protocolVersion(new ProtocolVersion()) { //default: create client hello handshake
 	type = HANDSHAKE;
 	switch (handshakeType) {
@@ -65,7 +65,7 @@ vector<uint8_t> Record::toData() const{
 	return data;
 }
 
-Record::Record(const vector<uint8_t> &data, size_t offset, void *arg) :
+Record::Record(const vector<uint8_t> &data, size_t offset, const void *arg) :
 		compressed(false),
 		fragment(NULL){
 	this->type = (ContentType) data[offset];

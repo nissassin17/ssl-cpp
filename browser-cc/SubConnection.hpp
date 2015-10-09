@@ -12,6 +12,7 @@
 #include <cstdint>
 #include <iostream>
 #include <vector>
+#include <netinet/in.h>
 
 struct sockaddr_in;
 

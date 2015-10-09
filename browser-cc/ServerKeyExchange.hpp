@@ -10,7 +10,7 @@
 #define server_key_exchange_hpp
 
 #include <stdio.h>
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <vector>
 
@@ -28,7 +28,7 @@ public:
 	virtual ~ServerKeyExchange();
 
 private:
-	CipherSuite *cipherSuite;
+	const CipherSuite *cipherSuite;
 	ServerDHParams *params;
 	DigitallySigned *signedParams;
 };

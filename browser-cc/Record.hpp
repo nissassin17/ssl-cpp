@@ -10,7 +10,7 @@
 #define record_hpp
 
 #include <stdio.h>
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <vector>
 
@@ -33,10 +33,10 @@ public:
 		APPLICATION_DATA = 23,
 		NONE = 24
 	};
-	Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, void *arg =
-	NULL, void *arg2 = NULL);
+	Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, const void *arg =
+	NULL, const void *arg2 = NULL);
 	Record(ContentType type);
-	Record(const vector<uint8_t> &data, size_t offset = 0, void *arg = NULL);
+	Record(const vector<uint8_t> &data, size_t offset = 0, const void *arg = NULL);
 	virtual vector<uint8_t> toData() const;
 	virtual size_t size() const;
 	virtual ~Record();

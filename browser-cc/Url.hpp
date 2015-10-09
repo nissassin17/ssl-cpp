@@ -21,7 +21,7 @@ public:
 	const string &getHostname() const;
 	const string &getRequest() const;
 
-	vector<uint8_t> httpGetRequest();
+	vector<uint8_t> httpGetRequest() const;
 	bool isUseSsl() const;
 
 private:

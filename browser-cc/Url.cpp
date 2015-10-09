@@ -6,7 +6,7 @@
 //  Copyright © 2015 Nissassin Seventeen. All rights reserved.
 //
 
-#include <sys/_types/_size_t.h>
+
 #include <algorithm>
 #include <cctype>
 #include <iterator>
@@ -15,7 +15,7 @@
 #include "Url.hpp"
 #include "Err.hpp"
 
-vector<uint8_t> Url::httpGetRequest() {
+vector<uint8_t> Url::httpGetRequest() const {
 	string fullRequest(
 			"GET " + this->request + " HTTP/1.1\r\nHost: " + this->hostname
 					+ "\r\nConnection: keep-alive\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\n\r\n");

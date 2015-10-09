@@ -7,42 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B34B73911BBD73430059443A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73901BBD73430059443A /* main.cpp */; };
-		B34B73991BBDE08C0059443A /* browser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73971BBDE08C0059443A /* browser.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B739D1BBDE2B70059443A /* strutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B739B1BBDE2B70059443A /* strutil.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73A41BBDE6350059443A /* err.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73A21BBDE6350059443A /* err.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73A71BBDEF850059443A /* url.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73A51BBDEF850059443A /* url.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73AB1BBDF5F20059443A /* connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73A91BBDF5F20059443A /* connection.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73AC1BBDF8270059443A /* SubConnection.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73B11BBE719A0059443A /* SslWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73AF1BBE719A0059443A /* SslWrapper.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73B51BBE7F580059443A /* record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73B31BBE7F580059443A /* record.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73B81BBE7F8B0059443A /* protocol-version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73B61BBE7F8B0059443A /* protocol-version.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73BB1BBE804A0059443A /* exportable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73B91BBE804A0059443A /* exportable.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73BE1BBE853D0059443A /* handshake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73BC1BBE853D0059443A /* handshake.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73C11BBE87050059443A /* client-hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73BF1BBE87050059443A /* client-hello.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73C51BBE87C00059443A /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73C31BBE87C00059443A /* random.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73C81BBE89280059443A /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73C61BBE89280059443A /* util.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73D11BBE8B510059443A /* session-id.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73CF1BBE8B510059443A /* session-id.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73D41BBE8C4A0059443A /* cipher-suite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */; settings = {ASSET_TAGS = (); }; };
-		B34B73D71BBE8E2A0059443A /* extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34B73D51BBE8E2A0059443A /* extension.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3770DEB1BC14CA50051D2AB /* server-hello.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3770DF01BC14D910051D2AB /* compression-method.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3770DEE1BC14D910051D2AB /* compression-method.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3770DF41BC164700051D2AB /* alert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3770DF21BC164700051D2AB /* alert.cpp */; settings = {ASSET_TAGS = (); }; };
-		B37EB64C1BC22BA3005E04B0 /* certificate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB64A1BC22BA3005E04B0 /* certificate.cpp */; settings = {ASSET_TAGS = (); }; };
-		B37EB6501BC22C51005E04B0 /* asn-1cert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB64E1BC22C51005E04B0 /* asn-1cert.cpp */; settings = {ASSET_TAGS = (); }; };
-		B37EB6531BC22E70005E04B0 /* server-key-exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */; settings = {ASSET_TAGS = (); }; };
-		B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */; settings = {ASSET_TAGS = (); }; };
-		B37EB65A1BC236B8005E04B0 /* digitally-signed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB6581BC236B8005E04B0 /* digitally-signed.cpp */; settings = {ASSET_TAGS = (); }; };
-		B37EB65D1BC237B1005E04B0 /* server-dh-params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3D8FBF61BC3CAC400356772 /* certificate-request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3D8FBF91BC3D67C00356772 /* client-key-exchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FBF71BC3D67C00356772 /* client-key-exchange.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3D8FBFC1BC3D7C600356772 /* encrypted-pre-master-secret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FBFA1BC3D7C600356772 /* encrypted-pre-master-secret.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3D8FC001BC3D80C00356772 /* client-diffie-hellman-public.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FBFE1BC3D80C00356772 /* client-diffie-hellman-public.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3D8FC031BC3D8B000356772 /* pre-master-secret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC011BC3D8B000356772 /* pre-master-secret.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3D8FC061BC3DF0C00356772 /* change-cipher-spec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC041BC3DF0C00356772 /* change-cipher-spec.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3D8FC091BC3E01A00356772 /* finished.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC071BC3E01A00356772 /* finished.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3D8FC0D1BC3E99500356772 /* cipher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC0B1BC3E99500356772 /* cipher.cpp */; settings = {ASSET_TAGS = (); }; };
-		B3D8FC101BC3EB7500356772 /* mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3D8FC0E1BC3EB7500356772 /* mac.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313570B1BC7BB4500CDD513 /* Alert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356C41BC7BB4500CDD513 /* Alert.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313570C1BC7BB4500CDD513 /* Asn1cert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356C61BC7BB4500CDD513 /* Asn1cert.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313570D1BC7BB4500CDD513 /* Browser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356C81BC7BB4500CDD513 /* Browser.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313570E1BC7BB4500CDD513 /* Certificate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356CA1BC7BB4500CDD513 /* Certificate.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313570F1BC7BB4500CDD513 /* CertificateRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356CC1BC7BB4500CDD513 /* CertificateRequest.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357101BC7BB4500CDD513 /* ChangeCipherSpec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356CE1BC7BB4500CDD513 /* ChangeCipherSpec.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357111BC7BB4500CDD513 /* Cipher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356D01BC7BB4500CDD513 /* Cipher.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357121BC7BB4500CDD513 /* CipherSuite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356D21BC7BB4500CDD513 /* CipherSuite.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357131BC7BB4500CDD513 /* ClientDiffieHellmanPublic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356D41BC7BB4500CDD513 /* ClientDiffieHellmanPublic.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357141BC7BB4500CDD513 /* ClientHello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356D61BC7BB4500CDD513 /* ClientHello.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357151BC7BB4500CDD513 /* ClientKeyExchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356D81BC7BB4500CDD513 /* ClientKeyExchange.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357161BC7BB4500CDD513 /* CompressionMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356DA1BC7BB4500CDD513 /* CompressionMethod.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357171BC7BB4500CDD513 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356DC1BC7BB4500CDD513 /* Connection.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357181BC7BB4500CDD513 /* DigitallySigned.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356DE1BC7BB4500CDD513 /* DigitallySigned.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357191BC7BB4500CDD513 /* EncryptedPreMasterSecret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356E01BC7BB4500CDD513 /* EncryptedPreMasterSecret.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313571A1BC7BB4500CDD513 /* Err.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356E21BC7BB4500CDD513 /* Err.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313571B1BC7BB4500CDD513 /* Exportable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356E41BC7BB4500CDD513 /* Exportable.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313571C1BC7BB4500CDD513 /* Extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356E61BC7BB4500CDD513 /* Extension.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313571D1BC7BB4500CDD513 /* Finished.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356E81BC7BB4500CDD513 /* Finished.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313571E1BC7BB4500CDD513 /* Handshake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356EA1BC7BB4500CDD513 /* Handshake.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313571F1BC7BB4500CDD513 /* MAC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356EC1BC7BB4500CDD513 /* MAC.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357201BC7BB4500CDD513 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356EE1BC7BB4500CDD513 /* main.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357211BC7BB4500CDD513 /* PreMasterSecret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356EF1BC7BB4500CDD513 /* PreMasterSecret.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357221BC7BB4500CDD513 /* ProtocolVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356F21BC7BB4500CDD513 /* ProtocolVersion.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357231BC7BB4500CDD513 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356F31BC7BB4500CDD513 /* Random.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357241BC7BB4500CDD513 /* Record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356F51BC7BB4500CDD513 /* Record.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357251BC7BB4500CDD513 /* ServerDHParams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356F71BC7BB4500CDD513 /* ServerDHParams.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357261BC7BB4500CDD513 /* ServerHello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356F91BC7BB4500CDD513 /* ServerHello.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357271BC7BB4500CDD513 /* ServerHelloDone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356FB1BC7BB4500CDD513 /* ServerHelloDone.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357281BC7BB4500CDD513 /* ServerKeyExchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356FD1BC7BB4500CDD513 /* ServerKeyExchange.cpp */; settings = {ASSET_TAGS = (); }; };
+		B31357291BC7BB4500CDD513 /* SessionID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356FF1BC7BB4500CDD513 /* SessionID.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313572A1BC7BB4500CDD513 /* SslWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31357011BC7BB4500CDD513 /* SslWrapper.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313572B1BC7BB4500CDD513 /* StrUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31357031BC7BB4500CDD513 /* StrUtil.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313572C1BC7BB4500CDD513 /* SubConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31357051BC7BB4500CDD513 /* SubConnection.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313572D1BC7BB4500CDD513 /* Url.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31357071BC7BB4500CDD513 /* Url.cpp */; settings = {ASSET_TAGS = (); }; };
+		B313572E1BC7BB4500CDD513 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31357091BC7BB4500CDD513 /* Util.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,79 +58,78 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B31356C41BC7BB4500CDD513 /* Alert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Alert.cpp; sourceTree = "<group>"; };
+		B31356C51BC7BB4500CDD513 /* Alert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Alert.hpp; sourceTree = "<group>"; };
+		B31356C61BC7BB4500CDD513 /* Asn1cert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asn1cert.cpp; sourceTree = "<group>"; };
+		B31356C71BC7BB4500CDD513 /* Asn1cert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Asn1cert.hpp; sourceTree = "<group>"; };
+		B31356C81BC7BB4500CDD513 /* Browser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Browser.cpp; sourceTree = "<group>"; };
+		B31356C91BC7BB4500CDD513 /* Browser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Browser.hpp; sourceTree = "<group>"; };
+		B31356CA1BC7BB4500CDD513 /* Certificate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Certificate.cpp; sourceTree = "<group>"; };
+		B31356CB1BC7BB4500CDD513 /* Certificate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Certificate.hpp; sourceTree = "<group>"; };
+		B31356CC1BC7BB4500CDD513 /* CertificateRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CertificateRequest.cpp; sourceTree = "<group>"; };
+		B31356CD1BC7BB4500CDD513 /* CertificateRequest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CertificateRequest.hpp; sourceTree = "<group>"; };
+		B31356CE1BC7BB4500CDD513 /* ChangeCipherSpec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChangeCipherSpec.cpp; sourceTree = "<group>"; };
+		B31356CF1BC7BB4500CDD513 /* ChangeCipherSpec.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChangeCipherSpec.hpp; sourceTree = "<group>"; };
+		B31356D01BC7BB4500CDD513 /* Cipher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cipher.cpp; sourceTree = "<group>"; };
+		B31356D11BC7BB4500CDD513 /* Cipher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cipher.hpp; sourceTree = "<group>"; };
+		B31356D21BC7BB4500CDD513 /* CipherSuite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CipherSuite.cpp; sourceTree = "<group>"; };
+		B31356D31BC7BB4500CDD513 /* CipherSuite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CipherSuite.hpp; sourceTree = "<group>"; };
+		B31356D41BC7BB4500CDD513 /* ClientDiffieHellmanPublic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientDiffieHellmanPublic.cpp; sourceTree = "<group>"; };
+		B31356D51BC7BB4500CDD513 /* ClientDiffieHellmanPublic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ClientDiffieHellmanPublic.hpp; sourceTree = "<group>"; };
+		B31356D61BC7BB4500CDD513 /* ClientHello.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientHello.cpp; sourceTree = "<group>"; };
+		B31356D71BC7BB4500CDD513 /* ClientHello.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ClientHello.hpp; sourceTree = "<group>"; };
+		B31356D81BC7BB4500CDD513 /* ClientKeyExchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientKeyExchange.cpp; sourceTree = "<group>"; };
+		B31356D91BC7BB4500CDD513 /* ClientKeyExchange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ClientKeyExchange.hpp; sourceTree = "<group>"; };
+		B31356DA1BC7BB4500CDD513 /* CompressionMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressionMethod.cpp; sourceTree = "<group>"; };
+		B31356DB1BC7BB4500CDD513 /* CompressionMethod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompressionMethod.hpp; sourceTree = "<group>"; };
+		B31356DC1BC7BB4500CDD513 /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Connection.cpp; sourceTree = "<group>"; };
+		B31356DD1BC7BB4500CDD513 /* Connection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Connection.hpp; sourceTree = "<group>"; };
+		B31356DE1BC7BB4500CDD513 /* DigitallySigned.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DigitallySigned.cpp; sourceTree = "<group>"; };
+		B31356DF1BC7BB4500CDD513 /* DigitallySigned.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DigitallySigned.hpp; sourceTree = "<group>"; };
+		B31356E01BC7BB4500CDD513 /* EncryptedPreMasterSecret.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EncryptedPreMasterSecret.cpp; sourceTree = "<group>"; };
+		B31356E11BC7BB4500CDD513 /* EncryptedPreMasterSecret.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EncryptedPreMasterSecret.hpp; sourceTree = "<group>"; };
+		B31356E21BC7BB4500CDD513 /* Err.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Err.cpp; sourceTree = "<group>"; };
+		B31356E31BC7BB4500CDD513 /* Err.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Err.hpp; sourceTree = "<group>"; };
+		B31356E41BC7BB4500CDD513 /* Exportable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exportable.cpp; sourceTree = "<group>"; };
+		B31356E51BC7BB4500CDD513 /* Exportable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Exportable.hpp; sourceTree = "<group>"; };
+		B31356E61BC7BB4500CDD513 /* Extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extension.cpp; sourceTree = "<group>"; };
+		B31356E71BC7BB4500CDD513 /* Extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Extension.hpp; sourceTree = "<group>"; };
+		B31356E81BC7BB4500CDD513 /* Finished.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Finished.cpp; sourceTree = "<group>"; };
+		B31356E91BC7BB4500CDD513 /* Finished.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Finished.hpp; sourceTree = "<group>"; };
+		B31356EA1BC7BB4500CDD513 /* Handshake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Handshake.cpp; sourceTree = "<group>"; };
+		B31356EB1BC7BB4500CDD513 /* Handshake.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Handshake.hpp; sourceTree = "<group>"; };
+		B31356EC1BC7BB4500CDD513 /* MAC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MAC.cpp; sourceTree = "<group>"; };
+		B31356ED1BC7BB4500CDD513 /* MAC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MAC.hpp; sourceTree = "<group>"; };
+		B31356EE1BC7BB4500CDD513 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B31356EF1BC7BB4500CDD513 /* PreMasterSecret.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PreMasterSecret.cpp; sourceTree = "<group>"; };
+		B31356F01BC7BB4500CDD513 /* PreMasterSecret.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PreMasterSecret.hpp; sourceTree = "<group>"; };
+		B31356F11BC7BB4500CDD513 /* ProcotolVersion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProcotolVersion.hpp; sourceTree = "<group>"; };
+		B31356F21BC7BB4500CDD513 /* ProtocolVersion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProtocolVersion.cpp; sourceTree = "<group>"; };
+		B31356F31BC7BB4500CDD513 /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
+		B31356F41BC7BB4500CDD513 /* Random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
+		B31356F51BC7BB4500CDD513 /* Record.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Record.cpp; sourceTree = "<group>"; };
+		B31356F61BC7BB4500CDD513 /* Record.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Record.hpp; sourceTree = "<group>"; };
+		B31356F71BC7BB4500CDD513 /* ServerDHParams.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerDHParams.cpp; sourceTree = "<group>"; };
+		B31356F81BC7BB4500CDD513 /* ServerDHParams.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServerDHParams.hpp; sourceTree = "<group>"; };
+		B31356F91BC7BB4500CDD513 /* ServerHello.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerHello.cpp; sourceTree = "<group>"; };
+		B31356FA1BC7BB4500CDD513 /* ServerHello.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServerHello.hpp; sourceTree = "<group>"; };
+		B31356FB1BC7BB4500CDD513 /* ServerHelloDone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerHelloDone.cpp; sourceTree = "<group>"; };
+		B31356FC1BC7BB4500CDD513 /* ServerHelloDone.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServerHelloDone.hpp; sourceTree = "<group>"; };
+		B31356FD1BC7BB4500CDD513 /* ServerKeyExchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerKeyExchange.cpp; sourceTree = "<group>"; };
+		B31356FE1BC7BB4500CDD513 /* ServerKeyExchange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServerKeyExchange.hpp; sourceTree = "<group>"; };
+		B31356FF1BC7BB4500CDD513 /* SessionID.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SessionID.cpp; sourceTree = "<group>"; };
+		B31357001BC7BB4500CDD513 /* SessionID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SessionID.hpp; sourceTree = "<group>"; };
+		B31357011BC7BB4500CDD513 /* SslWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SslWrapper.cpp; sourceTree = "<group>"; };
+		B31357021BC7BB4500CDD513 /* SslWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SslWrapper.hpp; sourceTree = "<group>"; };
+		B31357031BC7BB4500CDD513 /* StrUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StrUtil.cpp; sourceTree = "<group>"; };
+		B31357041BC7BB4500CDD513 /* StrUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StrUtil.hpp; sourceTree = "<group>"; };
+		B31357051BC7BB4500CDD513 /* SubConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SubConnection.cpp; sourceTree = "<group>"; };
+		B31357061BC7BB4500CDD513 /* SubConnection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SubConnection.hpp; sourceTree = "<group>"; };
+		B31357071BC7BB4500CDD513 /* Url.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Url.cpp; sourceTree = "<group>"; };
+		B31357081BC7BB4500CDD513 /* Url.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Url.hpp; sourceTree = "<group>"; };
+		B31357091BC7BB4500CDD513 /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
+		B313570A1BC7BB4500CDD513 /* Util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Util.hpp; sourceTree = "<group>"; };
 		B34B738D1BBD73430059443A /* browser-cc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "browser-cc"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B34B73901BBD73430059443A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		B34B73971BBDE08C0059443A /* browser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = browser.cpp; sourceTree = "<group>"; };
-		B34B73981BBDE08C0059443A /* browser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = browser.hpp; sourceTree = "<group>"; };
-		B34B739B1BBDE2B70059443A /* strutil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strutil.cpp; sourceTree = "<group>"; };
-		B34B739C1BBDE2B70059443A /* strutil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strutil.hpp; sourceTree = "<group>"; };
-		B34B739E1BBDE54F0059443A /* setting.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = setting.hpp; sourceTree = "<group>"; };
-		B34B73A21BBDE6350059443A /* err.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = err.cpp; sourceTree = "<group>"; };
-		B34B73A31BBDE6350059443A /* err.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = err.hpp; sourceTree = "<group>"; };
-		B34B73A51BBDEF850059443A /* url.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = url.cpp; sourceTree = "<group>"; };
-		B34B73A61BBDEF850059443A /* url.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = url.hpp; sourceTree = "<group>"; };
-		B34B73A91BBDF5F20059443A /* connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connection.cpp; sourceTree = "<group>"; };
-		B34B73AA1BBDF5F20059443A /* connection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = connection.hpp; sourceTree = "<group>"; };
-		B34B73AC1BBDF8270059443A /* SubConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SubConnection.cpp; sourceTree = "<group>"; };
-		B34B73AD1BBDF8270059443A /* SubConnection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SubConnection.hpp; sourceTree = "<group>"; };
-		B34B73AF1BBE719A0059443A /* SslWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SslWrapper.cpp; sourceTree = "<group>"; };
-		B34B73B01BBE719A0059443A /* SslWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SslWrapper.hpp; sourceTree = "<group>"; };
-		B34B73B31BBE7F580059443A /* record.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = record.cpp; sourceTree = "<group>"; };
-		B34B73B41BBE7F580059443A /* record.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = record.hpp; sourceTree = "<group>"; };
-		B34B73B61BBE7F8B0059443A /* protocol-version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "protocol-version.cpp"; sourceTree = "<group>"; };
-		B34B73B71BBE7F8B0059443A /* protocol-version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "protocol-version.hpp"; sourceTree = "<group>"; };
-		B34B73B91BBE804A0059443A /* exportable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exportable.cpp; sourceTree = "<group>"; };
-		B34B73BA1BBE804A0059443A /* exportable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = exportable.hpp; sourceTree = "<group>"; };
-		B34B73BC1BBE853D0059443A /* handshake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = handshake.cpp; sourceTree = "<group>"; };
-		B34B73BD1BBE853D0059443A /* handshake.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = handshake.hpp; sourceTree = "<group>"; };
-		B34B73BF1BBE87050059443A /* client-hello.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "client-hello.cpp"; sourceTree = "<group>"; };
-		B34B73C01BBE87050059443A /* client-hello.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "client-hello.hpp"; sourceTree = "<group>"; };
-		B34B73C31BBE87C00059443A /* random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random.cpp; sourceTree = "<group>"; };
-		B34B73C41BBE87C00059443A /* random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random.hpp; sourceTree = "<group>"; };
-		B34B73C61BBE89280059443A /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
-		B34B73C71BBE89280059443A /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
-		B34B73CF1BBE8B510059443A /* session-id.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "session-id.cpp"; sourceTree = "<group>"; };
-		B34B73D01BBE8B510059443A /* session-id.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "session-id.hpp"; sourceTree = "<group>"; };
-		B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "cipher-suite.cpp"; sourceTree = "<group>"; };
-		B34B73D31BBE8C4A0059443A /* cipher-suite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "cipher-suite.hpp"; sourceTree = "<group>"; };
-		B34B73D51BBE8E2A0059443A /* extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extension.cpp; sourceTree = "<group>"; };
-		B34B73D61BBE8E2A0059443A /* extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = extension.hpp; sourceTree = "<group>"; };
-		B3770DEB1BC14CA50051D2AB /* server-hello.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-hello.cpp"; sourceTree = "<group>"; };
-		B3770DEC1BC14CA50051D2AB /* server-hello.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-hello.hpp"; sourceTree = "<group>"; };
-		B3770DEE1BC14D910051D2AB /* compression-method.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "compression-method.cpp"; sourceTree = "<group>"; };
-		B3770DEF1BC14D910051D2AB /* compression-method.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "compression-method.hpp"; sourceTree = "<group>"; };
-		B3770DF21BC164700051D2AB /* alert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alert.cpp; sourceTree = "<group>"; };
-		B3770DF31BC164700051D2AB /* alert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alert.hpp; sourceTree = "<group>"; };
-		B37EB64A1BC22BA3005E04B0 /* certificate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = certificate.cpp; sourceTree = "<group>"; };
-		B37EB64B1BC22BA3005E04B0 /* certificate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = certificate.hpp; sourceTree = "<group>"; };
-		B37EB64E1BC22C51005E04B0 /* asn-1cert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "asn-1cert.cpp"; sourceTree = "<group>"; };
-		B37EB64F1BC22C51005E04B0 /* asn-1cert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "asn-1cert.hpp"; sourceTree = "<group>"; };
-		B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-key-exchange.cpp"; sourceTree = "<group>"; };
-		B37EB6521BC22E70005E04B0 /* server-key-exchange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-key-exchange.hpp"; sourceTree = "<group>"; };
-		B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-hello-done.cpp"; sourceTree = "<group>"; };
-		B37EB6551BC22E9E005E04B0 /* server-hello-done.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-hello-done.hpp"; sourceTree = "<group>"; };
-		B37EB6581BC236B8005E04B0 /* digitally-signed.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "digitally-signed.cpp"; sourceTree = "<group>"; };
-		B37EB6591BC236B8005E04B0 /* digitally-signed.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "digitally-signed.hpp"; sourceTree = "<group>"; };
-		B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "server-dh-params.cpp"; sourceTree = "<group>"; };
-		B37EB65C1BC237B1005E04B0 /* server-dh-params.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "server-dh-params.hpp"; sourceTree = "<group>"; };
-		B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "certificate-request.cpp"; sourceTree = "<group>"; };
-		B3D8FBF51BC3CAC400356772 /* certificate-request.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "certificate-request.hpp"; sourceTree = "<group>"; };
-		B3D8FBF71BC3D67C00356772 /* client-key-exchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "client-key-exchange.cpp"; sourceTree = "<group>"; };
-		B3D8FBF81BC3D67C00356772 /* client-key-exchange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "client-key-exchange.hpp"; sourceTree = "<group>"; };
-		B3D8FBFA1BC3D7C600356772 /* encrypted-pre-master-secret.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "encrypted-pre-master-secret.cpp"; sourceTree = "<group>"; };
-		B3D8FBFB1BC3D7C600356772 /* encrypted-pre-master-secret.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "encrypted-pre-master-secret.hpp"; sourceTree = "<group>"; };
-		B3D8FBFE1BC3D80C00356772 /* client-diffie-hellman-public.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "client-diffie-hellman-public.cpp"; sourceTree = "<group>"; };
-		B3D8FBFF1BC3D80C00356772 /* client-diffie-hellman-public.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "client-diffie-hellman-public.hpp"; sourceTree = "<group>"; };
-		B3D8FC011BC3D8B000356772 /* pre-master-secret.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "pre-master-secret.cpp"; sourceTree = "<group>"; };
-		B3D8FC021BC3D8B000356772 /* pre-master-secret.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "pre-master-secret.hpp"; sourceTree = "<group>"; };
-		B3D8FC041BC3DF0C00356772 /* change-cipher-spec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "change-cipher-spec.cpp"; sourceTree = "<group>"; };
-		B3D8FC051BC3DF0C00356772 /* change-cipher-spec.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "change-cipher-spec.hpp"; sourceTree = "<group>"; };
-		B3D8FC071BC3E01A00356772 /* finished.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = finished.cpp; sourceTree = "<group>"; };
-		B3D8FC081BC3E01A00356772 /* finished.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = finished.hpp; sourceTree = "<group>"; };
-		B3D8FC0B1BC3E99500356772 /* cipher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cipher.cpp; sourceTree = "<group>"; };
-		B3D8FC0C1BC3E99500356772 /* cipher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cipher.hpp; sourceTree = "<group>"; };
-		B3D8FC0E1BC3EB7500356772 /* mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mac.cpp; sourceTree = "<group>"; };
-		B3D8FC0F1BC3EB7500356772 /* mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mac.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,176 +162,79 @@
 		B34B738F1BBD73430059443A /* browser-cc */ = {
 			isa = PBXGroup;
 			children = (
-				B34B73A81BBDEF900059443A /* object */,
-				B34B739A1BBDE2A40059443A /* util */,
-				B34B73901BBD73430059443A /* main.cpp */,
-				B34B73971BBDE08C0059443A /* browser.cpp */,
-				B34B73981BBDE08C0059443A /* browser.hpp */,
+				B31356C41BC7BB4500CDD513 /* Alert.cpp */,
+				B31356C51BC7BB4500CDD513 /* Alert.hpp */,
+				B31356C61BC7BB4500CDD513 /* Asn1cert.cpp */,
+				B31356C71BC7BB4500CDD513 /* Asn1cert.hpp */,
+				B31356C81BC7BB4500CDD513 /* Browser.cpp */,
+				B31356C91BC7BB4500CDD513 /* Browser.hpp */,
+				B31356CA1BC7BB4500CDD513 /* Certificate.cpp */,
+				B31356CB1BC7BB4500CDD513 /* Certificate.hpp */,
+				B31356CC1BC7BB4500CDD513 /* CertificateRequest.cpp */,
+				B31356CD1BC7BB4500CDD513 /* CertificateRequest.hpp */,
+				B31356CE1BC7BB4500CDD513 /* ChangeCipherSpec.cpp */,
+				B31356CF1BC7BB4500CDD513 /* ChangeCipherSpec.hpp */,
+				B31356D01BC7BB4500CDD513 /* Cipher.cpp */,
+				B31356D11BC7BB4500CDD513 /* Cipher.hpp */,
+				B31356D21BC7BB4500CDD513 /* CipherSuite.cpp */,
+				B31356D31BC7BB4500CDD513 /* CipherSuite.hpp */,
+				B31356D41BC7BB4500CDD513 /* ClientDiffieHellmanPublic.cpp */,
+				B31356D51BC7BB4500CDD513 /* ClientDiffieHellmanPublic.hpp */,
+				B31356D61BC7BB4500CDD513 /* ClientHello.cpp */,
+				B31356D71BC7BB4500CDD513 /* ClientHello.hpp */,
+				B31356D81BC7BB4500CDD513 /* ClientKeyExchange.cpp */,
+				B31356D91BC7BB4500CDD513 /* ClientKeyExchange.hpp */,
+				B31356DA1BC7BB4500CDD513 /* CompressionMethod.cpp */,
+				B31356DB1BC7BB4500CDD513 /* CompressionMethod.hpp */,
+				B31356DC1BC7BB4500CDD513 /* Connection.cpp */,
+				B31356DD1BC7BB4500CDD513 /* Connection.hpp */,
+				B31356DE1BC7BB4500CDD513 /* DigitallySigned.cpp */,
+				B31356DF1BC7BB4500CDD513 /* DigitallySigned.hpp */,
+				B31356E01BC7BB4500CDD513 /* EncryptedPreMasterSecret.cpp */,
+				B31356E11BC7BB4500CDD513 /* EncryptedPreMasterSecret.hpp */,
+				B31356E21BC7BB4500CDD513 /* Err.cpp */,
+				B31356E31BC7BB4500CDD513 /* Err.hpp */,
+				B31356E41BC7BB4500CDD513 /* Exportable.cpp */,
+				B31356E51BC7BB4500CDD513 /* Exportable.hpp */,
+				B31356E61BC7BB4500CDD513 /* Extension.cpp */,
+				B31356E71BC7BB4500CDD513 /* Extension.hpp */,
+				B31356E81BC7BB4500CDD513 /* Finished.cpp */,
+				B31356E91BC7BB4500CDD513 /* Finished.hpp */,
+				B31356EA1BC7BB4500CDD513 /* Handshake.cpp */,
+				B31356EB1BC7BB4500CDD513 /* Handshake.hpp */,
+				B31356EC1BC7BB4500CDD513 /* MAC.cpp */,
+				B31356ED1BC7BB4500CDD513 /* MAC.hpp */,
+				B31356EE1BC7BB4500CDD513 /* main.cpp */,
+				B31356EF1BC7BB4500CDD513 /* PreMasterSecret.cpp */,
+				B31356F01BC7BB4500CDD513 /* PreMasterSecret.hpp */,
+				B31356F11BC7BB4500CDD513 /* ProcotolVersion.hpp */,
+				B31356F21BC7BB4500CDD513 /* ProtocolVersion.cpp */,
+				B31356F31BC7BB4500CDD513 /* Random.cpp */,
+				B31356F41BC7BB4500CDD513 /* Random.hpp */,
+				B31356F51BC7BB4500CDD513 /* Record.cpp */,
+				B31356F61BC7BB4500CDD513 /* Record.hpp */,
+				B31356F71BC7BB4500CDD513 /* ServerDHParams.cpp */,
+				B31356F81BC7BB4500CDD513 /* ServerDHParams.hpp */,
+				B31356F91BC7BB4500CDD513 /* ServerHello.cpp */,
+				B31356FA1BC7BB4500CDD513 /* ServerHello.hpp */,
+				B31356FB1BC7BB4500CDD513 /* ServerHelloDone.cpp */,
+				B31356FC1BC7BB4500CDD513 /* ServerHelloDone.hpp */,
+				B31356FD1BC7BB4500CDD513 /* ServerKeyExchange.cpp */,
+				B31356FE1BC7BB4500CDD513 /* ServerKeyExchange.hpp */,
+				B31356FF1BC7BB4500CDD513 /* SessionID.cpp */,
+				B31357001BC7BB4500CDD513 /* SessionID.hpp */,
+				B31357011BC7BB4500CDD513 /* SslWrapper.cpp */,
+				B31357021BC7BB4500CDD513 /* SslWrapper.hpp */,
+				B31357031BC7BB4500CDD513 /* StrUtil.cpp */,
+				B31357041BC7BB4500CDD513 /* StrUtil.hpp */,
+				B31357051BC7BB4500CDD513 /* SubConnection.cpp */,
+				B31357061BC7BB4500CDD513 /* SubConnection.hpp */,
+				B31357071BC7BB4500CDD513 /* Url.cpp */,
+				B31357081BC7BB4500CDD513 /* Url.hpp */,
+				B31357091BC7BB4500CDD513 /* Util.cpp */,
+				B313570A1BC7BB4500CDD513 /* Util.hpp */,
 			);
 			path = "browser-cc";
-			sourceTree = "<group>";
-		};
-		B34B739A1BBDE2A40059443A /* util */ = {
-			isa = PBXGroup;
-			children = (
-				B34B73A21BBDE6350059443A /* err.cpp */,
-				B34B73A31BBDE6350059443A /* err.hpp */,
-				B34B739B1BBDE2B70059443A /* strutil.cpp */,
-				B34B739C1BBDE2B70059443A /* strutil.hpp */,
-				B34B739E1BBDE54F0059443A /* setting.hpp */,
-				B34B73C61BBE89280059443A /* util.cpp */,
-				B34B73C71BBE89280059443A /* util.hpp */,
-			);
-			name = util;
-			sourceTree = "<group>";
-		};
-		B34B73A81BBDEF900059443A /* object */ = {
-			isa = PBXGroup;
-			children = (
-				B34B73B21BBE7DD50059443A /* ssl */,
-				B3779DB91BC5C34600758997 /* connection */,
-			);
-			name = object;
-			sourceTree = "<group>";
-		};
-		B34B73B21BBE7DD50059443A /* ssl */ = {
-			isa = PBXGroup;
-			children = (
-				B3770DF11BC164580051D2AB /* alert */,
-				B34B73C21BBE87110059443A /* handshake */,
-				B34B73AF1BBE719A0059443A /* SslWrapper.cpp */,
-				B3D8FC041BC3DF0C00356772 /* change-cipher-spec.cpp */,
-				B3D8FC051BC3DF0C00356772 /* change-cipher-spec.hpp */,
-				B34B73B01BBE719A0059443A /* SslWrapper.hpp */,
-				B34B73B31BBE7F580059443A /* record.cpp */,
-				B34B73B41BBE7F580059443A /* record.hpp */,
-				B34B73B61BBE7F8B0059443A /* protocol-version.cpp */,
-				B34B73B71BBE7F8B0059443A /* protocol-version.hpp */,
-				B34B73B91BBE804A0059443A /* exportable.cpp */,
-				B34B73BA1BBE804A0059443A /* exportable.hpp */,
-			);
-			name = ssl;
-			sourceTree = "<group>";
-		};
-		B34B73C21BBE87110059443A /* handshake */ = {
-			isa = PBXGroup;
-			children = (
-				B3D8FC0A1BC3E89800356772 /* cipher */,
-				B3D8FBFD1BC3D7CE00356772 /* Client Key Exchange */,
-				B3D8FBF41BC3CAC400356772 /* certificate-request.cpp */,
-				B3D8FBF51BC3CAC400356772 /* certificate-request.hpp */,
-				B37EB64D1BC22C35005E04B0 /* cetificate */,
-				B3770DEB1BC14CA50051D2AB /* server-hello.cpp */,
-				B3770DEC1BC14CA50051D2AB /* server-hello.hpp */,
-				B37EB6491BC22B8D005E04B0 /* mini objects */,
-				B34B73BC1BBE853D0059443A /* handshake.cpp */,
-				B34B73BD1BBE853D0059443A /* handshake.hpp */,
-				B34B73BF1BBE87050059443A /* client-hello.cpp */,
-				B34B73C01BBE87050059443A /* client-hello.hpp */,
-				B37EB6571BC2360E005E04B0 /* Server Key Exchange */,
-				B37EB6541BC22E9E005E04B0 /* server-hello-done.cpp */,
-				B37EB6551BC22E9E005E04B0 /* server-hello-done.hpp */,
-				B3D8FC071BC3E01A00356772 /* finished.cpp */,
-				B3D8FC081BC3E01A00356772 /* finished.hpp */,
-			);
-			name = handshake;
-			sourceTree = "<group>";
-		};
-		B3770DF11BC164580051D2AB /* alert */ = {
-			isa = PBXGroup;
-			children = (
-				B3770DF21BC164700051D2AB /* alert.cpp */,
-				B3770DF31BC164700051D2AB /* alert.hpp */,
-			);
-			name = alert;
-			sourceTree = "<group>";
-		};
-		B3779DB91BC5C34600758997 /* connection */ = {
-			isa = PBXGroup;
-			children = (
-				B34B73AC1BBDF8270059443A /* SubConnection.cpp */,
-				B34B73AD1BBDF8270059443A /* SubConnection.hpp */,
-				B34B73A91BBDF5F20059443A /* connection.cpp */,
-				B34B73AA1BBDF5F20059443A /* connection.hpp */,
-				B34B73A51BBDEF850059443A /* url.cpp */,
-				B34B73A61BBDEF850059443A /* url.hpp */,
-			);
-			name = connection;
-			sourceTree = "<group>";
-		};
-		B3779DBA1BC71B5A00758997 /* asn1 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = asn1;
-			sourceTree = "<group>";
-		};
-		B37EB6491BC22B8D005E04B0 /* mini objects */ = {
-			isa = PBXGroup;
-			children = (
-				B34B73CF1BBE8B510059443A /* session-id.cpp */,
-				B34B73D01BBE8B510059443A /* session-id.hpp */,
-				B3770DEE1BC14D910051D2AB /* compression-method.cpp */,
-				B3770DEF1BC14D910051D2AB /* compression-method.hpp */,
-				B34B73D51BBE8E2A0059443A /* extension.cpp */,
-				B34B73D61BBE8E2A0059443A /* extension.hpp */,
-				B34B73C31BBE87C00059443A /* random.cpp */,
-				B34B73C41BBE87C00059443A /* random.hpp */,
-			);
-			name = "mini objects";
-			sourceTree = "<group>";
-		};
-		B37EB64D1BC22C35005E04B0 /* cetificate */ = {
-			isa = PBXGroup;
-			children = (
-				B37EB64A1BC22BA3005E04B0 /* certificate.cpp */,
-				B37EB64B1BC22BA3005E04B0 /* certificate.hpp */,
-				B37EB64E1BC22C51005E04B0 /* asn-1cert.cpp */,
-				B37EB64F1BC22C51005E04B0 /* asn-1cert.hpp */,
-			);
-			name = cetificate;
-			sourceTree = "<group>";
-		};
-		B37EB6571BC2360E005E04B0 /* Server Key Exchange */ = {
-			isa = PBXGroup;
-			children = (
-				B37EB6511BC22E70005E04B0 /* server-key-exchange.cpp */,
-				B37EB6521BC22E70005E04B0 /* server-key-exchange.hpp */,
-				B37EB6581BC236B8005E04B0 /* digitally-signed.cpp */,
-				B37EB6591BC236B8005E04B0 /* digitally-signed.hpp */,
-				B37EB65B1BC237B1005E04B0 /* server-dh-params.cpp */,
-				B37EB65C1BC237B1005E04B0 /* server-dh-params.hpp */,
-			);
-			name = "Server Key Exchange";
-			sourceTree = "<group>";
-		};
-		B3D8FBFD1BC3D7CE00356772 /* Client Key Exchange */ = {
-			isa = PBXGroup;
-			children = (
-				B3D8FBF71BC3D67C00356772 /* client-key-exchange.cpp */,
-				B3D8FBF81BC3D67C00356772 /* client-key-exchange.hpp */,
-				B3D8FBFA1BC3D7C600356772 /* encrypted-pre-master-secret.cpp */,
-				B3D8FBFB1BC3D7C600356772 /* encrypted-pre-master-secret.hpp */,
-				B3D8FC011BC3D8B000356772 /* pre-master-secret.cpp */,
-				B3D8FC021BC3D8B000356772 /* pre-master-secret.hpp */,
-				B3D8FBFE1BC3D80C00356772 /* client-diffie-hellman-public.cpp */,
-				B3D8FBFF1BC3D80C00356772 /* client-diffie-hellman-public.hpp */,
-			);
-			name = "Client Key Exchange";
-			sourceTree = "<group>";
-		};
-		B3D8FC0A1BC3E89800356772 /* cipher */ = {
-			isa = PBXGroup;
-			children = (
-				B3779DBA1BC71B5A00758997 /* asn1 */,
-				B34B73D21BBE8C4A0059443A /* cipher-suite.cpp */,
-				B34B73D31BBE8C4A0059443A /* cipher-suite.hpp */,
-				B3D8FC0B1BC3E99500356772 /* cipher.cpp */,
-				B3D8FC0C1BC3E99500356772 /* cipher.hpp */,
-				B3D8FC0E1BC3EB7500356772 /* mac.cpp */,
-				B3D8FC0F1BC3EB7500356772 /* mac.hpp */,
-			);
-			name = cipher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,42 +293,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3D8FBFC1BC3D7C600356772 /* encrypted-pre-master-secret.cpp in Sources */,
-				B34B739D1BBDE2B70059443A /* strutil.cpp in Sources */,
-				B34B73BB1BBE804A0059443A /* exportable.cpp in Sources */,
-				B34B73C51BBE87C00059443A /* random.cpp in Sources */,
-				B34B73B51BBE7F580059443A /* record.cpp in Sources */,
-				B34B73A71BBDEF850059443A /* url.cpp in Sources */,
-				B37EB65A1BC236B8005E04B0 /* digitally-signed.cpp in Sources */,
-				B37EB6531BC22E70005E04B0 /* server-key-exchange.cpp in Sources */,
-				B34B73B11BBE719A0059443A /* SslWrapper.cpp in Sources */,
-				B34B73C11BBE87050059443A /* client-hello.cpp in Sources */,
-				B37EB64C1BC22BA3005E04B0 /* certificate.cpp in Sources */,
-				B34B73D71BBE8E2A0059443A /* extension.cpp in Sources */,
-				B3D8FC0D1BC3E99500356772 /* cipher.cpp in Sources */,
-				B34B73BE1BBE853D0059443A /* handshake.cpp in Sources */,
-				B37EB6501BC22C51005E04B0 /* asn-1cert.cpp in Sources */,
-				B34B73C81BBE89280059443A /* util.cpp in Sources */,
-				B34B73B81BBE7F8B0059443A /* protocol-version.cpp in Sources */,
-				B3770DF41BC164700051D2AB /* alert.cpp in Sources */,
-				B34B73991BBDE08C0059443A /* browser.cpp in Sources */,
-				B34B73911BBD73430059443A /* main.cpp in Sources */,
-				B34B73A41BBDE6350059443A /* err.cpp in Sources */,
-				B34B73D11BBE8B510059443A /* session-id.cpp in Sources */,
-				B3770DF01BC14D910051D2AB /* compression-method.cpp in Sources */,
-				B34B73D41BBE8C4A0059443A /* cipher-suite.cpp in Sources */,
-				B34B73AB1BBDF5F20059443A /* connection.cpp in Sources */,
-				B34B73AE1BBDF8270059443A /* SubConnection.cpp in Sources */,
-				B3D8FC031BC3D8B000356772 /* pre-master-secret.cpp in Sources */,
-				B3D8FC001BC3D80C00356772 /* client-diffie-hellman-public.cpp in Sources */,
-				B3D8FC061BC3DF0C00356772 /* change-cipher-spec.cpp in Sources */,
-				B3D8FBF91BC3D67C00356772 /* client-key-exchange.cpp in Sources */,
-				B3D8FC091BC3E01A00356772 /* finished.cpp in Sources */,
-				B3770DED1BC14CA50051D2AB /* server-hello.cpp in Sources */,
-				B3D8FBF61BC3CAC400356772 /* certificate-request.cpp in Sources */,
-				B3D8FC101BC3EB7500356772 /* mac.cpp in Sources */,
-				B37EB6561BC22E9E005E04B0 /* server-hello-done.cpp in Sources */,
-				B37EB65D1BC237B1005E04B0 /* server-dh-params.cpp in Sources */,
+				B313571F1BC7BB4500CDD513 /* MAC.cpp in Sources */,
+				B313571D1BC7BB4500CDD513 /* Finished.cpp in Sources */,
+				B313570D1BC7BB4500CDD513 /* Browser.cpp in Sources */,
+				B313571A1BC7BB4500CDD513 /* Err.cpp in Sources */,
+				B313572D1BC7BB4500CDD513 /* Url.cpp in Sources */,
+				B31357201BC7BB4500CDD513 /* main.cpp in Sources */,
+				B313571B1BC7BB4500CDD513 /* Exportable.cpp in Sources */,
+				B313571C1BC7BB4500CDD513 /* Extension.cpp in Sources */,
+				B31357161BC7BB4500CDD513 /* CompressionMethod.cpp in Sources */,
+				B31357291BC7BB4500CDD513 /* SessionID.cpp in Sources */,
+				B313570C1BC7BB4500CDD513 /* Asn1cert.cpp in Sources */,
+				B31357131BC7BB4500CDD513 /* ClientDiffieHellmanPublic.cpp in Sources */,
+				B31357151BC7BB4500CDD513 /* ClientKeyExchange.cpp in Sources */,
+				B31357281BC7BB4500CDD513 /* ServerKeyExchange.cpp in Sources */,
+				B31357181BC7BB4500CDD513 /* DigitallySigned.cpp in Sources */,
+				B31357171BC7BB4500CDD513 /* Connection.cpp in Sources */,
+				B31357231BC7BB4500CDD513 /* Random.cpp in Sources */,
+				B31357111BC7BB4500CDD513 /* Cipher.cpp in Sources */,
+				B313570B1BC7BB4500CDD513 /* Alert.cpp in Sources */,
+				B313572A1BC7BB4500CDD513 /* SslWrapper.cpp in Sources */,
+				B313571E1BC7BB4500CDD513 /* Handshake.cpp in Sources */,
+				B31357101BC7BB4500CDD513 /* ChangeCipherSpec.cpp in Sources */,
+				B31357121BC7BB4500CDD513 /* CipherSuite.cpp in Sources */,
+				B31357191BC7BB4500CDD513 /* EncryptedPreMasterSecret.cpp in Sources */,
+				B31357141BC7BB4500CDD513 /* ClientHello.cpp in Sources */,
+				B31357221BC7BB4500CDD513 /* ProtocolVersion.cpp in Sources */,
+				B313572B1BC7BB4500CDD513 /* StrUtil.cpp in Sources */,
+				B313572E1BC7BB4500CDD513 /* Util.cpp in Sources */,
+				B31357241BC7BB4500CDD513 /* Record.cpp in Sources */,
+				B313570F1BC7BB4500CDD513 /* CertificateRequest.cpp in Sources */,
+				B31357211BC7BB4500CDD513 /* PreMasterSecret.cpp in Sources */,
+				B31357251BC7BB4500CDD513 /* ServerDHParams.cpp in Sources */,
+				B313572C1BC7BB4500CDD513 /* SubConnection.cpp in Sources */,
+				B313570E1BC7BB4500CDD513 /* Certificate.cpp in Sources */,
+				B31357261BC7BB4500CDD513 /* ServerHello.cpp in Sources */,
+				B31357271BC7BB4500CDD513 /* ServerHelloDone.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

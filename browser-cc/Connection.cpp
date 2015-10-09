@@ -60,7 +60,7 @@ vector<string> Connection::ipListFromHostname(const string& hostname) {
 	return ipList;
 }
 
-void Connection::send(const vector<uint8_t> &request) const{
+void Connection::send(const vector<uint8_t> &request){
 	if (this->isConnecting) {
 		if (this->activatingConnection == NULL)
 			throw Err(Err::NoConnection);

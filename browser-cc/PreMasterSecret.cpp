@@ -6,7 +6,8 @@
 //  Copyright © 2015 Nissassin Seventeen. All rights reserved.
 //
 
-#include <sys/_types/_time_t.h>
+
+#include <stddef.h>
 #include <cstdlib>
 #include <ctime>
 

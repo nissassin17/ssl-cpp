@@ -13,7 +13,7 @@
 
 using namespace std;
 
-string StrUtil::getLink(int argc, const char * argv[]) const {
+string StrUtil::getLink(int argc, const char * argv[]){
 
 	if (argc == 1)
 		throw Err(Err::NoLinkProvided);

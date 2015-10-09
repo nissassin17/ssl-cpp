@@ -36,7 +36,7 @@ public:
 
 	bool isSuccess() const;
 
-	const string& what() const;
+	virtual const char* what() ;
 
 private:
 	ErrType errType;

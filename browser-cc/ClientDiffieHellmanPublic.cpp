@@ -8,7 +8,7 @@
 
 #include "ClientDiffieHellmanPublic.hpp"
 
-ClientDiffieHellmanPublic::ClientDiffieHellmanPublic(CipherSuite *cipherSuite) :
+ClientDiffieHellmanPublic::ClientDiffieHellmanPublic(const CipherSuite *cipherSuite) :
 		cipherSuite(cipherSuite) {
 }
 

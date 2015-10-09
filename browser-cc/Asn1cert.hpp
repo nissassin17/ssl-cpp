@@ -9,7 +9,7 @@
 #ifndef asn_1cert_hpp
 #define asn_1cert_hpp
 
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <vector>
 

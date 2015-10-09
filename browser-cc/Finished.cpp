@@ -25,3 +25,6 @@ Finished::Finished(SenderType type) :
 		type(type) {
 
 }
+
+Finished::~Finished() {
+}

@@ -24,3 +24,9 @@ SessionID::SessionID(const vector<uint8_t> &data, size_t offset){
 	uint8_t length = data[offset];
 	this->id = Util::takeData(data, length, offset + 1);
 }
+
+SessionID::SessionID() {
+}
+
+SessionID::~SessionID() {
+}

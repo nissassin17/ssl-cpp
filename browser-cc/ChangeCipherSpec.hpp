@@ -9,7 +9,7 @@
 #ifndef change_cipher_spec_hpp
 #define change_cipher_spec_hpp
 
-#include <sys/_types/_size_t.h>
+
 #include <cstdint>
 #include <vector>
 

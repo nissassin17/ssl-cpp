@@ -16,3 +16,6 @@ size_t ServerHelloDone::size() const {
 	size_t result(0);
 	return result;
 }
+
+ServerHelloDone::~ServerHelloDone() {
+}

@@ -22,7 +22,7 @@ Certificate::Certificate(const vector<uint8_t> &data, size_t offset) {
 	}
 }
 
-vector<const ASN1Cert*> Certificate::getCertificateList() const{
+const vector<ASN1Cert*> &Certificate::getCertificateList() const{
 	return certificateList;
 }
 

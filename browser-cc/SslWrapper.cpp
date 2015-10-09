@@ -8,7 +8,7 @@
 
 #include "SslWrapper.hpp"
 
-#include <sys/_types/_size_t.h>
+
 #include <iostream>
 
 #include "Connection.hpp"
@@ -16,12 +16,12 @@
 #include "Record.hpp"
 #include "Util.hpp"
 
-SslWrapper::SslWrapper(const Url& url) :
+SslWrapper::SslWrapper(const Url* url) :
 url(url){
-	this->connection = new Connection(url.getHostname(), url.isUseSsl());
+	this->connection = new Connection(url->getHostname(), url->isUseSsl());
 }
 
-vector<uint8_t> SslWrapper::get() const {
+vector<uint8_t> SslWrapper::get() {
 	if (this->url->isUseSsl()) {
 		//prepare client hello
 		Record *clientHello = new Record(Handshake::CLIENT_HELLO);

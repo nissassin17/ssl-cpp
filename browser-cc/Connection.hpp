@@ -27,7 +27,7 @@ private:
 public:
 	Connection(const string& hostname, bool isSsl);
 	~Connection();
-	void send(const vector<uint8_t> &request) const;
+	void send(const vector<uint8_t> &request);
 	vector<uint8_t> receive() const;
 };
 
