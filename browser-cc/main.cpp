@@ -9,8 +9,8 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "browser.hpp"
-#include "err.hpp"
+#include "Browser.hpp"
+#include "Err.hpp"
 
 using namespace std;
 

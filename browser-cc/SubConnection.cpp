@@ -14,7 +14,7 @@
 #include <sys/socket.h>
 #include <string>
 
-#include "err.hpp"
+#include "Err.hpp"
 
 extern int errno;
 

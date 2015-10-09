@@ -11,10 +11,10 @@
 #include <sys/_types/_size_t.h>
 #include <iostream>
 
-#include "connection.hpp"
-#include "handshake.hpp"
-#include "record.hpp"
-#include "util.hpp"
+#include "Connection.hpp"
+#include "Handshake.hpp"
+#include "Record.hpp"
+#include "Util.hpp"
 
 SslWrapper::SslWrapper(const Url& url) :
 url(url){
