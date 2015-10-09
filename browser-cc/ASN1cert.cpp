@@ -6,7 +6,8 @@
 //  Copyright © 2015 Nissassin Seventeen. All rights reserved.
 //
 
-#include "Asn1cert.hpp"
+#include "ASN1cert.hpp"
+
 #include "Util.hpp"
 
 ASN1Cert::ASN1Cert(const vector<uint8_t> &data, size_t offset) {
