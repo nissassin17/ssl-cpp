@@ -11,6 +11,7 @@
 #include "Cipher.hpp"
 #include "MAC.hpp"
 #include "Util.hpp"
+#include "BitUtil.hpp"
 
 CipherSuite::CipherSuite(CipherSuiteType type) :
 suite(TLS_NULL_WITH_NULL_NULL),
@@ -217,8 +218,8 @@ void CipherSuite::setType(CipherSuiteType type) {
 }
 
 vector<uint8_t> CipherSuite::toData()  const{
-	uint8_t high(this->suite >> 8);
-	uint8_t low(this->suite & ((1 << 8) - 1));
+	uint8_t high(BitUtil::filterByte(this->suite, 8));
+	uint8_t low(BitUtil::filterByte(this->suite));
 	return vector<uint8_t>( { high, low });
 }
 

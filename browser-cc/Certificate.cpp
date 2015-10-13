@@ -16,7 +16,7 @@ Certificate::Certificate(const vector<uint8_t> &data, size_t offset) {
 	while (length > 0) {
 		this->certificateList.push_back(new ASN1Cert(data, offset));
 		size_t t =
-				this->certificateList[this->certificateList.size() - 1]->size();
+				(*certificateList.rbegin())->size();
 		length -= t;
 		offset += t;
 	}

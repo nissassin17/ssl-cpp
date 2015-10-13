@@ -13,6 +13,7 @@
 
 #include "Random.hpp"
 #include "Util.hpp"
+#include "BitUtil.hpp"
 
 Random::Random() {
 	time_t t;
@@ -21,8 +22,8 @@ Random::Random() {
 	for (int i = 0; i < RANDOM_BYTES_NUM / 4; i++) {
 		uint32_t r = rand();
 		for (int j = 0; j < 3; j++) {
-			this->randomBytes[i * 4 + j] = r & ((1 << 8) - 1);
-			r <<= 8;
+			this->randomBytes[i * 4 + j] = BitUtil::filterByte(r);
+			r = BitUtil::cutLastBits(r, 8);
 		}
 
 	}

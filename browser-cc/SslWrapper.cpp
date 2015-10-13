@@ -45,7 +45,7 @@ vector<uint8_t> SslWrapper::get() {
 			while (true) {
 				records.push_back(
 						new Record(data, offset, serverHello->getHandshake()));
-				Record *record = records[records.size() - 1];
+				Record *record = *(records.rbegin());
 				offset += record->size();
 				if (record->getHandshake()->getType()
 						== Handshake::SERVER_HELLO_DONE)
