@@ -48,10 +48,10 @@ public:
     };
     
     enum TagClass{
-        UNIVERSAL = 0x00,
-        APPLICATION = 0x01,
-        CONTEXT_SPECIFIC = 0x10,
-        PRIVATE = 0x11
+        UNIVERSAL = 0b00,
+        APPLICATION = 0b01,
+        CONTEXT_SPECIFIC = 0b10,
+        PRIVATE = 0b11
     };
     
     ASN1(const vector<uint8_t> &data, size_t offset = 0);
@@ -77,6 +77,7 @@ private:
     vector<long long> objectIdentifierVal;
     vector<bool> bitStringVal;
     vector<uint8_t> octetStringVal;
+    ASN1* wrappedData;
     
     void parseTagNumber(const vector<uint8_t>& data, size_t& offset);
     long long parseContentLength(const vector<uint8_t>& data, size_t& offset);

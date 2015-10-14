@@ -23,6 +23,7 @@ ASN1::~ASN1() {
 		delete *it;
 	for (set<ASN1*>::iterator it = setVal.begin(); it != setVal.end(); it++)
 		delete *it;
+    delete wrappedData;
 }
 
 void ASN1::parseTagNumber(const vector<uint8_t>& data, size_t& offset) {
@@ -191,7 +192,7 @@ void ASN1::parseObjectIdentifier(const vector<uint8_t>& data, size_t& offset,
 		do {
 			subid = BitUtil::append(subid, data[offset], 7);
 			offset++;
-        }while(BitUtil::isBitOn(data[offset], 7));
+        }while(BitUtil::isBitOn(data[offset - 1], 7));
 		objectIdentifierVal.push_back(subid);
 	}
 }
@@ -255,6 +256,7 @@ void ASN1::parseContent(const vector<uint8_t>& data, size_t& offset,
 		break;
 
 	case OCTET_STRING:
+        case UTF8_STRING:
 //		parseOctetString(data, offset, contentLength);
 //		break;
 
@@ -278,7 +280,7 @@ void ASN1::parseContent(const vector<uint8_t>& data, size_t& offset,
 
 ASN1::ASN1(const vector<uint8_t> &data, size_t offset) :
 		typeTag(ASN1_NULL), tagClass(UNIVERSAL), primitive(false), tagNumber(0), definitive(
-				true), psize(0) {
+				true), psize(0), wrappedData(NULL) {
 	size_t oldOffset(offset);
 
 	//find tag type
@@ -293,8 +295,14 @@ ASN1::ASN1(const vector<uint8_t> &data, size_t offset) :
 	//define length
 	long long contentLength = parseContentLength(data, offset);
 
-	//parse content
-	parseContent(data, offset, contentLength);
+	if (tagClass == CONTEXT_SPECIFIC){
+		vector<uint8_t> wrapper(data.begin() + offset, data.begin() + offset + contentLength);
+        offset += contentLength;
+		wrappedData = new ASN1(wrapper, 0);
+
+	}else
+		//parse content
+		parseContent(data, offset, contentLength);
 
 	psize = offset - oldOffset;
 }

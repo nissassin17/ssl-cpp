@@ -16,7 +16,7 @@ ASN1Cert::ASN1Cert(const vector<uint8_t> &data, size_t offset) {
 	offset += 3;
 
 	this->data = Util::takeData(data, length, offset);
-    Util::writeToFile("/Users/nissassin17/Desktop/tmp1.cert", this->data);
+//    Util::writeToFile("/Users/transang/Desktop/tmp1.cert", this->data);
     ASN1 asn1(this->data, 0);
 
 	//NOTE: debug
