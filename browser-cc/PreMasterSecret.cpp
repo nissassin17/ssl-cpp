@@ -15,17 +15,6 @@
 #include "ProcotolVersion.hpp"
 #include "Util.hpp"
 
-PreMasterSecret::PreMasterSecret() :
-		clientVersion(new ProtocolVersion()) {
-	time_t t;
-	srand((unsigned int) time(&t));
-	for (int i = 0; i < RANDOM_LENGTH; i++)
-		random[i] = (uint8_t) rand();
-}
-PreMasterSecret::~PreMasterSecret() {
-	delete clientVersion;
-}
-
 size_t PreMasterSecret::size() const{
 	return clientVersion->size() + RANDOM_LENGTH;
 }

@@ -20,8 +20,16 @@ class ProtocolVersion;
 
 class PreMasterSecret: public Exportable {
 public:
-	PreMasterSecret();
-	~PreMasterSecret();
+	PreMasterSecret() :
+			clientVersion(new ProtocolVersion()) {
+		time_t t;
+		srand((unsigned int) (time(&t)));
+		for (int i = 0; i < RANDOM_LENGTH; i++)
+			random[i] = (uint8_t) (rand());
+	}
+	~PreMasterSecret() {
+		delete clientVersion;
+	}
 	virtual vector<uint8_t> toData()const;
 	virtual size_t size() const;
 private:

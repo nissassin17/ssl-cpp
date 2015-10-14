@@ -18,6 +18,7 @@ ASN1Cert::ASN1Cert(const vector<uint8_t> &data, size_t offset) {
 	this->data = Util::takeData(data, length, offset);
 //    Util::writeToFile("/Users/transang/Desktop/tmp1.cert", this->data);
     ASN1 asn1(this->data, 0);
+    exponent = 65537;
 
 	//NOTE: debug
 	//Util::writeToFile("/Users/nissassin17/Desktop/tmp.cert", this->data);
@@ -32,4 +33,12 @@ vector<uint8_t> ASN1Cert::toData()  const{
 
 size_t ASN1Cert::size() const{
 	return 3 + this->data.size();
+}
+
+int ASN1Cert::getExponent() const {
+	return exponent;
+}
+
+const vector<uint8_t>& ASN1Cert::getRSAModulus() const {
+	return modulus;
 }
