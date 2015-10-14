@@ -20,10 +20,10 @@ using namespace std;
 
 class SslWrapper {
 private:
-	const Url *url;
+	const Url * const url;
 	Connection *connection;
 public:
-	SslWrapper(const Url* url);
+	SslWrapper(const Url* const url);
 	vector<uint8_t> get();
 	virtual ~SslWrapper();
 //    vector<uint8_t> post();

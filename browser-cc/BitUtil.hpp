@@ -7,6 +7,7 @@
 
 #ifndef BITUTIL_HPP_
 #define BITUTIL_HPP_
+#include <cstdint>
 
 class BitUtil {
 public:

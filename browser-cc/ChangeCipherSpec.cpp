@@ -21,5 +21,7 @@ size_t ChangeCipherSpec::size()  const{
 }
 
 vector<uint8_t> ChangeCipherSpec::toData() const{
-	return vector<uint8_t>( { (uint8_t) type });
+	vector<uint8_t> data;
+	data.push_back( (uint8_t) type );
+	return data;
 }

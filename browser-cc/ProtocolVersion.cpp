@@ -22,6 +22,9 @@ ProtocolVersion::ProtocolVersion(const vector<uint8_t> &data, size_t offset){
 }
 
 vector<uint8_t> ProtocolVersion::toData() const{
-	return vector<uint8_t>( { this->major, this->minor });
+vector<uint8_t> data;
+data.push_back(major);
+data.push_back(minor);
+	return data;
 
 }

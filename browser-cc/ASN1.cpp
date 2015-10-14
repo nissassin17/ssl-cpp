@@ -31,14 +31,13 @@ void ASN1::parseTagNumber(const vector<uint8_t>& data, size_t& offset) {
 		//high tag number
 		offset++;
 		tagNumber = 0ll;
-		while (true) {
+		do {
 			tagNumber = BitUtil::append(tagNumber,
 					BitUtil::filter(data[offset], 7), 7);
-			if (BitUtil::isBitOff(data[offset], 7))
-				break;
+			
 
 			offset++;
-		}
+        }while(BitUtil::isBitOn(data[offset - 1], 7));
 		offset++;
 	} else {
 		//low tag number
@@ -51,22 +50,22 @@ long long ASN1::parseContentLength(const vector<uint8_t>& data,
 		size_t& offset) {
 	//define length
 	long long contentLength = 0ll;
-	if (BitUtil::isBitOn(data[offset], 7)) {
+	if (BitUtil::isBitOff(data[offset], 7)) {
 		//short form definitive
 		definitive = true;
-		contentLength = data[offset];
+        contentLength = BitUtil::filter(data[offset], 7);
 		offset++;
 	} else {
 		//long form: definitive or indefinitive
-		if (BitUtil::isAllZero(data[offset], 7)) {
+		if (not BitUtil::isAllZero(data[offset], 7)) {
 			//definitive
 			definitive = false;
 			//number of octets for length octet
-			int nlengthOctets = BitUtil::filterByte(data[offset]);
+			int nlengthOctets = (int)BitUtil::filter(data[offset], 7);
 			while (offset++, nlengthOctets--) {
 				contentLength = BitUtil::append(contentLength, data[offset], 8);
 			}
-			offset++;
+
 		} else {
 			//indefinitive form
 			definitive = true;
@@ -168,7 +167,7 @@ void ASN1::parseRealContent(const vector<uint8_t>& data, size_t& offset,
 void ASN1::parseSequence(const vector<uint8_t>& data, size_t& offset,
 		long long contentLength) {
 	size_t oldOffset(offset);
-	while (contentLength + oldOffset < offset) {
+	while ((contentLength >= 0 and contentLength + oldOffset > offset) or (contentLength == -1 and offset < data.size())) {
 		sequenceVal.push_back(new ASN1(data, offset));
 		offset += (*sequenceVal.rbegin())->size();
 	}
@@ -177,7 +176,7 @@ void ASN1::parseSequence(const vector<uint8_t>& data, size_t& offset,
 void ASN1::parseSet(const vector<uint8_t>& data, size_t& offset,
 		long long contentLength) {
 	size_t oldOffset(offset);
-	while (oldOffset + contentLength < offset) {
+	while ((contentLength >= 0 and contentLength + oldOffset > offset) or (contentLength == -1 and offset < data.size())) {
 		ASN1* val = new ASN1(data, offset);
 		setVal.insert(val);
 		offset += val->size();
@@ -187,14 +186,12 @@ void ASN1::parseSet(const vector<uint8_t>& data, size_t& offset,
 void ASN1::parseObjectIdentifier(const vector<uint8_t>& data, size_t& offset,
 		long long contentLength) {
 	size_t oldOffset(offset);
-	while (oldOffset + contentLength < offset) {
+	while ((contentLength >= 0 and contentLength + oldOffset > offset) or (contentLength == -1 and offset < data.size())){
 		long long subid(0ll);
-		while (true) {
+		do {
 			subid = BitUtil::append(subid, data[offset], 7);
 			offset++;
-			if (BitUtil::isBitOff(data[offset], 7))
-				break;
-		}
+        }while(BitUtil::isBitOn(data[offset], 7));
 		objectIdentifierVal.push_back(subid);
 	}
 }
@@ -232,7 +229,7 @@ void ASN1::parseContent(const vector<uint8_t>& data, size_t& offset,
 		parseBoolContent(data, offset);
 		break;
 	case INTEGER:
-	case ENUMERATE:
+	case ENUMERATED:
 		//primitive
 		parserIntegerContent(data, offset, contentLength);
 		break;
@@ -258,18 +255,18 @@ void ASN1::parseContent(const vector<uint8_t>& data, size_t& offset,
 		break;
 
 	case OCTET_STRING:
-		parseOctetString(data, offset, contentLength);
-		break;
+//		parseOctetString(data, offset, contentLength);
+//		break;
 
 	case IA5_STRING:
-		parseOctetString(data, offset, contentLength);
-		break;
+//		parseOctetString(data, offset, contentLength);
+//		break;
 
 	case PRINTABLE_STRING:
-		parseOctetString(data, offset, contentLength);
-		break;
+//		parseOctetString(data, offset, contentLength);
+//		break;
 
-	case UTCTIME:
+	case UTC_TIME:
 		parseOctetString(data, offset, contentLength);
 		break;
 
@@ -285,16 +282,16 @@ ASN1::ASN1(const vector<uint8_t> &data, size_t offset) :
 	size_t oldOffset(offset);
 
 	//find tag type
-	typeTag = BitUtil::filter(data[offset], 2, 6);
+	tagClass = (TagClass)BitUtil::filter(data[offset], 2, 6);
 
 	//primitive or constructed
 	primitive = BitUtil::isBitOff(data[offset], 5);
 
 	//define tag number
-	long long contentLength = parseTagNumber(data, offset);
+	parseTagNumber(data, offset);
 
 	//define length
-	parseContentLength(data, offset);
+	long long contentLength = parseContentLength(data, offset);
 
 	//parse content
 	parseContent(data, offset, contentLength);

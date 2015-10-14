@@ -26,7 +26,7 @@ public:
 	virtual size_t size() const;
 private:
 	static const int RANDOM_LENGTH = 46;
-	ProtocolVersion *clientVersion = NULL;
+	ProtocolVersion *clientVersion;
 	uint8_t random[RANDOM_LENGTH];
 };
 #endif /* pre_master_secret_hpp */

@@ -51,7 +51,7 @@ private:
 
 	ContentType type;
 	Exportable *fragment;
-	ProtocolVersion *protocolVersion = NULL;
+	ProtocolVersion *protocolVersion;
 	bool compressed;
 
 	static const int CONTENT_TYPE_LENGTH = 1;

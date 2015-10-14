@@ -20,9 +20,9 @@ using namespace std;
 string Util::readableForm(const vector<uint8_t> &data) {
 	string result;
 	for (int i = 0; i < data.size(); i++) {
-		if (i && i % 16 == 0)
+		if (i and i % 16 == 0)
 			result += "\n";
-		else if (i && i % 8 == 0)
+		else if (i and i % 8 == 0)
 			result += " | ";
 		char a[3];
 		sprintf(a, "%02x", (uint8_t) data[i]);
@@ -34,7 +34,7 @@ string Util::readableForm(const vector<uint8_t> &data) {
 }
 
 void Util::writeToFile(const string &filename, const vector<uint8_t> &data) {
-	ofstream file(filename, ios::out | ios::binary);
+	ofstream file(filename, ios::out bitor ios::binary);
 	for (int i = 0; i < data.size(); i++)
 		file << data[i];
 	file.close();
@@ -80,7 +80,7 @@ uint32_t Util::takeData24(const vector<uint8_t> &data, size_t offset) {
 	const int SIZE = 3;
 	uint32_t result(0);
 	for (int i = 0; i < SIZE; i++){
-		result = BitUtil::append(result, data[offset], 8);
+		result = (uint32_t)BitUtil::append(result, data[offset], 8);
 		offset ++;
 	}
 	return result;
@@ -101,7 +101,7 @@ uint32_t Util::takeData32(const vector<uint8_t> &data, size_t offset) {
 	const int SIZE = 4;
 	uint32_t result(0);
 	for (int i = 0; i < SIZE; i++){
-		result = BitUtil::append(result, data[offset], 8);
+		result = (uint32_t)BitUtil::append(result, data[offset], 8);
 	}
 	return result;
 }

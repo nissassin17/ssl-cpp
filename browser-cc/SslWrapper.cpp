@@ -42,15 +42,15 @@ vector<uint8_t> SslWrapper::get() {
 			cerr << "Receive alert from server" << endl;
 		} else if (serverHello->getType() == Record::HANDSHAKE) {
 			vector<Record*> records;
-			while (true) {
+            Record *record;
+			do {
 				records.push_back(
 						new Record(data, offset, serverHello->getHandshake()));
-				Record *record = *(records.rbegin());
+				record = *(records.rbegin());
 				offset += record->size();
-				if (record->getHandshake()->getType()
-						== Handshake::SERVER_HELLO_DONE)
-					break; //TLS_RSA_WITH_AES_128_CBC_SHA256
-			}
+//					break; //TLS_RSA_WITH_AES_128_CBC_SHA256
+            } while(record->getHandshake()->getType()
+                    != Handshake::SERVER_HELLO_DONE);
 			if (records.size() == 2) {
 				//one certificate and one hellodone
 
@@ -82,6 +82,5 @@ vector<uint8_t> SslWrapper::get() {
 }
 
 SslWrapper::~SslWrapper() {
-	delete this->url;
 	delete this->connection;
 }

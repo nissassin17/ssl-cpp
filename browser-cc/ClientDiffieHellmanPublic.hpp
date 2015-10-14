@@ -26,7 +26,7 @@ public:
 	virtual vector<uint8_t> toData()const;
 	virtual size_t size()const;
 private:
-	const CipherSuite *cipherSuite;
+	const CipherSuite * const cipherSuite;
 };
 
 #endif /* client_diffie_hellman_public_hpp */

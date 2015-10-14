@@ -220,7 +220,10 @@ void CipherSuite::setType(CipherSuiteType type) {
 vector<uint8_t> CipherSuite::toData()  const{
 	uint8_t high(BitUtil::filterByte(this->suite, 8));
 	uint8_t low(BitUtil::filterByte(this->suite));
-	return vector<uint8_t>( { high, low });
+	vector<uint8_t> data;
+	data.push_back(high);
+	data.push_back(low);
+	return data;
 }
 
 size_t CipherSuite::size() const{

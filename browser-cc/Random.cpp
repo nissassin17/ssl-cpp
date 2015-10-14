@@ -23,7 +23,7 @@ Random::Random() {
 		uint32_t r = rand();
 		for (int j = 0; j < 3; j++) {
 			this->randomBytes[i * 4 + j] = BitUtil::filterByte(r);
-			r = BitUtil::cutLastBits(r, 8);
+			r = (uint32_t)BitUtil::cutLastBits(r, 8);
 		}
 
 	}

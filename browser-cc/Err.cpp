@@ -14,8 +14,11 @@ bool Err::isSuccess() const{
 	return this->errType == Success;
 }
 
-const char *Err::what(){
+const char *Err::what() const throw(){
 	return this->description.c_str();
+}
+
+Err::~Err() throw(){
 }
 
 Err::Err(ErrType errType, ...) :

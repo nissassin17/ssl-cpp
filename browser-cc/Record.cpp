@@ -17,7 +17,8 @@
 #include "Util.hpp"
 
 Record::Record(ContentType type) :
-		type(type), compressed(false) {
+		type(type), compressed(false),
+protocolVersion(new ProtocolVersion()){
 	switch (type) {
 	case CHANGE_CIPHER_SPEC:
 		fragment = new ChangeCipherSpec();

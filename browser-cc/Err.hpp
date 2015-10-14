@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <stdexcept>
 
 using namespace std;
 
@@ -36,7 +37,9 @@ public:
 
 	bool isSuccess() const;
 
-	virtual const char* what() ;
+	virtual const char* what() const throw();
+
+	virtual ~Err() throw();
 
 private:
 	ErrType errType;
