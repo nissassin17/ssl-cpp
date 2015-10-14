@@ -1,0 +1,271 @@
+2015-10-09  nissassin17  <nissassin17@Anonymous-Mac.local>
+
+	* .cproject: New file.
+	* .project: New file.
+	* alert.cpp (size): 
+	* alert.hpp (Alert): 
+	* asn-1cert.cpp (ASN1Cert): 
+	* asn-1cert.hpp (ASN1Cert): 
+	* browser.cpp (run): 
+	* browser.hpp (Browser): 
+	* certificate-request.cpp (CertificateRequest): 
+	* certificate-request.hpp (CertificateRequest): 
+	* certificate.cpp (Certificate): 
+	* certificate.hpp (Certificate): 
+	* change-cipher-spec.cpp (ChangeCipherSpec): 
+	* change-cipher-spec.hpp (ChangeCipherSpec): 
+	* cipher-suite.cpp (CipherSuite): 
+	* cipher-suite.hpp (CipherSuite): 
+	* cipher.cpp (getFormat): 
+	* cipher.hpp (Cipher): 
+	* client-diffie-hellman-public.cpp (ClientDiffieHellmanPublic): 
+	* client-diffie-hellman-public.hpp (ClientDiffieHellmanPublic): 
+	* client-hello.cpp (~ClientHello): 
+	* client-hello.hpp (ClientHello): 
+	* client-key-exchange.cpp (ClientKeyExchange): 
+	* client-key-exchange.hpp (ClientKeyExchange): 
+	* compression-method.cpp (toData): 
+	* compression-method.hpp (CompressionMethod): 
+	* connection.cpp (Connection): 
+	* connection.hpp (Connection): 
+	* digitally-signed.cpp (DigitallySigned): 
+	* digitally-signed.hpp (DigitallySigned): 
+	* encrypted-pre-master-secret.cpp (EncryptedPreMasterSecret): 
+	* encrypted-pre-master-secret.hpp (EncryptedPreMasterSecret): 
+	* err.cpp (isSuccess): 
+	* err.hpp (Err): 
+	* exportable.cpp (size): 
+	* exportable.hpp (Exportable): 
+	* extension.cpp (toData): 
+	* extension.hpp (Extension): 
+	* finished.cpp (size): 
+	* finished.hpp (Finished): 
+	* handshake.cpp (Handshake): 
+	* mac.cpp (getMacLength): 
+	* mac.hpp (MAC): 
+	* main.cpp (main): 
+	* pre-master-secret.cpp (PreMasterSecret): 
+	* pre-master-secret.hpp (PreMasterSecret): 
+	* protocol-version.cpp (ProtocolVersion): 
+	* protocol-version.hpp (ProtocolVersion): 
+	* random.cpp (Random): 
+	* random.hpp (Random): 
+	* record.cpp (Record): 
+	* record.hpp (Record): 
+	* server-dh-params.cpp (ServerDHParams): 
+	* server-dh-params.hpp (ServerDHParams): 
+	* server-hello-done.cpp (ServerHelloDone): 
+	* server-hello-done.hpp (ServerHelloDone): 
+	* server-hello.cpp (getCipherSuite): 
+	* server-hello.hpp (ServerHello): 
+	* server-key-exchange.cpp (ServerKeyExchange): 
+	* server-key-exchange.hpp (ServerKeyExchange): 
+	* session-id.cpp (SessionID): 
+	* session-id.hpp (SessionID): 
+	(toData): 
+	(SessionID::SessionID): 
+	(size): 
+	(SessionID::toData): 
+	(SessionID::size): 
+	(~ServerKeyExchange): 
+	(ServerKeyExchange::ServerKeyExchange): 
+	(ServerKeyExchange::~ServerKeyExchange): 
+	(ServerKeyExchange::size): 
+	(ServerHello): 
+	(ServerHello::getCipherSuite): 
+	(~ServerHello): 
+	(ServerHello::ServerHello): 
+	(ServerHello::~ServerHello): 
+	(ServerHello::size): 
+	(ServerHelloDone::ServerHelloDone): 
+	(ServerHelloDone::size): 
+	(ServerDHParams::ServerDHParams): 
+	(ServerDHParams::size): 
+	(Record::Record): 
+	(getAlert): 
+	(getType): 
+	(Record::getAlert): 
+	(getHandshake): 
+	(Record::getType): 
+	(~Record): 
+	(Record::getHandshake): 
+	(Record::~Record): 
+	(Record::toData): 
+	(Record::size): 
+	(Random::Random): 
+	(Random::size): 
+	(Random::toData): 
+	(ProtocolVersion::ProtocolVersion): 
+	(ProtocolVersion::size): 
+	(ProtocolVersion::toData): 
+	(~PreMasterSecret): 
+	(PreMasterSecret::PreMasterSecret): 
+	(PreMasterSecret::~PreMasterSecret): 
+	(PreMasterSecret::size): 
+	(PreMasterSecret::toData): 
+	(getMacKeyLength): 
+	(MAC::getMacLength): 
+	(MAC::getMacKeyLength): 
+	(getAlgorithm): 
+	(MAC): 
+	(MAC::getAlgorithm): 
+	(setType): 
+	(MAC::MAC): 
+	(MAC::setType): 
+	(Handshake::Handshake): 
+	(Handshake::toData): 
+	(Handshake::getType): 
+	(Handshake::size): 
+	(~Handshake): 
+	(getServerHello): 
+	(Handshake::~Handshake): 
+	(getCertificate): 
+	(Handshake::getServerHello): 
+	(Handshake::getCertificate): 
+	(Finished::size): 
+	(Finished): 
+	(Finished::toData): 
+	(Finished::Finished): 
+	(Extension::toData): 
+	(Extension): 
+	(Extension::size): 
+	(Extension::Extension): 
+	(Exportable::size): 
+	(Exportable::toData): 
+	(what): 
+	(Err::isSuccess): 
+	(Err): 
+	(Err::what): 
+	(Err::Err): 
+	(EncryptedPreMasterSecret::EncryptedPreMasterSecret): 
+	(~EncryptedPreMasterSecret): 
+	(EncryptedPreMasterSecret::~EncryptedPreMasterSecret): 
+	(EncryptedPreMasterSecret::size): 
+	(EncryptedPreMasterSecret::toData): 
+	(DigitallySigned::DigitallySigned): 
+	(~DigitallySigned): 
+	(DigitallySigned::~DigitallySigned): 
+	(DigitallySigned::size): 
+	(Connection::Connection): 
+	(~Connection): 
+	(ipListFromHostname): 
+	(Connection::~Connection): 
+	(Connection::ipListFromHostname): 
+	(send): 
+	(receive): 
+	(Connection::send): 
+	(Connection::receive): 
+	(CompressionMethod): 
+	(CompressionMethod::toData): 
+	(CompressionMethod::CompressionMethod): 
+	(CompressionMethod::size): 
+	(ClientKeyExchange::ClientKeyExchange): 
+	(~ClientKeyExchange): 
+	(ClientKeyExchange::~ClientKeyExchange): 
+	(ClientKeyExchange::size): 
+	(ClientKeyExchange::toData): 
+	(ClientHello): 
+	(ClientHello::~ClientHello): 
+	(ClientHello::ClientHello): 
+	(ClientHello::size): 
+	(ClientHello::toData): 
+	(~ClientDiffieHellmanPublic): 
+	(ClientDiffieHellmanPublic::ClientDiffieHellmanPublic): 
+	(ClientDiffieHellmanPublic::~ClientDiffieHellmanPublic): 
+	(ClientDiffieHellmanPublic::size): 
+	(ClientDiffieHellmanPublic::toData): 
+	(getKeyMaterial): 
+	(Cipher::getFormat): 
+	(Cipher::getKeyMaterial): 
+	(getIVSize): 
+	(Cipher::getIVSize): 
+	(getBlockSize): 
+	(Cipher): 
+	(Cipher::getBlockSize): 
+	(Cipher::Cipher): 
+	(Cipher::setType): 
+	(CipherSuite::CipherSuite): 
+	(CipherSuite::setType): 
+	(CipherSuite::toData): 
+	(getKeyExchange): 
+	(CipherSuite::size): 
+	(getCipher): 
+	(CipherSuite::getKeyExchange): 
+	(getMac): 
+	(CipherSuite::getCipher): 
+	(CipherSuite::getMac): 
+	(~CipherSuite): 
+	(CipherSuite::~CipherSuite): 
+	(~ChangeCipherSpec): 
+	(ChangeCipherSpec::ChangeCipherSpec): 
+	(ChangeCipherSpec::~ChangeCipherSpec): 
+	(ChangeCipherSpec::size): 
+	(ChangeCipherSpec::toData): 
+	(getCertificateList): 
+	(Certificate::Certificate): 
+	(Certificate::getCertificateList): 
+	(~Certificate): 
+	(Certificate::size): 
+	(Certificate::~Certificate): 
+	(~CertificateRequest): 
+	(CertificateRequest::CertificateRequest): 
+	(CertificateRequest::~CertificateRequest): 
+	(CertificateRequest::size): 
+	(Browser::run): 
+	(ASN1Cert::ASN1Cert): 
+	(ASN1Cert::toData): 
+	(ASN1Cert::size): 
+	(Alert): 
+	(Alert::size): 
+	(Alert::Alert): 
+	* setting.hpp: 
+	* SslWrapper.cpp (SslWrapper): 
+	* SslWrapper.hpp (SslWrapper): 
+	* strutil.cpp (getLink): 
+	* strutil.hpp (StrUtil): 
+	* SubConnection.cpp (SubConnection): 
+	* SubConnection.hpp (SubConnection): 
+	* url.cpp (httpGetRequest): 
+	* url.hpp (Url): 
+	* util.cpp (readableForm): 
+	(writeToFile): 
+	(Util::readableForm): 
+	(addData): 
+	(Util::writeToFile): 
+	(takeData8): 
+	(Util::addData): 
+	(Util::takeData8): 
+	(addData24): 
+	(takeData16): 
+	(Util::addData24): 
+	(takeData24): 
+	(Util::takeData16): 
+	(takeData64): 
+	(Util::takeData24): 
+	(takeData32): 
+	(Util::takeData64): 
+	(Util::takeData32): 
+	(takeData): 
+	(Util::takeData): 
+	(Url): 
+	(Url::httpGetRequest): 
+	(Url::Url): 
+	(getHostname): 
+	(getRequest): 
+	(Url::getHostname): 
+	(getIsSsl): 
+	(Url::getRequest): 
+	(Url::getIsSsl): 
+	(doConnect): 
+	(SubConnection::SubConnection): 
+	(doSend): 
+	(SubConnection::doConnect): 
+	(doReceive): 
+	(SubConnection::doSend): 
+	(SubConnection::doReceive): 
+	(StrUtil::getLink): 
+	(get): 
+	(SslWrapper::SslWrapper): 
+	(SslWrapper::get): 
+	(~SslWrapper): 
+	(SslWrapper::~SslWrapper): 
