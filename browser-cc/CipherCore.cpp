@@ -34,6 +34,22 @@ std::vector<uint8_t> CipherCore::exponent(const std::vector<uint8_t>& base,
 std::vector<uint8_t> CipherCore::multiple(const std::vector<uint8_t>& left,
 		const std::vector<uint8_t>& right,
 		const std::vector<uint8_t>& modulus) {
+	std::vector<uint32_t> ret(left.size() + right.size() - 1, 0);
+	for(int i = 0; i < left.size(); i++)
+		for(int j = 0; j < right.size(); j++)
+			ret[i + j] += (uint16_t)left[i] * right[j];
+	uint32_t carry(0);
+	for(std::vector<uint32_t>::iterator it = ret.begin(); it != ret.end(); it++){
+		*it += carry;
+		carry = *it >> 8;
+		*it &= (1 << 8)-1;
+	}
+	while (carry > 0){
+		ret.push_back(carry & ((1 << 8) - 1));
+		carry >>= 8;
+	}
+	while(not ret.empty() and *ret.rbegin() == 0)
+		ret.pop_back();
 
-	return left;
+	return CipherCore::divide(ret, modulus);
 }
