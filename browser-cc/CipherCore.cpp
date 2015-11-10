@@ -13,6 +13,7 @@ std::vector<uint8_t> CipherCore::rsaep(const rsa::PublicKey& publicKey,
 	return CipherCore::exponent(message, publicKey.getExponent(), publicKey.getModulus());
 }
 
+
 std::vector<uint8_t> CipherCore::exponent(const std::vector<uint8_t>& base,
 		long long exponent, const std::vector<uint8_t>& modulus) {
 	if (exponent == 0){
@@ -51,5 +52,11 @@ std::vector<uint8_t> CipherCore::multiple(const std::vector<uint8_t>& left,
 	while(not ret.empty() and *ret.rbegin() == 0)
 		ret.pop_back();
 
-	return CipherCore::divide(ret, modulus);
+	return CipherCore::divide(static_cast<std::vector<uint8_t> >(ret), modulus);
+}
+
+std::vector<uint8_t> CipherCore::divide(const std::vector<uint8_t>& devidend,
+		const std::vector<uint8_t>& divider) {
+	std::vector<uint8_t> ret;
+	return ret;
 }
