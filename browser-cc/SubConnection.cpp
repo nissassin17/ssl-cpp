@@ -16,6 +16,7 @@
 #include <arpa/inet.h>
 #include <string>
 
+#include "Log.h"
 #include "Err.hpp"
 
 extern int errno;
@@ -55,17 +56,22 @@ void SubConnection::doSend(vector<uint8_t> request) const{
 vector<uint8_t> SubConnection::doReceive() const{
     vector<uint8_t> result;
     
+    Log::info << "Start receive data (default block size: 2000 bytes)" << endl;
     do {
         const int RESPONSE_SIZE = 2000;
         char response[RESPONSE_SIZE];
         ssize_t size = recv(this->sock, response, RESPONSE_SIZE, 0);
         if (size < 0)
             throw Err(Err::CannotReceive);
-        if (size == 0) //server closed
+        if (size == 0){ //server closed
+        	Log::info << "Server closed (finish responding)" << endl;
             break;
+        }
+        Log::info << "Received " << size << " bytes from server" << endl;
         for (int i = 0; i < size; i++)
             result.push_back(response[i]);
     } while (true);
+    Log::info << "Receive response finished" << endl;
     
     return result;
 }

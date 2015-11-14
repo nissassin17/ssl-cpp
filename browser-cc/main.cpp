@@ -11,6 +11,7 @@
 
 #include "Browser.hpp"
 #include "Err.hpp"
+#include "Log.h"
 
 using namespace std;
 
@@ -21,7 +22,7 @@ int main(int argc, const char * argv[]) {
 		delete browser;
 		return EXIT_SUCCESS;
 	} catch (Err &err) {
-		cerr << err.what();
+		Log::err << err.what();
 		if (err.isSuccess())
 			return EXIT_SUCCESS;
 		return EXIT_FAILURE;

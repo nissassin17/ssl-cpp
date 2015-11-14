@@ -35,8 +35,47 @@ Err::Err(ErrType errType, ...) :
 		this->description = "No link provided";
 		break;
 
+	case UnsupportedSchema:
+		this->description = "Unsupported schema (currently only support http and https)";
+		break;
+
+	case NoHostnameProvided:
+		this->description = "Please provide hostname";
+		break;
+
+	case CannotCreateSock:
+		this->description = "System error. Cannot create sock";
+		break;
+
+	case CannotConnect:
+		this->description = "Cannot connect";
+		break;
+
+	case CannotSend:
+		this->description = "Cannot send request";
+		break;
+
+	case CannotReceive:
+		this->description = "Cannot receive response";
+		break;
+
+	case CannotResolveHostname:
+		this->description = "Cannot resolve hostname";
+		break;
+
+	case NoConnection:
+		this->description = "There is no connection";
+		break;
+
+	case DontSendButReceive:
+		this->description = "Receive response without sending any request (what a weird error lol)";
+		break;
+
+	case DECODING:
+		this->description = "invalid encoding (cannot decode)";
+		break;
 	default:
-		this->description = "Unknown";
+		this->description = "Unknown error";
 		break;
 	}
 	va_end(args);

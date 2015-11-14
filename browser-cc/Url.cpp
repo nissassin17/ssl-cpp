@@ -11,9 +11,12 @@
 #include <cctype>
 #include <iterator>
 #include <string>
+#include <iostream>
+using namespace std;
 
 #include "Url.hpp"
 #include "Err.hpp"
+#include "Log.h"
 
 vector<uint8_t> Url::httpGetRequest() const {
 	string fullRequest(
@@ -22,6 +25,8 @@ vector<uint8_t> Url::httpGetRequest() const {
 	vector<uint8_t> result;
 	for (int i = 0; i < fullRequest.length(); i++)
 		result.push_back((uint8_t) fullRequest[i]);
+	Log::info << "Full http request to be sent:" << endl;
+	Log::info << fullRequest << endl;
 	return result;
 }
 

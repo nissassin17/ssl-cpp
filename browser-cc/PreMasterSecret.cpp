@@ -26,3 +26,14 @@ vector<uint8_t> PreMasterSecret::toData() const{
 		data.push_back(random[i]);
 	return data;
 }
+
+PreMasterSecret::PreMasterSecret() :
+clientVersion(new ProtocolVersion()) {
+    time_t t;
+    srand((unsigned int) (time(&t)));
+    for (int i = 0; i < RANDOM_LENGTH; i++)
+        random[i] = (uint8_t) (rand());
+}
+PreMasterSecret::~PreMasterSecret() {
+    delete clientVersion;
+}

@@ -85,7 +85,7 @@ vector<uint8_t> CipherCore::smallMultiple(const vector<uint8_t>& x,
 		uint8_t times) {
 	uint8_t carry(0);
 	vector<uint8_t> ret(x.size(), 0);
-	for (int i = x.size() - 1; i >= 0; i--) {
+	for (ssize_t i = x.size() - 1; i >= 0; i--) {
 		uint16_t tmp = static_cast<uint16_t>(x[i]) * times + carry;
 		carry = tmp >> 8;
 		ret[i] = tmp bitand ((1 << 8) - 1);
@@ -135,5 +135,9 @@ vector<uint8_t> CipherCore::bigMultiple(const vector<uint8_t>& left,
 		}
 		while (not ret.empty() and *ret.rbegin() == 0)
 			ret.pop_back();
-		return static_cast<std::vector<uint8_t> >(ret);
+    
+    vector<uint8_t> r8;
+    for(int i = 0; i < ret.size(); i++)
+        r8.push_back(static_cast<uint8_t>(ret[i]));
+    return r8;
 }

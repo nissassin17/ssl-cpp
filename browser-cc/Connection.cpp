@@ -13,6 +13,7 @@
 #include <cstring>
 #include <string>
 
+#include "Log.h"
 #include "Connection.hpp"
 #include "Err.hpp"
 
@@ -61,20 +62,26 @@ vector<string> Connection::ipListFromHostname(const string& hostname) {
 }
 
 void Connection::send(const vector<uint8_t> &request){
-	if (this->isConnecting) {
+	Log::info << "Prepare to send request" << endl;
+	if (this->isConnecting) {//not first time. so just send
 		if (this->activatingConnection == NULL)
 			throw Err(Err::NoConnection);
+		Log::info << "Connect is already established. Just try sending the request" << endl;
 		this->activatingConnection->doSend(request);
-	} else {
+	} else {//first time
+		Log::info << "First time sending request. Try establishing and find available connection out." << endl;
 		this->isConnecting = true;
 		for (int i = 0; i < this->subConnections.size(); i++) {
 			try {
+				Log::info << "Try connection number " << (i + 1) << " with IP " << this->subConnections[i]->getIp() <<endl;
 				this->subConnections[i]->doConnect();
+				Log::info << "Connect ok. Send request now" << endl;
 				this->subConnections[i]->doSend(request);
 				//wait for error until here
 				this->activatingConnection = this->subConnections[i];
 				break;
 			} catch (Err& err) {
+				Log::warn << "Connecting via connection number " << (i + 1) << " had failed" << endl;
 			}
 		}
 	}

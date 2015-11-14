@@ -9,6 +9,7 @@
 #define CIPHERCORE_HPP_
 
 #include <vector>
+#include "RSAPublicKey.h"
 using namespace std;
 
 class CipherCore {

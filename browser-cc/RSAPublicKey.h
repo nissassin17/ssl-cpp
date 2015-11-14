@@ -8,6 +8,8 @@
 #ifndef RSAPUBLICKEY_H_
 #define RSAPUBLICKEY_H_
 
+#include <vector>
+using namespace std;
 namespace rsa {
 
 class PublicKey {

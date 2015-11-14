@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "https://google.com"
+            argument = "http://dantri.com.vn"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

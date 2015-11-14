@@ -7,31 +7,61 @@
 
 #include "Log.h"
 
-namespace rsa {
-
+const Log Log::warn = Log(Log::WARNING);
 const Log Log::err = Log(Log::ERROR);
 const Log Log::info = Log(Log::INFO);
-const Log Log::warn = Log(Log::WARNING);
 
-} /* namespace rsa */
-
-rsa::Log& rsa::Log::operator<<(const string& str) const {
-	writer << str;
+template<typename T>
+const Log& Log::operator<<(T const& str) const {
+    print(str);
 	return *this;
 }
 
-rsa::Log::Log(LogType logType) {
+Log::Log(LogType logType) {
 	this->logType = logType;
-	switch (logType){
-	case WARNING:
-		writer = cout;
-		break;
-	case ERROR:
-		writer = cerr;
-		break;
-	case INFO:
-		writer = cout;
-		break;
-	}
+}
 
+const Log &Log::operator<<(ostream_function el)const {
+    printendl(el);
+	return *this;
+}
+
+template<typename T>
+void Log::print(T const& str) const{
+    switch (logType){
+        case WARNING:
+            cout << str;
+            break;
+        case ERROR:
+            cerr << str;
+            break;
+        case INFO:
+            cout << str;
+            break;
+        case RESULT:
+            cout << str;
+            break;
+        default://do nothing
+            break;
+    }
+}
+
+void Log::printendl(ostream_function el) const{
+    switch (logType){
+        case WARNING:
+            cout << el;
+            break;
+        case ERROR:
+            cerr << el;
+            break;
+        case INFO:
+            cout << el;
+            break;
+        case RESULT:
+            cout << el;
+            break;
+        default://do nothing
+            break;
+    }
+    
 }
