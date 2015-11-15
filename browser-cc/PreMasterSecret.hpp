@@ -20,8 +20,10 @@ class ProtocolVersion;
 
 class PreMasterSecret: public Exportable {
 public:
-	PreMasterSecret();
-	~PreMasterSecret();
+    PreMasterSecret();
+
+    ~PreMasterSecret();
+    
 	virtual vector<uint8_t> toData()const;
 	virtual size_t size() const;
 private:

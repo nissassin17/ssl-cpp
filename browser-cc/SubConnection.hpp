@@ -28,6 +28,8 @@ public:
 	void doConnect() const;
 	void doSend(vector<uint8_t> request) const;
 	vector<uint8_t> doReceive() const;
+	const string& getIp() const;
+
 };
 
 #endif /* SubConnection_hpp */

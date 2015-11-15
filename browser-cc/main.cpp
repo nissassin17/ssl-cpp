@@ -11,9 +11,15 @@
 
 #include "Browser.hpp"
 #include "Err.hpp"
+#include "Log.h"
 
 using namespace std;
 
+/**
+ * Usage: ./browser <full link to get>
+ * Example (no ssl): ./browser http://stackoverflow.com/questions
+ * Or (use ssl): ./browser https://google.com
+ */
 int main(int argc, const char * argv[]) {
 	try {
 		Browser *browser = new Browser();
@@ -21,9 +27,10 @@ int main(int argc, const char * argv[]) {
 		delete browser;
 		return EXIT_SUCCESS;
 	} catch (Err &err) {
-		cerr << err.what();
-		if (err.isSuccess())
+		Log::err << err.what();
+		if (err.isSuccess()){
 			return EXIT_SUCCESS;
+		}
 		return EXIT_FAILURE;
 	}
 }

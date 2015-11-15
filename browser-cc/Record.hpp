@@ -15,14 +15,13 @@
 #include <vector>
 
 #include "Exportable.hpp"
+#include "Alert.hpp"
+#include "ChangeCipherSpec.hpp"
+#include "ProcotolVersion.hpp"
 
 using namespace std;
 
 #include "Handshake.hpp"
-
-class Alert;
-class ChangeCipherSpec;
-class ProtocolVersion;
 
 class Record: public Exportable {
 public:
