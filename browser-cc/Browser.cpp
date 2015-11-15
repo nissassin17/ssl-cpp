@@ -41,4 +41,5 @@ void Browser::run(int argc, const char * argv[]) {
 		result += (char) getData[i];
 	Log::info << "Result:" << endl;
 	Log::result << result << endl;
+	Log::info << "Browser ended" << endl;
 }

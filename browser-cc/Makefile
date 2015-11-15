@@ -8,7 +8,7 @@ OBJS=$(SRCS:.cpp=.o)
 
 all: $(OBJS)
 
-test: $(OBJS)
+link: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o browser
 
 clean:

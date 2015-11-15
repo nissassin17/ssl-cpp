@@ -56,16 +56,15 @@ vector<uint8_t> SslWrapper::get() {
 			Log::info << "First record was a handshake" << endl;
 
 			vector<Record*> records;
-            Record *record;
-			do {
-				records.push_back(
-						new Record(data, offset, serverHello->getHandshake()));
-				record = *(records.rbegin());
+			while (offset < data.size()) {
+				Record *record = new Record(data, offset, serverHello->getHandshake());
+				records.push_back(record);
 				offset += record->size();
 				Log::info << "One more record was parsed from server's response by " << record->size() << " bytes" << endl;
 //					break; //TLS_RSA_WITH_AES_128_CBC_SHA256
-            } while(record->getHandshake()->getType()
-                    != Handshake::SERVER_HELLO_DONE);
+            }
+			//while(record->getHandshake()->getType()
+                    //!= Handshake::SERVER_HELLO_DONE);
 			if (records.size() == 2) {
 				//one certificate and one hellodone
 
@@ -83,6 +82,8 @@ vector<uint8_t> SslWrapper::get() {
 
 				Log::info << "Send these 3 records to server" << endl;
 
+			}else{
+				Log::err << "Expect receiving 2 records (one certificate and one hellodone) from server, but did not" << endl;
 			}
 			for (int i = 0; i < records.size(); i++)
 				delete records[i];
