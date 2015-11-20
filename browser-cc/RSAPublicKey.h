@@ -12,9 +12,9 @@
 using namespace std;
 namespace rsa {
 
-class PublicKey {
+class RSAPublicKey {
 public:
-	PublicKey(const std::vector<uint8_t> &modulus, int exponent);
+	RSAPublicKey(const std::vector<uint8_t> &modulus, int exponent);
 	int getExponent() const;
 	const std::vector<uint8_t>& getModulus() const;
 

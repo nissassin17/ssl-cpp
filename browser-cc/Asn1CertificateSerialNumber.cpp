@@ -6,9 +6,10 @@
  */
 
 #include "Asn1CertificateSerialNumber.h"
+#include "Util.hpp"
 namespace asn1{
 Asn1CertificateSerialNumber::Asn1CertificateSerialNumber(ASN1 const& asn1) {
-	number = asn1.getIntVal();
+    number = Util::vectorToInt(asn1.getIntVal());
 
 }
 

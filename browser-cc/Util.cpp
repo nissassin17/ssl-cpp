@@ -120,5 +120,3 @@ vector<uint8_t> Util::takeData(const vector<uint8_t> &data, size_t length,
 			data.begin() + offset + length);
 }
 
-long long Util::vectorToInt(const vector<uint8_t>& vec) {
-}

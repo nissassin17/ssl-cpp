@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/5/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include "Certificate.hpp"
@@ -14,7 +14,7 @@ Certificate::Certificate(const vector<uint8_t> &data, size_t offset) {
 	offset += 3;
 
 	while (length > 0) {
-		this->certificateList.push_back(new Asn1Cert(data, offset));
+		this->certificateList.push_back(new rsa::Asn1Cert(data, offset));
 		size_t t =
 				(*certificateList.rbegin())->size();
 		length -= t;
@@ -22,7 +22,7 @@ Certificate::Certificate(const vector<uint8_t> &data, size_t offset) {
 	}
 }
 
-const vector<Asn1Cert*> &Certificate::getCertificateList() const{
+const vector<rsa::Asn1Cert*> &Certificate::getCertificateList() const{
 	return certificateList;
 }
 

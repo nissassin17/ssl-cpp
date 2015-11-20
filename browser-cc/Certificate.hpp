@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/5/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #ifndef certificate_hpp
@@ -20,9 +20,9 @@ class Certificate: public Exportable {
 public:
 	Certificate(const vector<uint8_t> &data, size_t offset = 0);
 	virtual size_t size() const; //uint24_t
-	const vector<Asn1Cert*>& getCertificateList() const;
+    const vector<rsa::Asn1Cert*>& getCertificateList() const;
 	virtual ~Certificate();
 private:
-	vector<Asn1Cert*> certificateList;
+    vector<rsa::Asn1Cert*> certificateList;
 };
 #endif /* certificate_hpp */

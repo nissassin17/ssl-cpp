@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/6/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #ifndef client_key_exchange_hpp
@@ -16,10 +16,11 @@
 
 #include "Exportable.hpp"
 
-class Asn1Cert;
-class CipherSuite;
-class ClientDiffieHellmanPublic;
-class EncryptedPreMasterSecret;
+#include "Asn1Cert.hpp"
+#include "CipherSuite.hpp"
+#include "ClientDiffieHellmanPublic.hpp"
+#include "EncryptedPreMasterSecret.hpp"
+using namespace rsa;
 
 class ClientKeyExchange: public Exportable {
 public:

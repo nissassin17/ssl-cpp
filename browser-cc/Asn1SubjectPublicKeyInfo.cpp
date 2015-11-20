@@ -30,12 +30,12 @@ const ASN1::BitStringType& Asn1SubjectPublicKeyInfo::getSubjectPublicKey() const
 	return subjectPublicKey;
 }
 
-vector<int8_t> Asn1SubjectPublicKeyInfo::getExponent() const {
-	return Util::vectorToInt(ASN1(subjectPublicKey).getSequenceVal()[0]->getIntVal());
+int Asn1SubjectPublicKeyInfo::getExponent() const {
+	return static_cast<int>(Util::vectorToInt(ASN1(subjectPublicKey).getSequenceVal()[0]->getIntVal()));
 }
 
 
-int Asn1SubjectPublicKeyInfo::getModulus() const {
+vector<uint8_t> Asn1SubjectPublicKeyInfo::getModulus() const {
     return ASN1(subjectPublicKey).getSequenceVal()[1]->getIntVal();
 }
 

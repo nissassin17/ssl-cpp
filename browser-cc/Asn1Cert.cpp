@@ -10,6 +10,7 @@
 
 #include "Util.hpp"
 #include "ASN1.hpp"
+namespace rsa{
 
 Asn1Cert::Asn1Cert(const vector<uint8_t> &data, size_t offset){
 	uint32_t length = Util::takeData24(data, offset);
@@ -26,6 +27,8 @@ Asn1Cert::Asn1Cert(const vector<uint8_t> &data, size_t offset){
 	//NOTE: debug
     //NOTE TODO: get modulus from asn1 and assign to this->modulus
 //	Util::writeToFile("/Users/nissassin17/Desktop/tmp.cert", this->data);
+    rsaPublicKey = new RSAPublicKey(tbsCertificate->getSubjectPublicKeyInfo()->getModulus(),
+                                   tbsCertificate->getSubjectPublicKeyInfo()->getExponent());
 }
 
 vector<uint8_t> Asn1Cert::toData()  const{
@@ -39,15 +42,14 @@ size_t Asn1Cert::size() const{
 	return 3 + this->data.size();
 }
 
-int Asn1Cert::getExponent() const {
-    return tbsCertificate->getSubjectPublicKeyInfo()->getExponent();
-}
-
-const vector<uint8_t>& Asn1Cert::getRSAModulus() const {
-    return tbsCertificate->getSubjectPublicKeyInfo()->getModulus();
-}
-
 Asn1Cert::~Asn1Cert() {
 	delete tbsCertificate;
 	delete signatureAlgorithm;
+    delete rsaPublicKey;
+};
+
+const RSAPublicKey* Asn1Cert::getRsaPublicKey() const {
+	return rsaPublicKey;
+}
+
 }

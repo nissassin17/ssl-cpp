@@ -3,12 +3,13 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/6/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include "EncryptedPreMasterSecret.hpp"
 #include "PreMasterSecret.hpp"
 #include "Util.hpp"
+#include "CipherCore.hpp"
 
 vector<uint8_t> EncryptedPreMasterSecret::toData() const{
 	//return encrypted type as public-key-encrypted
@@ -22,17 +23,14 @@ vector<uint8_t> EncryptedPreMasterSecret::toData() const{
 }
 
 EncryptedPreMasterSecret::EncryptedPreMasterSecret(const CipherSuite* cipherSuite,
-                         const Asn1Cert* asn1Cert) :
+                         const rsa::Asn1Cert* asn1Cert) :
 cipherSuite(cipherSuite), asn1Cert(asn1Cert), preMasterSecret(
                                                               new PreMasterSecret()) {
     //    std::cout << "======ASN1Cert BEGIN=====" << endl;
     //    std::cout << Util::readableForm(asn1Cert->toData()) << endl;
     //    std::cout << "======ASN1Cert END=======" << endl;
-    //calculate here
-    vector<uint8_t> modulus(asn1Cert->getRSAModulus());
-    int exponent = asn1Cert->getExponent();
-    vector<uint8_t> dataToEncrypt(preMasterSecret->toData());
     //start encrypting
+    encryptedData = CipherCore::rsaep(*(asn1Cert->getRsaPublicKey()), preMasterSecret->toData());
     
 }
 size_t EncryptedPreMasterSecret::size() const {

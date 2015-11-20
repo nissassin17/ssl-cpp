@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/6/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include "ClientKeyExchange.hpp"
@@ -13,8 +13,9 @@
 #include "EncryptedPreMasterSecret.hpp"
 #include "Log.h"
 
+using namespace rsa;
 ClientKeyExchange::ClientKeyExchange(const CipherSuite *cipherSuite,
-		const Asn1Cert *asn1Cert) :
+                                     const rsa::Asn1Cert *asn1Cert) :
 		cipherSuite(cipherSuite),
 		encryptedPreMasterSecret(NULL),
 		clientDiffieHellmanPublic(NULL){

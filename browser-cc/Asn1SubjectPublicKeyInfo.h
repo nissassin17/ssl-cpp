@@ -19,8 +19,8 @@ public:
 	~Asn1SubjectPublicKeyInfo();
 	const Asn1AlgorithmIdentifier* getAlgorithm() const;
 	const ASN1::BitStringType& getSubjectPublicKey() const;
-	vector<int8_t> getExponent() const;
-	int getModulus() const;
+	int getExponent() const;
+	vector<uint8_t> getModulus() const;
 
 private:
 	Asn1AlgorithmIdentifier *algorithm;

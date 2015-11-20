@@ -8,7 +8,7 @@
 #include "CipherCore.hpp"
 #include "RSAPublicKey.h"
 
-std::vector<uint8_t> CipherCore::rsaep(const rsa::PublicKey& publicKey,
+std::vector<uint8_t> CipherCore::rsaep(const rsa::RSAPublicKey& publicKey,
 		const std::vector<uint8_t>& message) {
 	return CipherCore::exponent(message, publicKey.getExponent(),
 			publicKey.getModulus());

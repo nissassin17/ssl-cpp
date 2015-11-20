@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B313570B1BC7BB4500CDD513 /* Alert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356C41BC7BB4500CDD513 /* Alert.cpp */; };
-		B313570C1BC7BB4500CDD513 /* Asn1cert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356C61BC7BB4500CDD513 /* Asn1cert.cpp */; };
 		B313570D1BC7BB4500CDD513 /* Browser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356C81BC7BB4500CDD513 /* Browser.cpp */; };
 		B313570E1BC7BB4500CDD513 /* Certificate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356CA1BC7BB4500CDD513 /* Certificate.cpp */; };
 		B313570F1BC7BB4500CDD513 /* CertificateRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B31356CC1BC7BB4500CDD513 /* CertificateRequest.cpp */; };
@@ -57,6 +56,7 @@
 		B3B24D181BFE991B003453E6 /* Asn1TBSCertificate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3B24D071BFE991A003453E6 /* Asn1TBSCertificate.cpp */; };
 		B3B24D191BFE991B003453E6 /* Asn1Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3B24D091BFE991A003453E6 /* Asn1Time.cpp */; };
 		B3B24D1A1BFE991B003453E6 /* Asn1Validity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3B24D0B1BFE991A003453E6 /* Asn1Validity.cpp */; };
+		E55237451BFF4595001A2008 /* Asn1Cert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E55237431BFF4595001A2008 /* Asn1Cert.cpp */; };
 		E5F2D82F1BFF37D60086A942 /* Asn1Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5F2D82C1BFF37D60086A942 /* Asn1Map.cpp */; };
 /* End PBXBuildFile section */
 
@@ -75,8 +75,6 @@
 /* Begin PBXFileReference section */
 		B31356C41BC7BB4500CDD513 /* Alert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Alert.cpp; sourceTree = "<group>"; };
 		B31356C51BC7BB4500CDD513 /* Alert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Alert.hpp; sourceTree = "<group>"; };
-		B31356C61BC7BB4500CDD513 /* Asn1cert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asn1cert.cpp; sourceTree = "<group>"; };
-		B31356C71BC7BB4500CDD513 /* Asn1cert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Asn1cert.hpp; sourceTree = "<group>"; };
 		B31356C81BC7BB4500CDD513 /* Browser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Browser.cpp; sourceTree = "<group>"; };
 		B31356C91BC7BB4500CDD513 /* Browser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Browser.hpp; sourceTree = "<group>"; };
 		B31356CA1BC7BB4500CDD513 /* Certificate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Certificate.cpp; sourceTree = "<group>"; };
@@ -176,6 +174,8 @@
 		B3B24D0D1BFE991A003453E6 /* cinclude2dot.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = cinclude2dot.pl; sourceTree = "<group>"; };
 		B3B24D0E1BFE991A003453E6 /* graph.dot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = graph.dot; sourceTree = "<group>"; };
 		B3B24D0F1BFE991A003453E6 /* graph.ps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = graph.ps; sourceTree = "<group>"; };
+		E55237431BFF4595001A2008 /* Asn1Cert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asn1Cert.cpp; sourceTree = "<group>"; };
+		E55237441BFF4595001A2008 /* Asn1Cert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Asn1Cert.hpp; sourceTree = "<group>"; };
 		E5F2D82C1BFF37D60086A942 /* Asn1Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asn1Map.cpp; sourceTree = "<group>"; };
 		E5F2D82D1BFF37D60086A942 /* Asn1Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asn1Map.h; sourceTree = "<group>"; };
 		E5F2D82E1BFF37D60086A942 /* tags */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tags; sourceTree = "<group>"; };
@@ -211,14 +211,14 @@
 		B34B738F1BBD73430059443A /* browser-cc */ = {
 			isa = PBXGroup;
 			children = (
+				E55237431BFF4595001A2008 /* Asn1Cert.cpp */,
+				E55237441BFF4595001A2008 /* Asn1Cert.hpp */,
 				B31356C41BC7BB4500CDD513 /* Alert.cpp */,
 				B31356C51BC7BB4500CDD513 /* Alert.hpp */,
 				B39019AE1BCD0D7B002D0D49 /* ASN1.cpp */,
 				B39019AF1BCD0D7B002D0D49 /* ASN1.hpp */,
 				B3B24CFB1BFE991A003453E6 /* Asn1AlgorithmIdentifier.cpp */,
 				B3B24CFC1BFE991A003453E6 /* Asn1AlgorithmIdentifier.h */,
-				B31356C61BC7BB4500CDD513 /* Asn1cert.cpp */,
-				B31356C71BC7BB4500CDD513 /* Asn1cert.hpp */,
 				B3B24CFD1BFE991A003453E6 /* Asn1CertificateSerialNumber.cpp */,
 				B3B24CFE1BFE991A003453E6 /* Asn1CertificateSerialNumber.h */,
 				E5F2D82C1BFF37D60086A942 /* Asn1Map.cpp */,
@@ -389,7 +389,6 @@
 				B39019B51BCD0D7B002D0D49 /* BitUtil.cpp in Sources */,
 				B31357291BC7BB4500CDD513 /* SessionID.cpp in Sources */,
 				B37518A11BF7934E002D0525 /* CipherCore.cpp in Sources */,
-				B313570C1BC7BB4500CDD513 /* Asn1cert.cpp in Sources */,
 				B3B24D151BFE991B003453E6 /* Asn1RelativeDistinguishedName.cpp in Sources */,
 				B31357131BC7BB4500CDD513 /* ClientDiffieHellmanPublic.cpp in Sources */,
 				B31357151BC7BB4500CDD513 /* ClientKeyExchange.cpp in Sources */,
@@ -422,6 +421,7 @@
 				B313572C1BC7BB4500CDD513 /* SubConnection.cpp in Sources */,
 				B3B24D131BFE991B003453E6 /* Asn1CertificateSerialNumber.cpp in Sources */,
 				E5F2D82F1BFF37D60086A942 /* Asn1Map.cpp in Sources */,
+				E55237451BFF4595001A2008 /* Asn1Cert.cpp in Sources */,
 				B3B24D191BFE991B003453E6 /* Asn1Time.cpp in Sources */,
 				B313570E1BC7BB4500CDD513 /* Certificate.cpp in Sources */,
 				B39019B61BCD0D7B002D0D49 /* Makefile in Sources */,
