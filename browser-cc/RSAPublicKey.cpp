@@ -11,7 +11,6 @@ namespace rsa {
 
 PublicKey::PublicKey(const std::vector<uint8_t> &modulus, int exponent) :
 	modulus(modulus), exponent(exponent){
-	// TODO Auto-generated constructor stub
 
 }
 

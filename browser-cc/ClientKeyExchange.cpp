@@ -11,12 +11,15 @@
 #include "CipherSuite.hpp"
 #include "ClientDiffieHellmanPublic.hpp"
 #include "EncryptedPreMasterSecret.hpp"
+#include "Log.h"
 
 ClientKeyExchange::ClientKeyExchange(const CipherSuite *cipherSuite,
-		const ASN1Cert *asn1Cert) :
+		const Asn1Cert *asn1Cert) :
 		cipherSuite(cipherSuite),
 		encryptedPreMasterSecret(NULL),
 		clientDiffieHellmanPublic(NULL){
+
+	Log::info << "Now making client_key_exchange. Currently only support RSA" << endl;
 
 	switch (cipherSuite->getKeyExchange()) {
 	case CipherSuite::RSA:

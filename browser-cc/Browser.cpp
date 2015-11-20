@@ -12,10 +12,11 @@
 #include <vector>
 
 #include "Browser.hpp"
+
+#include "Log.h"
 #include "SslWrapper.hpp"
 #include "StrUtil.hpp"
 #include "Url.hpp"
-#include "log.h"
 
 using namespace std;
 

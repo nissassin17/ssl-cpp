@@ -16,14 +16,14 @@
 
 #include "Exportable.hpp"
 
-class ASN1Cert;
+class Asn1Cert;
 class CipherSuite;
 class ClientDiffieHellmanPublic;
 class EncryptedPreMasterSecret;
 
 class ClientKeyExchange: public Exportable {
 public:
-	ClientKeyExchange(const CipherSuite *cipherSuite, const ASN1Cert *asn1Cert);
+	ClientKeyExchange(const CipherSuite *cipherSuite, const Asn1Cert *asn1Cert);
 	virtual vector<uint8_t> toData()const;
 	virtual size_t size()const;
 	~ClientKeyExchange();

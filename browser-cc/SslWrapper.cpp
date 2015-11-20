@@ -13,9 +13,9 @@
 
 #include "Connection.hpp"
 #include "Handshake.hpp"
+#include "Log.h"
 #include "Record.hpp"
 #include "Util.hpp"
-#include "Log.h"
 
 SslWrapper::SslWrapper(const Url* url) :
 url(url){

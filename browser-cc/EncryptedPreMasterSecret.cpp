@@ -22,7 +22,7 @@ vector<uint8_t> EncryptedPreMasterSecret::toData() const{
 }
 
 EncryptedPreMasterSecret::EncryptedPreMasterSecret(const CipherSuite* cipherSuite,
-                         const ASN1Cert* asn1Cert) :
+                         const Asn1Cert* asn1Cert) :
 cipherSuite(cipherSuite), asn1Cert(asn1Cert), preMasterSecret(
                                                               new PreMasterSecret()) {
     //    std::cout << "======ASN1Cert BEGIN=====" << endl;

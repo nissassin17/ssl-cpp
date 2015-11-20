@@ -16,8 +16,8 @@
 #include <arpa/inet.h>
 #include <string>
 
-#include "Log.h"
 #include "Err.hpp"
+#include "Log.h"
 
 extern int errno;
 
