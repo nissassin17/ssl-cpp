@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright �� 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #ifndef util_hpp
@@ -37,6 +37,8 @@ public:
 			size_t offset = 0);
 
 	static string readableForm(const vector<uint8_t> &data);
+
+	static long long vectorToInt(const vector<uint8_t> &vec);
 };
 
 #endif /* util_hpp */

@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright �� 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include <cstdio>
@@ -32,6 +32,14 @@ string Util::readableForm(const vector<uint8_t> &data) {
 	}
 	return result;
 }
+
+long long Util::vectorToInt(const vector<uint8_t> &vec){
+	long long ret = 0ll;
+	for(int i = 0; i < vec.size(); i++)
+		ret = BitUtil::append(ret, vec[i], 8);
+	return ret;
+}
+
 
 void Util::writeToFile(const string &filename, const vector<uint8_t> &data) {
 	ofstream file(filename, ios::out bitor ios::binary);
@@ -110,4 +118,7 @@ vector<uint8_t> Util::takeData(const vector<uint8_t> &data, size_t length,
 		size_t offset) {
 	return vector<uint8_t>(data.begin() + offset,
 			data.begin() + offset + length);
+}
+
+long long Util::vectorToInt(const vector<uint8_t>& vec) {
 }

@@ -54,11 +54,12 @@ public:
 		CONTEXT_SPECIFIC = 0b10,
 		PRIVATE = 0b11
 	};
-	typedef long long IntType;
+	typedef vector<uint8_t> IntType;
 	typedef bool BoolType;
 	typedef set<ASN1*> SetType;
 	typedef vector<long long> ObjectIdentifierType;
-	typedef vector<bool> BitStringType;
+//	typedef vector<bool> BitStringType;
+	typedef vector<uint8_t> BitStringType;
 	typedef vector<uint8_t> OctetStringType;
 	typedef vector<ASN1*> SequenceType;
 	typedef OctetStringType TimeType;

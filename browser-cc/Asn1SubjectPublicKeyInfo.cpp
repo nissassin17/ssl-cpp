@@ -6,12 +6,15 @@
  */
 
 #include "Asn1SubjectPublicKeyInfo.h"
+#include "Util.hpp"
 
 namespace asn1 {
 
 Asn1SubjectPublicKeyInfo::Asn1SubjectPublicKeyInfo(ASN1 const& asn1) {
 	ASN1::SequenceType const& seq = asn1.getSequenceVal();
 	algorithm = new Asn1AlgorithmIdentifier(*(seq[0]));
+	//TODO:define type of subject public key info based on algorithm
+	//here we just use rsa format
 	subjectPublicKey = ASN1::BitStringType(seq[1]->getBitStringVal());
 }
 
@@ -25,6 +28,15 @@ Asn1SubjectPublicKeyInfo::~Asn1SubjectPublicKeyInfo() {
 
 const ASN1::BitStringType& Asn1SubjectPublicKeyInfo::getSubjectPublicKey() const {
 	return subjectPublicKey;
+}
+
+vector<int8_t> Asn1SubjectPublicKeyInfo::getExponent() const {
+	return Util::vectorToInt(ASN1(subjectPublicKey).getSequenceVal()[0]->getIntVal());
+}
+
+
+int Asn1SubjectPublicKeyInfo::getModulus() const {
+    return ASN1(subjectPublicKey).getSequenceVal()[1]->getIntVal();
 }
 
 } /* namespace asn1 */

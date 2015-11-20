@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/5/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright �� 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include "Asn1Cert.hpp"
@@ -40,12 +40,11 @@ size_t Asn1Cert::size() const{
 }
 
 int Asn1Cert::getExponent() const {
-    return tbsCertificate->getSubjectPublicKeyInfo()->getSubjectPublicKey();
+    return tbsCertificate->getSubjectPublicKeyInfo()->getExponent();
 }
 
 const vector<uint8_t>& Asn1Cert::getRSAModulus() const {
-    vector<uint8_t> x;
-    return x;
+    return tbsCertificate->getSubjectPublicKeyInfo()->getModulus();
 }
 
 Asn1Cert::~Asn1Cert() {

@@ -87,15 +87,17 @@ void ASN1::parseBoolContent(const vector<uint8_t>& data, size_t& offset) {
 void ASN1::parserIntegerContent(const vector<uint8_t>& data, size_t& offset,
 		long long contentLength) {
 	//primitive
-	intVal = 0ll;
+	intVal = vector<uint8_t>();
 	bool isNegative = BitUtil::isBitOn(data[offset], 7);
 	for (int i = 0; i < contentLength; i++) {
-		intVal = BitUtil::append(intVal, data[offset], 8);
+		intVal.push_back(data[offset]);
+//		intVal = BitUtil::append(intVal, data[offset], 8);
 		offset++;
 	}
-	if (isNegative) {
-		intVal -= (1 << (contentLength - 1));
-	}
+    // BIG NOTE HERE: do 2-complement in case of negative
+//	if (isNegative) {
+//		intVal -= (1 << (contentLength - 1));
+//	}
 }
 
 void ASN1::parseRealContent(const vector<uint8_t>& data, size_t& offset,
@@ -208,8 +210,10 @@ void ASN1::parseBitString(const vector<uint8_t>& data, size_t& offset,
 		else
 			t = 0;
 
-		for (int j = 0; j < 8 - t; j++)
-			bitStringVal.push_back(BitUtil::isBitOn(data[offset], 7 - j));
+		//NOTE: take bitstring as array of bytes (not bool)
+//		for (int j = 0; j < 8 - t; j++)
+//			bitStringVal.push_back(BitUtil::isBitOn(data[offset], 7 - j));
+		bitStringVal.push_back(data[offset]);
 		offset++;
 	}
 }

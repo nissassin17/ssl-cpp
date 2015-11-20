@@ -6,12 +6,13 @@
  */
 
 #include "Asn1TBSCertificate.h"
+#include "Util.hpp"
 
 namespace asn1 {
 
 Asn1TBSCertificate::Asn1TBSCertificate(ASN1 const& asn1) {
 	ASN1::SequenceType const& seq = asn1.getSequenceVal();
-	version = static_cast<int>(seq[0]->getIntVal());
+    version = static_cast<int>(Util::vectorToInt(seq[0]->getIntVal()));
 	serialNumber = new Asn1CertificateSerialNumber(*(seq[1]));
 	signature = new Asn1AlgorithmIdentifier(*(seq[2]));
 	issuer = new Asn1Name(*(seq[3]));
