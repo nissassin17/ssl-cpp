@@ -22,12 +22,12 @@ public:
 	Asn1TBSCertificate(ASN1 const& asn1);
 	~Asn1TBSCertificate();
 	int getVersion() const;
-	Asn1Name* getIssuer() const;
-	Asn1CertificateSerialNumber* getSerialNumber() const;
-Asn1AlgorithmIdentifier* getSignature() const;
-Asn1Name* getSubject() const;
-Asn1SubjectPublicKeyInfo* getSubjectPublicKeyInfo() const;
-Asn1Validity* getValidity() const;
+const 	Asn1Name* getIssuer() const;
+const 	Asn1CertificateSerialNumber* getSerialNumber() const;
+const Asn1AlgorithmIdentifier* getSignature() const;
+const Asn1Name* getSubject() const;
+const Asn1SubjectPublicKeyInfo* getSubjectPublicKeyInfo() const;
+const Asn1Validity* getValidity() const;
 
 private:
 	int version;

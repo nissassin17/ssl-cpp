@@ -10,12 +10,12 @@
 
 #include <set>
 
-#include "Asn1Set.h"
+#include "Asn1Map.h"
 #include "ASN1.hpp"
 using namespace std;
 namespace asn1 {
 
-class Asn1RelativeDistinguishedName : public Asn1Set {
+class Asn1RelativeDistinguishedName : public Asn1Map {
 public:
 	Asn1RelativeDistinguishedName(ASN1 const& asn1);
 };

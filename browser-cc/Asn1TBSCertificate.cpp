@@ -32,7 +32,7 @@ Asn1TBSCertificate::~Asn1TBSCertificate() {
 }
 
 
-const int Asn1TBSCertificate::getVersion() const {
+ int Asn1TBSCertificate::getVersion() const {
 	return version;
 }
 

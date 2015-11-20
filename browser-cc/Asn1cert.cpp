@@ -40,7 +40,7 @@ size_t Asn1Cert::size() const{
 }
 
 int Asn1Cert::getExponent() const {
-    return 0;
+    return tbsCertificate->getSubjectPublicKeyInfo()->getSubjectPublicKey();
 }
 
 const vector<uint8_t>& Asn1Cert::getRSAModulus() const {

@@ -9,14 +9,15 @@
 #define ASN1SET_H_
 #include "ASN1.hpp"
 #include <set>
+#include <map>
 using namespace std;
 namespace asn1 {
 
-class Asn1Set {
+class Asn1Map {
 public:
-	Asn1Set(ASN1 const& asn1);
+	Asn1Map(ASN1 const& asn1);
 private:
-	set<ASN1::ObjectIdentifierType, ASN1*> value;
+	map<ASN1::ObjectIdentifierType, ASN1> value;
 };
 
 } /* namespace asn1 */

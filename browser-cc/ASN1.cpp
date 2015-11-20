@@ -307,11 +307,11 @@ ASN1::ASN1(const vector<uint8_t> &data, size_t offset) :
 	psize = offset - oldOffset;
 }
 
-const Asn1BitString& ASN1::getBitStringVal() const {
+const ASN1::BitStringType& ASN1::getBitStringVal() const {
 	return bitStringVal;
 }
 
-Asn1Bool ASN1::isBoolVal() const {
+ASN1::BoolType ASN1::isBoolVal() const {
 	return boolVal;
 }
 
@@ -319,15 +319,15 @@ bool ASN1::isDefinitive() const {
 	return definitive;
 }
 
-Asn1Int ASN1::getIntVal() const {
+ASN1::IntType ASN1::getIntVal() const {
 	return intVal;
 }
 
-const Asn1ObjectIdentifier& ASN1::getObjectIdentifierVal() const {
+const ASN1::ObjectIdentifierType& ASN1::getObjectIdentifierVal() const {
 	return objectIdentifierVal;
 }
 
-const Asn1OctetString& ASN1::getOctetStringVal() const {
+const ASN1::OctetStringType& ASN1::getOctetStringVal() const {
 	return octetStringVal;
 }
 
@@ -339,10 +339,10 @@ size_t ASN1::getPsize() const {
 	return psize;
 }
 
-const Asn1Sequence& ASN1::getSequenceVal() const {
+const ASN1::SequenceType& ASN1::getSequenceVal() const {
 	return sequenceVal;
 }
 
-const Asn1Set& ASN1::getSetVal() const {
+const ASN1::SetType& ASN1::getSetVal() const {
 	return setVal;
 }

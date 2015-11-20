@@ -9,7 +9,7 @@
 
 namespace asn1 {
 
-Asn1RelativeDistinguishedName::Asn1RelativeDistinguishedName(ASN1 const& asn1) : Asn1Set(asn1) {
+Asn1RelativeDistinguishedName::Asn1RelativeDistinguishedName(ASN1 const& asn1) : Asn1Map(asn1) {
 }
 
 } /* namespace asn1 */
