@@ -19,8 +19,6 @@ namespace asn1 {
 
 class Asn1TBSCertificate {
 public:
-	Asn1TBSCertificate(ASN1 const& asn1);
-	~Asn1TBSCertificate();
 	int getVersion() const;
 const 	Asn1Name* getIssuer() const;
 const 	Asn1CertificateSerialNumber* getSerialNumber() const;

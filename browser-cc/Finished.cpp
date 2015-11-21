@@ -21,10 +21,14 @@ vector<uint8_t> Finished::toData() const{
 	return data;
 }
 
-Finished::Finished(SenderType type) :
-		type(type) {
+Finished::Finished() :
+		type(CLIENT) {
 
 }
 
 Finished::~Finished() {
+}
+
+Finished::Finished(const vector<uint8_t>& data, int offset):
+	type(SERVER){
 }

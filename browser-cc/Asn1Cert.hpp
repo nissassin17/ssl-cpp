@@ -29,6 +29,7 @@ public:
 	virtual vector<uint8_t> toData() const;
 	~Asn1Cert();
 	const RSAPublicKey* getRsaPublicKey() const;
+	Asn1Cert(Asn1Cert const& cert);
 
 private:
 	vector<uint8_t> data;

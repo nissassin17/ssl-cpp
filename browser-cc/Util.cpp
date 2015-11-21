@@ -17,21 +17,6 @@
 
 using namespace std;
 
-string Util::readableForm(const vector<uint8_t> &data) {
-	string result;
-	for (int i = 0; i < data.size(); i++) {
-		if (i and i % 16 == 0)
-			result += "\n";
-		else if (i and i % 8 == 0)
-			result += " | ";
-		char a[3];
-		sprintf(a, "%02x", (uint8_t) data[i]);
-		result += " ";
-		result += a;
-
-	}
-	return result;
-}
 
 long long Util::vectorToInt(const vector<uint8_t> &vec){
 	long long ret = 0ll;
@@ -41,12 +26,6 @@ long long Util::vectorToInt(const vector<uint8_t> &vec){
 }
 
 
-void Util::writeToFile(const string &filename, const vector<uint8_t> &data) {
-	ofstream file(filename, ios::out bitor ios::binary);
-	for (int i = 0; i < data.size(); i++)
-		file << data[i];
-	file.close();
-}
 
 void Util::addData(vector<uint8_t> &data, uint8_t value) {
 	data.push_back(value);

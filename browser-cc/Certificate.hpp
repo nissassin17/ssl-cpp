@@ -22,7 +22,8 @@ public:
 	virtual size_t size() const; //uint24_t
     const vector<rsa::Asn1Cert*>& getCertificateList() const;
 	virtual ~Certificate();
+	Certificate(Certificate const& certificate);
 private:
-    vector<rsa::Asn1Cert*> certificateList;
+	vector<rsa::Asn1Cert*> certificateList;
 };
 #endif /* certificate_hpp */

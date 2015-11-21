@@ -248,3 +248,14 @@ CipherSuite::~CipherSuite() {
 	delete cipher;
 	delete mac;
 }
+
+CipherSuite::CipherSuite(const CipherSuite& cipherSuite):
+	keyExchange(cipherSuite.keyExchange),
+	cipher(NULL),
+	mac(NULL),
+	suite(cipherSuite.suite){
+	if (cipherSuite.cipher != NULL)
+		cipher = new Cipher(*(cipherSuite.cipher));
+	if (cipherSuite.mac != NULL)
+		mac = new MAC(*(cipherSuite.mac));
+}

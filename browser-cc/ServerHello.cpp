@@ -15,7 +15,7 @@
 #include "SessionID.hpp"
 #include "Util.hpp"
 
-const CipherSuite *ServerHello::getCipherSuite() const{
+const CipherSuite *ServerHello::getCipherSuite() const {
 	return this->cipherSuite;
 }
 
@@ -69,4 +69,15 @@ size_t ServerHello::size() const {
 			result += extensions[i]->size();
 	}
 	return result;
+}
+
+ServerHello::ServerHello(const ServerHello& serverHello) :
+		protocolVersion(new ProtocolVersion(*(serverHello.protocolVersion))), random(
+				new Random(*(serverHello.random))), sessionID(
+				new SessionID(*(serverHello.sessionID))), cipherSuite(
+				new CipherSuite(*(serverHello.cipherSuite))), compressionMethod(
+				new CompressionMethod(*(serverHello.compressionMethod))), haveExtension(
+				serverHello.haveExtension) {
+	for (int i = 0; i < serverHello.extensions.size(); i++)
+		extensions.push_back(new Extension(*(serverHello.extensions[i])));
 }

@@ -45,6 +45,7 @@ public:
 	virtual vector<uint8_t> toData() const;
 	Handshake(HandshakeType type, const void *arg = NULL, const void *arg2 = NULL);
 	Handshake(const vector<uint8_t> &data, size_t offset = 0, const void *arg = NULL);
+	Handshake(Handshake const& handshake);
 	size_t size() const;
 	~Handshake();
 	const ServerHello* getServerHello()const;

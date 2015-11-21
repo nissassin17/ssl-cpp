@@ -131,3 +131,15 @@ vector<uint8_t> ClientHello::toData() const{
 
 	return data;
 }
+
+ClientHello::ClientHello(const ClientHello& clientHello): protocolVersion(new ProtocolVersion(*(clientHello.protocolVersion))),
+		random(new Random(*(clientHello.random))),
+		sessionID(new SessionID(*(clientHello.sessionID))),
+		haveExtension(clientHello.haveExtension){
+	for(int i = 0; i < clientHello.cipherSuites.size(); i++)
+		cipherSuites.push_back(new CipherSuite(*(clientHello.cipherSuites[i])));
+	for(int i = 0; i < clientHello.compressionMethods.size(); i++)
+		compressionMethods.push_back(new CompressionMethod(*(clientHello.compressionMethods[i])));
+	for(int i = 0; i < clientHello.extensions.size(); i++)
+		extensions.push_back(new Extension(*(clientHello.extensions[i])));
+}

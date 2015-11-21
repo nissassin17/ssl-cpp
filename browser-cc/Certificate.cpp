@@ -37,3 +37,8 @@ Certificate::~Certificate() {
 	for (int i = 0; i < certificateList.size(); i++)
 		delete certificateList[i];
 }
+
+Certificate::Certificate(const Certificate& certificate) {
+	for(int i =0; i < certificate.certificateList.size(); i++)
+		certificateList.push_back(new rsa::Asn1Cert(*(certificate.certificateList[i])));
+}

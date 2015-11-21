@@ -18,9 +18,6 @@ using namespace std;
 
 class Util {
 public:
-	static void writeToFile(const string &filename,
-			const vector<uint8_t> &data);
-
 	static void addData(vector<uint8_t> &data, uint8_t value);
 	static void addData(vector<uint8_t> &data, uint16_t value);
 	static void addData(vector<uint8_t> &data, uint32_t value);
@@ -35,8 +32,6 @@ public:
 	static uint64_t takeData64(const vector<uint8_t> &data, size_t offset = 0);
 	static vector<uint8_t> takeData(const vector<uint8_t> &data, size_t length,
 			size_t offset = 0);
-
-	static string readableForm(const vector<uint8_t> &data);
 
 	static long long vectorToInt(const vector<uint8_t> &vec);
 };

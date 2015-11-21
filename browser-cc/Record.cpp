@@ -16,12 +16,17 @@
 #include "ProcotolVersion.hpp"
 #include "Util.hpp"
 
-Record::Record(ContentType type) :
+Record::Record(ContentType type, vector<uint8_t> const& appData):
 		type(type), compressed(false),
 protocolVersion(new ProtocolVersion()){
 	switch (type) {
 	case CHANGE_CIPHER_SPEC:
 		fragment = new ChangeCipherSpec();
+		break;
+	case APPLICATION_DATA:
+		fragment = new ApplicationData(appData);
+		//TODO: implement application data here
+//		fragment = new ApplicationData();
 		break;
 	default:
 		break;
@@ -33,6 +38,7 @@ Record::Record(Handshake::HandshakeType handshakeType, const void *arg, const vo
 	type = HANDSHAKE;
 	switch (handshakeType) {
 	case Handshake::CLIENT_KEY_EXCHANGE:
+            //make client-key-exchange require serverhello (cipher type) and server's certificate (key info)
 		fragment = new Handshake(handshakeType, arg, arg2);
 		break;
 	case Handshake::CLIENT_HELLO:
@@ -125,6 +131,33 @@ const Handshake* Record::getHandshake() const {
 
 const ProtocolVersion* Record::getProtocolVersion() const {
 	return protocolVersion;
+}
+
+const ApplicationData* Record::getApplicationData() const {
+	return dynamic_cast<ApplicationData*>(fragment);
+}
+
+Record::Record(const Record& record):
+		type(record.type),
+		protocolVersion(record.protocolVersion),
+		compressed(record.compressed){
+	switch (type){
+	case CHANGE_CIPHER_SPEC:
+	break;
+
+	case ALERT:
+		fragment = new Alert(*(record.getAlert()));
+		break;
+	case HANDSHAKE:
+		fragment = new Handshake(*(record.getHandshake));
+		break;
+	case APPLICATION_DATA:
+		fragment = new ApplicationData(*(record.getApplicationData()));
+		break;
+	default: //NONE = 24
+		fragment = NULL;
+		break;
+	}
 }
 
 Record::ContentType Record::getType() const {

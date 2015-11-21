@@ -28,6 +28,7 @@ public:
 	virtual size_t size() const;
 	const CipherSuite *getCipherSuite() const;
 	virtual ~ServerHello();
+	ServerHello(ServerHello const& serverHello);
 private:
 	ProtocolVersion *protocolVersion;
 	Random *random;

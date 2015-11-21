@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "Url.hpp"
+#include "Record.hpp"
 
 class Connection;
 
@@ -22,6 +23,15 @@ class SslWrapper {
 private:
 	const Url * const url;
 	Connection *connection;
+    void sendClientHello();
+    pair<Record, Record> receiveServerHello();
+    void sendClientCertificate(Record serverHello, Record serverCertificate);
+
+    void receiveServerFinished();
+    void sendData(vector<uint8_t> const& data);
+    vector<uint8_t> receiveData();
+    void sslSend(vector<Record> const& records);
+
 public:
 	SslWrapper(const Url* const url);
 	vector<uint8_t> get();

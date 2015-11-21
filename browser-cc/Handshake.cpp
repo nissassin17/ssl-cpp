@@ -81,6 +81,7 @@ const Certificate* Handshake::getCertificate() const{
 	return dynamic_cast<Certificate*>(body);
 }
 
+//need arg (cipher type info from serverhello) incase of making server-key-exchange
 Handshake::Handshake(const vector<uint8_t> &data, size_t offset, const void *arg) {
 	this->type = (HandshakeType) data[offset];
 	offset++;
@@ -121,7 +122,7 @@ Handshake::Handshake(const vector<uint8_t> &data, size_t offset, const void *arg
 	case CLIENT_KEY_EXCHANGE:
 		break;
 	case FINISHED:
-		body = new Finished(Finished::CLIENT);
+		body = new Finished(bodyData, offset);
 		break;
 	default: //NONE://default
 		break;
@@ -146,6 +147,45 @@ const Finished* Handshake::getFinished() const {
 
 const ServerHelloDone* Handshake::getServerHelloDone() const {
 	return dynamic_cast<ServerHelloDone*>(body);
+}
+
+Handshake::Handshake(const Handshake& handshake) : type(handshake.type) {
+	switch (type){
+	case HELLO_REQUEST:
+		body = NULL;
+//		body = new HelloRequest(*dynamic_cast<HelloRequest>(handshake.body));
+		break;
+	case CLIENT_HELLO:
+		body =  new ClientHello(*(handshake.getClientHello()));
+		break;
+	case SERVER_HELLO:
+		body = new ServerHello(*(handshake.getServerHello()));
+		break;
+	case CERTIFICATE:
+		body = new Certificate(*(handshake.getCertificate()));
+		break;
+	case SERVER_KEY_EXCHANGE:
+		body = new ServerKeyExchange(*(handshake.getServerKeyExchange()));
+		break;
+	case CERTIFICATE_REQUEST:
+		body = new CertificateRequest(*(handshake.getCertificateRequest()));
+		break;
+	case SERVER_HELLO_DONE:
+		body = new ServerHelloDone(*(handshake.getServerHelloDone()));
+		break;
+	case CERTIFICATE_VERIFY:
+		body = NULL;
+		break;
+	case CLIENT_KEY_EXCHANGE:
+		body = new ClientKeyExchange(*(handshake.getClientKeyExchange()));
+		break;
+	case FINISHED:
+		body = new Finished(*(handshake.getFinished()));
+		break;
+	default: //NONE
+		body = NULL;
+		break;
+};
 }
 
 const ServerKeyExchange* Handshake::getServerKeyExchange() const {

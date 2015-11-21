@@ -24,7 +24,6 @@ class SessionID;
 
 class ClientHello : public Exportable {
 public:
-
 private:
 	ProtocolVersion *protocolVersion;
 	Random *random;
@@ -37,6 +36,7 @@ private:
 public:
 	virtual vector<uint8_t> toData() const;
 	ClientHello();
+	ClientHello(ClientHello const& clientHello);
 	virtual size_t size()const;
 	~ClientHello();
 

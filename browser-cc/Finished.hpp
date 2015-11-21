@@ -22,8 +22,9 @@ public:
 	enum SenderType {
 		CLIENT, SERVER
 	};
-
-	Finished(SenderType type);
+//TODO: implement finished server and client
+	Finished();
+	Finished(vector<uint8_t> const& data, int offset = 0);
 	virtual size_t size() const;
 	virtual vector<uint8_t> toData() const;
 	virtual ~Finished();

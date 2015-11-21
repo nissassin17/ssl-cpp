@@ -88,6 +88,7 @@ public:
 	virtual ~CipherSuite();
 	const MAC *getMac() const;
 	const Cipher *getCipher() const;
+	CipherSuite(CipherSuite const& cipherSuite);
 private:
 	void setType(CipherSuiteType type);
 	KeyExchangeType keyExchange;

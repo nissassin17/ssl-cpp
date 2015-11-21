@@ -22,6 +22,7 @@
 using namespace std;
 
 #include "Handshake.hpp"
+#include "ApplicationData.h"
 
 class Record: public Exportable {
 public:
@@ -32,9 +33,10 @@ public:
 		APPLICATION_DATA = 23,
 		NONE = 24
 	};
+    Record(Record const& record);
 	Record(Handshake::HandshakeType type = Handshake::CLIENT_HELLO, const void *arg =
 	NULL, const void *arg2 = NULL);
-	Record(ContentType type);
+	Record(ContentType type, vector<uint8_t> const& appData = vector<uint8_t>());
 	Record(const vector<uint8_t> &data, size_t offset = 0, const void *arg = NULL);
 	virtual vector<uint8_t> toData() const;
 	virtual size_t size() const;
@@ -44,6 +46,7 @@ public:
 	bool isCompressed() const;
 	const Handshake* getHandshake() const;
 	const ProtocolVersion* getProtocolVersion() const;
+	const ApplicationData* getApplicationData() const;
 	ContentType getType() const;
 
 private:

@@ -9,20 +9,30 @@
 #define LOG_H_
 
 #include <iostream>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <sstream>
 
-#define log_print(str) switch (logType){\
+#define log_print(val)\
+        ostringstream ss;\
+    switch (logType){\
         case WARNING:\
-           cerr << (str);\
+           cerr << (val);\
            break;\
        case ERROR:\
-           cerr << (str);\
+           cerr << (val);\
            break;\
        case INFO:\
-           cout << (str);\
+           cout << (val);\
            break;\
        case RESULT:\
-           cout << (str);\
+           cout << (val);\
            break;\
+        case FILE:\
+            ss << (val);\
+            (*ofile) << ss.str();\
+            break;\
        default:\
            break;\
    };\
@@ -34,12 +44,21 @@ using namespace std;
 
 class Log {
 public:
+    class EofObject{
+    public:
+        EofObject(){}
+    };
 
+    
 	static const Log warn;
 	static const Log info;
 	static const Log err;
 	static const Log result;
+    static const EofObject eof;
+    static Log file(string const& filename);
+    
 
+    const void operator<<(EofObject const& eofObject) const;
     const Log& operator<<(basic_ostream<char>& (*const __pf)(basic_ostream<char>&)) const;
     const Log& operator<<(basic_ios<char>&
                               (* const  __pf)(basic_ios<char>&)) const;
@@ -60,16 +79,23 @@ public:
     const Log& operator<<(const long double __f) const;
     const Log& operator<<(const void* const __p) const;
     const Log& operator<<(basic_streambuf<char> * const __sb) const;
+    const Log& operator<<(vector<uint8_t> const& __v) const;
+    ~Log();
+    
 private:
 
 	enum LogType{
 		WARNING,
 		INFO,
 		ERROR,
-		RESULT
+		RESULT,
+        FILE
 	};
 	Log(LogType logType);
+    Log(string const& filename);//file type
+    ofstream *ofile;
 	LogType logType;
+    string filename;
 };
 
 
