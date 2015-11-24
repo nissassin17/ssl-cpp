@@ -26,9 +26,6 @@ Finished::Finished() :
 
 }
 
-Finished::~Finished() {
-}
-
 Finished::Finished(const vector<uint8_t>& data, int offset):
 	type(SERVER){
 }

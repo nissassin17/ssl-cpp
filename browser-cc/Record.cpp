@@ -13,7 +13,7 @@
 #include "Alert.hpp"
 #include "ChangeCipherSpec.hpp"
 #include "Err.hpp"
-#include "ProcotolVersion.hpp"
+#include "ProtocolVersion.hpp"
 #include "Util.hpp"
 
 Record::Record(ContentType type, vector<uint8_t> const& appData):
@@ -21,12 +21,12 @@ Record::Record(ContentType type, vector<uint8_t> const& appData):
 protocolVersion(new ProtocolVersion()){
 	switch (type) {
 	case CHANGE_CIPHER_SPEC:
-		fragment = new ChangeCipherSpec();
+		fragment .reset( new ChangeCipherSpec());
 		break;
 	case APPLICATION_DATA:
-		fragment = new ApplicationData(appData);
+		fragment .reset( new ApplicationData(appData));
 		//TODO: implement application data here
-//		fragment = new ApplicationData();
+//		fragment .reset( new ApplicationData());
 		break;
 	default:
 		break;
@@ -39,24 +39,19 @@ Record::Record(Handshake::HandshakeType handshakeType, const void *arg, const vo
 	switch (handshakeType) {
 	case Handshake::CLIENT_KEY_EXCHANGE:
             //make client-key-exchange require serverhello (cipher type) and server's certificate (key info)
-		fragment = new Handshake(handshakeType, arg, arg2);
+		fragment .reset( new Handshake(handshakeType, arg, arg2));
 		break;
 	case Handshake::CLIENT_HELLO:
-		fragment = new Handshake(Handshake::CLIENT_HELLO);
+		fragment .reset( new Handshake(Handshake::CLIENT_HELLO));
 		break;
 	case Handshake::FINISHED:
-		fragment = new Handshake(Handshake::FINISHED);
+		fragment .reset( new Handshake(Handshake::FINISHED));
 		break;
 	default:
 		break;
 	}
 }
 
-
-Record::~Record() {
-	delete this->protocolVersion;
-	delete fragment;
-}
 
 vector<uint8_t> Record::toData() const{
 	vector<uint8_t> bodyData(fragment->toData());
@@ -72,13 +67,13 @@ vector<uint8_t> Record::toData() const{
 	return data;
 }
 
-Record::Record(const vector<uint8_t> &data, size_t offset, const void *arg) :
+Record::Record(const vector<uint8_t> &data, size_t offset, const void * const arg) :
 		compressed(false),
 		fragment(NULL){
 	this->type = (ContentType) data[offset];
 	offset += CONTENT_TYPE_LENGTH;
 
-	this->protocolVersion = new ProtocolVersion(data, offset);
+	this->protocolVersion .reset( new ProtocolVersion(data, offset));
 	offset += this->protocolVersion->size();
 
 	uint16_t bodyLength = Util::takeData16(data, offset);
@@ -96,11 +91,11 @@ Record::Record(const vector<uint8_t> &data, size_t offset, const void *arg) :
 
 	switch (this->type) {
 	case HANDSHAKE:
-		fragment = new Handshake(fragmentData, offset, arg);
+		fragment .reset( new Handshake(fragmentData, offset, arg));
 		break;
 
 	case ALERT:
-		fragment = new Alert(fragmentData, offset);
+		fragment .reset( new Alert(fragmentData, offset));
 		break;
 
 	default:
@@ -113,51 +108,28 @@ size_t Record::size() const {
 	return CONTENT_TYPE_LENGTH + this->protocolVersion->size() + BODY_LENGTH_LENGTH + fragment->size();
 }
 
-const Alert *Record::getAlert() const{
-	return dynamic_cast<Alert*>(fragment);
+shared_ptr<const Alert > Record::getAlert() const{
+	return dynamic_pointer_cast<Alert>(fragment);
 }
 
-const ChangeCipherSpec* Record::getChangeCipherSpec() const {
-	return dynamic_cast<ChangeCipherSpec*>(fragment);
+shared_ptr<const ChangeCipherSpec>  Record::getChangeCipherSpec() const {
+	return dynamic_pointer_cast<ChangeCipherSpec>(fragment);
 }
 
 bool Record::isCompressed() const{
 	return compressed;
 }
 
-const Handshake* Record::getHandshake() const {
-	return dynamic_cast<Handshake*>(fragment);
+shared_ptr<const Handshake>  Record::getHandshake() const {
+	return dynamic_pointer_cast<Handshake>(fragment);
 }
 
-const ProtocolVersion* Record::getProtocolVersion() const {
+shared_ptr<const ProtocolVersion>  Record::getProtocolVersion() const {
 	return protocolVersion;
 }
 
-const ApplicationData* Record::getApplicationData() const {
-	return dynamic_cast<ApplicationData*>(fragment);
-}
-
-Record::Record(const Record& record):
-		type(record.type),
-		protocolVersion(record.protocolVersion),
-		compressed(record.compressed){
-	switch (type){
-	case CHANGE_CIPHER_SPEC:
-	break;
-
-	case ALERT:
-		fragment = new Alert(*(record.getAlert()));
-		break;
-	case HANDSHAKE:
-		fragment = new Handshake(*(record.getHandshake));
-		break;
-	case APPLICATION_DATA:
-		fragment = new ApplicationData(*(record.getApplicationData()));
-		break;
-	default: //NONE = 24
-		fragment = NULL;
-		break;
-	}
+shared_ptr<const ApplicationData>  Record::getApplicationData() const {
+	return dynamic_pointer_cast<ApplicationData>(fragment);
 }
 
 Record::ContentType Record::getType() const {

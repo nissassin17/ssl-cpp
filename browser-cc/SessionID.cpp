@@ -28,5 +28,3 @@ SessionID::SessionID(const vector<uint8_t> &data, size_t offset){
 SessionID::SessionID() {
 }
 
-SessionID::~SessionID() {
-}

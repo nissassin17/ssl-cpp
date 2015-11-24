@@ -17,15 +17,6 @@ size_t ASN1::size() {
 	return psize;
 }
 
-ASN1::~ASN1() {
-	for (vector<ASN1*>::iterator it = sequenceVal.begin();
-			it != sequenceVal.end(); it++)
-		delete *it;
-	for (set<ASN1*>::iterator it = setVal.begin(); it != setVal.end(); it++)
-		delete *it;
-    delete wrappedData;
-}
-
 void ASN1::parseTagNumber(const vector<uint8_t>& data, size_t& offset) {
 	//define tag number
 	if (BitUtil::isAllOne(data[offset], 5)) {
@@ -302,7 +293,7 @@ ASN1::ASN1(const vector<uint8_t> &data, size_t offset) :
 	if (tagClass == CONTEXT_SPECIFIC){
 		vector<uint8_t> wrapper(data.begin() + offset, data.begin() + offset + contentLength);
         offset += contentLength;
-		wrappedData = new ASN1(wrapper, 0);
+		wrappedData.reset(new ASN1(wrapper, 0));
 
 	}else
 		//parse content

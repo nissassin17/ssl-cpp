@@ -80,7 +80,6 @@ public:
     const Log& operator<<(const void* const __p) const;
     const Log& operator<<(basic_streambuf<char> * const __sb) const;
     const Log& operator<<(vector<uint8_t> const& __v) const;
-    ~Log();
     
 private:
 
@@ -93,7 +92,7 @@ private:
 	};
 	Log(LogType logType);
     Log(string const& filename);//file type
-    ofstream *ofile;
+    unique_ptr<ofstream> ofile;
 	LogType logType;
     string filename;
 };

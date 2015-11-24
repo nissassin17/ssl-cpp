@@ -18,27 +18,25 @@
 #include "Exportable.hpp"
 #include "Extension.hpp"
 
-class ProtocolVersion;
-class Random;
-class SessionID;
+#include "ProtocolVersion.hpp"
+#include "Random.hpp"
+#include "SessionID.hpp"
 
 class ClientHello : public Exportable {
 public:
 private:
-	ProtocolVersion *protocolVersion;
-	Random *random;
-	SessionID *sessionID;
-	vector<CipherSuite*> cipherSuites;
-	vector<CompressionMethod*> compressionMethods;
-	vector<Extension*> extensions;
+	shared_ptr<ProtocolVersion> protocolVersion;
+	shared_ptr<Random> random;
+	shared_ptr<SessionID> sessionID;
+	vector<shared_ptr<CipherSuite> > cipherSuites;
+	vector<shared_ptr<CompressionMethod> > compressionMethods;
+	vector<shared_ptr<Extension> > extensions;
 	bool haveExtension;
 
 public:
 	virtual vector<uint8_t> toData() const;
 	ClientHello();
-	ClientHello(ClientHello const& clientHello);
 	virtual size_t size()const;
-	~ClientHello();
 
 };
 

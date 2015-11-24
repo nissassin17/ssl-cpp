@@ -22,9 +22,8 @@ using namespace std;
  */
 int main(int argc, const char * argv[]) {
 	try {
-		Browser *browser = new Browser();
-		browser->run(argc, argv);
-		delete browser;
+		Browser browser;
+		browser.run(argc, argv);
 		return EXIT_SUCCESS;
 	} catch (Err &err) {
 		Log::err << err.what();

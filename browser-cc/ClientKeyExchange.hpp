@@ -24,14 +24,13 @@ using namespace rsa;
 
 class ClientKeyExchange: public Exportable {
 public:
-	ClientKeyExchange(const CipherSuite *cipherSuite, const Asn1Cert *asn1Cert);
+	ClientKeyExchange(const shared_ptr<const CipherSuite> cipherSuite, shared_ptr<const rsa::Asn1Cert> asn1Cert);
 	virtual vector<uint8_t> toData()const;
 	virtual size_t size()const;
-	~ClientKeyExchange();
 private:
-	const CipherSuite *cipherSuite;
-	EncryptedPreMasterSecret *encryptedPreMasterSecret;
-	ClientDiffieHellmanPublic *clientDiffieHellmanPublic;
+	const shared_ptr<const CipherSuite> cipherSuite;
+	shared_ptr<EncryptedPreMasterSecret> encryptedPreMasterSecret;
+	shared_ptr<ClientDiffieHellmanPublic> clientDiffieHellmanPublic;
 };
 
 #endif /* client_key_exchange_hpp */

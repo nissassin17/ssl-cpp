@@ -16,9 +16,9 @@
 #include "Record.hpp"
 #include "Util.hpp"
 
-SslWrapper::SslWrapper(const Url* url) :
+SslWrapper::SslWrapper(Url const& url):
 		url(url) {
-	this->connection = new Connection(url->getHostname(), url->isUseSsl());
+	this->connection.reset( new Connection(url.getHostname(), url.isUseSsl()));
 }
 
 void SslWrapper::sendClientHello() {
@@ -57,7 +57,7 @@ pair<Record, Record> SslWrapper::receiveServerHello() {
 
 		vector<Record> records;
 		while (offset < data.size()) {
-			Record record(data, offset, serverHello.getHandshake());
+			Record record(data, offset, serverHello.getHandshake().get());
 			records.push_back(record);
 			offset += record.size();
 			Log::info << "One more record was parsed from server's response by "
@@ -80,7 +80,7 @@ pair<Record, Record> SslWrapper::receiveServerHello() {
 void SslWrapper::sendClientCertificate(Record serverHello,
 		Record serverCertificate) {
 	Record clientKeyExchange(Handshake::CLIENT_KEY_EXCHANGE,
-			serverHello.getHandshake(), serverCertificate.getHandshake());
+			serverHello.getHandshake().get(), serverCertificate.getHandshake().get());
 	Log::info
 			<< "Make \"change_cipher_spec\" record (just by the sake of manner, actually there is no change need)"
 			<< endl;
@@ -97,7 +97,7 @@ void SslWrapper::sendClientCertificate(Record serverHello,
 }
 
 vector<uint8_t> SslWrapper::get() {
-	if (this->url->isUseSsl()) {
+	if (this->url.isUseSsl()) {
 		Log::info << "Start requesting with ssl (it must be hard)" << endl;
 
         /*
@@ -137,7 +137,7 @@ vector<uint8_t> SslWrapper::get() {
 			try{
             receiveServerFinished();
             //phrase 5: send request
-            sendData(url->httpGetRequest());
+            sendData(url.httpGetRequest());
             //phrase 6: receive data
             return receiveData();
             }catch (string const& msg){
@@ -151,7 +151,7 @@ vector<uint8_t> SslWrapper::get() {
 	}
     
 	Log::info << "Send request without using ssl" << endl;
-	this->connection->send(this->url->httpGetRequest());
+	this->connection->send(this->url.httpGetRequest());
 	return this->connection->receive();
 }
 
@@ -201,8 +201,4 @@ void SslWrapper::sslSend(const vector<Record>& records) {
 	}
 	Log::info << "Send total " << tosend.size() << " bytes (" << records.size() << " records)" << endl;
 	this->connection->send(tosend);
-}
-
-SslWrapper::~SslWrapper() {
-	delete this->connection;
 }

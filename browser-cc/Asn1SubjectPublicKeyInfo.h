@@ -16,14 +16,13 @@ namespace asn1 {
 class Asn1SubjectPublicKeyInfo {
 public:
 	Asn1SubjectPublicKeyInfo(ASN1 const& asn1);
-	~Asn1SubjectPublicKeyInfo();
-	const Asn1AlgorithmIdentifier* getAlgorithm() const;
 	const ASN1::BitStringType& getSubjectPublicKey() const;
 	int getExponent() const;
 	vector<uint8_t> getModulus() const;
+	const shared_ptr<Asn1AlgorithmIdentifier>& getAlgorithm() const;
 
 private:
-	Asn1AlgorithmIdentifier *algorithm;
+	shared_ptr<Asn1AlgorithmIdentifier> algorithm;
 	ASN1::BitStringType subjectPublicKey;
 };
 

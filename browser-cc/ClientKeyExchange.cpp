@@ -14,8 +14,8 @@
 #include "Log.h"
 
 using namespace rsa;
-ClientKeyExchange::ClientKeyExchange(const CipherSuite *cipherSuite,
-                                     const rsa::Asn1Cert *asn1Cert) :
+ClientKeyExchange::ClientKeyExchange(const shared_ptr<const CipherSuite> cipherSuite,
+                                     shared_ptr<const rsa::Asn1Cert> asn1Cert) :
 		cipherSuite(cipherSuite),
 		encryptedPreMasterSecret(NULL),
 		clientDiffieHellmanPublic(NULL){
@@ -24,15 +24,15 @@ ClientKeyExchange::ClientKeyExchange(const CipherSuite *cipherSuite,
 
 	switch (cipherSuite->getKeyExchange()) {
 	case CipherSuite::RSA:
-		encryptedPreMasterSecret = new EncryptedPreMasterSecret(cipherSuite,
-				asn1Cert);
+		encryptedPreMasterSecret.reset(new EncryptedPreMasterSecret(cipherSuite,
+				asn1Cert));
 		break;
 	case CipherSuite::DHE_DSS:
 	case CipherSuite::DHE_RSA:
 	case CipherSuite::DH_DSS:
 	case CipherSuite::DH_RSA:
 	case CipherSuite::DH_anon:
-		clientDiffieHellmanPublic = new ClientDiffieHellmanPublic(cipherSuite);
+		clientDiffieHellmanPublic.reset(new ClientDiffieHellmanPublic(cipherSuite));
 		break;
 
 	default: //none
@@ -41,10 +41,6 @@ ClientKeyExchange::ClientKeyExchange(const CipherSuite *cipherSuite,
 
 }
 
-ClientKeyExchange::~ClientKeyExchange() {
-	delete clientDiffieHellmanPublic;
-	delete encryptedPreMasterSecret;
-}
 
 size_t ClientKeyExchange::size() const{
 	switch (cipherSuite->getKeyExchange()) {

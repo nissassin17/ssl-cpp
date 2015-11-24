@@ -16,21 +16,20 @@
 
 #include "Exportable.hpp"
 
-class CipherSuite;
-class DigitallySigned;
-class ServerDHParams;
+#include "CipherSuite.hpp"
+#include "DigitallySigned.hpp"
+#include "ServerDHParams.hpp"
 
 class ServerKeyExchange: public Exportable {
 public:
-	ServerKeyExchange(const CipherSuite *cipherSuite,const vector<uint8_t> &data,
+	ServerKeyExchange(shared_ptr<const CipherSuite> cipherSuite,const vector<uint8_t> &data,
 			size_t offset = 0);
 	virtual size_t size() const;
-	virtual ~ServerKeyExchange();
 
 private:
-	const CipherSuite *cipherSuite;
-	ServerDHParams *params;
-	DigitallySigned *signedParams;
+	const shared_ptr<const CipherSuite> cipherSuite;
+	shared_ptr<ServerDHParams> params;
+	shared_ptr<DigitallySigned> signedParams;
 };
 
 #endif /* server_key_exchange_hpp */

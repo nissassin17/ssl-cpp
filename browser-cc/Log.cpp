@@ -8,7 +8,7 @@
 #include "Log.h"
 
 Log::Log(LogType logType):
-logType(logType), ofile(NULL){
+logType(logType){
 }
 
 const Log& Log::operator<<(basic_ostream<char>& (* const __pf)(basic_ostream<char>&)) const{
@@ -100,9 +100,6 @@ const Log Log::info = Log(Log::INFO);
 const Log Log::result = Log(Log::RESULT);
 const Log::EofObject Log::eof = Log::EofObject();
 
-Log::~Log(){
-    delete ofile;
-}
 Log Log::file(string const& filename){
     return Log(filename);
 }

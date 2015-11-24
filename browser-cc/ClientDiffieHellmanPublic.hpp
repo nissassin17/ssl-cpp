@@ -16,17 +16,16 @@
 
 #include "Exportable.hpp"
 
-class CipherSuite;
+#include "CipherSuite.hpp"
 
 class ClientDiffieHellmanPublic: public Exportable {
 
 public:
-	ClientDiffieHellmanPublic(const CipherSuite *cipherSuite);
-	~ClientDiffieHellmanPublic();
+	ClientDiffieHellmanPublic(shared_ptr<const CipherSuite> cipherSuite);
 	virtual vector<uint8_t> toData()const;
 	virtual size_t size()const;
 private:
-	const CipherSuite * const cipherSuite;
+	const shared_ptr<const CipherSuite> cipherSuite;
 };
 
 #endif /* client_diffie_hellman_public_hpp */

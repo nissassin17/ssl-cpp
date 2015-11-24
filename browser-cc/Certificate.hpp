@@ -20,10 +20,9 @@ class Certificate: public Exportable {
 public:
 	Certificate(const vector<uint8_t> &data, size_t offset = 0);
 	virtual size_t size() const; //uint24_t
-    const vector<rsa::Asn1Cert*>& getCertificateList() const;
-	virtual ~Certificate();
-	Certificate(Certificate const& certificate);
+	const vector<shared_ptr<rsa::Asn1Cert> >& getCertificateList() const;
+
 private:
-	vector<rsa::Asn1Cert*> certificateList;
+	vector<shared_ptr<rsa::Asn1Cert> > certificateList;
 };
 #endif /* certificate_hpp */

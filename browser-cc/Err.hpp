@@ -39,8 +39,6 @@ public:
 
 	virtual const char* what() const throw();
 
-	virtual ~Err() throw();
-
 private:
 	ErrType errType;
 	string description;

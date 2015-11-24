@@ -17,11 +17,10 @@ namespace asn1{
 class Asn1Name {
 public:
 	Asn1Name(ASN1 const& asn1);
-	~Asn1Name();
-	const vector<Asn1RelativeDistinguishedName*>& getRdnSequence() const;
+	const vector<shared_ptr<Asn1RelativeDistinguishedName> >& getRdnSequence() const;
 
 private:
-	vector<Asn1RelativeDistinguishedName*> rdnSequence;
+	vector<shared_ptr<Asn1RelativeDistinguishedName> > rdnSequence;
 };
 }
 #endif /* ASN1NAME_H_ */

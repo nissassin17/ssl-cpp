@@ -68,7 +68,6 @@ public:
 
 	virtual vector<uint8_t> toData();
 	virtual size_t size();
-	virtual ~ASN1();
 	const BitStringType& getBitStringVal() const;
 	BoolType isBoolVal() const;
 	bool isDefinitive() const;
@@ -97,7 +96,7 @@ private:
 	ObjectIdentifierType objectIdentifierVal;
 	BitStringType bitStringVal;
 	OctetStringType octetStringVal;
-	ASN1* wrappedData;
+	shared_ptr<ASN1> wrappedData;
 
 	void parseTagNumber(const vector<uint8_t>& data, size_t& offset);
 	long long parseContentLength(const vector<uint8_t>& data, size_t& offset);

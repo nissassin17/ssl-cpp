@@ -27,16 +27,14 @@ public:
 	Asn1Cert(const vector<uint8_t> &vector, size_t offset = 0);
 	virtual size_t size() const;
 	virtual vector<uint8_t> toData() const;
-	~Asn1Cert();
-	const RSAPublicKey* getRsaPublicKey() const;
-	Asn1Cert(Asn1Cert const& cert);
+	const shared_ptr<RSAPublicKey>& getRsaPublicKey() const;
 
 private:
 	vector<uint8_t> data;
-	Asn1TBSCertificate *tbsCertificate;
-	Asn1AlgorithmIdentifier *signatureAlgorithm;
+	shared_ptr<Asn1TBSCertificate> tbsCertificate;
+	shared_ptr<Asn1AlgorithmIdentifier> signatureAlgorithm;
 	ASN1::BitStringType signatureValue;
-    RSAPublicKey *rsaPublicKey;
+    shared_ptr<RSAPublicKey> rsaPublicKey;
 };
 }
 

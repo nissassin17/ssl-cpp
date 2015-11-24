@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
-#include "ProcotolVersion.hpp"
+#include "ProtocolVersion.hpp"
 
 ProtocolVersion::ProtocolVersion(uint8_t major, uint8_t minor) :
 		major(major), minor(minor) {

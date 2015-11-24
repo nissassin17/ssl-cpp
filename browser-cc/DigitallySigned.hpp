@@ -15,17 +15,16 @@
 
 #include "Exportable.hpp"
 using namespace std;
-class ServerDHParams;
+#include "ServerDHParams.hpp"
 
 class DigitallySigned  : Exportable{
 public:
 	DigitallySigned(const vector<uint8_t> &data, size_t offset = 0);
 	virtual size_t size() const;
-	virtual ~DigitallySigned();
 private:
 	uint8_t clientRandom[32];
 	uint8_t serverRandom[32];
-	ServerDHParams *params;
+	shared_ptr<ServerDHParams> params;
 };
 
 #endif /* digitally_signed_hpp */

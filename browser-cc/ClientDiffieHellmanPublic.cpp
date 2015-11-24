@@ -8,12 +8,8 @@
 
 #include "ClientDiffieHellmanPublic.hpp"
 
-ClientDiffieHellmanPublic::ClientDiffieHellmanPublic(const CipherSuite *cipherSuite) :
+ClientDiffieHellmanPublic::ClientDiffieHellmanPublic(shared_ptr<const CipherSuite> cipherSuite) :
 		cipherSuite(cipherSuite) {
-}
-
-ClientDiffieHellmanPublic::~ClientDiffieHellmanPublic() {
-
 }
 
 size_t ClientDiffieHellmanPublic::size() const{

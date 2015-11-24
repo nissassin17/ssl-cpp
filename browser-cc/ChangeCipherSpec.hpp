@@ -18,7 +18,6 @@
 class ChangeCipherSpec: public Exportable {
 public:
 	ChangeCipherSpec();
-	~ChangeCipherSpec();
 	virtual size_t size() const;
 	virtual vector<uint8_t> toData() const;
 private:

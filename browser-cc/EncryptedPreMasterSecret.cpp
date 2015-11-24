@@ -44,8 +44,8 @@ vector<uint8_t> EncryptedPreMasterSecret::toData() const{
 	return data;
 }
 
-EncryptedPreMasterSecret::EncryptedPreMasterSecret(const CipherSuite* cipherSuite,
-                         const rsa::Asn1Cert* asn1Cert) :
+EncryptedPreMasterSecret::EncryptedPreMasterSecret(shared_ptr<const CipherSuite> cipherSuite,
+                                                     shared_ptr<const rsa::Asn1Cert> asn1Cert ) :
 cipherSuite(cipherSuite), asn1Cert(asn1Cert), preMasterSecret(
                                                               new PreMasterSecret()) {
     //    std::cout << "======ASN1Cert BEGIN=====" << endl;
@@ -58,7 +58,4 @@ cipherSuite(cipherSuite), asn1Cert(asn1Cert), preMasterSecret(
 size_t EncryptedPreMasterSecret::size() const {
     //return size after encrypted data in premastersecret
     return 2 + encryptedData.size(); //2 stand for data length. result should be plused by encrypted data
-}
-EncryptedPreMasterSecret::~EncryptedPreMasterSecret() {
-    delete preMasterSecret;
 }

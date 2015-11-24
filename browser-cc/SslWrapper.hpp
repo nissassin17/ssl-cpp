@@ -14,15 +14,14 @@
 
 #include "Url.hpp"
 #include "Record.hpp"
-
-class Connection;
+#include "Connection.hpp"
 
 using namespace std;
 
 class SslWrapper {
 private:
-	const Url * const url;
-	Connection *connection;
+	const Url &url;
+	unique_ptr<Connection> connection;
     void sendClientHello();
     pair<Record, Record> receiveServerHello();
     void sendClientCertificate(Record serverHello, Record serverCertificate);
@@ -33,9 +32,8 @@ private:
     void sslSend(vector<Record> const& records);
 
 public:
-	SslWrapper(const Url* const url);
+	SslWrapper(Url const& url);
 	vector<uint8_t> get();
-	virtual ~SslWrapper();
 //    vector<uint8_t> post();
 };
 

@@ -33,7 +33,7 @@ void Browser::run(int argc, const char * argv[]) {
 	Log::info << "Request to send: " << url.getRequest() << endl;
 	Log::info << "Is ssl used: " << (url.isUseSsl() ? "yes" : "no") << endl;
 
-	SslWrapper ssl = SslWrapper(&url);
+	SslWrapper ssl(url);
 
 	Log::info << "Start fetch data" << endl;
 	vector<uint8_t> getData = ssl.get();

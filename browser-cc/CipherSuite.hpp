@@ -14,10 +14,11 @@
 #include <cstdint>
 #include <vector>
 using namespace std;
-class Cipher;
-class MAC;
+#include "Cipher.hpp"
+#include "MAC.hpp"
+#include "Exportable.hpp"
 
-class CipherSuite {
+class CipherSuite : Exportable {
 public:
 	CipherSuite(const vector<uint8_t> &data, size_t offset = 0);
 	virtual size_t size() const;
@@ -84,16 +85,16 @@ public:
 	};
 
 	CipherSuite(CipherSuiteType suite = TLS_NULL_WITH_NULL_NULL);
+	const shared_ptr<Cipher>& getCipher() const;
 	KeyExchangeType getKeyExchange() const;
-	virtual ~CipherSuite();
-	const MAC *getMac() const;
-	const Cipher *getCipher() const;
-	CipherSuite(CipherSuite const& cipherSuite);
+	const shared_ptr<MAC>& getMac() const;
+	CipherSuiteType getSuite() const;
+
 private:
 	void setType(CipherSuiteType type);
 	KeyExchangeType keyExchange;
-	Cipher *cipher;
-	MAC *mac;
+	shared_ptr<Cipher> cipher;
+	shared_ptr<MAC> mac;
 	CipherSuiteType suite;
 };
 

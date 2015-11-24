@@ -12,19 +12,12 @@ namespace asn1 {
 
 Asn1SubjectPublicKeyInfo::Asn1SubjectPublicKeyInfo(ASN1 const& asn1) {
 	ASN1::SequenceType const& seq = asn1.getSequenceVal();
-	algorithm = new Asn1AlgorithmIdentifier(*(seq[0]));
+	algorithm.reset( new Asn1AlgorithmIdentifier(*(seq[0])));
 	//TODO:define type of subject public key info based on algorithm
 	//here we just use rsa format
 	subjectPublicKey = ASN1::BitStringType(seq[1]->getBitStringVal());
 }
 
-const Asn1AlgorithmIdentifier* Asn1SubjectPublicKeyInfo::getAlgorithm() const {
-	return algorithm;
-}
-
-Asn1SubjectPublicKeyInfo::~Asn1SubjectPublicKeyInfo() {
-	delete algorithm;
-}
 
 const ASN1::BitStringType& Asn1SubjectPublicKeyInfo::getSubjectPublicKey() const {
 	return subjectPublicKey;
@@ -37,6 +30,10 @@ int Asn1SubjectPublicKeyInfo::getExponent() const {
 
 vector<uint8_t> Asn1SubjectPublicKeyInfo::getModulus() const {
     return ASN1(subjectPublicKey).getSequenceVal()[0]->getIntVal();
+}
+
+const shared_ptr<Asn1AlgorithmIdentifier>& Asn1SubjectPublicKeyInfo::getAlgorithm() const {
+	return algorithm;
 }
 
 } /* namespace asn1 */

@@ -12,9 +12,6 @@ CertificateRequest::CertificateRequest(const vector<uint8_t> &data, size_t offse
 
 }
 
-CertificateRequest::~CertificateRequest() {
-
-}
 
 size_t CertificateRequest::size()  const{
 	return 0;

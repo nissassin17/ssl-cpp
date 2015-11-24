@@ -14,7 +14,7 @@ Certificate::Certificate(const vector<uint8_t> &data, size_t offset) {
 	offset += 3;
 
 	while (length > 0) {
-		this->certificateList.push_back(new rsa::Asn1Cert(data, offset));
+        this->certificateList.push_back(shared_ptr<rsa::Asn1Cert>(new rsa::Asn1Cert(data, offset)));
 		size_t t =
 				(*certificateList.rbegin())->size();
 		length -= t;
@@ -22,9 +22,6 @@ Certificate::Certificate(const vector<uint8_t> &data, size_t offset) {
 	}
 }
 
-const vector<rsa::Asn1Cert*> &Certificate::getCertificateList() const{
-	return certificateList;
-}
 
 size_t Certificate::size() const {
 	size_t result(3);
@@ -33,12 +30,6 @@ size_t Certificate::size() const {
 	return result;
 }
 
-Certificate::~Certificate() {
-	for (int i = 0; i < certificateList.size(); i++)
-		delete certificateList[i];
-}
-
-Certificate::Certificate(const Certificate& certificate) {
-	for(int i =0; i < certificate.certificateList.size(); i++)
-		certificateList.push_back(new rsa::Asn1Cert(*(certificate.certificateList[i])));
+const vector<shared_ptr<rsa::Asn1Cert> >& Certificate::getCertificateList() const {
+	return certificateList;
 }

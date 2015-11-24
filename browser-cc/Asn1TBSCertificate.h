@@ -19,22 +19,23 @@ namespace asn1 {
 
 class Asn1TBSCertificate {
 public:
+	Asn1TBSCertificate(ASN1 const& asn1);
+	const shared_ptr<const Asn1Name>& getIssuer() const;
+	const shared_ptr<const Asn1CertificateSerialNumber>& getSerialNumber() const;
+	const shared_ptr<const Asn1AlgorithmIdentifier>& getSignature() const;
+	const shared_ptr<const Asn1Name>& getSubject() const;
+	const shared_ptr<const Asn1SubjectPublicKeyInfo>& getSubjectPublicKeyInfo() const;
+	const shared_ptr<const Asn1Validity>& getValidity() const;
 	int getVersion() const;
-const 	Asn1Name* getIssuer() const;
-const 	Asn1CertificateSerialNumber* getSerialNumber() const;
-const Asn1AlgorithmIdentifier* getSignature() const;
-const Asn1Name* getSubject() const;
-const Asn1SubjectPublicKeyInfo* getSubjectPublicKeyInfo() const;
-const Asn1Validity* getValidity() const;
 
 private:
 	int version;
-	const Asn1CertificateSerialNumber *serialNumber;
-	const Asn1AlgorithmIdentifier *signature;
-	const Asn1Name *issuer;
-	const Asn1Validity *validity;
-	const Asn1Name *subject;
-	const Asn1SubjectPublicKeyInfo *subjectPublicKeyInfo;
+	shared_ptr<const Asn1CertificateSerialNumber> serialNumber;
+	shared_ptr<const Asn1AlgorithmIdentifier> signature;
+	shared_ptr<const Asn1Name> issuer;
+	shared_ptr<const Asn1Validity> validity;
+	shared_ptr<const Asn1Name> subject;
+	shared_ptr<const Asn1SubjectPublicKeyInfo> subjectPublicKeyInfo;
 };
 
 } /* namespace asn1 */

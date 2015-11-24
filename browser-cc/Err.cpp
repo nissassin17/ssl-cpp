@@ -18,9 +18,6 @@ const char *Err::what() const throw(){
 	return this->description.c_str();
 }
 
-Err::~Err() throw(){
-}
-
 Err::Err(ErrType errType, ...) :
 		runtime_error("Browser error"), errType(errType) {
 	va_list args;

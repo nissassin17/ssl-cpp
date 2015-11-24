@@ -11,21 +11,16 @@ namespace asn1 {
 
 Asn1Validity::Asn1Validity(ASN1 const& asn1) {
 	ASN1::SequenceType const& seq = asn1.getSequenceVal();
-	notBefore = new Asn1Time(*(seq[0]));
-	notAfter = new Asn1Time(*(seq[1]));
+	notBefore.reset( new Asn1Time(*(seq[0])));
+	notAfter.reset(new Asn1Time(*(seq[1])));
 }
 
-} /* namespace asn1 */
-
-asn1::Asn1Validity::~Asn1Validity() {
-	delete notAfter;
-	delete notBefore;
-}
-
-asn1::Asn1Time* asn1::Asn1Validity::getNotAfter() const {
+const shared_ptr<Asn1Time>& Asn1Validity::getNotAfter() const {
 	return notAfter;
 }
 
-asn1::Asn1Time* asn1::Asn1Validity::getNotBefore() const {
+const shared_ptr<Asn1Time>& Asn1Validity::getNotBefore() const {
 	return notBefore;
 }
+
+} /* namespace asn1 */

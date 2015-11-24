@@ -28,13 +28,10 @@ Connection::Connection(const string &hostname, bool isSsl) :
 	vector<string> ipList = Connection::ipListFromHostname(hostname);
 	for (int i = 0; i < ipList.size(); i++)
 		this->subConnections.push_back(
-				new SubConnection(ipList[i], isSsl ? SSL_PORT : HTTP_PORT));
+				shared_ptr<SubConnection>(new SubConnection(ipList[i], isSsl ? SSL_PORT : HTTP_PORT))
+                                       );
 }
 
-Connection::~Connection() {
-	for (int i = 0; i < subConnections.size(); i++)
-		delete subConnections[i];
-}
 
 vector<string> Connection::ipListFromHostname(const string& hostname) {
 	vector<string> ipList;

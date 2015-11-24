@@ -10,29 +10,26 @@
 
 #include "CipherSuite.hpp"
 #include "CompressionMethod.hpp"
-#include "ProcotolVersion.hpp"
+#include "ProtocolVersion.hpp"
 #include "Random.hpp"
 #include "SessionID.hpp"
 #include "Util.hpp"
 
-const CipherSuite *ServerHello::getCipherSuite() const {
-	return this->cipherSuite;
-}
 
 ServerHello::ServerHello(const vector<uint8_t> &data, size_t offset) {
-	this->protocolVersion = new ProtocolVersion(data, offset);
+	this->protocolVersion .reset( new ProtocolVersion(data, offset));
 	offset += this->protocolVersion->size();
 
-	this->random = new Random(data, offset);
+	this->random .reset( new Random(data, offset));
 	offset += this->random->size();
 
-	this->sessionID = new SessionID(data, offset);
+	this->sessionID .reset( new SessionID(data, offset));
 	offset += this->sessionID->size();
 
-	this->cipherSuite = new CipherSuite(data, offset);
+	this->cipherSuite .reset( new CipherSuite(data, offset));
 	offset += this->cipherSuite->size();
 
-	this->compressionMethod = new CompressionMethod(data, offset);
+	this->compressionMethod .reset( new CompressionMethod(data, offset));
 	offset += this->compressionMethod->size();
 
 	if (offset != data.size()) {
@@ -41,22 +38,12 @@ ServerHello::ServerHello(const vector<uint8_t> &data, size_t offset) {
 		offset += 2;
 
 		while (nExtensions--) {
-			this->extensions.push_back(new Extension(data, offset));
+			this->extensions.push_back(shared_ptr<Extension>(new Extension(data, offset)));
 			offset += this->extensions[this->extensions.size() - 1]->size();
 		}
 	} else {
 		this->haveExtension = false;
 	}
-}
-
-ServerHello::~ServerHello() {
-	delete protocolVersion;
-	delete random;
-	delete sessionID;
-	delete cipherSuite;
-	delete compressionMethod;
-	for (int i = 0; i < extensions.size(); i++)
-		delete extensions[i];
 }
 
 size_t ServerHello::size() const {
@@ -71,13 +58,6 @@ size_t ServerHello::size() const {
 	return result;
 }
 
-ServerHello::ServerHello(const ServerHello& serverHello) :
-		protocolVersion(new ProtocolVersion(*(serverHello.protocolVersion))), random(
-				new Random(*(serverHello.random))), sessionID(
-				new SessionID(*(serverHello.sessionID))), cipherSuite(
-				new CipherSuite(*(serverHello.cipherSuite))), compressionMethod(
-				new CompressionMethod(*(serverHello.compressionMethod))), haveExtension(
-				serverHello.haveExtension) {
-	for (int i = 0; i < serverHello.extensions.size(); i++)
-		extensions.push_back(new Extension(*(serverHello.extensions[i])));
+const shared_ptr<CipherSuite>& ServerHello::getCipherSuite() const {
+	return cipherSuite;
 }

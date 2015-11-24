@@ -117,7 +117,6 @@
 		B31356EE1BC7BB4500CDD513 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B31356EF1BC7BB4500CDD513 /* PreMasterSecret.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PreMasterSecret.cpp; sourceTree = "<group>"; };
 		B31356F01BC7BB4500CDD513 /* PreMasterSecret.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PreMasterSecret.hpp; sourceTree = "<group>"; };
-		B31356F11BC7BB4500CDD513 /* ProcotolVersion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProcotolVersion.hpp; sourceTree = "<group>"; };
 		B31356F21BC7BB4500CDD513 /* ProtocolVersion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProtocolVersion.cpp; sourceTree = "<group>"; };
 		B31356F31BC7BB4500CDD513 /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
 		B31356F41BC7BB4500CDD513 /* Random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
@@ -145,11 +144,12 @@
 		B313570A1BC7BB4500CDD513 /* Util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Util.hpp; sourceTree = "<group>"; };
 		B333D3EE1C0014E7000467ED /* ApplicationData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ApplicationData.cpp; sourceTree = "<group>"; };
 		B333D3EF1C0014E8000467ED /* ApplicationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationData.h; sourceTree = "<group>"; };
+		B333D3F21C002BEF000467ED /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		B333D3F31C0030AE000467ED /* ProtocolVersion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProtocolVersion.hpp; sourceTree = "<group>"; };
 		B34B738D1BBD73430059443A /* browser-cc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "browser-cc"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B375189B1BF7934E002D0525 /* CipherCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CipherCore.cpp; sourceTree = "<group>"; };
 		B375189C1BF7934E002D0525 /* CipherCore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CipherCore.hpp; sourceTree = "<group>"; };
 		B375189D1BF7934E002D0525 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
-		B375189E1BF7934E002D0525 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
 		B375189F1BF7934E002D0525 /* RSAPublicKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RSAPublicKey.cpp; sourceTree = "<group>"; };
 		B37518A01BF7934E002D0525 /* RSAPublicKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAPublicKey.h; sourceTree = "<group>"; };
 		B39019AE1BCD0D7B002D0D49 /* ASN1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ASN1.cpp; sourceTree = "<group>"; };
@@ -214,10 +214,10 @@
 		B34B738F1BBD73430059443A /* browser-cc */ = {
 			isa = PBXGroup;
 			children = (
-				B333D3EE1C0014E7000467ED /* ApplicationData.cpp */,
-				B333D3EF1C0014E8000467ED /* ApplicationData.h */,
 				B31356C41BC7BB4500CDD513 /* Alert.cpp */,
 				B31356C51BC7BB4500CDD513 /* Alert.hpp */,
+				B333D3EE1C0014E7000467ED /* ApplicationData.cpp */,
+				B333D3EF1C0014E8000467ED /* ApplicationData.h */,
 				B39019AE1BCD0D7B002D0D49 /* ASN1.cpp */,
 				B39019AF1BCD0D7B002D0D49 /* ASN1.hpp */,
 				B3B24CFB1BFE991A003453E6 /* Asn1AlgorithmIdentifier.cpp */,
@@ -285,15 +285,15 @@
 				B31356EA1BC7BB4500CDD513 /* Handshake.cpp */,
 				B31356EB1BC7BB4500CDD513 /* Handshake.hpp */,
 				B375189D1BF7934E002D0525 /* Log.cpp */,
-				B375189E1BF7934E002D0525 /* log.h */,
+				B333D3F21C002BEF000467ED /* Log.h */,
 				B31356EC1BC7BB4500CDD513 /* MAC.cpp */,
 				B31356ED1BC7BB4500CDD513 /* MAC.hpp */,
 				B31356EE1BC7BB4500CDD513 /* main.cpp */,
 				B39019B31BCD0D7B002D0D49 /* Makefile */,
 				B31356EF1BC7BB4500CDD513 /* PreMasterSecret.cpp */,
 				B31356F01BC7BB4500CDD513 /* PreMasterSecret.hpp */,
-				B31356F11BC7BB4500CDD513 /* ProcotolVersion.hpp */,
 				B31356F21BC7BB4500CDD513 /* ProtocolVersion.cpp */,
+				B333D3F31C0030AE000467ED /* ProtocolVersion.hpp */,
 				B31356F31BC7BB4500CDD513 /* Random.cpp */,
 				B31356F41BC7BB4500CDD513 /* Random.hpp */,
 				B31356F51BC7BB4500CDD513 /* Record.cpp */,

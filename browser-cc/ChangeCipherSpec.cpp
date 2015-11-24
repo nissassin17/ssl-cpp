@@ -12,9 +12,6 @@ ChangeCipherSpec::ChangeCipherSpec() :
 type(NONE){
 	}
 
-ChangeCipherSpec::~ChangeCipherSpec() {
-
-}
 
 size_t ChangeCipherSpec::size()  const{
 	return 1;

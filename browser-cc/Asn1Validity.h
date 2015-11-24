@@ -15,13 +15,12 @@ namespace asn1 {
 class Asn1Validity {
 public:
 	Asn1Validity(ASN1 const& asn1);
-    ~Asn1Validity();
-Asn1Time* getNotAfter() const;
-Asn1Time* getNotBefore() const;
+	const shared_ptr<Asn1Time>& getNotAfter() const;
+	const shared_ptr<Asn1Time>& getNotBefore() const;
 
 private:
-	Asn1Time *notBefore;
-	Asn1Time *notAfter;
+	shared_ptr<Asn1Time> notBefore;
+	shared_ptr<Asn1Time> notAfter;
 };
 
 } /* namespace asn1 */
