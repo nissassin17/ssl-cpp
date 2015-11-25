@@ -21,14 +21,19 @@ std::vector<uint8_t> CipherCore::exponent(const std::vector<uint8_t>& base,
 		result.push_back(1);
 		return result;
 	}
+    std::vector<uint8_t> mcopy(modulus);
+    while(!mcopy.empty() and mcopy[0] == 0)
+        mcopy.erase(mcopy.begin());
+    if (mcopy.empty())
+        return std::vector<uint8_t>();
 	std::vector<uint8_t> result(
-			CipherCore::exponent(base, exponent >> 1, modulus));
+			CipherCore::exponent(base, exponent >> 1, mcopy));
 
 	//square result here
-	result = CipherCore::multiple(result, result, modulus);
+	result = CipherCore::multiple(result, result, mcopy);
 
 	if (exponent bitand 1) //odd
-		result = CipherCore::multiple(result, base, modulus);
+		result = CipherCore::multiple(result, base, mcopy);
 
 	return result;
 }
@@ -36,12 +41,10 @@ std::vector<uint8_t> CipherCore::exponent(const std::vector<uint8_t>& base,
 std::vector<uint8_t> CipherCore::multiple(const std::vector<uint8_t>& left,
 		const std::vector<uint8_t>& right,
 		const std::vector<uint8_t>& modulus) {
-
-
-	return CipherCore::divide(CipherCore::bigMultiple(left, right), modulus);
+	return CipherCore::modulo(CipherCore::bigMultiple(left, right), modulus);
 }
 
-std::vector<uint8_t> CipherCore::divide(const std::vector<uint8_t>& dividend,
+std::vector<uint8_t> CipherCore::modulo(const std::vector<uint8_t>& dividend,
 		const std::vector<uint8_t>& divider) {
 	std::vector<uint8_t> quotient, current;
 	bool started = false;
@@ -56,6 +59,10 @@ std::vector<uint8_t> CipherCore::divide(const std::vector<uint8_t>& dividend,
 	return CipherCore::subtract(dividend, CipherCore::bigMultiple(quotient, divider));
 }
 
+/**
+ * use binary to find quotient (result's range is: from 0 -> 2^8 - 1)
+ * then set devident to be the residual
+ */
 uint8_t CipherCore::smallDivide(std::vector<uint8_t>& dividend,
 		const std::vector<uint8_t> divider) {
 	uint8_t low = 0;
@@ -100,7 +107,9 @@ vector<uint8_t> CipherCore::subtract(const vector<uint8_t>& a,
 	vector<uint8_t> ret(a);
 	int carry = 0;
 	for(int i = 0; i < a.size(); i++){
+        //with distance i from last digit
 		if (i < b.size())
+            //if digit exists in b
 			carry += b[b.size() - 1 - i];
 		int tmp = (int)ret[ret.size() - 1 - i] - carry;
 		if (tmp < 0){

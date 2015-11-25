@@ -21,7 +21,7 @@ Asn1Cert::Asn1Cert(const vector<uint8_t> &data, size_t offset){
 
 	this->data = Util::takeData(data, length, offset);
 
-    Log::file("/Users/nissassin17/Desktop/tmp.cert") <<  this->data << Log::eof;
+//    Log::file("/Users/nissassin17/Desktop/tmp.cert") <<  this->data << Log::eof;
 
     ASN1 asn1 = ASN1(this->data, 0);
     //global sequence of 3 values
