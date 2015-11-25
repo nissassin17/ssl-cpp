@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/6/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 
@@ -12,7 +12,8 @@
 #include <ctime>
 
 #include "PreMasterSecret.hpp"
-#include "ProcotolVersion.hpp"
+
+#include "ProtocolVersion.hpp"
 #include "Util.hpp"
 
 size_t PreMasterSecret::size() const{
@@ -33,7 +34,4 @@ clientVersion(new ProtocolVersion()) {
     srand((unsigned int) (time(&t)));
     for (int i = 0; i < RANDOM_LENGTH; i++)
         random[i] = (uint8_t) (rand());
-}
-PreMasterSecret::~PreMasterSecret() {
-    delete clientVersion;
 }

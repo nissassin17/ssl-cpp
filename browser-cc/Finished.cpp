@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/6/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include "Finished.hpp"
@@ -21,10 +21,11 @@ vector<uint8_t> Finished::toData() const{
 	return data;
 }
 
-Finished::Finished(SenderType type) :
-		type(type) {
+Finished::Finished() :
+		type(CLIENT) {
 
 }
 
-Finished::~Finished() {
+Finished::Finished(const vector<uint8_t>& data, int offset):
+	type(SERVER){
 }

@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include "SessionID.hpp"
@@ -28,5 +28,3 @@ SessionID::SessionID(const vector<uint8_t> &data, size_t offset){
 SessionID::SessionID() {
 }
 
-SessionID::~SessionID() {
-}

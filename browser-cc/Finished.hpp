@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/6/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #ifndef finished_hpp
@@ -22,11 +22,11 @@ public:
 	enum SenderType {
 		CLIENT, SERVER
 	};
-
-	Finished(SenderType type);
+//TODO: implement finished server and client
+	Finished();
+	Finished(vector<uint8_t> const& data, int offset = 0);
 	virtual size_t size() const;
 	virtual vector<uint8_t> toData() const;
-	virtual ~Finished();
 
 private:
 	SenderType type;

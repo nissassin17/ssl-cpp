@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include <arpa/inet.h>
@@ -28,13 +28,10 @@ Connection::Connection(const string &hostname, bool isSsl) :
 	vector<string> ipList = Connection::ipListFromHostname(hostname);
 	for (int i = 0; i < ipList.size(); i++)
 		this->subConnections.push_back(
-				new SubConnection(ipList[i], isSsl ? SSL_PORT : HTTP_PORT));
+				shared_ptr<SubConnection>(new SubConnection(ipList[i], isSsl ? SSL_PORT : HTTP_PORT))
+                                       );
 }
 
-Connection::~Connection() {
-	for (int i = 0; i < subConnections.size(); i++)
-		delete subConnections[i];
-}
 
 vector<string> Connection::ipListFromHostname(const string& hostname) {
 	vector<string> ipList;

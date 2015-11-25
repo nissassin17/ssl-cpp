@@ -7,8 +7,8 @@
 
 #include "Log.h"
 
-Log::Log(LogType logType) {
-	this->logType = logType;
+Log::Log(LogType logType):
+logType(logType){
 }
 
 const Log& Log::operator<<(basic_ostream<char>& (* const __pf)(basic_ostream<char>&)) const{
@@ -69,8 +69,42 @@ const Log& Log::operator<<(basic_streambuf<char>* const  __sb) const{
 const Log& Log::operator<<(const char * const __s) const{
 	log_print(__s);
 }
+const void Log::operator<<(EofObject const& eofObject) const{
+    ofile->close();
+}
+
+const Log& Log::operator<<(vector<uint8_t> const& __v)const{
+    if (this->logType == FILE){
+        for (int i = 0; i < __v.size(); i++)
+            (*ofile) << __v[i];
+        return *this;
+    }
+    string str;
+    for (int i = 0; i < __v.size(); i++) {
+        if (i and i % 16 == 0)
+            str += "\n";
+        else if (i and i % 8 == 0)
+            str += " | ";
+        char a[3];
+        sprintf(a, "%02x", (uint8_t) __v[i]);
+        str += " ";
+        str += a;
+        
+    }
+    return (*this) << str;
+}
 
 const Log Log::warn = Log(Log::WARNING);
 const Log Log::err = Log(Log::ERROR);
 const Log Log::info = Log(Log::INFO);
 const Log Log::result = Log(Log::RESULT);
+const Log::EofObject Log::eof = Log::EofObject();
+
+Log Log::file(string const& filename){
+    return Log(filename);
+}
+
+Log::Log(string const& filename):
+logType(FILE), filename(filename),
+ofile(new ofstream(filename, ios::out bitor ios::binary)){
+}

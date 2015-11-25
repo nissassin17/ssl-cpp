@@ -3,17 +3,13 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/6/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include "ClientDiffieHellmanPublic.hpp"
 
-ClientDiffieHellmanPublic::ClientDiffieHellmanPublic(const CipherSuite *cipherSuite) :
+ClientDiffieHellmanPublic::ClientDiffieHellmanPublic(shared_ptr<const CipherSuite> cipherSuite) :
 		cipherSuite(cipherSuite) {
-}
-
-ClientDiffieHellmanPublic::~ClientDiffieHellmanPublic() {
-
 }
 
 size_t ClientDiffieHellmanPublic::size() const{

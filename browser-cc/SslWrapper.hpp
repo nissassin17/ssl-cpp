@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #ifndef SslWrapper_hpp
@@ -13,19 +13,27 @@
 #include <vector>
 
 #include "Url.hpp"
-
-class Connection;
+#include "Record.hpp"
+#include "Connection.hpp"
 
 using namespace std;
 
 class SslWrapper {
 private:
-	const Url * const url;
-	Connection *connection;
+	const Url &url;
+	unique_ptr<Connection> connection;
+    void sendClientHello();
+    pair<Record, Record> receiveServerHello();
+    void sendClientCertificate(Record serverHello, Record serverCertificate);
+
+    void receiveServerFinished();
+    void sendData(vector<uint8_t> const& data);
+    vector<uint8_t> receiveData();
+    void sslSend(vector<Record> const& records);
+
 public:
-	SslWrapper(const Url* const url);
+	SslWrapper(Url const& url);
 	vector<uint8_t> get();
-	virtual ~SslWrapper();
 //    vector<uint8_t> post();
 };
 

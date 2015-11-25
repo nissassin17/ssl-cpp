@@ -17,15 +17,6 @@ size_t ASN1::size() {
 	return psize;
 }
 
-ASN1::~ASN1() {
-	for (vector<ASN1*>::iterator it = sequenceVal.begin();
-			it != sequenceVal.end(); it++)
-		delete *it;
-	for (set<ASN1*>::iterator it = setVal.begin(); it != setVal.end(); it++)
-		delete *it;
-    delete wrappedData;
-}
-
 void ASN1::parseTagNumber(const vector<uint8_t>& data, size_t& offset) {
 	//define tag number
 	if (BitUtil::isAllOne(data[offset], 5)) {
@@ -87,15 +78,17 @@ void ASN1::parseBoolContent(const vector<uint8_t>& data, size_t& offset) {
 void ASN1::parserIntegerContent(const vector<uint8_t>& data, size_t& offset,
 		long long contentLength) {
 	//primitive
-	intVal = 0ll;
+	intVal = vector<uint8_t>();
 	bool isNegative = BitUtil::isBitOn(data[offset], 7);
 	for (int i = 0; i < contentLength; i++) {
-		intVal = BitUtil::append(intVal, data[offset], 8);
+		intVal.push_back(data[offset]);
+//		intVal = BitUtil::append(intVal, data[offset], 8);
 		offset++;
 	}
-	if (isNegative) {
-		intVal -= (1 << (contentLength - 1));
-	}
+    // BIG NOTE HERE: do 2-complement in case of negative
+//	if (isNegative) {
+//		intVal -= (1 << (contentLength - 1));
+//	}
 }
 
 void ASN1::parseRealContent(const vector<uint8_t>& data, size_t& offset,
@@ -208,8 +201,10 @@ void ASN1::parseBitString(const vector<uint8_t>& data, size_t& offset,
 		else
 			t = 0;
 
-		for (int j = 0; j < 8 - t; j++)
-			bitStringVal.push_back(BitUtil::isBitOn(data[offset], 7 - j));
+		//NOTE: take bitstring as array of bytes (not bool)
+//		for (int j = 0; j < 8 - t; j++)
+//			bitStringVal.push_back(BitUtil::isBitOn(data[offset], 7 - j));
+		bitStringVal.push_back(data[offset]);
 		offset++;
 	}
 }
@@ -298,11 +293,51 @@ ASN1::ASN1(const vector<uint8_t> &data, size_t offset) :
 	if (tagClass == CONTEXT_SPECIFIC){
 		vector<uint8_t> wrapper(data.begin() + offset, data.begin() + offset + contentLength);
         offset += contentLength;
-		wrappedData = new ASN1(wrapper, 0);
+		wrappedData.reset(new ASN1(wrapper, 0));
 
 	}else
 		//parse content
 		parseContent(data, offset, contentLength);
 
 	psize = offset - oldOffset;
+}
+
+const ASN1::BitStringType& ASN1::getBitStringVal() const {
+	return bitStringVal;
+}
+
+ASN1::BoolType ASN1::isBoolVal() const {
+	return boolVal;
+}
+
+bool ASN1::isDefinitive() const {
+	return definitive;
+}
+
+ASN1::IntType ASN1::getIntVal() const {
+	return intVal;
+}
+
+const ASN1::ObjectIdentifierType& ASN1::getObjectIdentifierVal() const {
+	return objectIdentifierVal;
+}
+
+const ASN1::OctetStringType& ASN1::getOctetStringVal() const {
+	return octetStringVal;
+}
+
+bool ASN1::isPrimitive() const {
+	return primitive;
+}
+
+size_t ASN1::getPsize() const {
+	return psize;
+}
+
+const ASN1::SequenceType& ASN1::getSequenceVal() const {
+	return sequenceVal;
+}
+
+const ASN1::SetType& ASN1::getSetVal() const {
+	return setVal;
 }

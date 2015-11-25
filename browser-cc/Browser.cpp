@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include <cstdint>
@@ -12,10 +12,11 @@
 #include <vector>
 
 #include "Browser.hpp"
+
+#include "Log.h"
 #include "SslWrapper.hpp"
 #include "StrUtil.hpp"
 #include "Url.hpp"
-#include "log.h"
 
 using namespace std;
 
@@ -30,9 +31,9 @@ void Browser::run(int argc, const char * argv[]) {
 	Url url = Url(link);
 	Log::info << "Host name: " << url.getHostname() << endl;
 	Log::info << "Request to send: " << url.getRequest() << endl;
-	Log::info << "Is use ssl: " << (url.isUseSsl() ? "yes" : "no") << endl;
+	Log::info << "Is ssl used: " << (url.isUseSsl() ? "yes" : "no") << endl;
 
-	SslWrapper ssl = SslWrapper(&url);
+	SslWrapper ssl(url);
 
 	Log::info << "Start fetch data" << endl;
 	vector<uint8_t> getData = ssl.get();

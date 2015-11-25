@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #ifndef err_hpp
@@ -38,8 +38,6 @@ public:
 	bool isSuccess() const;
 
 	virtual const char* what() const throw();
-
-	virtual ~Err() throw();
 
 private:
 	ErrType errType;

@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright �� 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include <cstdio>
@@ -17,28 +17,15 @@
 
 using namespace std;
 
-string Util::readableForm(const vector<uint8_t> &data) {
-	string result;
-	for (int i = 0; i < data.size(); i++) {
-		if (i and i % 16 == 0)
-			result += "\n";
-		else if (i and i % 8 == 0)
-			result += " | ";
-		char a[3];
-		sprintf(a, "%02x", (uint8_t) data[i]);
-		result += " ";
-		result += a;
 
-	}
-	return result;
+long long Util::vectorToInt(const vector<uint8_t> &vec){
+	long long ret = 0ll;
+	for(int i = 0; i < vec.size(); i++)
+		ret = BitUtil::append(ret, vec[i], 8);
+	return ret;
 }
 
-void Util::writeToFile(const string &filename, const vector<uint8_t> &data) {
-	ofstream file(filename, ios::out bitor ios::binary);
-	for (int i = 0; i < data.size(); i++)
-		file << data[i];
-	file.close();
-}
+
 
 void Util::addData(vector<uint8_t> &data, uint8_t value) {
 	data.push_back(value);
@@ -111,3 +98,4 @@ vector<uint8_t> Util::takeData(const vector<uint8_t> &data, size_t length,
 	return vector<uint8_t>(data.begin() + offset,
 			data.begin() + offset + length);
 }
+

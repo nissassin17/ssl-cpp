@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/6/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #ifndef encrypted_pre_master_secret_hpp
@@ -23,16 +23,15 @@
 class EncryptedPreMasterSecret: public Exportable {
 
 public:
-	EncryptedPreMasterSecret(const CipherSuite* cipherSuite,
-                             const ASN1Cert* asn1Cert);
+	EncryptedPreMasterSecret(shared_ptr<const CipherSuite> cipherSuite,
+                             shared_ptr<const rsa::Asn1Cert> asn1Cert );
     virtual size_t size() const;
-    ~EncryptedPreMasterSecret();
-	virtual vector<uint8_t> toData()const;
+	virtual vector<uint8_t> toData() const;
 
 private:
-	const CipherSuite * const cipherSuite;
-	PreMasterSecret *preMasterSecret;
-	const ASN1Cert * const asn1Cert;
+	const shared_ptr<const CipherSuite> cipherSuite;
+	shared_ptr<PreMasterSecret> preMasterSecret;
+	const shared_ptr<const rsa::Asn1Cert> asn1Cert;
 	vector<uint8_t> encryptedData;
 };
 #endif /* encrypted_pre_master_secret_hpp */

@@ -3,31 +3,21 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include "ClientHello.hpp"
-#include "ProcotolVersion.hpp"
+
+#include "ProtocolVersion.hpp"
 #include "Random.hpp"
 #include "SessionID.hpp"
 #include "Util.hpp"
 
-ClientHello::~ClientHello() {
-	delete protocolVersion;
-	delete random;
-	delete sessionID;
-	for (int i = 0; i < cipherSuites.size(); i++)
-		delete cipherSuites[i];
-	for (int i = 0; i < compressionMethods.size(); i++)
-		delete compressionMethods[i];
-	for (int i = 0; i < extensions.size(); i++)
-		delete extensions[i];
-}
 ClientHello::ClientHello() :
 		random(new Random()), sessionID(new SessionID()), haveExtension(false), protocolVersion(
 				new ProtocolVersion()) {
 	this->cipherSuites.push_back(
-			new CipherSuite(CipherSuite::TLS_NULL_WITH_NULL_NULL));
+			shared_ptr<CipherSuite>(new CipherSuite(CipherSuite::TLS_NULL_WITH_NULL_NULL)));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_MD5                 ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_SHA                 ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_SHA256              ));
@@ -37,7 +27,7 @@ ClientHello::ClientHello() :
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_128_CBC_SHA          ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_256_CBC_SHA          ));
 	this->cipherSuites.push_back(
-			new CipherSuite(CipherSuite::TLS_RSA_WITH_AES_128_CBC_SHA256));
+			shared_ptr<CipherSuite>(new CipherSuite(CipherSuite::TLS_RSA_WITH_AES_128_CBC_SHA256)));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_256_CBC_SHA256       ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA      ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA      ));
@@ -67,7 +57,7 @@ ClientHello::ClientHello() :
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_anon_WITH_AES_256_CBC_SHA256   ));
 
 	this->compressionMethods.push_back(
-			new CompressionMethod(CompressionMethod::Null));
+			shared_ptr<CompressionMethod>(new CompressionMethod(CompressionMethod::Null)));
 }
 
 size_t ClientHello::size() const{

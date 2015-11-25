@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #ifndef handshake_hpp
@@ -16,14 +16,16 @@
 #include "Certificate.hpp"
 #include "Exportable.hpp"
 
-class Certificate;
-class CertificateRequest;
-class ClientHello;
-class ClientKeyExchange;
-class Finished;
-class ServerHello;
-class ServerHelloDone;
-class ServerKeyExchange;
+#include "Certificate.hpp"
+#include "CertificateRequest.hpp"
+#include "ClientHello.hpp"
+#include "ClientKeyExchange.hpp"
+#include "Err.hpp"
+#include "Finished.hpp"
+#include "ServerHello.hpp"
+#include "ServerHelloDone.hpp"
+#include "ServerKeyExchange.hpp"
+#include "Util.hpp"
 using namespace std;
 
 class Handshake : public Exportable {
@@ -46,22 +48,21 @@ public:
 	Handshake(HandshakeType type, const void *arg = NULL, const void *arg2 = NULL);
 	Handshake(const vector<uint8_t> &data, size_t offset = 0, const void *arg = NULL);
 	size_t size() const;
-	~Handshake();
-	const ServerHello* getServerHello()const;
+	shared_ptr<const ServerHello> getServerHello()const;
 	const HandshakeType getType() const;
-	const Certificate* getCertificate() const;
-	const CertificateRequest* getCertificateRequest() const;
-	const ClientHello* getClientHello() const;
-	const ClientKeyExchange* getClientKeyExchange() const;
-	const Finished* getFinished() const;
-	const ServerHelloDone* getServerHelloDone() const;
-	const ServerKeyExchange* getServerKeyExchange() const;
+	shared_ptr<const Certificate> getCertificate() const;
+	shared_ptr<const CertificateRequest> getCertificateRequest() const;
+	shared_ptr<const ClientHello> getClientHello() const;
+	shared_ptr<const ClientKeyExchange> getClientKeyExchange() const;
+	shared_ptr<const Finished> getFinished() const;
+	shared_ptr<const ServerHelloDone> getServerHelloDone() const;
+	shared_ptr<const ServerKeyExchange> getServerKeyExchange() const;
 
 private:
 
 
 	HandshakeType type;
-	Exportable *body;
+	shared_ptr<Exportable> body;
 };
 
 #endif /* handshake_hpp */

@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/6/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #ifndef client_key_exchange_hpp
@@ -16,21 +16,21 @@
 
 #include "Exportable.hpp"
 
-class ASN1Cert;
-class CipherSuite;
-class ClientDiffieHellmanPublic;
-class EncryptedPreMasterSecret;
+#include "Asn1Cert.hpp"
+#include "CipherSuite.hpp"
+#include "ClientDiffieHellmanPublic.hpp"
+#include "EncryptedPreMasterSecret.hpp"
+using namespace rsa;
 
 class ClientKeyExchange: public Exportable {
 public:
-	ClientKeyExchange(const CipherSuite *cipherSuite, const ASN1Cert *asn1Cert);
+	ClientKeyExchange(const shared_ptr<const CipherSuite> cipherSuite, shared_ptr<const rsa::Asn1Cert> asn1Cert);
 	virtual vector<uint8_t> toData()const;
 	virtual size_t size()const;
-	~ClientKeyExchange();
 private:
-	const CipherSuite *cipherSuite;
-	EncryptedPreMasterSecret *encryptedPreMasterSecret;
-	ClientDiffieHellmanPublic *clientDiffieHellmanPublic;
+	const shared_ptr<const CipherSuite> cipherSuite;
+	shared_ptr<EncryptedPreMasterSecret> encryptedPreMasterSecret;
+	shared_ptr<ClientDiffieHellmanPublic> clientDiffieHellmanPublic;
 };
 
 #endif /* client_key_exchange_hpp */

@@ -9,18 +9,17 @@
 
 namespace rsa {
 
-PublicKey::PublicKey(const std::vector<uint8_t> &modulus, int exponent) :
+RSAPublicKey::RSAPublicKey(const std::vector<uint8_t> &modulus, int exponent) :
 	modulus(modulus), exponent(exponent){
-	// TODO Auto-generated constructor stub
 
 }
 
 } /* namespace rsa */
 
-int rsa::PublicKey::getExponent() const {
+int rsa::RSAPublicKey::getExponent() const {
 	return exponent;
 }
 
-const std::vector<uint8_t>& rsa::PublicKey::getModulus() const {
+const std::vector<uint8_t>& rsa::RSAPublicKey::getModulus() const {
 	return modulus;
 }

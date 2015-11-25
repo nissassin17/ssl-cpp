@@ -3,7 +3,7 @@
 //  browser-cc
 //
 //  Created by Nissassin Seventeen on 10/2/15.
-//  Copyright © 2015 Nissassin Seventeen. All rights reserved.
+//  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
 #include <iterator>
@@ -11,34 +11,24 @@
 
 #include "Handshake.hpp"
 
-#include "Certificate.hpp"
-#include "CertificateRequest.hpp"
-#include "ClientHello.hpp"
-#include "ClientKeyExchange.hpp"
-#include "Err.hpp"
-#include "Finished.hpp"
-#include "ServerHello.hpp"
-#include "ServerHelloDone.hpp"
-#include "ServerKeyExchange.hpp"
-#include "Util.hpp"
 
 using namespace std;
 
 Handshake::Handshake(HandshakeType type, const void *arg, const void *arg2) :
 		type(type) { //default create client hello request
-	const ServerHello *sHello;
-	const Certificate *cert;
+	shared_ptr<const ServerHello> sHello;
+	shared_ptr<const Certificate> cert;
 	switch (type) {
 	case CLIENT_HELLO:
-		body = new ClientHello();
+		body .reset( new ClientHello());
 		break;
 
 	case CLIENT_KEY_EXCHANGE:
 		sHello = static_cast<const Handshake*>( arg)->getServerHello();
 		cert = static_cast<const Handshake*>( arg2)->getCertificate();
 		//NOTE: skip checking certificate existing here. get the first one
-		body = new ClientKeyExchange(sHello->getCipherSuite(),
-				cert->getCertificateList()[0]);
+		body .reset( new ClientKeyExchange(sHello->getCipherSuite(),
+				cert->getCertificateList()[0]));
 		break;
 
 	default:
@@ -69,18 +59,16 @@ size_t Handshake::size()const {
 	return 1 + 3 + body->size();
 }
 
-Handshake::~Handshake() {
-	delete body;
+
+shared_ptr<const ServerHello> Handshake::getServerHello() const {
+	return dynamic_pointer_cast<ServerHello>(body);
 }
 
-const ServerHello* Handshake::getServerHello() const {
-	return dynamic_cast<ServerHello*>(body);
+shared_ptr<const Certificate> Handshake::getCertificate() const{
+	return dynamic_pointer_cast<Certificate>(body);
 }
 
-const Certificate* Handshake::getCertificate() const{
-	return dynamic_cast<Certificate*>(body);
-}
-
+//need arg (cipher type info from serverhello) incase of making server-key-exchange
 Handshake::Handshake(const vector<uint8_t> &data, size_t offset, const void *arg) {
 	this->type = (HandshakeType) data[offset];
 	offset++;
@@ -101,53 +89,53 @@ Handshake::Handshake(const vector<uint8_t> &data, size_t offset, const void *arg
 	case CLIENT_HELLO:
 		break;
 	case SERVER_HELLO:
-		body = new ServerHello(bodyData, offset);
+		body .reset( new ServerHello(bodyData, offset));
 		break;
 	case CERTIFICATE:
-		body = new Certificate(bodyData, offset);
+		body .reset( new Certificate(bodyData, offset));
 		break;
 	case SERVER_KEY_EXCHANGE:
-		body = new ServerKeyExchange(
-				((ServerHello*) arg)->getCipherSuite(), bodyData, offset);
+		body .reset( new ServerKeyExchange(
+				(static_cast<const ServerHello*>( arg))->getCipherSuite(), bodyData, offset));
 		break;
 	case CERTIFICATE_REQUEST:
-		body = new CertificateRequest(bodyData, offset);
+		body .reset( new CertificateRequest(bodyData, offset));
 		break;
 	case SERVER_HELLO_DONE:
-		body = new ServerHelloDone(bodyData, offset);
+		body .reset( new ServerHelloDone(bodyData, offset));
 		break;
 	case CERTIFICATE_VERIFY:
 		break;
 	case CLIENT_KEY_EXCHANGE:
 		break;
 	case FINISHED:
-		body = new Finished(Finished::CLIENT);
+		body .reset( new Finished(bodyData, offset));
 		break;
 	default: //NONE://default
 		break;
 	}
 }
 
-const CertificateRequest* Handshake::getCertificateRequest() const {
-	return dynamic_cast<CertificateRequest*> (body);
+shared_ptr<const CertificateRequest> Handshake::getCertificateRequest() const {
+	return dynamic_pointer_cast<CertificateRequest> (body);
 }
 
-const ClientHello* Handshake::getClientHello() const {
-	return dynamic_cast<ClientHello*>(body);
+shared_ptr<const ClientHello> Handshake::getClientHello() const {
+	return dynamic_pointer_cast<ClientHello>(body);
 }
 
-const ClientKeyExchange* Handshake::getClientKeyExchange() const {
-	return dynamic_cast<ClientKeyExchange*>(body);
+shared_ptr<const ClientKeyExchange> Handshake::getClientKeyExchange() const {
+	return dynamic_pointer_cast<ClientKeyExchange>(body);
 }
 
-const Finished* Handshake::getFinished() const {
-	return dynamic_cast<Finished*>(body);
+shared_ptr<const Finished> Handshake::getFinished() const {
+	return dynamic_pointer_cast<Finished>(body);
 }
 
-const ServerHelloDone* Handshake::getServerHelloDone() const {
-	return dynamic_cast<ServerHelloDone*>(body);
+shared_ptr<const ServerHelloDone> Handshake::getServerHelloDone() const {
+	return dynamic_pointer_cast<ServerHelloDone>(body);
 }
 
-const ServerKeyExchange* Handshake::getServerKeyExchange() const {
-	return dynamic_cast<ServerKeyExchange*>(body);
+shared_ptr<const ServerKeyExchange> Handshake::getServerKeyExchange() const {
+	return dynamic_pointer_cast<ServerKeyExchange>(body);
 }
