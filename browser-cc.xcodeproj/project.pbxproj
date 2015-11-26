@@ -57,6 +57,7 @@
 		B3B24D181BFE991B003453E6 /* Asn1TBSCertificate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3B24D071BFE991A003453E6 /* Asn1TBSCertificate.cpp */; };
 		B3B24D191BFE991B003453E6 /* Asn1Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3B24D091BFE991A003453E6 /* Asn1Time.cpp */; };
 		B3B24D1A1BFE991B003453E6 /* Asn1Validity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3B24D0B1BFE991A003453E6 /* Asn1Validity.cpp */; };
+		B3F446411C06A60200AAE5FB /* BigNum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3F4463F1C06A60200AAE5FB /* BigNum.cpp */; };
 		E55237451BFF4595001A2008 /* Asn1Cert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E55237431BFF4595001A2008 /* Asn1Cert.cpp */; };
 		E5F2D82F1BFF37D60086A942 /* Asn1Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5F2D82C1BFF37D60086A942 /* Asn1Map.cpp */; };
 /* End PBXBuildFile section */
@@ -177,6 +178,8 @@
 		B3B24D0D1BFE991A003453E6 /* cinclude2dot.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = cinclude2dot.pl; sourceTree = "<group>"; };
 		B3B24D0E1BFE991A003453E6 /* graph.dot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = graph.dot; sourceTree = "<group>"; };
 		B3B24D0F1BFE991A003453E6 /* graph.ps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = graph.ps; sourceTree = "<group>"; };
+		B3F4463F1C06A60200AAE5FB /* BigNum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BigNum.cpp; sourceTree = "<group>"; };
+		B3F446401C06A60200AAE5FB /* BigNum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigNum.h; sourceTree = "<group>"; };
 		E55237431BFF4595001A2008 /* Asn1Cert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asn1Cert.cpp; sourceTree = "<group>"; };
 		E55237441BFF4595001A2008 /* Asn1Cert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Asn1Cert.hpp; sourceTree = "<group>"; };
 		E5F2D82C1BFF37D60086A942 /* Asn1Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asn1Map.cpp; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 		B34B738F1BBD73430059443A /* browser-cc */ = {
 			isa = PBXGroup;
 			children = (
+				B3F4463F1C06A60200AAE5FB /* BigNum.cpp */,
+				B3F446401C06A60200AAE5FB /* BigNum.h */,
 				B31356C41BC7BB4500CDD513 /* Alert.cpp */,
 				B31356C51BC7BB4500CDD513 /* Alert.hpp */,
 				B333D3EE1C0014E7000467ED /* ApplicationData.cpp */,
@@ -395,6 +400,7 @@
 				B39019B51BCD0D7B002D0D49 /* BitUtil.cpp in Sources */,
 				B31357291BC7BB4500CDD513 /* SessionID.cpp in Sources */,
 				B37518A11BF7934E002D0525 /* CipherCore.cpp in Sources */,
+				B3F446411C06A60200AAE5FB /* BigNum.cpp in Sources */,
 				B3B24D151BFE991B003453E6 /* Asn1RelativeDistinguishedName.cpp in Sources */,
 				B31357131BC7BB4500CDD513 /* ClientDiffieHellmanPublic.cpp in Sources */,
 				B31357151BC7BB4500CDD513 /* ClientKeyExchange.cpp in Sources */,

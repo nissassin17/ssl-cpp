@@ -24,7 +24,7 @@ public:
 	};
 //TODO: implement finished server and client
 	Finished();
-	Finished(vector<uint8_t> const& data, int offset = 0);
+	Finished(vector<uint8_t> const& data, size_t offset = 0);
 	virtual size_t size() const;
 	virtual vector<uint8_t> toData() const;
 
