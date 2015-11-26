@@ -14,14 +14,10 @@ class BigNum {
 public:
 	BigNum(vector<uint8_t> const& data, bool const& negative = false);
 	BigNum(uint8_t const& digit);
-	vector<uint8_t> const& toVector() const;
+	vector<uint8_t> toVector() const;
 	BigNum exponent(long long const& exponent, BigNum const& modulus = BigNum(0)) const;
 
 	BigNum operator*(BigNum const& operand) const;
-	/**
-	 * small multiple
-	 */
-	BigNum operator*(uint8_t const& operand) const;
 	BigNum operator-(BigNum const& operand) const;
 	BigNum operator+(BigNum const& operand) const;
 	BigNum operator-() const;
@@ -34,6 +30,7 @@ public:
 	bool isNegative() const;
 
 private:
+	//digits are in reverse order
 	vector<uint8_t> data;
 	void refine();
 	bool negative;

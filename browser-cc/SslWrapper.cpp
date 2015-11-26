@@ -132,6 +132,7 @@ vector<uint8_t> SslWrapper::get() {
 			Log::info << "Make \"client_key_exchange\" record (hard)" << endl;
 			//phrase 3
 			sendClientCertificate(serverHello, serverCertificate);
+            throw string("Deadline is coming. So that I stop here");
             
             //phrase 4: receive finished message
 			try{
