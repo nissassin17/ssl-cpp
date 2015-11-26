@@ -26,6 +26,6 @@ Finished::Finished() :
 
 }
 
-Finished::Finished(const vector<uint8_t>& data, int offset):
+Finished::Finished(const vector<uint8_t>& data, size_t offset):
 	type(SERVER){
 }

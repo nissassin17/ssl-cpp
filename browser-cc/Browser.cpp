@@ -17,10 +17,13 @@
 #include "SslWrapper.hpp"
 #include "StrUtil.hpp"
 #include "Url.hpp"
+#include "BigNum.h"
 
 using namespace std;
 
 void Browser::run(int argc, const char * argv[]) {
+//        Log::info << (BigNum(2).exponent(32, 100)).toVector() << endl;
+//    return;
 	Log::info << "Browser started." << endl;
 
 	/* Read link from command */

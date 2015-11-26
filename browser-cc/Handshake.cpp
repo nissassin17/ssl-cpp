@@ -30,6 +30,11 @@ Handshake::Handshake(HandshakeType type, const void *arg, const void *arg2) :
 		body .reset( new ClientKeyExchange(sHello->getCipherSuite(),
 				cert->getCertificateList()[0]));
 		break;
+            
+        case FINISHED:
+            //TODO: implement finished here
+            body.reset(new Finished());
+            break;
 
 	default:
 		break;
