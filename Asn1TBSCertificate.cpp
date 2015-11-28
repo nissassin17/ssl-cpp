@@ -50,4 +50,20 @@ int Asn1TBSCertificate::getVersion() const {
 	return version;
 }
 
+vector<string> Asn1TBSCertificate::getIssuerList() const {
+	vector<shared_ptr<Asn1RelativeDistinguishedName> > seq = issuer->getRdnSequence();
+	vector<string> ret;
+	for(vector<shared_ptr<Asn1RelativeDistinguishedName> >::const_iterator it = seq.begin(); it != seq.end(); it++){
+ 
+		for(set<ASN1::ObjectIdentifierType, shared_ptr<ASN1> >::const_iterator pair = (*it)->getData().begin(); pair != (*it)->getData().end(); pair++){
+			string identifierName = "";
+			for(ASN1::ObjectIdentifierType::const_iterator t = pair->first.begin(); t != pair->first.end(); t++)
+                identifierName += to_string(*t);
+			//TODO: get string value here from PrintableString
+			//pair->second->getStringValue();
+		}
+	}
+	return ret;
+}
+
 } /* namespace asn1 */

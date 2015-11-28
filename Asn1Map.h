@@ -16,8 +16,10 @@ namespace asn1 {
 class Asn1Map {
 public:
 	Asn1Map(ASN1 const& asn1);
+	const map<ASN1::ObjectIdentifierType, shared_ptr<ASN1> >& getData() const;
+
 private:
-	map<ASN1::ObjectIdentifierType, ASN1> value;
+	map<ASN1::ObjectIdentifierType, shared_ptr<ASN1> > data;
 };
 
 } /* namespace asn1 */

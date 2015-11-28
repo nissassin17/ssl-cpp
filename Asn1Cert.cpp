@@ -25,7 +25,7 @@ Asn1Cert::Asn1Cert(const vector<uint8_t> &data, size_t offset){
 
     ASN1 asn1 = ASN1(this->data, 0);
     //global sequence of 3 values
-    vector<ASN1*> sequence = asn1.getSequenceVal();
+    vector<shared_ptr<ASN1> > sequence = asn1.getSequenceVal();
     tbsCertificate .reset( new Asn1TBSCertificate(*(sequence[0])));
     signatureAlgorithm .reset( new Asn1AlgorithmIdentifier(*(sequence[1])));
     signatureValue = ASN1::BitStringType(sequence[2]->getBitStringVal());

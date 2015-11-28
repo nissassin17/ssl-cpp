@@ -162,7 +162,7 @@ void ASN1::parseSequence(const vector<uint8_t>& data, size_t& offset,
 		long long contentLength) {
 	size_t oldOffset(offset);
 	while ((contentLength >= 0 and contentLength + oldOffset > offset) or (contentLength == -1 and offset < data.size())) {
-		sequenceVal.push_back(new ASN1(data, offset));
+		sequenceVal.push_back(shared_ptr<ASN1>(new ASN1(data, offset)));
 		offset += (*sequenceVal.rbegin())->size();
 	}
 }
@@ -171,7 +171,7 @@ void ASN1::parseSet(const vector<uint8_t>& data, size_t& offset,
 		long long contentLength) {
 	size_t oldOffset(offset);
 	while ((contentLength >= 0 and contentLength + oldOffset > offset) or (contentLength == -1 and offset < data.size())) {
-		ASN1* val = new ASN1(data, offset);
+		shared_ptr<ASN1> val(new ASN1(data, offset));
 		setVal.insert(val);
 		offset += val->size();
 	}

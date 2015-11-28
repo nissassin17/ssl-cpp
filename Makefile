@@ -1,15 +1,12 @@
 
 #all: $(OBJS)
 
-CC = clang++
-CFLAGS = -stdlib=libstdc++
+CC = g++
+#CFLAGS = -stdlib=libstdc++
+CFLAGS =
 SRCS=$(wildcard *.cpp)
 OBJS=$(SRCS:.cpp=.o)
 
 all: $(OBJS)
-
-link: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o browser
-
-clean:
-	rm -f *~ *.o browser
+	rm *.o

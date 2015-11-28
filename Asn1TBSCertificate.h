@@ -27,6 +27,7 @@ public:
 	const shared_ptr<const Asn1SubjectPublicKeyInfo>& getSubjectPublicKeyInfo() const;
 	const shared_ptr<const Asn1Validity>& getValidity() const;
 	int getVersion() const;
+	vector<string> getIssuerList() const;
 
 private:
 	int version;

@@ -18,7 +18,7 @@ public:
 	Asn1AlgorithmIdentifier(ASN1 const& asn1);
 private:
 	vector<long long> algorithm;
-	ASN1 *parameters;
+	shared_ptr<ASN1> parameters;
 
 };
 

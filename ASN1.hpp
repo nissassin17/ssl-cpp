@@ -56,12 +56,12 @@ public:
 	};
 	typedef vector<uint8_t> IntType;
 	typedef bool BoolType;
-	typedef set<ASN1*> SetType;
+	typedef set<shared_ptr<ASN1> > SetType;
 	typedef vector<long long> ObjectIdentifierType;
 //	typedef vector<bool> BitStringType;
 	typedef vector<uint8_t> BitStringType;
 	typedef vector<uint8_t> OctetStringType;
-	typedef vector<ASN1*> SequenceType;
+	typedef vector<shared_ptr<ASN1> > SequenceType;
 	typedef OctetStringType TimeType;
 
 	ASN1(const vector<uint8_t> &data, size_t offset = 0);
