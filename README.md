@@ -1,13 +1,16 @@
 #Browser with SSL support in C++
 _Reimplement SSL library in C++_
 
+##Require
+
+- `gcc` that supports `c++-11`
+
 ##Install
 
 ```bash
 	git clone https://github.com/nissassin17/ssl-cpp
-	cd ssl-cpp/browser-cc
+    cd ssl-cp
 	make
-	make link
 ```
 
 ##Usage
