@@ -32,7 +32,7 @@
 #include "Util.hpp"
 #include "CipherCore.hpp"
 
-vector<uint8_t> EncryptedPreMasterSecret::toData() const{
+vector<uint8_t> EncryptedPreMasterSecret::toData() const {
 	//return encrypted type as public-key-encrypted
 	vector<uint8_t> data;
 
@@ -40,22 +40,24 @@ vector<uint8_t> EncryptedPreMasterSecret::toData() const{
 //TLS_RSA_WITH_AES_128_CBC_SHA256
 
 	Util::addData(data, (uint16_t) encryptedData.size());
-    Util::addData(data, encryptedData);
+	Util::addData(data, encryptedData);
 	return data;
 }
 
-EncryptedPreMasterSecret::EncryptedPreMasterSecret(shared_ptr<const CipherSuite> cipherSuite,
-                                                     shared_ptr<const rsa::Asn1Cert> asn1Cert ) :
-cipherSuite(cipherSuite), asn1Cert(asn1Cert), preMasterSecret(
-                                                              new PreMasterSecret()) {
-    //    std::cout << "======ASN1Cert BEGIN=====" << endl;
-    //    std::cout << Util::readableForm(asn1Cert->toData()) << endl;
-    //    std::cout << "======ASN1Cert END=======" << endl;
-    //start encrypting
-    encryptedData = CipherCore::rsaep(*(asn1Cert->getRsaPublicKey()), preMasterSecret->toData());
-    
+EncryptedPreMasterSecret::EncryptedPreMasterSecret(
+		shared_ptr<const CipherSuite> cipherSuite,
+		shared_ptr<const rsa::Asn1Cert> asn1Cert) :
+		cipherSuite(cipherSuite), asn1Cert(asn1Cert), preMasterSecret(
+				new PreMasterSecret()) {
+	//    std::cout << "======ASN1Cert BEGIN=====" << endl;
+	//    std::cout << Util::readableForm(asn1Cert->toData()) << endl;
+	//    std::cout << "======ASN1Cert END=======" << endl;
+	//start encrypting
+	encryptedData = CipherCore::rsaep(*(asn1Cert->getRsaPublicKey()),
+			preMasterSecret->toData());
+
 }
 size_t EncryptedPreMasterSecret::size() const {
-    //return size after encrypted data in premastersecret
-    return 2 + encryptedData.size(); //2 stand for data length. result should be plused by encrypted data
+	//return size after encrypted data in premastersecret
+	return 2 + encryptedData.size(); //2 stand for data length. result should be plused by encrypted data
 }

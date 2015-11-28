@@ -29,7 +29,7 @@
        case RESULT:\
            cout << (val);\
            break;\
-        case FILE:\
+        case LFILE:\
             ss << (val);\
             (*ofile) << ss.str();\
             break;\
@@ -40,62 +40,55 @@
 
 using namespace std;
 
-
-
 class Log {
 public:
-    class EofObject{
-    public:
-        EofObject(){}
-    };
+	class EofObject {
+	public:
+		EofObject() {
+		}
+	};
 
-    
 	static const Log warn;
 	static const Log info;
 	static const Log err;
 	static const Log result;
-    static const EofObject eof;
-    static Log file(string const& filename);
-    
+	static const EofObject eof;
+	static Log file(string const& filename);
 
-    const void operator<<(EofObject const& eofObject) const;
-    const Log& operator<<(basic_ostream<char>& (*const __pf)(basic_ostream<char>&)) const;
-    const Log& operator<<(basic_ios<char>&
-                              (* const  __pf)(basic_ios<char>&)) const;
+	const void operator<<(EofObject const& eofObject) const;
+	const Log& operator<<(
+			basic_ostream<char>& (* const __pf)(basic_ostream<char>&)) const;
+	const Log& operator<<(basic_ios<char>&
+	(* const __pf)(basic_ios<char>&)) const;
 	const Log& operator<<(string const& __s) const;
 	const Log& operator<<(const char * const __s) const;
-    const Log& operator<<(ios_base& (* const __pf)(ios_base&)) const;
-    const Log& operator<<(const bool __n) const;
-    const Log& operator<<(const short __n) const;
-    const Log& operator<<(const unsigned short __n) const;
-    const Log& operator<<(const int __n) const;
-    const Log& operator<<(const unsigned int __n) const;
-    const Log& operator<<(const long __n) const;
-    const Log& operator<<(const unsigned long __n) const;
-    const Log& operator<<(const long long __n) const;
-    const Log& operator<<(const unsigned long long __n) const;
-    const Log& operator<<(const float __f) const;
-    const Log& operator<<(const double __f) const;
-    const Log& operator<<(const long double __f) const;
-    const Log& operator<<(const void* const __p) const;
-    const Log& operator<<(basic_streambuf<char> * const __sb) const;
-    const Log& operator<<(vector<uint8_t> const& __v) const;
-    
+	const Log& operator<<(ios_base& (* const __pf)(ios_base&)) const;
+	const Log& operator<<(const bool __n) const;
+	const Log& operator<<(const short __n) const;
+	const Log& operator<<(const unsigned short __n) const;
+	const Log& operator<<(const int __n) const;
+	const Log& operator<<(const unsigned int __n) const;
+	const Log& operator<<(const long __n) const;
+	const Log& operator<<(const unsigned long __n) const;
+	const Log& operator<<(const long long __n) const;
+	const Log& operator<<(const unsigned long long __n) const;
+	const Log& operator<<(const float __f) const;
+	const Log& operator<<(const double __f) const;
+	const Log& operator<<(const long double __f) const;
+	const Log& operator<<(const void* const __p) const;
+	const Log& operator<<(basic_streambuf<char> * const __sb) const;
+	const Log& operator<<(vector<uint8_t> const& __v) const;
+
 private:
 
-	enum LogType{
-		WARNING,
-		INFO,
-		ERROR,
-		RESULT,
-        FILE
+	enum LogType {
+		WARNING, INFO, ERROR, RESULT, LFILE
 	};
+	Log(string const& filename); //file type
 	Log(LogType logType);
-    Log(string const& filename);//file type
-    unique_ptr<ofstream> ofile;
+	shared_ptr<ofstream> ofile;
 	LogType logType;
-    string filename;
+	string filename;
 };
-
 
 #endif /* LOG_H_ */

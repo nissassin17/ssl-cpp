@@ -23,17 +23,17 @@ Random::Random() {
 		uint32_t r = rand();
 		for (int j = 0; j < 3; j++) {
 			this->randomBytes[i * 4 + j] = BitUtil::filterByte(r);
-			r = (uint32_t)BitUtil::cutLastBits(r, 8);
+			r = (uint32_t) BitUtil::cutLastBits(r, 8);
 		}
 
 	}
 }
 
-size_t Random::size() const{
+size_t Random::size() const {
 	return 4 + RANDOM_BYTES_NUM * 1;
 }
 
-Random::Random(const vector<uint8_t> &data, size_t offset){
+Random::Random(const vector<uint8_t> &data, size_t offset) {
 	this->gmtUnixTime = Util::takeData32(data, offset);
 	offset += 4;
 
@@ -41,7 +41,7 @@ Random::Random(const vector<uint8_t> &data, size_t offset){
 		this->randomBytes[i] = data[offset + i];
 }
 
-vector<uint8_t> Random::toData() const{
+vector<uint8_t> Random::toData() const {
 	vector<uint8_t> data;
 	Util::addData(data, (uint32_t) this->gmtUnixTime);
 	data.insert(data.end(), this->randomBytes,

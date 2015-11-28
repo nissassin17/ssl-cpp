@@ -6,6 +6,7 @@
  */
 #include <iostream>
 #include "BigNum.h"
+#include <cmath>
 
 vector<uint8_t> BigNum::toVector() const {
 	vector<uint8_t> result(data);
@@ -44,11 +45,13 @@ BigNum::BigNum(const vector<uint8_t>& data, bool const& negative) :
 	refine();
 }
 
-BigNum::BigNum(const uint8_t& digit) :
-		BigNum(
-				(digit < 0 ?
-						vector<uint8_t>(1, -digit) : vector<uint8_t>(1, digit)),
-				digit < 0) {
+BigNum::BigNum(const long long& digit) :
+		negative(digit < 0) {
+	long long t(std::abs(digit));
+	while (t > 0) {
+		data.push_back(t & ((1 << 8) - 1));
+		t >>= 8;
+	}
 }
 
 void BigNum::refine() {
@@ -62,10 +65,10 @@ BigNum BigNum::operator *(const BigNum& operand) const {
 	std::vector<uint32_t> ret(data.size() + operand.data.size() - 1, 0);
 	std::vector<uint8_t> u8ret;
 	for (int i = 0; i < data.size(); i++)
-        for (int j = 0; j < operand.data.size(); j++){
-            //std::cout << "j: " << j << ". operand.data.size(): " << operand.data.size() << std::endl;
+		for (int j = 0; j < operand.data.size(); j++) {
+			//std::cout << "j: " << j << ". operand.data.size(): " << operand.data.size() << std::endl;
 			ret[i + j] += (uint16_t) data[i] * operand.data[j];
-        }
+		}
 	uint32_t carry(0);
 	for (std::vector<uint32_t>::iterator it = ret.begin(); it != ret.end();
 			it++) {
@@ -82,23 +85,22 @@ BigNum BigNum::operator *(const BigNum& operand) const {
 //	while(not u8ret.empty() and *u8ret.rbegin() == 0)
 //		u8ret.pop_back();
 
-    BigNum bb(0);
-    bb.data = u8ret;
-    bb.negative = negative xor operand.negative;
-    bb.refine();
-    return bb;
+	BigNum bb(0);
+	bb.data = u8ret;
+	bb.negative = negative xor operand.negative;
+	bb.refine();
+	return bb;
 }
 
 BigNum BigNum::operator -(const BigNum& operand) const {
 	return operator+(-operand);
 }
 
-
 BigNum BigNum::operator +(const BigNum& operand) const {
 	if (negative)
-		return -((- *this) + -operand);
+		return -((-*this) + -operand);
 	if (operand.negative) { //compare
-        BigNum abs(operand.abs());
+		BigNum abs(operand.abs());
 		if (operator==(abs))
 			return BigNum(0);
 		if (operator<(abs))
@@ -125,9 +127,9 @@ BigNum BigNum::operator +(const BigNum& operand) const {
 		//this refinement is redudant but just because of the sake of logic
 		while (not ret.empty() and *ret.rbegin() == 0)
 			ret.pop_back();
-        BigNum big(0);
-        big.data = ret;
-        return big;
+		BigNum big(0);
+		big.data = ret;
+		return big;
 	}
 	//do plus here
 	vector<uint8_t> ret(data);
@@ -140,15 +142,15 @@ BigNum BigNum::operator +(const BigNum& operand) const {
 		carry = tmp >> 8;
 		ret[i] = tmp bitand ((1 << 8) - 1);
 	}
-	while(carry > 0){
+	while (carry > 0) {
 		ret.push_back(carry & ((1 << 8) - 1));
 		carry >>= 8;
 	}
 	while (not ret.empty() and *ret.rbegin() == 0)
 		ret.pop_back();
-    BigNum r(0);
-    r.data = ret;
-    return r;
+	BigNum r(0);
+	r.data = ret;
+	return r;
 }
 
 BigNum BigNum::operator-() const {
@@ -165,7 +167,7 @@ BigNum BigNum::operator %(const BigNum& operand) const {
 BigNum BigNum::operator /(const BigNum& operand) const {
 	std::vector<uint8_t> quotient, current;
 	bool started = false;
-	for (ssize_t i = data.size() - 1; i >= 0; i--){
+	for (ssize_t i = data.size() - 1; i >= 0; i--) {
 		current.push_back(data[i]);
 		BigNum bcurrent(current);
 		uint8_t q = bcurrent.smallDivide(operand);
@@ -179,12 +181,12 @@ BigNum BigNum::operator /(const BigNum& operand) const {
 }
 
 bool BigNum::operator <(const BigNum& operand) const {
-	if (negative xor operand.negative){
+	if (negative xor operand.negative) {
 		return negative;
 	}
 	if (data.size() != operand.data.size())
 		return data.size() < operand.data.size();
-	for(ssize_t i = data.size() - 1; i >= 0; i--)
+	for (ssize_t i = data.size() - 1; i >= 0; i--)
 		if (data[i] != operand.data[i])
 			return data[i] < operand.data[i];
 	return false;
@@ -213,9 +215,9 @@ uint8_t BigNum::smallDivide(BigNum const& devider) {
 		if (operator<(devider * BigNum(mid)))
 			//low = high + 1
 			//divider * high <= dividend < divider * (high + 1)
-			high = (int16_t)mid - 1;
+			high = (int16_t) mid - 1;
 		else
-			low = (int16_t)mid + 1;
+			low = (int16_t) mid + 1;
 	}
-	return (uint8_t)high;
+	return (uint8_t) high;
 }

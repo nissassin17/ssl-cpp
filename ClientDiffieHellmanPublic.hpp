@@ -22,8 +22,8 @@ class ClientDiffieHellmanPublic: public Exportable {
 
 public:
 	ClientDiffieHellmanPublic(shared_ptr<const CipherSuite> cipherSuite);
-	virtual vector<uint8_t> toData()const;
-	virtual size_t size()const;
+	virtual vector<uint8_t> toData() const;
+	virtual size_t size() const;
 private:
 	const shared_ptr<const CipherSuite> cipherSuite;
 };

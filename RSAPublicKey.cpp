@@ -10,7 +10,7 @@
 namespace rsa {
 
 RSAPublicKey::RSAPublicKey(const std::vector<uint8_t> &modulus, int exponent) :
-	modulus(modulus), exponent(exponent){
+		modulus(modulus), exponent(exponent) {
 
 }
 

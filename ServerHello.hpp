@@ -9,7 +9,6 @@
 #ifndef ServerHello_hpp
 #define ServerHello_hpp
 
-
 #include <cstdint>
 #include <vector>
 

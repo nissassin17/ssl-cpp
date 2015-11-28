@@ -9,7 +9,6 @@
 #ifndef session_id_hpp
 #define session_id_hpp
 
-
 #include <cstdint>
 #include <vector>
 
@@ -17,7 +16,7 @@
 
 using namespace std;
 
-class SessionID : public Exportable{
+class SessionID: public Exportable {
 public:
 	virtual vector<uint8_t> toData() const;
 	virtual size_t size() const;

@@ -9,7 +9,6 @@
 #ifndef compression_method_hpp
 #define compression_method_hpp
 
-
 #include <cstdint>
 #include <vector>
 
@@ -17,7 +16,7 @@
 
 using namespace std;
 
-class CompressionMethod : public Exportable{
+class CompressionMethod: public Exportable {
 public:
 	enum Method {
 		Null = 0, NONE = 255

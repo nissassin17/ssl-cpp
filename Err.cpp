@@ -10,11 +10,11 @@
 #include <string>
 #include "Err.hpp"
 
-bool Err::isSuccess() const{
+bool Err::isSuccess() const {
 	return this->errType == Success;
 }
 
-const char *Err::what() const throw(){
+const char *Err::what() const throw () {
 	return this->description.c_str();
 }
 
@@ -33,7 +33,8 @@ Err::Err(ErrType errType, ...) :
 		break;
 
 	case UnsupportedSchema:
-		this->description = "Unsupported schema (currently only support http and https)";
+		this->description =
+				"Unsupported schema (currently only support http and https)";
 		break;
 
 	case NoHostnameProvided:
@@ -65,7 +66,8 @@ Err::Err(ErrType errType, ...) :
 		break;
 
 	case DontSendButReceive:
-		this->description = "Receive response without sending any request (what a weird error lol)";
+		this->description =
+				"Receive response without sending any request (what a weird error lol)";
 		break;
 
 	case DECODING:
@@ -76,4 +78,7 @@ Err::Err(ErrType errType, ...) :
 		break;
 	}
 	va_end(args);
+}
+
+Err::~Err() throw () {
 }

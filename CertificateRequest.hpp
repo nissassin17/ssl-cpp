@@ -9,7 +9,6 @@
 #ifndef certificate_request_hpp
 #define certificate_request_hpp
 
-
 #include <cstdint>
 #include <vector>
 

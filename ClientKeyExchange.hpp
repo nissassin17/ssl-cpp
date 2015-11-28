@@ -24,9 +24,10 @@ using namespace rsa;
 
 class ClientKeyExchange: public Exportable {
 public:
-	ClientKeyExchange(const shared_ptr<const CipherSuite> cipherSuite, shared_ptr<const rsa::Asn1Cert> asn1Cert);
-	virtual vector<uint8_t> toData()const;
-	virtual size_t size()const;
+	ClientKeyExchange(const shared_ptr<const CipherSuite> cipherSuite,
+			shared_ptr<const rsa::Asn1Cert> asn1Cert);
+	virtual vector<uint8_t> toData() const;
+	virtual size_t size() const;
 private:
 	const shared_ptr<const CipherSuite> cipherSuite;
 	shared_ptr<EncryptedPreMasterSecret> encryptedPreMasterSecret;

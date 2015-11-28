@@ -37,7 +37,7 @@ ServerKeyExchange::ServerKeyExchange(shared_ptr<const CipherSuite> cipherSuite,
 	}
 }
 
-size_t ServerKeyExchange::size() const{
+size_t ServerKeyExchange::size() const {
 	size_t result(0);
 	return result;
 }

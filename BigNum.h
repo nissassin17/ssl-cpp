@@ -13,9 +13,10 @@ using namespace std;
 class BigNum {
 public:
 	BigNum(vector<uint8_t> const& data, bool const& negative = false);
-	BigNum(uint8_t const& digit);
+	BigNum(long long const& digit);
 	vector<uint8_t> toVector() const;
-	BigNum exponent(long long const& exponent, BigNum const& modulus = BigNum(0)) const;
+	BigNum exponent(long long const& exponent,
+			BigNum const& modulus = BigNum(0)) const;
 
 	BigNum operator*(BigNum const& operand) const;
 	BigNum operator-(BigNum const& operand) const;
@@ -25,7 +26,7 @@ public:
 	BigNum operator/(BigNum const& operand) const;
 	BigNum abs() const;
 	bool operator==(BigNum const& operand) const;
-    bool operator!=(BigNum const& operand) const;
+	bool operator!=(BigNum const& operand) const;
 	bool operator<(BigNum const& operand) const;
 	bool isNegative() const;
 

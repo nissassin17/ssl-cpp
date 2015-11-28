@@ -12,19 +12,19 @@ ProtocolVersion::ProtocolVersion(uint8_t major, uint8_t minor) :
 		major(major), minor(minor) {
 }
 
-size_t ProtocolVersion::size() const{
+size_t ProtocolVersion::size() const {
 	return 2;
 }
 
-ProtocolVersion::ProtocolVersion(const vector<uint8_t> &data, size_t offset){
+ProtocolVersion::ProtocolVersion(const vector<uint8_t> &data, size_t offset) {
 	this->major = data[offset];
 	this->minor = data[offset + 1];
 }
 
-vector<uint8_t> ProtocolVersion::toData() const{
-vector<uint8_t> data;
-data.push_back(major);
-data.push_back(minor);
+vector<uint8_t> ProtocolVersion::toData() const {
+	vector<uint8_t> data;
+	data.push_back(major);
+	data.push_back(minor);
 	return data;
 
 }

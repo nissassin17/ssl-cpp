@@ -12,13 +12,13 @@ namespace asn1 {
 
 Asn1TBSCertificate::Asn1TBSCertificate(ASN1 const& asn1) {
 	ASN1::SequenceType const& seq = asn1.getSequenceVal();
-    version = static_cast<int>(Util::vectorToInt(seq[0]->getIntVal()));
+	version = static_cast<int>(Util::vectorToInt(seq[0]->getIntVal()));
 	serialNumber.reset(new Asn1CertificateSerialNumber(*(seq[1])));
 	signature.reset(new Asn1AlgorithmIdentifier(*(seq[2])));
 	issuer.reset(new Asn1Name(*(seq[3])));
 	validity.reset(new Asn1Validity(*(seq[4])));
 	subject.reset(new Asn1Name(*(seq[5])));
-	subjectPublicKeyInfo.reset( new Asn1SubjectPublicKeyInfo(*(seq[6])));
+	subjectPublicKeyInfo.reset(new Asn1SubjectPublicKeyInfo(*(seq[6])));
 
 }
 
@@ -51,14 +51,19 @@ int Asn1TBSCertificate::getVersion() const {
 }
 
 vector<string> Asn1TBSCertificate::getIssuerList() const {
-	vector<shared_ptr<Asn1RelativeDistinguishedName> > seq = issuer->getRdnSequence();
+	vector<shared_ptr<Asn1RelativeDistinguishedName> > seq =
+			issuer->getRdnSequence();
 	vector<string> ret;
-	for(vector<shared_ptr<Asn1RelativeDistinguishedName> >::const_iterator it = seq.begin(); it != seq.end(); it++){
- 
-		for(set<ASN1::ObjectIdentifierType, shared_ptr<ASN1> >::const_iterator pair = (*it)->getData().begin(); pair != (*it)->getData().end(); pair++){
+	for (vector<shared_ptr<Asn1RelativeDistinguishedName> >::const_iterator it =
+			seq.begin(); it != seq.end(); it++) {
+
+		for (map<ASN1::ObjectIdentifierType, shared_ptr<ASN1> >::const_iterator pair =
+				(*it)->getData().begin(); pair != (*it)->getData().end();
+				pair++) {
 			string identifierName = "";
-			for(ASN1::ObjectIdentifierType::const_iterator t = pair->first.begin(); t != pair->first.end(); t++)
-                identifierName += to_string(*t);
+			for (ASN1::ObjectIdentifierType::const_iterator t =
+					pair->first.begin(); t != pair->first.end(); t++)
+				identifierName += to_string(*t);
 			//TODO: get string value here from PrintableString
 			//pair->second->getStringValue();
 		}

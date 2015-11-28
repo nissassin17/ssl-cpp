@@ -9,7 +9,7 @@
 #include "Extension.hpp"
 #include "Util.hpp"
 
-vector<uint8_t> Extension::toData()  const{
+vector<uint8_t> Extension::toData() const {
 	vector<uint8_t> data;
 	Util::addData(data, (uint16_t) this->type);
 	Util::addData(data, (uint16_t) this->data.size());

@@ -9,7 +9,6 @@
 #ifndef random_hpp
 #define random_hpp
 
-
 #include <cstdint>
 #include <vector>
 
@@ -17,10 +16,10 @@
 
 using namespace std;
 
-class Random : public Exportable{
+class Random: public Exportable {
 public:
 	Random();
-	vector<uint8_t> toData() const ;
+	vector<uint8_t> toData() const;
 	size_t size() const;
 	Random(const vector<uint8_t> &data, size_t offset = 0);
 private:

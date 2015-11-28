@@ -20,7 +20,7 @@ long long BitUtil::turnBitOn(long long val, int bitNo) {
 }
 
 long long BitUtil::turnBitOff(long long val, int bitNo) {
-	return val & compl(1 << bitNo);
+	return val & compl (1 << bitNo);
 }
 
 uint8_t BitUtil::filterByte(long long val, int lastBitNo) {

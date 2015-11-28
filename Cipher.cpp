@@ -8,17 +8,17 @@
 
 #include "Cipher.hpp"
 
-Cipher::Format Cipher::getFormat() const{
+Cipher::Format Cipher::getFormat() const {
 	return format;
 }
-int Cipher::getKeyMaterial() const{
+int Cipher::getKeyMaterial() const {
 	return keyMaterial;
 }
-size_t Cipher::getIVSize() const{
+size_t Cipher::getIVSize() const {
 	return ivSize;
 }
 ;
-size_t Cipher::getBlockSize() const{
+size_t Cipher::getBlockSize() const {
 	return blockSize;
 }
 

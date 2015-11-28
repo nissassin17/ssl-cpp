@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "https://tools.ietf.org/html/rfc6187#section-2.1"
+            argument = "https://google.com"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -9,16 +9,15 @@
 #include "ChangeCipherSpec.hpp"
 
 ChangeCipherSpec::ChangeCipherSpec() :
-type(NONE){
-	}
+		type(NONE) {
+}
 
-
-size_t ChangeCipherSpec::size()  const{
+size_t ChangeCipherSpec::size() const {
 	return 1;
 }
 
-vector<uint8_t> ChangeCipherSpec::toData() const{
+vector<uint8_t> ChangeCipherSpec::toData() const {
 	vector<uint8_t> data;
-	data.push_back( (uint8_t) type );
+	data.push_back((uint8_t) type);
 	return data;
 }

@@ -9,7 +9,6 @@
 #ifndef alert_hpp
 #define alert_hpp
 
-
 #include <cstdint>
 #include <vector>
 
@@ -54,7 +53,7 @@ public:
 	virtual size_t size() const;
 	Alert(const vector<uint8_t> &data, size_t offset = 0);
 
-	string what()const;
+	string what() const;
 
 private:
 	AlertLevel level;

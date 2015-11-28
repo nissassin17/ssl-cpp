@@ -28,10 +28,10 @@ Connection::Connection(const string &hostname, bool isSsl) :
 	vector<string> ipList = Connection::ipListFromHostname(hostname);
 	for (int i = 0; i < ipList.size(); i++)
 		this->subConnections.push_back(
-				shared_ptr<SubConnection>(new SubConnection(ipList[i], isSsl ? SSL_PORT : HTTP_PORT))
-                                       );
+				shared_ptr<SubConnection>(
+						new SubConnection(ipList[i],
+								isSsl ? SSL_PORT : HTTP_PORT)));
 }
-
 
 vector<string> Connection::ipListFromHostname(const string& hostname) {
 	vector<string> ipList;
@@ -58,19 +58,24 @@ vector<string> Connection::ipListFromHostname(const string& hostname) {
 	return ipList;
 }
 
-void Connection::send(const vector<uint8_t> &request){
+void Connection::send(const vector<uint8_t> &request) {
 	Log::info << "Prepare to send request" << endl;
-	if (this->isConnecting) {//not first time. so just send
-		if (this->activatingConnection == NULL)
+	if (this->isConnecting) {	//not first time. so just send
+		if (not this->activatingConnection)
 			throw Err(Err::NoConnection);
-		Log::info << "Connect is already established. Just try sending the request" << endl;
+		Log::info
+				<< "Connect is already established. Just try sending the request"
+				<< endl;
 		this->activatingConnection->doSend(request);
-	} else {//first time
-		Log::info << "First time sending request. Try establishing and find available connection out." << endl;
+	} else {	//first time
+		Log::info
+				<< "First time sending request. Try establishing and find available connection out."
+				<< endl;
 		this->isConnecting = true;
 		for (int i = 0; i < this->subConnections.size(); i++) {
 			try {
-				Log::info << "Try connection number " << (i + 1) << " with IP " << this->subConnections[i]->getIp() <<endl;
+				Log::info << "Try connection number " << (i + 1) << " with IP "
+						<< this->subConnections[i]->getIp() << endl;
 				this->subConnections[i]->doConnect();
 				Log::info << "Connect ok. Send request now" << endl;
 				this->subConnections[i]->doSend(request);
@@ -78,16 +83,18 @@ void Connection::send(const vector<uint8_t> &request){
 				this->activatingConnection = this->subConnections[i];
 				break;
 			} catch (Err& err) {
-				Log::warn << "Connecting via connection number " << (i + 1) << " had failed" << endl;
+				Log::warn << "Connecting via connection number " << (i + 1)
+						<< " had failed" << endl;
 			}
 		}
 	}
 }
 
-vector<uint8_t> Connection::receive() const{
+vector<uint8_t> Connection::receive() const {
+	Log::info << "Receiving data" << endl;
 	if (!this->isConnecting)
 		throw Err(Err::DontSendButReceive);
-	if (this->activatingConnection == NULL)
+	if (not activatingConnection)
 		throw Err(Err::NoConnection);
 	return this->activatingConnection->doReceive();
 }

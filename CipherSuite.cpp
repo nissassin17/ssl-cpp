@@ -14,11 +14,8 @@
 #include "BitUtil.hpp"
 
 CipherSuite::CipherSuite(CipherSuiteType type) :
-suite(TLS_NULL_WITH_NULL_NULL),
-cipher(NULL),
-keyExchange(KEY_EXCHANGE_NULL),
-mac(NULL)
-{
+		suite(TLS_NULL_WITH_NULL_NULL), cipher(NULL), keyExchange(
+				KEY_EXCHANGE_NULL), mac(NULL) {
 	setType(type);
 }
 
@@ -28,188 +25,188 @@ void CipherSuite::setType(CipherSuiteType type) {
 	case TLS_NULL_WITH_NULL_NULL:
 		keyExchange = KEY_EXCHANGE_NULL;
 		cipher.reset(new Cipher(Cipher::CIPHER_NULL));
-		mac .reset( new MAC(MAC::MAC_NULL));
+		mac.reset(new MAC(MAC::MAC_NULL));
 		break;
 
 	case TLS_RSA_WITH_NULL_MD5:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::CIPHER_NULL));
-		mac .reset( new MAC(MAC::MD5));
+		cipher.reset(new Cipher(Cipher::CIPHER_NULL));
+		mac.reset(new MAC(MAC::MD5));
 		break;
 	case TLS_RSA_WITH_NULL_SHA:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::CIPHER_NULL));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::CIPHER_NULL));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_RSA_WITH_NULL_SHA256:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::CIPHER_NULL));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::CIPHER_NULL));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_RSA_WITH_RC4_128_MD5:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::RC4_128));
-		mac .reset( new MAC(MAC::MD5));
+		cipher.reset(new Cipher(Cipher::RC4_128));
+		mac.reset(new MAC(MAC::MD5));
 		break;
 	case TLS_RSA_WITH_RC4_128_SHA:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::RC4_128));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::RC4_128));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_RSA_WITH_3DES_EDE_CBC_SHA:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::_3DES_EDE_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::_3DES_EDE_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_RSA_WITH_AES_128_CBC_SHA:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_RSA_WITH_AES_256_CBC_SHA:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_RSA_WITH_AES_128_CBC_SHA256:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_RSA_WITH_AES_256_CBC_SHA256:
 		keyExchange = RSA;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA:
 		keyExchange = DH_DSS;
-		cipher .reset( new Cipher(Cipher::_3DES_EDE_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::_3DES_EDE_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA:
 		keyExchange = DH_RSA;
-		cipher .reset( new Cipher(Cipher::_3DES_EDE_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::_3DES_EDE_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA:
 		keyExchange = DHE_DSS;
-		cipher .reset( new Cipher(Cipher::_3DES_EDE_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::_3DES_EDE_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA:
 		keyExchange = DHE_RSA;
-		cipher .reset( new Cipher(Cipher::_3DES_EDE_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::_3DES_EDE_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DH_anon_WITH_RC4_128_MD5:
 		keyExchange = DH_anon;
-		cipher .reset( new Cipher(Cipher::RC4_128));
-		mac .reset( new MAC(MAC::MD5));
+		cipher.reset(new Cipher(Cipher::RC4_128));
+		mac.reset(new MAC(MAC::MD5));
 		break;
 	case TLS_DH_anon_WITH_3DES_EDE_CBC_SHA:
 		keyExchange = DH_anon;
-		cipher .reset( new Cipher(Cipher::_3DES_EDE_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::_3DES_EDE_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DH_DSS_WITH_AES_128_CBC_SHA:
 		keyExchange = DH_DSS;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DH_RSA_WITH_AES_128_CBC_SHA:
 		keyExchange = DH_RSA;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DHE_DSS_WITH_AES_128_CBC_SHA:
 		keyExchange = DHE_DSS;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DHE_RSA_WITH_AES_128_CBC_SHA:
 		keyExchange = DHE_RSA;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DH_anon_WITH_AES_128_CBC_SHA:
 		keyExchange = DH_anon;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DH_DSS_WITH_AES_256_CBC_SHA:
 		keyExchange = DH_DSS;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DH_RSA_WITH_AES_256_CBC_SHA:
 		keyExchange = DH_RSA;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DHE_DSS_WITH_AES_256_CBC_SHA:
 		keyExchange = DHE_DSS;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DHE_RSA_WITH_AES_256_CBC_SHA:
 		keyExchange = DHE_RSA;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DH_anon_WITH_AES_256_CBC_SHA:
 		keyExchange = DH_anon;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA));
 		break;
 	case TLS_DH_DSS_WITH_AES_128_CBC_SHA256:
 		keyExchange = DH_DSS;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DH_RSA_WITH_AES_128_CBC_SHA256:
 		keyExchange = DH_RSA;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DHE_DSS_WITH_AES_128_CBC_SHA256:
 		keyExchange = DHE_DSS;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DHE_RSA_WITH_AES_128_CBC_SHA256:
 		keyExchange = DHE_RSA;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DH_anon_WITH_AES_128_CBC_SHA256:
 		keyExchange = DH_anon;
-		cipher .reset( new Cipher(Cipher::AES_128_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_128_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DH_DSS_WITH_AES_256_CBC_SHA256:
 		keyExchange = DH_DSS;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DH_RSA_WITH_AES_256_CBC_SHA256:
 		keyExchange = DH_RSA;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DHE_DSS_WITH_AES_256_CBC_SHA256:
 		keyExchange = DHE_DSS;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DHE_RSA_WITH_AES_256_CBC_SHA256:
 		keyExchange = DHE_RSA;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	case TLS_DH_anon_WITH_AES_256_CBC_SHA256:
 		keyExchange = DH_anon;
-		cipher .reset( new Cipher(Cipher::AES_256_CBC));
-		mac .reset( new MAC(MAC::SHA256));
+		cipher.reset(new Cipher(Cipher::AES_256_CBC));
+		mac.reset(new MAC(MAC::SHA256));
 		break;
 	default:
 		break;
@@ -217,7 +214,7 @@ void CipherSuite::setType(CipherSuiteType type) {
 
 }
 
-vector<uint8_t> CipherSuite::toData()  const{
+vector<uint8_t> CipherSuite::toData() const {
 	uint8_t high(BitUtil::filterByte(this->suite, 8));
 	uint8_t low(BitUtil::filterByte(this->suite));
 	vector<uint8_t> data;
@@ -226,7 +223,7 @@ vector<uint8_t> CipherSuite::toData()  const{
 	return data;
 }
 
-size_t CipherSuite::size() const{
+size_t CipherSuite::size() const {
 	return 2;
 }
 

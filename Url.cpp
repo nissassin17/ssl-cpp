@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Nissassin Seventeen. All rights reserved.
 //
 
-
 #include <algorithm>
 #include <cctype>
 #include <iterator>
@@ -68,7 +67,7 @@ const string &Url::getHostname() const {
 	return this->hostname;
 }
 
-const string &Url::getRequest() const{
+const string &Url::getRequest() const {
 	return this->request;
 }
 

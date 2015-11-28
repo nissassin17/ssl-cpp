@@ -17,15 +17,12 @@
 
 using namespace std;
 
-
-long long Util::vectorToInt(const vector<uint8_t> &vec){
+long long Util::vectorToInt(const vector<uint8_t> &vec) {
 	long long ret = 0ll;
-	for(int i = 0; i < vec.size(); i++)
+	for (int i = 0; i < vec.size(); i++)
 		ret = BitUtil::append(ret, vec[i], 8);
 	return ret;
 }
-
-
 
 void Util::addData(vector<uint8_t> &data, uint8_t value) {
 	data.push_back(value);
@@ -66,9 +63,9 @@ uint16_t Util::takeData16(const vector<uint8_t> &data, size_t offset) {
 uint32_t Util::takeData24(const vector<uint8_t> &data, size_t offset) {
 	const int SIZE = 3;
 	uint32_t result(0);
-	for (int i = 0; i < SIZE; i++){
-		result = (uint32_t)BitUtil::append(result, data[offset], 8);
-		offset ++;
+	for (int i = 0; i < SIZE; i++) {
+		result = (uint32_t) BitUtil::append(result, data[offset], 8);
+		offset++;
 	}
 	return result;
 }
@@ -76,7 +73,7 @@ uint32_t Util::takeData24(const vector<uint8_t> &data, size_t offset) {
 uint64_t Util::takeData64(const vector<uint8_t> &data, size_t offset) {
 	const int SIZE = 8;
 	uint64_t result(0);
-	for (int i = 0; i < SIZE; i++){
+	for (int i = 0; i < SIZE; i++) {
 		result = BitUtil::append(result, data[offset], 8);
 		offset++;
 	}
@@ -87,8 +84,8 @@ uint64_t Util::takeData64(const vector<uint8_t> &data, size_t offset) {
 uint32_t Util::takeData32(const vector<uint8_t> &data, size_t offset) {
 	const int SIZE = 4;
 	uint32_t result(0);
-	for (int i = 0; i < SIZE; i++){
-		result = (uint32_t)BitUtil::append(result, data[offset], 8);
+	for (int i = 0; i < SIZE; i++) {
+		result = (uint32_t) BitUtil::append(result, data[offset], 8);
 	}
 	return result;
 }

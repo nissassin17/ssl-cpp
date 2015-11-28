@@ -37,7 +37,8 @@ public:
 
 	bool isSuccess() const;
 
-	virtual const char* what() const throw();
+	virtual const char* what() const throw ();
+	virtual ~Err() throw ();
 
 private:
 	ErrType errType;

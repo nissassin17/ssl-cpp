@@ -24,8 +24,8 @@ class EncryptedPreMasterSecret: public Exportable {
 
 public:
 	EncryptedPreMasterSecret(shared_ptr<const CipherSuite> cipherSuite,
-                             shared_ptr<const rsa::Asn1Cert> asn1Cert );
-    virtual size_t size() const;
+			shared_ptr<const rsa::Asn1Cert> asn1Cert);
+	virtual size_t size() const;
 	virtual vector<uint8_t> toData() const;
 
 private:

@@ -9,7 +9,6 @@
 #ifndef protocol_version_hpp
 #define protocol_version_hpp
 
-
 #include <cstdint>
 #include <vector>
 
@@ -20,7 +19,7 @@
 
 using namespace std;
 
-class ProtocolVersion : Exportable {
+class ProtocolVersion: Exportable {
 public:
 	ProtocolVersion(uint8_t major = SSL_VERSION_MAJOR, uint8_t minor =
 	SSL_VERSION_MINOR);

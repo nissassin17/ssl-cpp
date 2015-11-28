@@ -9,7 +9,6 @@
 #ifndef finished_hpp
 #define finished_hpp
 
-
 #include <cstdint>
 #include <iostream>
 #include <vector>
@@ -17,7 +16,7 @@
 #include "Exportable.hpp"
 using namespace std;
 
-class Finished : public Exportable {
+class Finished: public Exportable {
 public:
 	enum SenderType {
 		CLIENT, SERVER

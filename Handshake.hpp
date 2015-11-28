@@ -28,7 +28,7 @@
 #include "Util.hpp"
 using namespace std;
 
-class Handshake : public Exportable {
+class Handshake: public Exportable {
 public:
 	enum HandshakeType {
 		HELLO_REQUEST = 0,
@@ -45,10 +45,12 @@ public:
 	};
 
 	virtual vector<uint8_t> toData() const;
-	Handshake(HandshakeType type, const void *arg = NULL, const void *arg2 = NULL);
-	Handshake(const vector<uint8_t> &data, size_t offset = 0, const void *arg = NULL);
+	Handshake(HandshakeType type, const void *arg = NULL, const void *arg2 =
+			NULL);
+	Handshake(const vector<uint8_t> &data, size_t offset = 0, const void *arg =
+			NULL);
 	size_t size() const;
-	shared_ptr<const ServerHello> getServerHello()const;
+	shared_ptr<const ServerHello> getServerHello() const;
 	const HandshakeType getType() const;
 	shared_ptr<const Certificate> getCertificate() const;
 	shared_ptr<const CertificateRequest> getCertificateRequest() const;
@@ -59,7 +61,6 @@ public:
 	shared_ptr<const ServerKeyExchange> getServerKeyExchange() const;
 
 private:
-
 
 	HandshakeType type;
 	shared_ptr<Exportable> body;

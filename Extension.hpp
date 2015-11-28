@@ -9,14 +9,13 @@
 #ifndef extension_hpp
 #define extension_hpp
 
-
 #include <cstdint>
 #include <vector>
 
 #include "Exportable.hpp"
 using namespace std;
 
-class Extension : Exportable{
+class Extension: Exportable {
 public:
 	enum ExtensionType {
 		SIGNATURE_ALGORITHMS = 13, NONE = 65535

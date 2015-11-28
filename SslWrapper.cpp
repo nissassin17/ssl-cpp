@@ -16,9 +16,9 @@
 #include "Record.hpp"
 #include "Util.hpp"
 
-SslWrapper::SslWrapper(Url const& url):
+SslWrapper::SslWrapper(Url const& url) :
 		url(url) {
-	this->connection.reset( new Connection(url.getHostname(), url.isUseSsl()));
+	this->connection.reset(new Connection(url.getHostname(), url.isUseSsl()));
 }
 
 void SslWrapper::sendClientHello() {
@@ -80,7 +80,8 @@ pair<Record, Record> SslWrapper::receiveServerHello() {
 void SslWrapper::sendClientCertificate(Record serverHello,
 		Record serverCertificate) {
 	Record clientKeyExchange(Handshake::CLIENT_KEY_EXCHANGE,
-			serverHello.getHandshake().get(), serverCertificate.getHandshake().get());
+			serverHello.getHandshake().get(),
+			serverCertificate.getHandshake().get());
 	Log::info
 			<< "Make \"change_cipher_spec\" record (just by the sake of manner, actually there is no change need)"
 			<< endl;
@@ -88,36 +89,36 @@ void SslWrapper::sendClientCertificate(Record serverHello,
 	Log::info << "Make \"finished\" record" << endl;
 	Record finished(Handshake::FINISHED);
 	Log::info << "Send these 3 records to server" << endl;
-    
-    vector<uint8_t> toSend;
-    Util::addData(toSend, clientKeyExchange.toData());
-    Util::addData(toSend, changeCipherSpec.toData());
-    Util::addData(toSend, finished.toData());
-    this->connection->send(toSend);
+
+	vector<uint8_t> toSend;
+	Util::addData(toSend, clientKeyExchange.toData());
+	Util::addData(toSend, changeCipherSpec.toData());
+	Util::addData(toSend, finished.toData());
+	this->connection->send(toSend);
 }
 
 vector<uint8_t> SslWrapper::get() {
 	if (this->url.isUseSsl()) {
 		Log::info << "Start requesting with ssl (it must be hard)" << endl;
 
-        /*
-      Client                                               Server
+		/*
+		 Client                                               Server
 
-      ClientHello                  ----1---->
-                                                      ServerHello
-                                                     Certificate*
-                                               ServerKeyExchange*
-                                              CertificateRequest*
-                                   <---2-----      ServerHelloDone
-      Certificate*
-      ClientKeyExchange
-      CertificateVerify*
-      [ChangeCipherSpec]
-      Finished                     ----3---->
-                                               [ChangeCipherSpec]
-                                   <---4-----             Finished
-      Application Data             <---5---->     Application Data
-         */
+		 ClientHello                  ----1---->
+		 ServerHello
+		 Certificate*
+		 ServerKeyExchange*
+		 CertificateRequest*
+		 <---2-----      ServerHelloDone
+		 Certificate*
+		 ClientKeyExchange
+		 CertificateVerify*
+		 [ChangeCipherSpec]
+		 Finished                     ----3---->
+		 [ChangeCipherSpec]
+		 <---4-----             Finished
+		 Application Data             <---5---->     Application Data
+		 */
 
 		//phrase 1
 		sendClientHello();
@@ -132,25 +133,25 @@ vector<uint8_t> SslWrapper::get() {
 			Log::info << "Make \"client_key_exchange\" record (hard)" << endl;
 			//phrase 3
 			sendClientCertificate(serverHello, serverCertificate);
-            throw string("Deadline is coming. So that I stop here");
-            
-            //phrase 4: receive finished message
-			try{
-            receiveServerFinished();
-            //phrase 5: send request
-            sendData(url.httpGetRequest());
-            //phrase 6: receive data
-            return receiveData();
-            }catch (string const& msg){
-            	Log::err << msg << endl;
-            }
+			throw string("Deadline is coming. So that I stop here");
+
+			//phrase 4: receive finished message
+			try {
+				receiveServerFinished();
+				//phrase 5: send request
+				sendData(url.httpGetRequest());
+				//phrase 6: receive data
+				return receiveData();
+			} catch (string const& msg) {
+				Log::err << msg << endl;
+			}
 		} catch (string const& err) {
 			Log::err << err << endl;
 		}
-		Log::warn << "Return empty result because of occurred error" << endl;
+//		Log::warn << "Return empty result because of occurred error" << endl;
 		return vector<uint8_t>();
 	}
-    
+
 	Log::info << "Send request without using ssl" << endl;
 	this->connection->send(this->url.httpGetRequest());
 	return this->connection->receive();
@@ -162,18 +163,18 @@ void SslWrapper::receiveServerFinished() {
 	Record finished(data, offset);
 	offset += finished.size();
 
-	if (finished.getType() == Record::CHANGE_CIPHER_SPEC){
+	if (finished.getType() == Record::CHANGE_CIPHER_SPEC) {
 		Log::warn << "Server requires CHANGE_CIPHER_SPEC" << endl;
-		if (offset < data.size()){
+		if (offset < data.size()) {
 			Record ff(data, offset);
-			if (ff.getType() == Record::HANDSHAKE and ff.getHandshake()->getType() == Handshake::FINISHED){
+			if (ff.getType() == Record::HANDSHAKE
+					and ff.getHandshake()->getType() == Handshake::FINISHED) {
 				Log::info << "But finally still got a finished message" << endl;
 			}
 		}
 		throw "Server require CHANGE_CIPHER_SPEC";
-	}else
-		if (finished.getType() == Record::HANDSHAKE and finished.getHandshake()->getType() == Handshake::FINISHED)
-	{
+	} else if (finished.getType() == Record::HANDSHAKE
+			and finished.getHandshake()->getType() == Handshake::FINISHED) {
 		Log::info << "Received a FINISHED message from server" << endl;
 	}
 	throw "Did not receive FINSHED nor CHANGE_CIPHER_SPEC message from server";
@@ -188,7 +189,7 @@ void SslWrapper::sendData(const vector<uint8_t>& data) {
 vector<uint8_t> SslWrapper::receiveData() {
 	Log::info << "Get application data" << endl;
 	Record appData(connection->receive());
-	if (appData.getType() == Record::APPLICATION_DATA){
+	if (appData.getType() == Record::APPLICATION_DATA) {
 		return appData.getApplicationData()->getData();
 	}
 	throw "Did not receive a APPLICATION_DATA record from server";
@@ -196,10 +197,12 @@ vector<uint8_t> SslWrapper::receiveData() {
 
 void SslWrapper::sslSend(const vector<Record>& records) {
 	vector<uint8_t> tosend;
-	for(int i = 0; i < records.size(); i++){
-		Log::info << "Record " << i << ": " << records[i].size() << " bytes" << endl;
+	for (int i = 0; i < records.size(); i++) {
+		Log::info << "Record " << i << ": " << records[i].size() << " bytes"
+				<< endl;
 		Util::addData(tosend, records[i].toData());
 	}
-	Log::info << "Send total " << tosend.size() << " bytes (" << records.size() << " records)" << endl;
+	Log::info << "Send total " << tosend.size() << " bytes (" << records.size()
+			<< " records)" << endl;
 	this->connection->send(tosend);
 }

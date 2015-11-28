@@ -9,7 +9,6 @@
 #ifndef client_hello_hpp
 #define client_hello_hpp
 
-
 #include <cstdint>
 #include <vector>
 
@@ -22,7 +21,7 @@
 #include "Random.hpp"
 #include "SessionID.hpp"
 
-class ClientHello : public Exportable {
+class ClientHello: public Exportable {
 public:
 private:
 	shared_ptr<ProtocolVersion> protocolVersion;
@@ -36,7 +35,7 @@ private:
 public:
 	virtual vector<uint8_t> toData() const;
 	ClientHello();
-	virtual size_t size()const;
+	virtual size_t size() const;
 
 };
 

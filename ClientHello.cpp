@@ -17,7 +17,8 @@ ClientHello::ClientHello() :
 		random(new Random()), sessionID(new SessionID()), haveExtension(false), protocolVersion(
 				new ProtocolVersion()) {
 	this->cipherSuites.push_back(
-			shared_ptr<CipherSuite>(new CipherSuite(CipherSuite::TLS_NULL_WITH_NULL_NULL)));
+			shared_ptr<CipherSuite>(
+					new CipherSuite(CipherSuite::TLS_NULL_WITH_NULL_NULL)));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_MD5                 ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_SHA                 ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_NULL_SHA256              ));
@@ -27,7 +28,9 @@ ClientHello::ClientHello() :
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_128_CBC_SHA          ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_256_CBC_SHA          ));
 	this->cipherSuites.push_back(
-			shared_ptr<CipherSuite>(new CipherSuite(CipherSuite::TLS_RSA_WITH_AES_128_CBC_SHA256)));
+			shared_ptr<CipherSuite>(
+					new CipherSuite(
+							CipherSuite::TLS_RSA_WITH_AES_128_CBC_SHA256)));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_RSA_WITH_AES_256_CBC_SHA256       ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA      ));
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA      ));
@@ -57,10 +60,11 @@ ClientHello::ClientHello() :
 //	this->cipherSuites.push_back(CipherSuite(CipherSuite::TLS_DH_anon_WITH_AES_256_CBC_SHA256   ));
 
 	this->compressionMethods.push_back(
-			shared_ptr<CompressionMethod>(new CompressionMethod(CompressionMethod::Null)));
+			shared_ptr<CompressionMethod>(
+					new CompressionMethod(CompressionMethod::Null)));
 }
 
-size_t ClientHello::size() const{
+size_t ClientHello::size() const {
 	size_t result(0);
 
 	result += this->protocolVersion->size() + this->random->size() + 2;
@@ -82,7 +86,7 @@ size_t ClientHello::size() const{
 	return result;
 }
 
-vector<uint8_t> ClientHello::toData() const{
+vector<uint8_t> ClientHello::toData() const {
 	vector<uint8_t> data;
 
 	Util::addData(data, this->protocolVersion->toData());

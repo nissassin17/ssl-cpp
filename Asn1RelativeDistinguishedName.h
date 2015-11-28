@@ -15,7 +15,7 @@
 using namespace std;
 namespace asn1 {
 
-class Asn1RelativeDistinguishedName : public Asn1Map {
+class Asn1RelativeDistinguishedName: public Asn1Map {
 public:
 	Asn1RelativeDistinguishedName(ASN1 const& asn1);
 };

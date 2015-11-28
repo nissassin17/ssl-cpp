@@ -16,11 +16,11 @@ vector<uint8_t> SessionID::toData() const {
 	return data;
 }
 
-size_t SessionID::size() const{
+size_t SessionID::size() const {
 	return 1 + this->id.size();
 }
 
-SessionID::SessionID(const vector<uint8_t> &data, size_t offset){
+SessionID::SessionID(const vector<uint8_t> &data, size_t offset) {
 	uint8_t length = data[offset];
 	this->id = Util::takeData(data, length, offset + 1);
 }

@@ -15,7 +15,8 @@ using namespace std;
 class CipherCore {
 public:
 	//RSA
-	static std::vector<uint8_t> rsaep(const rsa::RSAPublicKey &publicKey, const std::vector<uint8_t> &message);
+	static std::vector<uint8_t> rsaep(const rsa::RSAPublicKey &publicKey,
+			const std::vector<uint8_t> &message);
 };
 
 #endif /* CIPHERCORE_HPP_ */

@@ -15,7 +15,7 @@ class Asn1Time {
 public:
 	Asn1Time(ASN1 const& asn1);
 private:
-	ASN1::TimeType time;//UTCTime or GenerailizedTime
+	ASN1::TimeType time; //UTCTime or GenerailizedTime
 };
 
 } /* namespace asn1 */

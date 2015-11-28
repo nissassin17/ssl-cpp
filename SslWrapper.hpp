@@ -22,14 +22,14 @@ class SslWrapper {
 private:
 	const Url &url;
 	unique_ptr<Connection> connection;
-    void sendClientHello();
-    pair<Record, Record> receiveServerHello();
-    void sendClientCertificate(Record serverHello, Record serverCertificate);
+	void sendClientHello();
+	pair<Record, Record> receiveServerHello();
+	void sendClientCertificate(Record serverHello, Record serverCertificate);
 
-    void receiveServerFinished();
-    void sendData(vector<uint8_t> const& data);
-    vector<uint8_t> receiveData();
-    void sslSend(vector<Record> const& records);
+	void receiveServerFinished();
+	void sendData(vector<uint8_t> const& data);
+	vector<uint8_t> receiveData();
+	void sslSend(vector<Record> const& records);
 
 public:
 	SslWrapper(Url const& url);

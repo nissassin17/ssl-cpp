@@ -9,7 +9,6 @@
 #ifndef digitally_signed_hpp
 #define digitally_signed_hpp
 
-
 #include <cstdint>
 #include <vector>
 
@@ -17,7 +16,7 @@
 using namespace std;
 #include "ServerDHParams.hpp"
 
-class DigitallySigned  : Exportable{
+class DigitallySigned: Exportable {
 public:
 	DigitallySigned(const vector<uint8_t> &data, size_t offset = 0);
 	virtual size_t size() const;

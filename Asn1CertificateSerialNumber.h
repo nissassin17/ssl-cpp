@@ -8,7 +8,7 @@
 #ifndef ASN1CERTIFICATESERIALNUMBER_H_
 #define ASN1CERTIFICATESERIALNUMBER_H_
 #include "ASN1.hpp"
-namespace asn1{
+namespace asn1 {
 class Asn1CertificateSerialNumber {
 public:
 	Asn1CertificateSerialNumber(ASN1 const& asn1);

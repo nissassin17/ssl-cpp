@@ -11,7 +11,7 @@ namespace asn1 {
 
 Asn1Validity::Asn1Validity(ASN1 const& asn1) {
 	ASN1::SequenceType const& seq = asn1.getSequenceVal();
-	notBefore.reset( new Asn1Time(*(seq[0])));
+	notBefore.reset(new Asn1Time(*(seq[0])));
 	notAfter.reset(new Asn1Time(*(seq[1])));
 }
 

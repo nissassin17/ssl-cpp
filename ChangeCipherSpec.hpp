@@ -9,7 +9,6 @@
 #ifndef change_cipher_spec_hpp
 #define change_cipher_spec_hpp
 
-
 #include <cstdint>
 #include <vector>
 

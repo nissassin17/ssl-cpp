@@ -9,7 +9,6 @@
 #ifndef util_hpp
 #define util_hpp
 
-
 #include <cstdint>
 #include <iostream>
 #include <vector>

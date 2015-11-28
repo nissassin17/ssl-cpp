@@ -9,14 +9,13 @@
 #ifndef server_dh_params_hpp
 #define server_dh_params_hpp
 
-
 #include <cstdint>
 #include <vector>
 
 #include "Exportable.hpp"
 using namespace std;
 
-class ServerDHParams : Exportable{
+class ServerDHParams: Exportable {
 public:
 	ServerDHParams(const vector<uint8_t> &data, size_t offset = 0);
 	virtual size_t size() const;

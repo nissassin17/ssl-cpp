@@ -22,8 +22,8 @@
 
 class ServerKeyExchange: public Exportable {
 public:
-	ServerKeyExchange(shared_ptr<const CipherSuite> cipherSuite,const vector<uint8_t> &data,
-			size_t offset = 0);
+	ServerKeyExchange(shared_ptr<const CipherSuite> cipherSuite,
+			const vector<uint8_t> &data, size_t offset = 0);
 	virtual size_t size() const;
 
 private:

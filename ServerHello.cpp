@@ -15,21 +15,20 @@
 #include "SessionID.hpp"
 #include "Util.hpp"
 
-
 ServerHello::ServerHello(const vector<uint8_t> &data, size_t offset) {
-	this->protocolVersion .reset( new ProtocolVersion(data, offset));
+	this->protocolVersion.reset(new ProtocolVersion(data, offset));
 	offset += this->protocolVersion->size();
 
-	this->random .reset( new Random(data, offset));
+	this->random.reset(new Random(data, offset));
 	offset += this->random->size();
 
-	this->sessionID .reset( new SessionID(data, offset));
+	this->sessionID.reset(new SessionID(data, offset));
 	offset += this->sessionID->size();
 
-	this->cipherSuite .reset( new CipherSuite(data, offset));
+	this->cipherSuite.reset(new CipherSuite(data, offset));
 	offset += this->cipherSuite->size();
 
-	this->compressionMethod .reset( new CompressionMethod(data, offset));
+	this->compressionMethod.reset(new CompressionMethod(data, offset));
 	offset += this->compressionMethod->size();
 
 	if (offset != data.size()) {
@@ -38,7 +37,8 @@ ServerHello::ServerHello(const vector<uint8_t> &data, size_t offset) {
 		offset += 2;
 
 		while (nExtensions--) {
-			this->extensions.push_back(shared_ptr<Extension>(new Extension(data, offset)));
+			this->extensions.push_back(
+					shared_ptr<Extension>(new Extension(data, offset)));
 			offset += this->extensions[this->extensions.size() - 1]->size();
 		}
 	} else {

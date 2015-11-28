@@ -9,7 +9,6 @@
 #ifndef exportable_hpp
 #define exportable_hpp
 
-
 #include <cstdint>
 #include <vector>
 

@@ -9,7 +9,6 @@
 #ifndef asn_1cert_hpp
 #define asn_1cert_hpp
 
-
 #include <cstdint>
 #include <vector>
 
@@ -21,8 +20,8 @@
 
 using namespace std;
 using namespace asn1;
-namespace rsa{
-class Asn1Cert : Exportable {
+namespace rsa {
+class Asn1Cert: Exportable {
 public:
 	Asn1Cert(const vector<uint8_t> &vector, size_t offset = 0);
 	virtual size_t size() const;
@@ -34,7 +33,7 @@ private:
 	shared_ptr<Asn1TBSCertificate> tbsCertificate;
 	shared_ptr<Asn1AlgorithmIdentifier> signatureAlgorithm;
 	ASN1::BitStringType signatureValue;
-    shared_ptr<RSAPublicKey> rsaPublicKey;
+	shared_ptr<RSAPublicKey> rsaPublicKey;
 };
 }
 

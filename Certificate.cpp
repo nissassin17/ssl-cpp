@@ -14,14 +14,13 @@ Certificate::Certificate(const vector<uint8_t> &data, size_t offset) {
 	offset += 3;
 
 	while (length > 0) {
-        this->certificateList.push_back(shared_ptr<rsa::Asn1Cert>(new rsa::Asn1Cert(data, offset)));
-		size_t t =
-				(*certificateList.rbegin())->size();
+		this->certificateList.push_back(
+				shared_ptr<rsa::Asn1Cert>(new rsa::Asn1Cert(data, offset)));
+		size_t t = (*certificateList.rbegin())->size();
 		length -= t;
 		offset += t;
 	}
 }
-
 
 size_t Certificate::size() const {
 	size_t result(3);

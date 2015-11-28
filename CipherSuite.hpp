@@ -18,7 +18,7 @@ using namespace std;
 #include "MAC.hpp"
 #include "Exportable.hpp"
 
-class CipherSuite : Exportable {
+class CipherSuite: Exportable {
 public:
 	CipherSuite(const vector<uint8_t> &data, size_t offset = 0);
 	virtual size_t size() const;

@@ -12,7 +12,7 @@
 #include "Asn1RelativeDistinguishedName.h"
 #include <vector>
 using namespace std;
-namespace asn1{
+namespace asn1 {
 //equal to RDNSequence
 class Asn1Name {
 public:
